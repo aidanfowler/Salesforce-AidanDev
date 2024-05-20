@@ -219,11 +219,11 @@
             <assignToReference>var_current_opp_id</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Loop_Through_Opportunities_and_CSMs_Send_Slack.OpportunityId</elementReference>
+                <elementReference>Loop_Through_Opportunities_and_PMs_Send_Slack.OpportunityId</elementReference>
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Send_Slack_To_Related_Opportunity_Cybavo_CSM</targetReference>
+            <targetReference>Send_Slack_To_Related_Opportunity_Cybavo_PM</targetReference>
         </connector>
     </assignments>
     <assignments>
@@ -471,9 +471,9 @@
         </rules>
     </decisions>
     <decisions>
-        <description>Contact Linked, Check For Opportunity CSM To Notify About Cybavo Case / Opportunity</description>
-        <name>Contact_Linked_Check_For_Opportunity_CSM_To_Notify_For_Cybavo</name>
-        <label>Contact Linked, Check For Opportunity CSM To Notify For Cybavo</label>
+        <description>Contact Linked, Check For Opportunity PM To Notify About Cybavo Case / Opportunity</description>
+        <name>Contact_Linked_Check_For_Opportunity_PM_To_Notify_For_Cybavo</name>
+        <label>Contact Linked, Check For Opportunity PM To Notify For Cybavo</label>
         <locationX>380</locationX>
         <locationY>2555</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
@@ -1187,7 +1187,7 @@
             <label>Closed Case</label>
         </rules>
     </decisions>
-    <description>Slack Link Refactoring For Help Site Origin</description>
+    <description>CSM -&gt; PM</description>
     <environments>Default</environments>
     <formulas>
         <name>frml_account_email_contains_dapper</name>
@@ -1282,9 +1282,9 @@ IF(TEXt({!$Record.Status})=&apos;Closed&apos;,&apos;An On Ramp Case Was Closed&a
         </noMoreValuesConnector>
     </loops>
     <loops>
-        <description>Loop Through Opportunities and CSMs Send Slack</description>
-        <name>Loop_Through_Opportunities_and_CSMs_Send_Slack</name>
-        <label>Loop Through Opportunities and CSMs Send Slack</label>
+        <description>Loop Through Opportunities and PMs Send Slack</description>
+        <name>Loop_Through_Opportunities_and_PMs_Send_Slack</name>
+        <label>Loop Through Opportunities and PMs Send Slack</label>
         <locationX>50</locationX>
         <locationY>3287</locationY>
         <collectionReference>Get_Opportunity_Team_Members_For_Relevant_Opps</collectionReference>
@@ -1439,7 +1439,7 @@ IF(TEXt({!$Record.Status})=&apos;Closed&apos;,&apos;An On Ramp Case Was Closed&a
         <locationY>3179</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Loop_Through_Opportunities_and_CSMs_Send_Slack</targetReference>
+            <targetReference>Loop_Through_Opportunities_and_PMs_Send_Slack</targetReference>
         </connector>
         <filterLogic>1 AND 2 AND (3 OR 4)</filterLogic>
         <filters>
@@ -1453,7 +1453,7 @@ IF(TEXt({!$Record.Status})=&apos;Closed&apos;,&apos;An On Ramp Case Was Closed&a
             <field>TeamMemberRole</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Customer Success Manager</stringValue>
+                <stringValue>Partner Manager</stringValue>
             </value>
         </filters>
         <filters>
@@ -1835,7 +1835,7 @@ IF(TEXt({!$Record.Status})=&apos;Closed&apos;,&apos;An On Ramp Case Was Closed&a
         <locationX>380</locationX>
         <locationY>2447</locationY>
         <connector>
-            <targetReference>Contact_Linked_Check_For_Opportunity_CSM_To_Notify_For_Cybavo</targetReference>
+            <targetReference>Contact_Linked_Check_For_Opportunity_PM_To_Notify_For_Cybavo</targetReference>
         </connector>
         <flowName>Slack_Channel_Notifications_Subflow</flowName>
         <inputAssignments>
@@ -2019,31 +2019,31 @@ IF(TEXt({!$Record.Status})=&apos;Closed&apos;,&apos;An On Ramp Case Was Closed&a
         </inputAssignments>
     </subflows>
     <subflows>
-        <description>Send Slack To Related Opportunity Cybavo CSM</description>
-        <name>Send_Slack_To_Related_Opportunity_Cybavo_CSM</name>
-        <label>Send Slack To Related Opportunity Cybavo CSM</label>
+        <description>Send Slack To Related Opportunity Cybavo PM</description>
+        <name>Send_Slack_To_Related_Opportunity_Cybavo_PM</name>
+        <label>Send Slack To Related Opportunity Cybavo PM</label>
         <locationX>138</locationX>
         <locationY>3503</locationY>
         <connector>
-            <targetReference>Loop_Through_Opportunities_and_CSMs_Send_Slack</targetReference>
+            <targetReference>Loop_Through_Opportunities_and_PMs_Send_Slack</targetReference>
         </connector>
         <flowName>Send_Slack_Notification_To_User</flowName>
         <inputAssignments>
             <name>RecordID</name>
             <value>
-                <elementReference>Loop_Through_Opportunities_and_CSMs_Send_Slack.OpportunityId</elementReference>
+                <elementReference>Loop_Through_Opportunities_and_PMs_Send_Slack.OpportunityId</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
             <name>SlackMessage</name>
             <value>
-                <elementReference>tt_cybavo_csm_case_opp_notification</elementReference>
+                <elementReference>tt_cybavo_pm_case_opp_notification</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
             <name>UserID</name>
             <value>
-                <elementReference>Loop_Through_Opportunities_and_CSMs_Send_Slack.UserId</elementReference>
+                <elementReference>Loop_Through_Opportunities_and_PMs_Send_Slack.UserId</elementReference>
             </value>
         </inputAssignments>
     </subflows>
@@ -2116,15 +2116,6 @@ Case Subject: {!$Record.Subject}
 &lt;{!frml_recordURL}|View Salesforce Record&gt;</text>
     </textTemplates>
     <textTemplates>
-        <description>text to send to cybavo opp csm when case comes in for contact</description>
-        <name>tt_cybavo_csm_case_opp_notification</name>
-        <isViewedAsPlainText>true</isViewedAsPlainText>
-        <text>A customer has submitted a new Cybavo support case which has a related opportunity where you are the CSM
-Case Subject: {!$Record.Subject}
-&lt;{!frml_recordURL}|View Salesforce Case&gt;
-&lt;{!frml_current_opp_url}|View Salesforce Opportunity&gt;</text>
-    </textTemplates>
-    <textTemplates>
         <name>tt_cybavo_new_case</name>
         <isViewedAsPlainText>true</isViewedAsPlainText>
         <text>A customer has submitted a new Cybavo support case.
@@ -2132,6 +2123,15 @@ Case Subject: {!$Record.Subject}
 &lt;{!frml_recordURL}|View Case In Salesforce&gt;
 Requester: {!$Record.SuppliedName}
 Description: {!$Record.Description}</text>
+    </textTemplates>
+    <textTemplates>
+        <description>text to send to cybavo opp pm when case comes in for contact</description>
+        <name>tt_cybavo_pm_case_opp_notification</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>A customer has submitted a new Cybavo support case which has a related opportunity where you are the PM
+Case Subject: {!$Record.Subject}
+&lt;{!frml_recordURL}|View Salesforce Case&gt;
+&lt;{!frml_current_opp_url}|View Salesforce Opportunity&gt;</text>
     </textTemplates>
     <textTemplates>
         <description>Used to notify the #merchant-reserve-collateral channel</description>
