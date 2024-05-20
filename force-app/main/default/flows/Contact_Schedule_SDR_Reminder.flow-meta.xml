@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <decisions>
+        <name>Send_Slack_Reminder_in_30_Days</name>
+        <label>Send Slack Reminder in 30 Days</label>
+        <locationX>182</locationX>
+        <locationY>276</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Send_Slack_User_Reminder_in_30_Days</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.SDR_Follow_Up_Reminder__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>30 Days</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>X30_Day_Slack_Reminder</targetReference>
+            </connector>
+            <label>Send Slack User Reminder in 30 Days</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Send_Slack_Reminder_in_60_Days</name>
+        <label>Send Slack Reminder in 60 Days</label>
+        <locationX>710</locationX>
+        <locationY>276</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Send_Slack_User_Reminder_in_60_Days</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.SDR_Follow_Up_Reminder__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>60 Days</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>X60_Day_Slack_Reminder</targetReference>
+            </connector>
+            <label>Send Slack User Reminder in 60 Days</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Send_Slack_Reminder_in_90_Days</name>
+        <label>Send Slack Reminder in 90 Days</label>
+        <locationX>1238</locationX>
+        <locationY>276</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Send_Slack_User_Reminder_in_90_Days</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.SDR_Follow_Up_Reminder__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>90 Days</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>X90_Day_Slack_Reminder</targetReference>
+            </connector>
+            <label>Send Slack User Reminder in 90 Days</label>
+        </rules>
+    </decisions>
+    <description>SDR Reminder 30,60,90 Days</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>ffml_Contact_Name</name>
+        <dataType>String</dataType>
+        <expression>LEFT($Api.Partner_Server_URL_260, FIND( &apos;/services&apos;, $Api.Partner_Server_URL_260))&amp;{!$Record.Id}</expression>
+    </formulas>
+    <formulas>
+        <name>ffml_sdr_slack</name>
+        <dataType>String</dataType>
+        <expression>IF(ISBLANK({!$Record.Account.SDR_Owner__r.Id}), &apos;No SDR Set&apos;,
+IF(ISBLANK({!$Record.Account.SDR_Owner__r.Circle_Slack_Channel_Id__c}),{!$Record.Account.SDR_Owner__r.FirstName} + &quot; &quot; + {!$Record.Account.SDR_Owner__r.LastName},&apos;&lt;@&apos;+{!$Record.Account.SDR_Owner__r.Circle_Slack_Channel_Id__c}+&apos;&gt;&apos;))</expression>
+    </formulas>
+    <interviewLabel>Contact: Schedule: SDR Reminder {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Contact: Schedule: SDR Reminder</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Clear_30_Days_Follow_Up_Reminder_Fields</name>
+        <label>Clear 30 Days Follow Up Reminder Fields</label>
+        <locationX>50</locationX>
+        <locationY>492</locationY>
+        <inputAssignments>
+            <field>SDR_Follow_Up_Reminder_Timestamp__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>SDR_Follow_Up_Reminder__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>SDR_Follow_Up_Type__c</field>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Clear_60_Days_Follow_Up_Reminder_Fields</name>
+        <label>Clear 60 Days Follow Up Reminder Fields</label>
+        <locationX>578</locationX>
+        <locationY>492</locationY>
+        <inputAssignments>
+            <field>SDR_Follow_Up_Reminder_Timestamp__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>SDR_Follow_Up_Reminder__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>SDR_Follow_Up_Type__c</field>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Clear_90_Days_Follow_Up_Reminder_Fields</name>
+        <label>Clear 90 Days Follow Up Reminder Fields</label>
+        <locationX>1106</locationX>
+        <locationY>492</locationY>
+        <inputAssignments>
+            <field>SDR_Follow_Up_Reminder_Timestamp__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>SDR_Follow_Up_Reminder__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>SDR_Follow_Up_Type__c</field>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>386</locationX>
+        <locationY>0</locationY>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>1</filterLogic>
+        <filters>
+            <field>SDR_Follow_Up_Reminder_Timestamp__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Contact</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <scheduledPaths>
+            <name>X30_Day_Reminder</name>
+            <connector>
+                <targetReference>Send_Slack_Reminder_in_30_Days</targetReference>
+            </connector>
+            <label>30 Day Reminder</label>
+            <offsetNumber>30</offsetNumber>
+            <offsetUnit>Days</offsetUnit>
+            <recordField>SDR_Follow_Up_Reminder_Timestamp__c</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <scheduledPaths>
+            <name>X60_Day_Reminder</name>
+            <connector>
+                <targetReference>Send_Slack_Reminder_in_60_Days</targetReference>
+            </connector>
+            <label>60 Day Reminder</label>
+            <offsetNumber>60</offsetNumber>
+            <offsetUnit>Days</offsetUnit>
+            <recordField>SDR_Follow_Up_Reminder_Timestamp__c</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <scheduledPaths>
+            <name>X90_Day_Reminder</name>
+            <connector>
+                <targetReference>Send_Slack_Reminder_in_90_Days</targetReference>
+            </connector>
+            <label>90 Day Reminder</label>
+            <offsetNumber>90</offsetNumber>
+            <offsetUnit>Days</offsetUnit>
+            <recordField>SDR_Follow_Up_Reminder_Timestamp__c</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <name>X30_Day_Slack_Reminder</name>
+        <label>30 Day Slack Reminder</label>
+        <locationX>50</locationX>
+        <locationY>384</locationY>
+        <connector>
+            <targetReference>Clear_30_Days_Follow_Up_Reminder_Fields</targetReference>
+        </connector>
+        <flowName>Send_Slack_Notification_To_User</flowName>
+        <inputAssignments>
+            <name>RecordID</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>SlackMessage</name>
+            <value>
+                <elementReference>tt_Reminder_Notification</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>UserID</name>
+            <value>
+                <elementReference>$Record.SDR_Owner__r.Id</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <subflows>
+        <name>X60_Day_Slack_Reminder</name>
+        <label>60 Day Slack Reminder</label>
+        <locationX>578</locationX>
+        <locationY>384</locationY>
+        <connector>
+            <targetReference>Clear_60_Days_Follow_Up_Reminder_Fields</targetReference>
+        </connector>
+        <flowName>Send_Slack_Notification_To_User</flowName>
+        <inputAssignments>
+            <name>RecordID</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>SlackMessage</name>
+            <value>
+                <elementReference>tt_Reminder_Notification</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>UserID</name>
+            <value>
+                <elementReference>$Record.SDR_Owner__r.Id</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <subflows>
+        <name>X90_Day_Slack_Reminder</name>
+        <label>90 Day Slack Reminder</label>
+        <locationX>1106</locationX>
+        <locationY>384</locationY>
+        <connector>
+            <targetReference>Clear_90_Days_Follow_Up_Reminder_Fields</targetReference>
+        </connector>
+        <flowName>Send_Slack_Notification_To_User</flowName>
+        <inputAssignments>
+            <name>RecordID</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>SlackMessage</name>
+            <value>
+                <elementReference>tt_Reminder_Notification</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>UserID</name>
+            <value>
+                <elementReference>$Record.SDR_Owner__r.Id</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <textTemplates>
+        <name>tt_Reminder_Notification</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>You spoke to &lt;{!ffml_Contact_Name}|{!$Record.FirstName} {!$Record.LastName}&gt; {!$Record.SDR_Follow_Up_Reminder__c} ago. This is a reminder to reach out and follow up. Once the follow-up is completed, please update your associated Salesforce task and close it.
+
+Contact link: &lt;{!ffml_Contact_Name}|{!$Record.FirstName} {!$Record.LastName}&gt;
+SDR Follow Up Reminder: {!$Record.SDR_Follow_Up_Reminder__c}
+SDR Follow Up Notes: {!$Record.SDR_Follow_Up_Notes__c}
+SDR Follow Up Type: {!$Record.SDR_Follow_Up_Type__c}</text>
+    </textTemplates>
+</Flow>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Company_Willing_To_Provide_Following__c</fullName>
+    <externalId>false</externalId>
+    <label>Company Willing To Provide Following</label>
+    <required>true</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Allowing For Broad Logo Use</fullName>
+                <default>false</default>
+                <label>Allowing For Broad Logo Use</label>
+            </value>
+            <value>
+                <fullName>Customer Story (Circle written webpage)</fullName>
+                <default>false</default>
+                <label>Customer Story (Circle written webpage)</label>
+            </value>
+            <value>
+                <fullName>Customer Written Quote</fullName>
+                <default>false</default>
+                <label>Customer Written Quote</label>
+            </value>
+            <value>
+                <fullName>Ecosystem Spotlight (customer written blog post)</fullName>
+                <default>false</default>
+                <label>Ecosystem Spotlight (customer written blog post)</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Participation in Money Movement Podcast</fullName>
+                <default>false</default>
+                <label>Participation in Money Movement Podcast</label>
+            </value>
+            <value>
+                <fullName>Speaking Opportunity (webinar, live event, etc.)</fullName>
+                <default>false</default>
+                <label>Speaking Opportunity (webinar, live event, etc.)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

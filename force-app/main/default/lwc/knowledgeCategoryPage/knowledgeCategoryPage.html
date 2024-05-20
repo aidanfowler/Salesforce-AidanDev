@@ -1,0 +1,28 @@
+<template>    
+    <div class="pagePadding slds-p-top_xx-large">
+        <lightning-layout horizontal-align="spread" multiple-rows="true">
+            <lightning-layout-item size="12" small-device-size="12" medium-device-size="3" large-device-size="3" padding="horizontal-large">
+                <template if:true={categoryName}>
+                    <c-knowledge-category-menu category-name={categoryName}
+                        oncategoryupdated={handleCategoryUpdated}></c-knowledge-category-menu>
+                </template>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" small-device-size="12" medium-device-size="9" large-device-size="9" padding="horizontal-large">
+                <div class="categoryInfo rightSide">
+                <template if:true={subcategoryMap}>
+                <template for:each={subcategoryMap} for:item="subcategory">
+                    <lightning-vertical-navigation title="Subcategories" selected-item="" onselect={handleSelect} key={subcategory}>
+                        <lightning-vertical-navigation-section label={subcategory.label}>
+                            <template for:each={subcategory.articles} for:item="article">
+                                <lightning-vertical-navigation-item label={article.name} name={article.Id} key={article.name}>
+                                </lightning-vertical-navigation-item>
+                            </template>
+                        </lightning-vertical-navigation-section>
+                    </lightning-vertical-navigation>
+                </template>
+                </template>
+                </div>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+</template>

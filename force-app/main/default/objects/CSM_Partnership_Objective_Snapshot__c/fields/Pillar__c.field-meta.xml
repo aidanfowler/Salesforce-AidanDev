@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pillar__c</fullName>
+    <externalId>false</externalId>
+    <label>Pillar</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Ecosystem</fullName>
+                <default>false</default>
+                <label>Ecosystem</label>
+            </value>
+            <value>
+                <fullName>Liquidity</fullName>
+                <default>false</default>
+                <label>Liquidity</label>
+            </value>
+            <value>
+                <fullName>Platform Distribution</fullName>
+                <default>false</default>
+                <label>Platform Distribution</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

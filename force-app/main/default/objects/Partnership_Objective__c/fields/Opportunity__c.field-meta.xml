@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Opportunity__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>This field is optional, but should be filled in most cases since the majority of objectives will stem from a specific Opportunity</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This field is optional, but should be filled in most cases since the majority of objectives will stem from a specific Opportunity</inlineHelpText>
+    <label>Opportunity</label>
+    <referenceTo>Opportunity</referenceTo>
+    <relationshipLabel>Partnership Objectives</relationshipLabel>
+    <relationshipName>Partnership_Objectives</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,43 @@
+<apex:page title="Email Verified" showHeader="false" applyHtmlTag="false" applyBodyTag="false" standardStylesheets="false" docType="html-5.0">
+    <apex:slds />
+    <apex:stylesheet value="{!URLFOR($Resource.KnowledgeLoginAssets, '/css/knowledgeLogin.css')}"/>
+    <div class="slds-grid slds-gutters" style="width:100%">
+        <div class="slds-col slds-size_1-of-1">
+            <div class="siteforceStarterBody comm-content-header" style="background: linear-gradient( 180deg, rgba(255, 255, 255, 1) 0%, rgba(245, 242, 255, 1) 100% );width: 100%;height:200px;">
+                <div style="padding-left: 14rem; padding-right: 14rem; margin-top: 2rem;">
+                    <div style="display:flex; justify-content:space-between;">
+                        <a href="https://circleinternetfinancial--staging.sandbox.my.site.com/help/s/"><img src="{!URLFOR($Resource.CircleAssets, '/images/logo_support-stacked.png')}" class="supportImage"/></a>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br/><br/>
+    <div class="slds-scope">
+        <apex:form styleClass="form-horizontal">
+            <div class="slds-grid slds-gutters" style="width:100%">
+                <div class="slds-col slds-size_0-of-1 slds-large-size_1-of-3">
+                </div>
+            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+
+                <div class="loginWrapper slds-p-top_xx-large">
+                    <div class="slds-text-align_center">
+                        <image src="{!URLFOR($Resource.CircleAssets, 'icons/circle-icon.svg')}" width="90.9"/>
+                    </div>
+                    <div class="slds-p-top_xx-large">  
+                        <h4>You have succesfully verified your email and can now log into the help center!</h4>
+                    </div>
+
+                    <div class="divider" ></div>
+                        <div class="slds-button-group-item slds-text-align_center" >
+                            <a href="https://circleinternetfinancial--staging.sandbox.my.site.com/help/KnowledgeLogin" class="slds-button slds-button_neutral">Log In</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_0-of-1 slds-large-size_1-of-3">
+                </div>
+            </div>
+        </apex:form>
+    </div>
+</apex:page>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <decisions>
+        <description>Billing Start Date Set, Trigger Metronome Customer Creation</description>
+        <name>Check_If_Billing_Start_Date_Set</name>
+        <label>Check If Billing Start Date Set</label>
+        <locationX>132</locationX>
+        <locationY>276</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Billing_Start_Date_Set</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Billing_Start_Date__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Metronome_Plan_Added__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Add_Metronome_Plan_Subflow</targetReference>
+            </connector>
+            <label>Billing Start Date Set</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Billing Start Date Set, Trigger Metronome Customer Creation</description>
+        <name>Check_If_Send_Immediately_Set</name>
+        <label>Check If Send Immediately Set</label>
+        <locationX>572</locationX>
+        <locationY>276</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Send_Immediately</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Billing_Start_Date__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Metronome_Plan_Added__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Send_To_Metronome_Immediately__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Add_Metronome_Plan_Subflow</targetReference>
+            </connector>
+            <label>Send Immediately</label>
+        </rules>
+    </decisions>
+    <description>Send Metronome Plan Immediately (1 Minute Delay)</description>
+    <environments>Default</environments>
+    <interviewLabel>Developer Account: Metronome Plan {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Developer Account: Metronome Plan</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Billing_Start_Date__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Metronome_Plan_Added__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Developer_Account__c</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <scheduledPaths>
+            <name>Add_Metronome_Plan</name>
+            <connector>
+                <targetReference>Check_If_Billing_Start_Date_Set</targetReference>
+            </connector>
+            <label>Add Metronome Plan</label>
+            <offsetNumber>25</offsetNumber>
+            <offsetUnit>Hours</offsetUnit>
+            <timeSource>RecordTriggerEvent</timeSource>
+        </scheduledPaths>
+        <scheduledPaths>
+            <name>Add_Metronome_Plan_Immediately</name>
+            <connector>
+                <targetReference>Check_If_Send_Immediately_Set</targetReference>
+            </connector>
+            <label>Add Metronome Plan Immediately</label>
+            <offsetNumber>1</offsetNumber>
+            <offsetUnit>Minutes</offsetUnit>
+            <timeSource>RecordTriggerEvent</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <description>Add Metronome Plan Subflow</description>
+        <name>Add_Metronome_Plan_Subflow</name>
+        <label>Add Metronome Plan Subflow</label>
+        <locationX>176</locationX>
+        <locationY>671</locationY>
+        <flowName>Metronome_Add_Plan_Subflow</flowName>
+        <inputAssignments>
+            <name>var_developer_account</name>
+            <value>
+                <elementReference>$Record</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+</Flow>

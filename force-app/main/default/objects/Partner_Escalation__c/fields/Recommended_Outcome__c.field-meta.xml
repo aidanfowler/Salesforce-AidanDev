@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Recommended_Outcome__c</fullName>
+    <externalId>false</externalId>
+    <label>Recommended Outcome</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Descope</fullName>
+                <default>false</default>
+                <label>Descope</label>
+            </value>
+            <value>
+                <fullName>Restructure Commercials</fullName>
+                <default>false</default>
+                <label>Restructure Commercials</label>
+            </value>
+            <value>
+                <fullName>Change Strategy</fullName>
+                <default>false</default>
+                <label>Change Strategy</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

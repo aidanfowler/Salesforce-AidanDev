@@ -1,0 +1,53 @@
+<template>
+  <div class="pagePadding">
+    <div class="footerColor">
+    	<div class="slds-p-top_xx-large slds-p-bottom_xx-large slds-p-left_xx-large">
+    		<section class="cta">
+      			<div class="slds-p-bottom_large"><h3 class="h4 cta__title">Still have questions?</h3></div>
+                <div class="slds-p-bottom_small"><p class="cta__subtitle"><b>Please reach out to us:</b></p></div>
+      			<p class="cta__description">Submit a ticket to the Customer Care Team <a href={supportUrl}>HERE</a>.</p>
+     		</section>
+  		</div>
+     </div>
+	 <div class="bottomRight">
+
+    <template if:true={showPopup}>
+    <div class="widget-contacts__menu widget-contacts-menu" role="dialog">
+      <header class="widget-contacts-menu__header">
+        <h2 class="widget-contacts-menu__title">How can we help?</h2>
+        <p class="widget-contacts-menu__description">Select a channel and let's talk.</p>
+      </header>
+      <ul class="widget-contacts-menu__list" aria-label="Choose channel">
+        <li class="widget-contacts-menu__item" role="presentation"><a
+            class="widget-contacts-menu__link" href={supportUrl} target="_self" rel="noopener" tabindex="0"
+            role="option" data-ol-has-click-handler="">
+            <div class="widget-contacts-menu__link-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="25"
+                height="25" class="widget-contacts-menu__link-icon-svg">
+                <g fill="none">
+                  <path
+                    d="M8.594 16.406h-6.25A1.563 1.563 0 01.78 14.844v-12.5A1.563 1.563 0 012.344.78h18.75a1.563 1.563 0 011.562 1.563v9.375">
+                  </path>
+                  <path
+                    d="M1.165 1.322L9.614 7.78a3.125 3.125 0 004.209 0l8.448-6.458M17.969 12.5l6.25 4.688-6.25 4.687v-2.344H13.28a1.563 1.563 0 01-1.562-1.562v-1.563a1.563 1.563 0 011.562-1.562h4.688z">
+                  </path>
+                </g>
+              </svg>
+            </div> <span class="widget-contacts-menu__link-name">Submit a Ticket</span>
+          </a></li>
+      </ul>
+    </div>
+  </template>
+
+            <a href=# onclick={handleShowPopup}>
+              <div class="statusDisplay">
+                <img class="extra-level-item__image is-active" data-lotus-icon="6827983645204"
+                                src={icon}></img>
+              </div>
+            </a>
+
+    </div>
+  </div>
+
+  
+</template>

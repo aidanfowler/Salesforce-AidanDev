@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Send Slack Disconnected Email</description>
+        <name>Send_Slack_Disconnected_Email</name>
+        <label>Send Slack Disconnected Email</label>
+        <locationX>374</locationX>
+        <locationY>674</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>Get_User.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderType</name>
+            <value>
+                <stringValue>OrgWideEmailAddress</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>noreply@circle.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Please Connect Your Slack To Salesforce!</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>tt_SlackDisconnectedEmail</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>Send Slack Message</description>
+        <name>Send_Slack_Message</name>
+        <label>Send Slack Message</label>
+        <locationX>110</locationX>
+        <locationY>566</locationY>
+        <actionName>slackPostMessage</actionName>
+        <actionType>slackPostMessage</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>slackAppIdForToken</name>
+            <value>
+                <stringValue>A03269G3DNE</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>slackWorkspaceIdForToken</name>
+            <value>
+                <elementReference>frml_slack_workspace</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>slackConversationId</name>
+            <value>
+                <elementReference>frml_slack_conversation_id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>slackMessage</name>
+            <value>
+                <elementReference>SlackMessage</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recordId</name>
+            <value>
+                <elementReference>RecordID</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>slackPostMessage</nameSegment>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>Send Slack Message for a missing user</description>
+        <name>Send_Slack_Message_Missing_User</name>
+        <label>Send Slack Message Missing User</label>
+        <locationX>374</locationX>
+        <locationY>566</locationY>
+        <actionName>slackPostMessage</actionName>
+        <actionType>slackPostMessage</actionType>
+        <connector>
+            <targetReference>Send_Slack_Disconnected_Email</targetReference>
+        </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Send_Slack_Disconnected_Email</targetReference>
+        </faultConnector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>slackAppIdForToken</name>
+            <value>
+                <stringValue>A03269G3DNE</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>slackWorkspaceIdForToken</name>
+            <value>
+                <elementReference>frml_slack_workspace</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>slackConversationId</name>
+            <value>
+                <elementReference>frml_missing_user_channel</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>slackMessage</name>
+            <value>
+                <elementReference>tt_missing_slack_user_message</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recordId</name>
+            <value>
+                <elementReference>RecordID</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>slackPostMessage</nameSegment>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <apiVersion>58.0</apiVersion>
+    <decisions>
+        <name>Check_If_User_Has_Valid_Slack_Channel</name>
+        <label>Check If User Has Valid Slack Channel</label>
+        <locationX>506</locationX>
+        <locationY>458</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>User_is_set_and_has_valid_slack_channel</name>
+            <conditionLogic>1 AND (2 OR 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_User.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_User.Circle_Slack_Channel_Id__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>GetOrg.IsSandbox</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Slack_Message</targetReference>
+            </connector>
+            <label>User is set and has valid slack channel</label>
+        </rules>
+        <rules>
+            <name>User_is_set_and_has_invalid_slack_channel</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_User.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_User.Circle_Slack_Channel_Id__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Slack_Message_Missing_User</targetReference>
+            </connector>
+            <label>User is set and has invalid slack channel</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Stop Slack For Test Classes</description>
+        <name>Stop_Slack_For_Test_Classes</name>
+        <label>Stop Slack For Test Classes</label>
+        <locationX>176</locationX>
+        <locationY>134</locationY>
+        <defaultConnector>
+            <targetReference>GetOrg</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Send Slack</defaultConnectorLabel>
+        <rules>
+            <name>Ignore_Slack</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Setup.Trigger_Switches__c.Pause_Slack_Notifications__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Ignore Slack</label>
+        </rules>
+    </decisions>
+    <description>Add slack missed message.</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Channel for notifying that users are disconnected from slack</description>
+        <name>frml_missing_user_channel</name>
+        <dataType>String</dataType>
+        <expression>IF(NOT({!GetOrg.IsSandbox}), {!$Setup.Slack_Channel__c.salesforce_slack_user_notifications__c}, {!$Setup.Slack_Channel__c.testslack__c})</expression>
+    </formulas>
+    <formulas>
+        <description>Get slack channel from user or conversation id</description>
+        <name>frml_slack_conversation_id</name>
+        <dataType>String</dataType>
+        <expression>IF(NOT({!GetOrg.IsSandbox}), IF(NOT(ISNULL({!Get_User.Id})), {!Get_User.Circle_Slack_Channel_Id__c}, null), {!$Setup.Slack_Channel__c.testslack__c})</expression>
+    </formulas>
+    <formulas>
+        <description>slack workspace ID for sandbox or prod</description>
+        <name>frml_slack_workspace</name>
+        <dataType>String</dataType>
+        <expression>IF(NOT({!GetOrg.IsSandbox}), &apos;T0252ABLY&apos;, &apos;TECALKNBE&apos;)</expression>
+    </formulas>
+    <formulas>
+        <name>frml_user_url</name>
+        <dataType>String</dataType>
+        <expression>LEFT({!$Api.Partner_Server_URL_260}, FIND( &apos;/services&apos;, {!$Api.Partner_Server_URL_260}))&amp;{!Get_User.Id}</expression>
+    </formulas>
+    <interviewLabel>Send Slack Notification To User {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Slack: Subflow: User Notification</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Get user to get slack channel</description>
+        <name>Get_User</name>
+        <label>Get User</label>
+        <locationX>506</locationX>
+        <locationY>350</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_If_User_Has_Valid_Slack_Channel</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>UserID</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>User</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Get org for mapping slack workspace</description>
+        <name>GetOrg</name>
+        <label>GetOrg</label>
+        <locationX>506</locationX>
+        <locationY>242</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_User</targetReference>
+        </connector>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Organization</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <runInMode>DefaultMode</runInMode>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Stop_Slack_For_Test_Classes</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <description>missing slack user message</description>
+        <name>tt_missing_slack_user_message</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>RED ALERT: No Channel Id has been found on a User record to notify {!Get_User.Name} that an Opportunity needs attention! Please confirm they have connected to the Salesforce for Slack app in the Circle workspace.
+&lt;{!frml_user_url}|View Salesforce Record&gt;
+Missed Message: {!SlackMessage}</text>
+    </textTemplates>
+    <textTemplates>
+        <description>Slack disconnected email</description>
+        <name>tt_SlackDisconnectedEmail</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>You are missing important messages because your slack is not connected to salesforce.
+Please follow the instructions in this guru card to connect: https://app.getguru.com/card/cXAMeaEi/How-to-Connect-Slack-Integrations-for-Salesforce</text>
+    </textTemplates>
+    <variables>
+        <description>related object</description>
+        <name>RecordID</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Message to send to slack user / channel</description>
+        <name>SlackMessage</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>user id</description>
+        <name>UserID</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

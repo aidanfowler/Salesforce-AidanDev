@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sub_Pillar__c</fullName>
+    <description>Asana - https://app.asana.com/0/1203888552965975/1206312554306326/f</description>
+    <externalId>false</externalId>
+    <label>Sub-Pillar</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Pillar__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Compliance Services</fullName>
+                <default>false</default>
+                <label>Compliance Services</label>
+            </value>
+            <value>
+                <fullName>Deprecated Product</fullName>
+                <default>false</default>
+                <label>Deprecated Product</label>
+            </value>
+            <value>
+                <fullName>Developer Experience</fullName>
+                <default>false</default>
+                <label>Developer Experience</label>
+            </value>
+            <value>
+                <fullName>Ecosystem Wallets</fullName>
+                <default>false</default>
+                <label>Ecosystem Wallets</label>
+            </value>
+            <value>
+                <fullName>Liquidity Distribution</fullName>
+                <default>false</default>
+                <label>Liquidity Distribution</label>
+            </value>
+            <value>
+                <fullName>Liquidity Growth</fullName>
+                <default>false</default>
+                <label>Liquidity Growth</label>
+            </value>
+            <value>
+                <fullName>Liquidity Supply</fullName>
+                <default>false</default>
+                <label>Liquidity Supply</label>
+            </value>
+            <value>
+                <fullName>Onboarding &amp; Customer Lifecycle</fullName>
+                <default>false</default>
+                <label>Onboarding &amp; Customer Lifecycle</label>
+            </value>
+            <value>
+                <fullName>Programmable Wallets</fullName>
+                <default>false</default>
+                <label>Programmable Wallets</label>
+            </value>
+            <value>
+                <fullName>Stablecoin Protocols</fullName>
+                <default>false</default>
+                <label>Stablecoin Protocols</label>
+            </value>
+            <value>
+                <fullName>Unrelated to a Pillar</fullName>
+                <default>false</default>
+                <label>Unrelated to a Pillar</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Liquidity</controllingFieldValue>
+            <valueName>Liquidity Distribution</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Liquidity</controllingFieldValue>
+            <valueName>Liquidity Growth</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Liquidity</controllingFieldValue>
+            <valueName>Liquidity Supply</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Unrelated to a pillar</controllingFieldValue>
+            <valueName>Deprecated Product</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Unrelated to a pillar</controllingFieldValue>
+            <valueName>Unrelated to a Pillar</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Developer</controllingFieldValue>
+            <valueName>Developer Experience</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Developer</controllingFieldValue>
+            <valueName>Ecosystem Wallets</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Developer</controllingFieldValue>
+            <valueName>Programmable Wallets</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Developer</controllingFieldValue>
+            <valueName>Stablecoin Protocols</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CRT</controllingFieldValue>
+            <valueName>Compliance Services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CRT</controllingFieldValue>
+            <valueName>Onboarding &amp; Customer Lifecycle</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

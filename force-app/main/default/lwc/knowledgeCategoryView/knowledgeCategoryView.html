@@ -1,0 +1,18 @@
+<template>
+    
+    <div class="homePadding slds-p-top_xx-large">
+        <lightning-layout horizontal-align="start" vertical-align="start" multiple-rows="true">
+            <template for:each={categoryList} for:item="category">
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="4" large-device-size="4" padding="around-small" key={category.id}>
+                    <div class="viewBox">
+                        <a class="extra-level-item__link" href={category.url} >
+                            <!--<img class="extra-level-item__image is-active" data-lotus-icon="6827983645204"
+                                src={category.iconURL}></img>-->
+                            <span class="h4 extra-level-item__title">{category.label}</span>
+                        </a>
+                    </div>
+                </lightning-layout-item>
+            </template>
+        </lightning-layout>
+    </div>
+</template>

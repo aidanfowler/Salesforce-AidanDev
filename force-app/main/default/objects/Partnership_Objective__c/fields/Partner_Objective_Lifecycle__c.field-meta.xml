@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Partner_Objective_Lifecycle__c</fullName>
+    <description>Used to track the lifecycle of the customer during their objective tracking.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This field should reflect the current lifecycle stage of the Opportunity reflected in this Objective. If not connected to an Opportunity, this should reflect the overall Account lifecycle stage.</inlineHelpText>
+    <label>Partner Objective Lifecycle</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Prospect</fullName>
+                <default>false</default>
+                <label>Prospect</label>
+            </value>
+            <value>
+                <fullName>Activation</fullName>
+                <default>false</default>
+                <label>Activation</label>
+            </value>
+            <value>
+                <fullName>Growth</fullName>
+                <default>false</default>
+                <label>Growth</label>
+            </value>
+            <value>
+                <fullName>Retention</fullName>
+                <default>false</default>
+                <label>Retention</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

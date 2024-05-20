@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Entity_Type_PQ__c</fullName>
+    <externalId>false</externalId>
+    <label>Entity Type PQ</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>publicCo</fullName>
+                <default>false</default>
+                <label>Publicly Traded Company</label>
+            </value>
+            <value>
+                <fullName>privateCo</fullName>
+                <default>false</default>
+                <label>Private company (e.g., LLC, Pvt, Pty, Ltd)</label>
+            </value>
+            <value>
+                <fullName>trust</fullName>
+                <default>false</default>
+                <label>Trust</label>
+            </value>
+            <value>
+                <fullName>Foundation</fullName>
+                <default>false</default>
+                <label>Foundation</label>
+            </value>
+            <value>
+                <fullName>Partnership</fullName>
+                <default>false</default>
+                <label>Partnership</label>
+            </value>
+            <value>
+                <fullName>soleTrader</fullName>
+                <default>false</default>
+                <label>Sole Trader</label>
+            </value>
+            <value>
+                <fullName>associationOrConsortium</fullName>
+                <default>false</default>
+                <label>Association or Consortium</label>
+            </value>
+            <value>
+                <fullName>coop</fullName>
+                <default>false</default>
+                <label>Co-operative</label>
+            </value>
+            <value>
+                <fullName>governmentBody</fullName>
+                <default>false</default>
+                <label>Government Body</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

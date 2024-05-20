@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>What_Challenge_Did_Circle_Solve_For__c</fullName>
+    <description>What business did Circle solve for with this Customer? (Free form) 
+ industry, core product offering, B2B vs. B2C, etc.?</description>
+    <externalId>false</externalId>
+    <inlineHelpText>What business did Circle solve for with this Customer?
+ex: industry, core product offering, B2B vs. B2C, etc.?</inlineHelpText>
+    <label>What Challenge Did Circle Solve For?</label>
+    <length>255</length>
+    <required>true</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

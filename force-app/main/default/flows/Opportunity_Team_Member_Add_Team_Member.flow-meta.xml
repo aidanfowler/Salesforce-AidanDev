@@ -1,0 +1,764 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <apiVersion>57.0</apiVersion>
+    <assignments>
+        <name>Set_Variables</name>
+        <label>Set Variables</label>
+        <locationX>776</locationX>
+        <locationY>674</locationY>
+        <assignmentItems>
+            <assignToReference>selected_team_role</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Team_Role</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>selected_user_id</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>User.recordId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Get_New_User</targetReference>
+        </connector>
+    </assignments>
+    <choices>
+        <name>Customer_Success_Manager</name>
+        <choiceText>Customer Success Manager</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Customer Success Manager</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Edit</name>
+        <choiceText>Edit</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Edit</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Partner_Marketing</name>
+        <choiceText>Partner Marketing</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Partner Marketing</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Post_Sales_Solution_Engineer</name>
+        <choiceText>Post-Sales Solution Engineer</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Post-Sales Solution Engineer</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Pre_Sales_Solution_Engineer</name>
+        <choiceText>Pre-Sales Solution Engineer</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Pre-Sales Solution Engineer</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <description>SolutionEngineer</description>
+        <name>Solution_Engineer</name>
+        <choiceText>Solution Engineer</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Solution Engineer</stringValue>
+        </value>
+    </choices>
+    <decisions>
+        <description>Check If Account Level CSM Is Blank</description>
+        <name>Check_If_Account_Level_CSM_Is_Blank</name>
+        <label>Check If Account Level CSM Is Blank</label>
+        <locationX>622</locationX>
+        <locationY>1514</locationY>
+        <defaultConnector>
+            <targetReference>Who_was_assigned</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Account_CSM_is_blank</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Opportunity.Account.Customer_Success_Manager__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Account_Level_CSM</targetReference>
+            </connector>
+            <label>Account CSM is blank</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check If Account Level Se Is Blank</description>
+        <name>Check_If_Account_Level_Se_Is_Blank</name>
+        <label>Check If Account Level Se Is Blank</label>
+        <locationX>182</locationX>
+        <locationY>1514</locationY>
+        <defaultConnector>
+            <targetReference>Who_was_assigned</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Account_Se_Is_Blank</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Opportunity.Account.Solutions_Engineer__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Account_Level_SE</targetReference>
+            </connector>
+            <label>Account Se Is Blank</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if account Partner Marketing Is Blank</description>
+        <name>Check_if_account_Partner_Marketing_Is_Blank</name>
+        <label>Check if account Partner Marketing Is Blank</label>
+        <locationX>1062</locationX>
+        <locationY>1514</locationY>
+        <defaultConnector>
+            <targetReference>Who_was_assigned</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Account_Partner_Marketing_Is_Blank</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Opportunity.Account.Partner_Marketing_User__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Account_Level_Partner_Marketing_User</targetReference>
+            </connector>
+            <label>Account Partner Marketing Is Blank</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>CSM or SEs get a different page than owners or system admins</description>
+        <name>Display_page_based_on_profile</name>
+        <label>Display page based on profile</label>
+        <locationX>1161</locationX>
+        <locationY>458</locationY>
+        <defaultConnector>
+            <targetReference>Error_Message</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>User_Has_Access</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$User.Profile_Name__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Customer Success Exec</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$User.Profile_Name__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Solution Engineer</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$User.Profile_Name__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>System Administrator</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>UserIsOwner</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Permission_Set_Assignment.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$User.Profile_Name__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Marketing (Custom)</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Add_Opportunity_Team_Member</targetReference>
+            </connector>
+            <label>User Has Access</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks to see if a previously assigned Team Member record exists</description>
+        <name>Previous_Team_Member_Exist</name>
+        <label>Previous Team Member Exist?</label>
+        <locationX>776</locationX>
+        <locationY>998</locationY>
+        <defaultConnector>
+            <targetReference>Create_New_Opp_Team_Member</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yeppers</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Previous_Opportunity_Team_Member</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Delete_Previous_Team_Member</targetReference>
+            </connector>
+            <label>Yeppers</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Set the CSM or SE on Account</description>
+        <name>Set_CSM_Or_SE_On_Account</name>
+        <label>Set CSM Or SE On Account</label>
+        <locationX>776</locationX>
+        <locationY>1406</locationY>
+        <defaultConnector>
+            <targetReference>Who_was_assigned</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>SE</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>selected_team_role</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Solution Engineer</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_If_Account_Level_Se_Is_Blank</targetReference>
+            </connector>
+            <label>SE</label>
+        </rules>
+        <rules>
+            <name>CSM</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>selected_team_role</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Customer_Success_Manager</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_If_Account_Level_CSM_Is_Blank</targetReference>
+            </connector>
+            <label>CSM</label>
+        </rules>
+        <rules>
+            <name>PartnerMarketingRole</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>selected_team_role</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Partner Marketing</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_if_account_Partner_Marketing_Is_Blank</targetReference>
+            </connector>
+            <label>Partner Marketing</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks to see if the User that fired the flow is the new Team Member</description>
+        <name>Who_was_assigned</name>
+        <label>Who was assigned?</label>
+        <locationX>776</locationX>
+        <locationY>1898</locationY>
+        <defaultConnector>
+            <targetReference>Send_Slack_To_New_Opp_Team_Member</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>I assigned someone</defaultConnectorLabel>
+        <rules>
+            <name>I_assigned_myself</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$User.Id</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>selected_user_id</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Success_Message</targetReference>
+            </connector>
+            <label>I assigned myself</label>
+        </rules>
+    </decisions>
+    <description>Granting Profile Marketing (Custom) Access</description>
+    <dynamicChoiceSets>
+        <name>TeamMemberRole</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>TeamMemberRole</picklistField>
+        <picklistObject>OpportunityTeamMember</picklistObject>
+    </dynamicChoiceSets>
+    <environments>Default</environments>
+    <formulas>
+        <name>frml_New_User_Name</name>
+        <dataType>String</dataType>
+        <expression>{!Get_New_User.FirstName} + &quot; &quot; + {!Get_New_User.LastName}</expression>
+    </formulas>
+    <formulas>
+        <description>This is the URL for the Opportunity ID</description>
+        <name>frml_OpportunityId</name>
+        <dataType>String</dataType>
+        <expression>LEFT({!$Api.Partner_Server_URL_260}, FIND( &apos;/services&apos;, {!$Api.Partner_Server_URL_260}))&amp;{!Get_Opportunity.Id}</expression>
+    </formulas>
+    <formulas>
+        <name>UserIsOwner</name>
+        <dataType>Boolean</dataType>
+        <expression>{!$User.Id} = {!Get_Opportunity.OwnerId}</expression>
+    </formulas>
+    <interviewLabel>Opportunity Team Member: Add Team Member {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Opp Team Member: Screenflow: Add</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordCreates>
+        <name>Create_New_Opp_Team_Member</name>
+        <label>Create New Opp Team Member</label>
+        <locationX>776</locationX>
+        <locationY>1298</locationY>
+        <connector>
+            <targetReference>Set_CSM_Or_SE_On_Account</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>OpportunityAccessLevel</field>
+            <value>
+                <elementReference>Edit</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OpportunityId</field>
+            <value>
+                <elementReference>Get_Opportunity.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>TeamMemberRole</field>
+            <value>
+                <elementReference>selected_team_role</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>UserId</field>
+            <value>
+                <elementReference>selected_user_id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>OpportunityTeamMember</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordDeletes>
+        <name>Delete_Previous_Team_Member</name>
+        <label>Delete Previous Team Member</label>
+        <locationX>644</locationX>
+        <locationY>1106</locationY>
+        <connector>
+            <targetReference>Create_New_Opp_Team_Member</targetReference>
+        </connector>
+        <inputReference>Get_Previous_Opportunity_Team_Member</inputReference>
+    </recordDeletes>
+    <recordLookups>
+        <name>Get_New_User</name>
+        <label>Get New User</label>
+        <locationX>776</locationX>
+        <locationY>782</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Previous_Opportunity_Team_Member</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>selected_user_id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>User</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>FirstName</queriedFields>
+        <queriedFields>LastName</queriedFields>
+        <queriedFields>Circle_Slack_Channel_Id__c</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Opportunity</name>
+        <label>Get Opportunity</label>
+        <locationX>1161</locationX>
+        <locationY>134</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Permission_Set</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Opportunity</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Check if user has permission set for using opp team</description>
+        <name>Get_Permission_Set</name>
+        <label>Get Permission Set</label>
+        <locationX>1161</locationX>
+        <locationY>242</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Permission_Set_Assignment</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Opportunity_Team_Access</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>PermissionSet</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Get Permission Set Assignment</description>
+        <name>Get_Permission_Set_Assignment</name>
+        <label>Get Permission Set Assignment</label>
+        <locationX>1161</locationX>
+        <locationY>350</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Display_page_based_on_profile</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>AssigneeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$User.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>PermissionSetId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Permission_Set.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>PermissionSetAssignment</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Previous_Opportunity_Team_Member</name>
+        <label>Get Previous Opportunity Team Member</label>
+        <locationX>776</locationX>
+        <locationY>890</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Previous_Team_Member_Exist</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>OpportunityId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Opportunity.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>TeamMemberRole</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>selected_team_role</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>OpportunityTeamMember</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Update Account Level CSM</description>
+        <name>Update_Account_Level_CSM</name>
+        <label>Update Account Level CSM</label>
+        <locationX>490</locationX>
+        <locationY>1622</locationY>
+        <connector>
+            <targetReference>Who_was_assigned</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Opportunity.AccountId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Customer_Success_Manager__c</field>
+            <value>
+                <elementReference>Get_New_User.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update Account Level Partner Marketing User</description>
+        <name>Update_Account_Level_Partner_Marketing_User</name>
+        <label>Update Account Level Partner Marketing User</label>
+        <locationX>930</locationX>
+        <locationY>1622</locationY>
+        <connector>
+            <targetReference>Who_was_assigned</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Opportunity.AccountId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Partner_Marketing_User__c</field>
+            <value>
+                <elementReference>Get_New_User.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update Account Level SE</description>
+        <name>Update_Account_Level_SE</name>
+        <label>Update Account Level SE</label>
+        <locationX>50</locationX>
+        <locationY>1622</locationY>
+        <connector>
+            <targetReference>Who_was_assigned</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Opportunity.AccountId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Solutions_Engineer__c</field>
+            <value>
+                <elementReference>Get_New_User.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+    </recordUpdates>
+    <runInMode>SystemModeWithoutSharing</runInMode>
+    <screens>
+        <name>Add_Opportunity_Team_Member</name>
+        <label>Add Opportunity Team Member</label>
+        <locationX>776</locationX>
+        <locationY>566</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Set_Variables</targetReference>
+        </connector>
+        <fields>
+            <name>Team_Role</name>
+            <choiceReferences>Solution_Engineer</choiceReferences>
+            <choiceReferences>Customer_Success_Manager</choiceReferences>
+            <choiceReferences>Partner_Marketing</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Team Role</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>User</name>
+            <extensionName>flowruntime:lookup</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>fieldApiName</name>
+                <value>
+                    <stringValue>UserId</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>label</name>
+                <value>
+                    <stringValue>User</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>objectApiName</name>
+                <value>
+                    <stringValue>OpportunityTeamMember</stringValue>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>Error_Message</name>
+        <label>Error Message</label>
+        <locationX>1546</locationX>
+        <locationY>566</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Error_message_display</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;You do not have permission to add team members to the opportunity. &lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;If you believe that this is an error, please reach out to the help-crm slack channel.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>Success_Message</name>
+        <label>Success Message</label>
+        <locationX>776</locationX>
+        <locationY>2198</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Success_message_display</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong&gt;Your  {!Team_Role} Team Member record has been created!&lt;/strong&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <start>
+        <locationX>1035</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Opportunity</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <description>Send Slack To New Opp Team Member</description>
+        <name>Send_Slack_To_New_Opp_Team_Member</name>
+        <label>Send Slack To New Opp Team Member</label>
+        <locationX>864</locationX>
+        <locationY>2006</locationY>
+        <connector>
+            <targetReference>Success_Message</targetReference>
+        </connector>
+        <flowName>Send_Slack_Notification_To_User</flowName>
+        <inputAssignments>
+            <name>RecordID</name>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>SlackMessage</name>
+            <value>
+                <elementReference>tt_assignment_notification</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>UserID</name>
+            <value>
+                <elementReference>selected_user_id</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <textTemplates>
+        <name>tt_assignment_notification</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>{!Get_Opportunity.Name} has been assigned to you.
+&lt;{!frml_OpportunityId}|View Salesforce Record.&gt;</text>
+    </textTemplates>
+    <variables>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Team Role Variable</description>
+        <name>selected_team_role</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>user selected from screen</description>
+        <name>selected_user_id</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

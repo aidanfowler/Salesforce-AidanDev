@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <decisions>
+        <description>Check For Singapore Circle Mint, send slack notification</description>
+        <name>Check_For_Singapore_Circle_Mint</name>
+        <label>Check For Singapore Circle Mint</label>
+        <locationX>446</locationX>
+        <locationY>323</locationY>
+        <defaultConnector>
+            <targetReference>Check_If_Account_Was_Added</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Country_Of_Incorporation_Set_To_Singapore</name>
+            <conditionLogic>1 AND (2 OR 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Country_of_Incorporation__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>SG</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Country_of_Incorporation__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Country_of_Incorporation__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Singapore_Circle_Mint_Alert</targetReference>
+            </connector>
+            <label>Country Of Incorporation Set To Singapore</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check If Account Was Added</description>
+        <name>Check_If_Account_Was_Added</name>
+        <label>Check If Account Was Added</label>
+        <locationX>446</locationX>
+        <locationY>623</locationY>
+        <defaultConnector>
+            <targetReference>Check_If_Pre_Qualification_Status_Is_Approved</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Target_Account_Set</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Account_Lookup__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Account_Lookup__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account_Lookup__r.Target_Account__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account_Lookup__r.Business_Development_Owner__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Target_Account_Circle_Mint_Approval_Notification</targetReference>
+            </connector>
+            <label>Target Account Set</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check If Pre Qualification Status Is Approved</description>
+        <name>Check_If_Pre_Qualification_Status_Is_Approved</name>
+        <label>Check If Pre Qualification Status Is Approved</label>
+        <locationX>446</locationX>
+        <locationY>923</locationY>
+        <defaultConnector>
+            <targetReference>Circle_Account_Application_Status</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Pre_Qual_Approved_Notify_BD_Owner</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Circle_Account_Qualification_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>approved</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account_Lookup__r.Target_Account__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account_Lookup__r.Business_Development_Owner__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_BD_Owner_Pre_Qual_Notification</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Pre Qual Approved, Notify BD Owner</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Is Circle Account Application Status = Submitted, Confirmed, Rejected?</description>
+        <name>Circle_Account_Application_Status</name>
+        <label>Circle Account Application Status?</label>
+        <locationX>446</locationX>
+        <locationY>1223</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>circle_account_Submitted</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Circle_Account_Application_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Submitted</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Application_Submitted_Date</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Submitted</label>
+        </rules>
+        <rules>
+            <name>circle_account_Confirmed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Circle_Account_Application_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Confirmed</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Application_Approved_Date</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Confirmed</label>
+        </rules>
+        <rules>
+            <name>circle_account_Rejected</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Circle_Account_Application_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Rejected</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>biz_account_applications_Circle_Account_Status_Rejected</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Rejected</label>
+        </rules>
+    </decisions>
+    <description>Add Target Account Pre Qual Slacks, Remove Benoit from notifications, remove capital markets emails</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>record url</description>
+        <name>frml_record_url</name>
+        <dataType>String</dataType>
+        <expression>LEFT($Api.Partner_Server_URL_260, FIND( &apos;/services&apos;, $Api.Partner_Server_URL_260))&amp;{!$Record.Id}</expression>
+    </formulas>
+    <formulas>
+        <description>slack user tags for biz account application notification</description>
+        <name>frml_slack_user_tags</name>
+        <dataType>String</dataType>
+        <expression>IF(ISPICKVAL({!$Record.Region__c},&apos;Americas&apos;),&apos;@Americas&apos; , 
+IF(ISPICKVAL({!$Record.Region__c},&apos;APAC&apos;),&apos;&lt;@U046VR7HRMJ&gt; &lt;@U02N2BNF7M4&gt;&apos; , 
+IF(ISPICKVAL({!$Record.Region__c},&apos;Europe&apos;),&apos; &lt;@U05TPSTAPJ6&gt;&apos; , 
+IF(ISPICKVAL({!$Record.Region__c},&apos;LATAM&apos;),&apos;@LATAM&apos; , 
+IF(ISPICKVAL({!$Record.Region__c},&apos;Middle East and Africa&apos;),&apos;&lt;@U03VA4XJWBA&gt; &lt;@U04S2FMFEA3&gt;&apos; , &apos;No Region Selected&apos;)))))</expression>
+    </formulas>
+    <interviewLabel>Circle Account: Application Status Notification {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Circle Account: After Save</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Sets Application Approved Date to current date</description>
+        <name>Set_Application_Approved_Date</name>
+        <label>Set Application Approved Date</label>
+        <locationX>314</locationX>
+        <locationY>1331</locationY>
+        <connector>
+            <targetReference>biz_account_applications_Circle_Account_Status_Confirmed</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Application_Approved_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Sets Application Submitted Date to current date</description>
+        <name>Set_Application_Submitted_Date</name>
+        <label>Set Application Submitted Date</label>
+        <locationX>50</locationX>
+        <locationY>1331</locationY>
+        <connector>
+            <targetReference>biz_account_applications_Circle_Account_Status_Approved</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Application_Submitted_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>320</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_For_Singapore_Circle_Mint</targetReference>
+        </connector>
+        <object>Circle_Account__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <description>Notify the #biz-account-applications when the Circle Account Status = Approved</description>
+        <name>biz_account_applications_Circle_Account_Status_Approved</name>
+        <label>#biz-account-applications Circle Account Status Approved</label>
+        <locationX>50</locationX>
+        <locationY>1439</locationY>
+        <flowName>Slack_Channel_Notifications_Subflow</flowName>
+        <inputAssignments>
+            <name>ConversationId</name>
+            <value>
+                <elementReference>$Setup.Slack_Channel__c.biz_account_applications__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>SlackMessage</name>
+            <value>
+                <elementReference>tt_biz_account_applications_message</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <subflows>
+        <description>Notify the #biz-account-applications when the Circle Account Status = Confirmed</description>
+        <name>biz_account_applications_Circle_Account_Status_Confirmed</name>
+        <label>#biz-account-applications Circle Account Status Confirmed</label>
+        <locationX>314</locationX>
+        <locationY>1439</locationY>
+        <flowName>Slack_Channel_Notifications_Subflow</flowName>
+        <inputAssignments>
+            <name>ConversationId</name>
+            <value>
+                <elementReference>$Setup.Slack_Channel__c.biz_account_applications__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>SlackMessage</name>
+            <value>
+                <elementReference>tt_biz_account_applications_message</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <subflows>
+        <description>Notify the #biz-account-applications when the Circle Account Status = Rejected</description>
+        <name>biz_account_applications_Circle_Account_Status_Rejected</name>
+        <label>#biz-account-applications Circle Account Status Rejected</label>
+        <locationX>578</locationX>
+        <locationY>1331</locationY>
+        <flowName>Slack_Channel_Notifications_Subflow</flowName>
+        <inputAssignments>
+            <name>ConversationId</name>
+            <value>
+                <elementReference>$Setup.Slack_Channel__c.biz_account_applications__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>SlackMessage</name>
+            <value>
+                <elementReference>tt_biz_account_applications_message</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <subflows>
+        <description>Send BD Owner Pre Qual Notification</description>
+        <name>Send_BD_Owner_Pre_Qual_Notification</name>
+        <label>Send BD Owner Pre Qual Notification</label>
+        <locationX>314</locationX>
+        <locationY>1031</locationY>
+        <connector>
+            <targetReference>Circle_Account_Application_Status</targetReference>
+        </connector>
+        <flowName>Send_Slack_Notification_To_User</flowName>
+        <inputAssignments>
+            <name>RecordID</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>SlackMessage</name>
+            <value>
+                <elementReference>tt_bd_pre_qual_approved_message</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>UserID</name>
+            <value>
+                <elementReference>$Record.Account_Lookup__r.Business_Development_Owner__c</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <subflows>
+        <description>Send Target Account Circle Mint Approval Notification target-account-circle-mint-approval-requests</description>
+        <name>Send_Target_Account_Circle_Mint_Approval_Notification</name>
+        <label>Send Target Account Circle Mint Approval Notification</label>
+        <locationX>314</locationX>
+        <locationY>731</locationY>
+        <connector>
+            <targetReference>Check_If_Pre_Qualification_Status_Is_Approved</targetReference>
+        </connector>
+        <flowName>Slack_Channel_Notifications_Subflow</flowName>
+        <inputAssignments>
+            <name>ConversationId</name>
+            <value>
+                <elementReference>$Setup.Slack_Channel__c.target_account_circle_mint_approval_requ__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>SlackMessage</name>
+            <value>
+                <elementReference>tt_target_account_circle_mint_message</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <subflows>
+        <description>Notify slack channel when Singapore circle mint is created</description>
+        <name>Singapore_Circle_Mint_Alert</name>
+        <label>Singapore Circle Mint Alert</label>
+        <locationX>314</locationX>
+        <locationY>431</locationY>
+        <connector>
+            <targetReference>Check_If_Account_Was_Added</targetReference>
+        </connector>
+        <flowName>Slack_Channel_Notifications_Subflow</flowName>
+        <inputAssignments>
+            <name>ConversationId</name>
+            <value>
+                <elementReference>$Setup.Slack_Channel__c.temp_mint_sg_applications__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>SlackMessage</name>
+            <value>
+                <elementReference>tt_singapore_circle_mint_message</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <textTemplates>
+        <name>tt_account_status_email_body</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>The Circle Account application status for {!$Record.Legal_Entity_Name__c} has been updated to {!$Record.Circle_Account_Application_Status__c}.
+Link to the record in SFDC: https://circleinternetfinancial.lightning.force.com/lightning/r/Circle_Account__c/{!$Record.Id}/view</text>
+    </textTemplates>
+    <textTemplates>
+        <name>tt_bd_pre_qual_approved_message</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>{!$Record.Legal_Entity_Name__c} has started their Circle Account application. 
+Pre-Qualification has been updated to Approved for them to proceed with application submission. 
+&lt;{!frml_record_url}|View Circle Mint&gt;
+Pre-Qualification Status: {!$Record.Circle_Account_Qualification_Status__c}</text>
+    </textTemplates>
+    <textTemplates>
+        <description>Template used for #biz-account-applications notifications</description>
+        <name>tt_biz_account_applications_message</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>The Circle Account application status for {!$Record.Legal_Entity_Name__c} has been updated to {!$Record.Circle_Account_Application_Status__c}.
+{!frml_slack_user_tags}</text>
+    </textTemplates>
+    <textTemplates>
+        <description>Message when singapore cirlce mint is created</description>
+        <name>tt_singapore_circle_mint_message</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Singapore Circle Mint Alert!
+&lt;{!frml_record_url}|{!$Record.Name}&gt;
+Contact Name: {!$Record.Contact__r.FirstName} {!$Record.Contact__r.LastName} 
+Country Of Incorporation: {!$Record.Country_of_Incorporation__c}
+Nature Of Business: {!$Record.Nature_of_Business__c}
+Circle Mint Application Status: {!$Record.Circle_Account_Application_Status__c}
+Circle Mint Qualification Status: {!$Record.Circle_Account_Qualification_Status__c}</text>
+    </textTemplates>
+    <textTemplates>
+        <name>tt_target_account_circle_mint_message</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Alert: New Target Account Circle Mint Application needs to be approved in Diameter.
+&lt;{!frml_record_url}|View Circle Mint&gt;
+BD Owner: {!$Record.Account_Lookup__r.Business_Development_Owner_text__c}
+Account Name: {!$Record.Account_Lookup__r.Name}
+Diameter URL: {!$Record.Diameter_URL__c}</text>
+    </textTemplates>
+</Flow>

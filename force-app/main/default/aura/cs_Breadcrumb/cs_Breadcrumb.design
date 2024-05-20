@@ -1,0 +1,3 @@
+<design:component >
+    <design:attribute name="urlName" label="urlName" description="Name of url" />
+</design:component>

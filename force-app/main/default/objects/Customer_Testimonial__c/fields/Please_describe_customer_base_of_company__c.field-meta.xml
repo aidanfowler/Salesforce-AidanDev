@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Please_describe_customer_base_of_company__c</fullName>
+    <description>Please describe the customer base of the company? (i.e. where are customers located, what service are customers receiving, any demographic or volume insights)) 
+How is this helping the ‘little guy’? 
+Under bank, Non Bank, etc.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Please describe the customer base of the company? (i.e. where are customers located, what service are customers receiving, any demographic or volume insights)) 
+How is this helping the ‘little guy’? 
+Under bank, Non Bank, etc.</inlineHelpText>
+    <label>Please describe customer base of company</label>
+    <length>32768</length>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

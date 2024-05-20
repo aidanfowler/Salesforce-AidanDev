@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Key_Results__c</fullName>
+    <description>This field should include the measurable outcomes that would define successful attainment of the objective (i.e. Activate 50,000 meaningful wallets in Chile within 3 months of launch).</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This field should include the measurable outcomes that would define successful attainment of the objective (i.e. Activate 50,000 meaningful wallets in Chile within 3 months of launch). Link to best practices: https://app.getguru.com/#/facts/5d3fc866-f027-4617-88ef-8bdafc559081</inlineHelpText>
+    <label>Key Result(s)</label>
+    <length>32768</length>
+    <trackHistory>false</trackHistory>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

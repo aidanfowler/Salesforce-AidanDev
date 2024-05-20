@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Create Child Case Attach Email</description>
+        <name>Create_Child_Case_Attach_Email</name>
+        <label>Create Child Case Attach Email</label>
+        <locationX>182</locationX>
+        <locationY>1271</locationY>
+        <actionName>InvokeCreateChildCaseLinkEmail</actionName>
+        <actionType>apex</actionType>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Update_Case_Status</targetReference>
+        </faultConnector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>caseQueueId</name>
+            <value>
+                <elementReference>Get_Case_Queue.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>parentCase</name>
+            <value>
+                <elementReference>Get_Parent_Case</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>triggeringEmail</name>
+            <value>
+                <elementReference>$Record</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>InvokeCreateChildCaseLinkEmail</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <apiVersion>53.0</apiVersion>
+    <decisions>
+        <name>Case_Record_Type</name>
+        <label>Case Record Type</label>
+        <locationX>1007</locationX>
+        <locationY>431</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Customer_Care1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Parent.RecordType.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Customer Care</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>If_reply_to_escalated_internally_case_send_message_to_compliance_analyst</targetReference>
+            </connector>
+            <label>Customer Care</label>
+        </rules>
+        <rules>
+            <name>Sales</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Parent.RecordType.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Sales</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Case_Status_Sales</targetReference>
+            </connector>
+            <label>Sales</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Case_Record_Type1</name>
+        <label>Case Record Type</label>
+        <locationX>1898</locationX>
+        <locationY>731</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Sales1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Parent.RecordType.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Sales</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Case_Status_Outgoing</targetReference>
+            </connector>
+            <label>Sales</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_if_open_or_closed</name>
+        <label>Check if open or closed</label>
+        <locationX>512</locationX>
+        <locationY>839</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Closed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>CheckIfCaseCanBeReopened</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.clonedToChildCase__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Parent.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Case_Queue</targetReference>
+            </connector>
+            <label>Closed</label>
+        </rules>
+        <rules>
+            <name>Move_To_In_Progress</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.clonedToChildCase__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Case_Status</targetReference>
+            </connector>
+            <label>Move To In Progress</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Create And Clone Or Skip if email message that triggered flow is the cloned email</description>
+        <name>Create_And_Clone_Or_Skip</name>
+        <label>Create And Clone Or Skip</label>
+        <locationX>50</locationX>
+        <locationY>1055</locationY>
+        <defaultConnector>
+            <targetReference>Get_Parent_Case</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Skip_For_Cloned</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.clonedToChildCase__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Skip For Cloned</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>If reply to escalated internally case send message to compliance analyst</description>
+        <name>If_reply_to_escalated_internally_case_send_message_to_compliance_analyst</name>
+        <label>If reply to escalated internally case send message to compliance analyst</label>
+        <locationX>512</locationX>
+        <locationY>539</locationY>
+        <defaultConnector>
+            <targetReference>Check_if_open_or_closed</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Send_Message_To_Compliance_Analyst</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Parent.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Escalated Internally</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Parent.Compliance_Analyst__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Slack_To_Compliance_Analyst</targetReference>
+            </connector>
+            <label>Send Message To Compliance Analyst</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Incoming_or_Outgoing</name>
+        <label>Incoming or Outgoing</label>
+        <locationX>1650</locationX>
+        <locationY>323</locationY>
+        <defaultConnectorLabel>Default</defaultConnectorLabel>
+        <rules>
+            <name>Incoming</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Incoming</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Parent.Status</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>New</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Case_Record_Type</targetReference>
+            </connector>
+            <label>Incoming</label>
+        </rules>
+        <rules>
+            <name>Outgoing</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Incoming</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Case_First_Response_Date_If_Null</targetReference>
+            </connector>
+            <label>Outgoing</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if case first response date is set and update it if it is not</description>
+        <name>Update_Case_First_Response_Date_If_Null</name>
+        <label>Update Case First Response Date If Null</label>
+        <locationX>1898</locationX>
+        <locationY>431</locationY>
+        <defaultConnector>
+            <targetReference>Case_Record_Type1</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Case_Response_Date_Needs_To_Be_Set</name>
+            <conditionLogic>1 AND (2 OR 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Parent.First_Response_Date__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.FromAddress</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>customer-support@circle.com</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.FromAddress</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>help@cybavo.com</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Case_First_Response_Date</targetReference>
+            </connector>
+            <label>Case Response Date Needs To Be Set</label>
+        </rules>
+    </decisions>
+    <description>Making sure case is closed before trying to clone</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>This will check to see if the case can be reopened by the number of days.</description>
+        <name>CheckIfCaseCanBeReopened</name>
+        <dataType>Boolean</dataType>
+        <expression>IF(TODAY()&gt;(DateValue({!$Record.Parent.ClosedDate})+{!NumberofDaystoReopenCase}),true,false)</expression>
+    </formulas>
+    <formulas>
+        <description>case record url</description>
+        <name>frml_case_url</name>
+        <dataType>String</dataType>
+        <expression>LEFT($Api.Partner_Server_URL_260, FIND( &apos;/services&apos;, $Api.Partner_Server_URL_260))&amp;{!$Record.ParentId}</expression>
+    </formulas>
+    <formulas>
+        <description>current datetime</description>
+        <name>frml_now</name>
+        <dataType>DateTime</dataType>
+        <expression>now()</expression>
+    </formulas>
+    <interviewLabel>Email Message: Update Case Status - AS {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Email Message: After Save</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Case_Queue</name>
+        <label>Get Case Queue</label>
+        <locationX>50</locationX>
+        <locationY>947</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Create_And_Clone_Or_Skip</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Customer_Support</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Group</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Parent_Case</name>
+        <label>Get Parent Case</label>
+        <locationX>182</locationX>
+        <locationY>1163</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Create_Child_Case_Attach_Email</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.ParentId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Case</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Update Case First Response Date to now</description>
+        <name>Update_Case_First_Response_Date</name>
+        <label>Update Case First Response Date</label>
+        <locationX>1766</locationX>
+        <locationY>539</locationY>
+        <connector>
+            <targetReference>Case_Record_Type1</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.ParentId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>First_Response_Date__c</field>
+            <value>
+                <elementReference>frml_now</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Case_Status</name>
+        <label>Update Case Status</label>
+        <locationX>710</locationX>
+        <locationY>947</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.ParentId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>In Progress</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Case_Status_Outgoing</name>
+        <label>Update Case Status</label>
+        <locationX>1766</locationX>
+        <locationY>839</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.ParentId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Waiting on Customer</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Case_Status_Sales</name>
+        <label>Update Case Status</label>
+        <locationX>1238</locationX>
+        <locationY>539</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.ParentId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Waiting on Us</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+    </recordUpdates>
+    <start>
+        <locationX>1524</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Incoming_or_Outgoing</targetReference>
+        </connector>
+        <object>EmailMessage</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <description>Send Slack To Compliance Analyst</description>
+        <name>Send_Slack_To_Compliance_Analyst</name>
+        <label>Send Slack To Compliance Analyst</label>
+        <locationX>380</locationX>
+        <locationY>647</locationY>
+        <connector>
+            <targetReference>Check_if_open_or_closed</targetReference>
+        </connector>
+        <flowName>Send_Slack_Notification_To_User</flowName>
+        <inputAssignments>
+            <name>RecordID</name>
+            <value>
+                <elementReference>$Record.ParentId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>SlackMessage</name>
+            <value>
+                <elementReference>tt_compliance_analyst_email_alert</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>UserID</name>
+            <value>
+                <elementReference>$Record.Parent.Compliance_Analyst__c</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <textTemplates>
+        <description>Alert to compliance analyst when someone replies to their case</description>
+        <name>tt_compliance_analyst_email_alert</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Limit Increase Case has a new email reply ready for you to review
+&lt;{!frml_case_url}|View Salesforce Record&gt;</text>
+    </textTemplates>
+    <variables>
+        <description>Determine the number of days to reopen a case after it was closed.</description>
+        <name>NumberofDaystoReopenCase</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+        <value>
+            <numberValue>5.0</numberValue>
+        </value>
+    </variables>
+</Flow>

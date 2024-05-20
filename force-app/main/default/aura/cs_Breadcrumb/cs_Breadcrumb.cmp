@@ -1,0 +1,27 @@
+<aura:component
+    controller="CsBreadcrumbController"
+    implements="forceCommunity:themeLayout,force:appHostable,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes,force:hasRecordId,lightning:actionOverride,force:lightningQuickActionWithoutHeader"
+    access="global">
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <aura:attribute name="urlName" type="string" />
+    <aura:attribute name="articleDetail" type="object" />
+    <aura:attribute name="pathname" type="string" />
+
+    <div class="main">
+        <nav role="navigation" aria-label="Breadcrumbs" class="forceCommunityBreadcrumbs">
+            <ol class="slds-breadcrumb slds-list_horizontal slds-wrap">
+                <li class="slds-breadcrumb__item">
+                    <a href="{!v.pathname + '/s/'}">Home</a>
+                </li>
+                <aura:if isTrue="{!v.articleDetail.name}">
+                    <li class="CategoryName slds-breadcrumb__item">
+                        <a href="{!v.pathname + '/s/' + v.articleDetail.url}">{!v.articleDetail.name}</a>
+                    </li>
+                </aura:if>
+            </ol>
+        </nav>
+    </div>
+
+</aura:component>

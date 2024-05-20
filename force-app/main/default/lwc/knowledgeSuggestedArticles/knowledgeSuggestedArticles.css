@@ -1,0 +1,37 @@
+.slds-accordion__content {
+    visibility: visible;
+    opacity: 1;
+    display: block;
+
+    height: 0;
+    transition: height .5s ease-in-out;
+}
+.slds-accordion__summary {
+    margin-bottom: 0;
+    padding-bottom: 0px !important;
+}
+.accordion-state_opening > .slds-accordion__content,
+.accordion-state_closing > .slds-accordion__content {
+    overflow: hidden;
+}
+.accordion-state_open > .slds-accordion__content {
+    height: auto;
+}
+.accordion-state_closed > .slds-accordion__content {
+    display: none;
+}
+
+.accordion-title {
+    display:flex;
+    justify-content:space-between; 
+    width:100%;
+}
+
+.accordion-article-name {
+    padding-top: 1.5rem;
+    padding-left: 5px;
+}
+
+lightning-icon {
+    transition: height .5s ease-in-out;
+}

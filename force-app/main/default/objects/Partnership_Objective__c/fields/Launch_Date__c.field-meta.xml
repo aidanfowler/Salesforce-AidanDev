@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Launch_Date__c</fullName>
+    <description>This field should reflect the go live date. In new engagements this may depend on technical integrations and not perfectly match the Objective Start Date. Specific to Growth Partnerships, this should be the date when a partner’s awards should begin accruing.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This field should reflect the go live date. In new engagements this may depend on technical integrations and not perfectly match the Objective Start Date. Specific to Growth Partnerships, this should be the date when a partner’s awards should begin accruing.</inlineHelpText>
+    <label>Launch Date</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Date</type>
+</CustomField>

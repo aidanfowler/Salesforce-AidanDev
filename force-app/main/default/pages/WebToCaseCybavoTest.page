@@ -1,0 +1,65 @@
+<apex:page >
+<head>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8"/>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script>
+ function timestamp() { var response = document.getElementById("g-recaptcha-response"); if (response == null || response.value.trim() == "") {var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);elems["ts"] = JSON.stringify(new Date().getTime());document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); } } setInterval(timestamp, 500);
+</script>
+<style>
+  input, label {
+    display:block;
+  }
+  .required:after {
+    content:"* ";
+    color: red;
+  }
+  
+</style>
+</head>
+
+<form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST">
+
+    <input type='hidden' name='captcha_settings' value='{"keyname":"CircleSupport1","fallback":"true","orgId":"00Dcc0000002Gzx","ts":""}' />
+    <input type='hidden' name="orgid" value="00Dcc0000002Gzx" />
+    <input type='hidden' name="retURL" value="https://www.cybavo.com/about/" />
+    <input type="hidden" name="recordType" id="recordType" value="0128b000000u8O3" />
+    <input type="hidden" name="origin" id="origin" value="Cybavo Community" />
+    
+
+    <!--  these lines if you wish to test in debug mode.-->
+    <!--  <input type="hidden" name="debug" value="1"/>     -->                        
+    <!--  <input type="hidden" name="debugEmail" value="fowler.aidan@circle.com"/>  -->                          
+    <!--  ------------------------------------------------>
+    
+    <div style="float:left;margin-left:50px;margin-top:50px;">
+        <div style="font-size: 40px;"> Submit a request </div><br/>
+        <label for="subject" class="required">Subject </label>
+        <input id="subject" maxlength="80" name="subject" size="20" type="text" required="true"/><br/>
+        <label for="email" class="required">Email </label>
+        <input  id="email" maxlength="80" name="email" size="20" type="text" required="true"/><br/>
+        <label for="name" class="required">Your Name </label>
+        <input id="name" maxlength="80" name="name" size="20" type="text" required="true"/><br/>
+        <label for="company">Company Name </label>
+        <input  id="company" maxlength="80" name="company" size="20" type="text"/><br/>
+        <label for="whatdoyouneedhelpwith" class="required">What do you need help with? </label>
+        <select  id="00N8D00000DqPFg" name="00N8D00000DqPFg" title="Cybavo - What Do You Need Help With?" required="true">
+            <option value="" style="display:none">-</option>
+            <option value="I have a question about Vault">I have a question about Vault</option>
+            <option value="I have a transaction API issue">I have a transaction API issue</option>
+            <option value="I need help to unfreeze wallets">I need help to unfreeze wallets</option>
+            <option value="I need to add or remove a user">I need to add or remove a user</option>
+            <option value="I have a question about wallet SDK">I have a question about wallet SDK</option>
+            <option value="I need support with something else">I need support with something else</option>
+        </select><br/><br/>
+        <label for="description">What's your question, comment or issue? </label>
+        <input  id="description" maxlength="2000" name="description" size="100" type="text" />
+        <br/>
+        The more we know, the better we can help you. For API Transaction Issues, please include the following if applicable: Blockchain, Wallet ID, wallet address, Transaction ID, Screenshot or error messages, Full API payload and response
+        <br/>
+        <div class="g-recaptcha" style="margin-top:10px" data-sitekey="6Ld-tFkjAAAAADe-xK6dixrhrZuHsofG-tMGwTAd"></div><br/>
+        <input type="submit" name="submit" />
+    </div>
+    
+</form>
+
+</apex:page>

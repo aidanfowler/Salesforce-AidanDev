@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FAQ</fullName>
+    <active>false</active>
+    <compactLayoutAssignment>New_Compact_Layout</compactLayoutAssignment>
+    <description>This can be used for simple question and answer articles</description>
+    <label>FAQ</label>
+    <picklistValues>
+        <picklist>Approval_Process_Slack_Status__c</picklist>
+        <values>
+            <fullName>Corporate Communication Team</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Legal Team Approval</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Post Legal Author Review</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VP Approval 1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VP Final Approval</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Approval_Status__c</picklist>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rejected</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Submitted</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Article_Status__c</picklist>
+        <values>
+            <fullName>In Progress</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Published</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Retired</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Pillar__c</picklist>
+        <values>
+            <fullName>Liquidity</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Sub_Pillar__c</picklist>
+        <values>
+            <fullName>Compliance Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Deprecated Product</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Developer Experience</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ecosystem Wallets</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Liquidity Distribution</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Liquidity Growth</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Liquidity Supply</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Onboarding %26 Customer Lifecycle</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Programmable Wallets</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Stablecoin Protocols</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unrelated to a Pillar</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

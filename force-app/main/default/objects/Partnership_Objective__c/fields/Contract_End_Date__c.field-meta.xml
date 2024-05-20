@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contract_End_Date__c</fullName>
+    <description>For contracted customers this field is derived from the opportunity. For those without a contract this defaults to 12 months from Objective Start Date, but can be edited if necessary.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>For contracted customers this field is derived from the opportunity. For those without a contract this defaults to 12 months from Objective Start Date, but can be edited if necessary.</inlineHelpText>
+    <label>Contract End Date</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Date</type>
+</CustomField>

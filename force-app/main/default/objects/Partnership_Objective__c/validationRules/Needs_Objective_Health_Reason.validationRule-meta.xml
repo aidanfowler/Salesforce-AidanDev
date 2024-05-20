@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Needs_Objective_Health_Reason</fullName>
+    <active>true</active>
+    <description>If Objective Health is off track, we must require a reason and details to be populated.</description>
+    <errorConditionFormula>AND(
+OR(
+ISPICKVAL(Performance_Objective_Health__c, &quot;At Risk&quot;),
+ISPICKVAL(Performance_Objective_Health__c, &quot;Objective Not Met&quot;),
+ISPICKVAL(Performance_Objective_Health__c, &quot;Off Track&quot;)
+),OR (
+ISPICKVAL(Objective_Health_Reason__c, &quot;&quot;),
+ISBLANK(Objective_Health_Reason_Details__c)))</errorConditionFormula>
+    <errorMessage>If Performance Objective Health is off &quot;Off Track&quot; or &quot;Objective Not Met&quot; or &quot;At Risk&quot;, please select a reason in the Objective Health Reason field and populate the Objective Reason Details field.</errorMessage>
+</ValidationRule>

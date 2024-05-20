@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Circle_POC__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>This contact is best suited to work with internal marketing teams to provide details regarding the customer relationship, and their use case, and be the conduit between Circle marketing teams and the customer.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This contact is best suited to work with internal marketing teams to provide details regarding the customer relationship, and their use case, and be the conduit between Circle marketing teams and the customer.</inlineHelpText>
+    <label>Circle POC</label>
+    <referenceTo>User</referenceTo>
+    <relationshipName>Customer_Testimonials</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Starting_Stablecoin_Liquidity__c</fullName>
+    <description>Total amount of USDC held on platform at the Objective Start Date.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Total amount of USDC held on platform at the Objective Start Date.</inlineHelpText>
+    <label>Starting Stablecoins on Platform</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Currency</type>
+</CustomField>

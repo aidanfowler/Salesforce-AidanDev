@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Needs_Deal_Construct_If_has_Opportunity</fullName>
+    <active>false</active>
+    <description>Deal construct required if opportunity is filled</description>
+    <errorConditionFormula>AND(
+   !ISBLANK(Opportunity__c),
+   ISBLANK(Deal_Construct__c)
+)</errorConditionFormula>
+    <errorMessage>Deal Construct Is Required If An Opportunity Is Linked</errorMessage>
+</ValidationRule>

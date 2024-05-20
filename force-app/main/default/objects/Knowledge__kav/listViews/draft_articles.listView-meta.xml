@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>draft_articles</fullName>
+    <columns>CREATEDBY_USER</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>TITLE</columns>
+    <columns>ABSTRACT</columns>
+    <columns>Article_Status__c</columns>
+    <columns>OWNER_ID</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>Last_Approved_Date__c</columns>
+    <columns>Google_Doc__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>PUBLISH_STATUS</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>0 - Draft Articles</label>
+</ListView>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Partnership_Objective</fullName>
+    <fields>Name</fields>
+    <fields>OwnerId</fields>
+    <fields>Performance_Objective_Health__c</fields>
+    <fields>Objective_Health_Reason__c</fields>
+    <fields>Time_Horizon__c</fields>
+    <fields>Report_to_Post_Deal_Dashboard__c</fields>
+    <label>Partnership Objective</label>
+</CompactLayout>

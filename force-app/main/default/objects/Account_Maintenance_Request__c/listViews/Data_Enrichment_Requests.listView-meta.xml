@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Data_Enrichment_Requests</fullName>
+    <columns>CREATEDBY_USER</columns>
+    <columns>NAME</columns>
+    <columns>Request_Type__c</columns>
+    <columns>Account_Name__c</columns>
+    <columns>Request_Status__c</columns>
+    <columns>Assigned_To_User__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Request_Type__c</field>
+        <operation>includes</operation>
+        <value>Data Enrichment,Source New Contacts</value>
+    </filters>
+    <label>Data Enrichment Requests</label>
+</ListView>

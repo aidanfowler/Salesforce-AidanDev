@@ -1,0 +1,38 @@
+<template>
+    <div class="pagePadding slds-p-top_xx-large">
+        <lightning-layout horizontal-align="spread" multiple-rows="true">
+            <lightning-layout-item size="12" small-device-size="12" medium-device-size="3" large-device-size="3" padding="horizontal-large">
+                <template if:true={categories}>
+                    <c-knowledge-search-category-menu category-name={categoryName} category-list={categories} oncategoryupdated={handleCategoryUpdated}></c-knowledge-search-category-menu>
+                </template>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" small-device-size="12" medium-device-size="9" large-device-size="9" padding="horizontal-large">
+                <div class="rightSide">
+                <template if:true={searchResults}>
+                    <c-knowledge-search-results term={updatedTerm} search-results={searchResults} num-results={numResults} onarticleclicked={handleArticleClicked}></c-knowledge-search-results>
+                    <template if:false={noPrevious}>
+                        <span class="slds-p-right_xx-small">
+                            <lightning-button label="«" onclick={handleGetFirstPage}></lightning-button>
+                        </span>
+                    </template>
+                    <template if:false={noPrevious}>
+                        <span class="slds-p-right_xx-small">
+                        <lightning-button label="‹ Previous" onclick={handlePrevious} ></lightning-button>
+                        </span>
+                    </template>
+                    <template if:false={noNext}>
+                        <span class="slds-p-right_xx-small">
+                        <lightning-button label="Next ›" onclick={handleNext}></lightning-button>
+                        </span>
+                    </template>
+                    <template if:false={noNext}>
+                        <span class="slds-p-right_xx-small">
+                            <lightning-button label="»" onclick={handleGetLastPage}></lightning-button>
+                        </span>
+                    </template>
+                </template>
+                </div>
+            </lightning-layout-item>
+        </lightning-layout>
+        </div>
+</template>

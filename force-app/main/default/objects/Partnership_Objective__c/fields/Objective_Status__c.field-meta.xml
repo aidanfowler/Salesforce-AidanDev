@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Objective_Status__c</fullName>
+    <description>This field should indicate the most current status of the objective based on the goals defined, the current progress, and the planned completion</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This field should indicate the most current status of the objective based on the goals defined, the current progress, and the planned completion</inlineHelpText>
+    <label>Objective Status</label>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Onboarding</fullName>
+                <color>#F3D904</color>
+                <default>false</default>
+                <label>Onboarding</label>
+            </value>
+            <value>
+                <fullName>Pre-Launch</fullName>
+                <color>#E27001</color>
+                <default>false</default>
+                <label>Pre-Launch</label>
+            </value>
+            <value>
+                <fullName>Launched</fullName>
+                <color>#419249</color>
+                <default>false</default>
+                <label>Launched</label>
+            </value>
+            <value>
+                <fullName>Not Active</fullName>
+                <color>#BBBBBB</color>
+                <default>false</default>
+                <label>Not Active</label>
+            </value>
+            <value>
+                <fullName>At Risk</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>At Risk</label>
+            </value>
+            <value>
+                <fullName>Exceeded Expectations</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Exceeded Expectations</label>
+            </value>
+            <value>
+                <fullName>Not Started</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Not Started</label>
+            </value>
+            <value>
+                <fullName>Objective Not Met</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Objective Not Met</label>
+            </value>
+            <value>
+                <fullName>Off Track</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Off Track</label>
+            </value>
+            <value>
+                <fullName>On Hold</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>On Hold</label>
+            </value>
+            <value>
+                <fullName>On Track</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>On Track</label>
+            </value>
+            <value>
+                <fullName>Successful</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Successful</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

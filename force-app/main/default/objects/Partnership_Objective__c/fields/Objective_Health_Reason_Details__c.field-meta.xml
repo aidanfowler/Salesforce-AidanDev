@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Objective_Health_Reason_Details__c</fullName>
+    <description>Text field for CSM to provide additional context on why the Partnership Objective is off track.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Please enter additional details for your Partnership Objective Health.</inlineHelpText>
+    <label>Objective Health Reason Details</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <type>TextArea</type>
+</CustomField>

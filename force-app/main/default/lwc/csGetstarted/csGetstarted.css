@@ -1,0 +1,74 @@
+div.btn-menu.menu-item.menu-zindex.hide-mobile{
+    list-style: none;
+    position: fixed;
+    right: 180px;
+    top: 22px;
+    z-index: 84;
+}
+.btn-menu{
+    display: flex;
+    align-items: center;
+    height: 48px;
+    padding: 10px 18px;
+    border-radius: 50px;
+    font-weight: bold;
+    line-height: 25px;
+    border: 0;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    background-color: #146bce;
+}
+
+.btn-menu>a:hover {
+    background-color: #186CC8 !important;
+    color: #fff;
+}
+@media only screen and (max-width:1920px){
+    div.btn-menu.menu-item.menu-zindex.hide-mobile{
+        right: 20px !important;
+    }
+}
+@media only screen and (max-width:768px){
+    div.btn-menu.menu-item.menu-zindex.hide-mobile{
+        top: 13px !important;
+    }
+}
+@media only screen and (max-width:600px){
+    div.btn-menu.menu-item.menu-zindex.hide-mobile{
+        right: 12px !important;
+    }
+}
+@media only screen and (max-width:375px){
+    div.btn-menu.menu-item.menu-zindex.hide-mobile{
+        right: 5px !important;
+    }
+    .btn-menu{
+        padding: 10px 16px !important; 
+        font-size: 14px !important;
+    }
+    a{
+        font-size: 14px !important;
+    }
+}
+
+.widget-contacts__button.svelte-44sttq {
+    position: fixed;
+    bottom: 25px;
+    right: 30px;
+    cursor: pointer;
+    width: 56px;
+    height: 56px;
+    background-color: var(--brand-color);
+    border: none;
+    border-radius: 50%;
+    -webkit-box-shadow: 2px 2px 5px 0 rgba(45, 45, 45, 0.5);
+    box-shadow: 2px 2px 5px 0 rgba(45, 45, 45, 0.5);
+    text-align: center;
+    z-index: 9999 !important;
+    margin: 0;
+    padding: 0;
+    -webkit-transition: background-color 0.25s ease;
+    transition: background-color 0.25s ease;
+    overflow: hidden;
+}

@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <assignments>
+        <description>Assign Date/Time for Last Assignment</description>
+        <name>Assign_Round_Robin</name>
+        <label>Assign Round Robin</label>
+        <locationX>314</locationX>
+        <locationY>458</locationY>
+        <assignmentItems>
+            <assignToReference>Get_Round_Robin_Group_Members.Last_Assignment_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Case_Fields</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>No_Round_Robin_User_Available</name>
+        <label>No Round Robin User Available</label>
+        <locationX>182</locationX>
+        <locationY>350</locationY>
+        <defaultConnector>
+            <targetReference>Assign_Round_Robin</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Available User Found</defaultConnectorLabel>
+        <rules>
+            <name>No_Available_User_Found</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Assignment_Group_Record.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Round_Robin_Group_Members.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>No_RR_User_Available_Notification</targetReference>
+            </connector>
+            <label>No Available User Found</label>
+        </rules>
+    </decisions>
+    <description>Add Slack Custom Setting Reference</description>
+    <environments>Default</environments>
+    <interviewLabel>Case: Subflow: RR Assignmnet {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Case: Subflow: RR Assignmnet</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>This gets the Correct RR Assignment Group</description>
+        <name>Get_Assignment_Group_Record</name>
+        <label>Get Assignment Group Record</label>
+        <locationX>182</locationX>
+        <locationY>134</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Round_Robin_Group_Members</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Assignment_Group__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>varAssignmentGroup</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Round_Robin__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>This gets the Round Robin Members</description>
+        <name>Get_Round_Robin_Group_Members</name>
+        <label>Get Round Robin Group Members</label>
+        <locationX>182</locationX>
+        <locationY>242</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>No_Round_Robin_User_Available</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Round_Robin__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Assignment_Group_Record.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Active__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Round_Robin_Member__c</object>
+        <sortField>Last_Assignment_Date__c</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Case_Fields</name>
+        <label>Update Case Fields</label>
+        <locationX>314</locationX>
+        <locationY>566</locationY>
+        <connector>
+            <targetReference>Update_Round_Robin_User_Last_Assignment_Date</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Case_Record_Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>Get_Round_Robin_Group_Members.User__r.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Round_Robin_User_Last_Assignment_Date</name>
+        <label>Update Round Robin User Last Assignment Date</label>
+        <locationX>314</locationX>
+        <locationY>674</locationY>
+        <inputReference>Get_Round_Robin_Group_Members</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Assignment_Group_Record</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <description>Used to notify the #salesforce-user-notification channel that no RR User is available</description>
+        <name>No_RR_User_Available_Notification</name>
+        <label>No RR User Available Notification</label>
+        <locationX>50</locationX>
+        <locationY>458</locationY>
+        <flowName>Slack_Channel_Notifications_Subflow</flowName>
+        <inputAssignments>
+            <name>ConversationId</name>
+            <value>
+                <elementReference>$Setup.Slack_Channel__c.salesforce_slack_user_notifications__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>recordId</name>
+            <value>
+                <elementReference>Case_Record_Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>SlackMessage</name>
+            <value>
+                <elementReference>tt_No_RR_Message</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <textTemplates>
+        <name>tt_No_RR_Message</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Red Alert: Round Robin Assignment failed because no SDR user was available.</text>
+    </textTemplates>
+    <variables>
+        <name>Case_Record_Id</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Record owner Id from Master Flow Record that triggered the flow</description>
+        <name>Record_Owner_Id</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>This is the variable for the RR Group</description>
+        <name>varAssignmentGroup</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

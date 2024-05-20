@@ -1,0 +1,42 @@
+<template>
+    
+    <div class="homePadding slds-p-top_medium">
+        <div class="slds-p-bottom_medium">
+            <h3>Suggested Articles</h3>
+        </div>
+    
+        <template if:true={categoryList}>
+        <ul class="slds-accordion">
+            
+            <template for:each={categoryList} for:item="category">
+                <li class="slds-accordion__list-item" key={category.name}>
+                    <section class={category.class} data-target-id={category.name}>
+                        <div class="slds-accordion__summary">
+                            <h2 class="slds-accordion__summary-heading">
+                                <button class="slds-button slds-button_reset slds-accordion__summary-action"
+                                    aria-controls="referenceId-45" aria-expanded="true" name={category.name} title={category.label} onclick={handleClick}>
+                                    <span class="accordion-title">
+                                        <span class="slds-accordion__summary-content">{category.label}</span>
+                                        <span>
+                                            <lightning-icon icon-name={category.iconName} alternative-text="switch"
+                                                title="switch" size="xx-small" ></lightning-icon>
+                                        </span>
+                                    </span>
+                                </button>
+                            </h2>
+                        </div>
+                        <div class="slds-accordion__content">
+                            <template for:each={category.articles} for:item="article">
+                                <div key={article.Id} class="accordion-article-name">
+                                <a href={article.url} key={article.id}>{article.name}</a>
+                                </div>
+                            </template>
+                        </div>
+                    </section>
+                </li>
+            
+            </template>
+        </ul>
+        </template>
+    </div>
+</template>

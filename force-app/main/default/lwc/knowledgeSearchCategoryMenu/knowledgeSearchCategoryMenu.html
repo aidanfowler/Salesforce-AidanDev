@@ -1,0 +1,12 @@
+<template>
+    <div class="verticleBox">
+        <lightning-vertical-navigation title="By Category" selected-item={categoryName} onselect={handleSelect}>
+            <lightning-vertical-navigation-section label="By Category">
+                <template for:each={categoryList} for:item="category">
+                    <lightning-vertical-navigation-item label={category.label} name={category.name} key={category.num}>
+                    </lightning-vertical-navigation-item>
+                </template>
+            </lightning-vertical-navigation-section>
+        </lightning-vertical-navigation>
+    </div>
+</template>

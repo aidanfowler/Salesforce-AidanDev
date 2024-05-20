@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <decisions>
+        <description>Check If Current MeWs updated</description>
+        <name>Check_If_Current_MeWs_updated</name>
+        <label>Check If Current MeWs updated</label>
+        <locationX>182</locationX>
+        <locationY>803</locationY>
+        <defaultConnector>
+            <targetReference>Check_If_Stablecoin_On_Platform_Updated</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Current_MeWs_Updated</name>
+            <conditionLogic>1 AND (2 OR 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Current_MeWs__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Current_MeWs__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Current_MeWs__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Current_Mew_Datestamp</targetReference>
+            </connector>
+            <label>Current MeWs Updated</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check If Stablecoin On Platform Updated</description>
+        <name>Check_If_Stablecoin_On_Platform_Updated</name>
+        <label>Check If Stablecoin On Platform Updated</label>
+        <locationX>182</locationX>
+        <locationY>1103</locationY>
+        <defaultConnector>
+            <targetReference>Update_Next_Steps_History_From_Next_Step_Insert</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Stablecoin_On_Platform_Updated</name>
+            <conditionLogic>1 AND (2 OR 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Current_Stablecoins_on_Platform__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Current_Stablecoins_on_Platform__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Current_Stablecoins_on_Platform__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>set_Current_Stablecoin_On_Platform_Datestamp</targetReference>
+            </connector>
+            <label>Stablecoin On Platform Updated</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Product_Updated</name>
+        <label>Product Updated</label>
+        <locationX>182</locationX>
+        <locationY>2003</locationY>
+        <defaultConnector>
+            <targetReference>Success_Metrics_Updated</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Product_is_updated</name>
+            <conditionLogic>(1 AND 3) OR 2</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Product_s__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Product_s__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Product_s__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Translate_Multi_Select_To_String</targetReference>
+            </connector>
+            <label>Product is updated</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Route Based On Record Type</description>
+        <name>Route_Based_On_Record_Type</name>
+        <label>Route Based On Record Type</label>
+        <locationX>380</locationX>
+        <locationY>287</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>q</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordTypeId</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Setup.RecordTypeIds__c.BusinessDevelopmentOpp__c</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.RecordTypeId</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Setup.RecordTypeIds__c.RenewalOpp__c</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.RecordTypeId</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Setup.RecordTypeIds__c.ProductIntegrationsOpp__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Owner_s_Manager</targetReference>
+            </connector>
+            <label>BD Or Renewal</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks to see if the Solution Document field has been populated or edited</description>
+        <name>Solution_Document_URL_Updated</name>
+        <label>Solution Document URL Updated?</label>
+        <locationX>182</locationX>
+        <locationY>503</locationY>
+        <defaultConnector>
+            <targetReference>Check_If_Current_MeWs_updated</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Solution_Document_Updated</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Solution_Document__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Date_Stamp_Solution_Document</targetReference>
+            </connector>
+            <label>Yes, Solution Document Updated</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Success Metrics Updated translate multi select</description>
+        <name>Success_Metrics_Updated</name>
+        <label>Success Metrics Updated</label>
+        <locationX>182</locationX>
+        <locationY>2303</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Success_Metrics_Is_Updated</name>
+            <conditionLogic>(1 AND 3) OR 2</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Success_Metrics__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Success_Metrics__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Success_Metrics__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Translate_Multi_Select_To_String_Success_Metrics_Selected</targetReference>
+            </connector>
+            <label>Success Metrics Is Updated</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Track dates that each stage was entered</description>
+        <name>Track_Stage_Updated_Dates</name>
+        <label>Track Stage Updated Dates</label>
+        <locationX>182</locationX>
+        <locationY>1703</locationY>
+        <defaultConnector>
+            <targetReference>Product_Updated</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Stage Change</defaultConnectorLabel>
+        <rules>
+            <name>Changed_To_Discover</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Discover</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Date_Discover_Stage_Entered__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Date_Discover_Stage_Entered</targetReference>
+            </connector>
+            <label>Changed To Discover</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Update Next Steps History From Next Step Insert (update is handled in trigger in order to maintain html inside next steps field)</description>
+        <name>Update_Next_Steps_History_From_Next_Step_Insert</name>
+        <label>Update Next Steps History From Next Step Insert</label>
+        <locationX>182</locationX>
+        <locationY>1403</locationY>
+        <defaultConnector>
+            <targetReference>Track_Stage_Updated_Dates</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Update_Next_Steps_History</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.NextStep</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.NextStep</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Next_Steps__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Next_Steps_History_Tracker</targetReference>
+            </connector>
+            <label>Update Next Steps History</label>
+        </rules>
+    </decisions>
+    <description>Add Product Integrations</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>add relevant amount fields together</description>
+        <name>frml_amount_sum</name>
+        <dataType>Currency</dataType>
+        <expression>BLANKVALUE({!$Record.Accounts_Subscription_Amount__c}, 0) + 
+BLANKVALUE({!$Record.Cybavo_Subscription_Fee__c}, 0) +  
+BLANKVALUE({!$Record.Payments_Subscription_Amount__c}, 0) +  
+BLANKVALUE({!$Record.Payouts_Subscription_Amount__c}, 0)</expression>
+        <scale>2</scale>
+    </formulas>
+    <formulas>
+        <name>frml_new_next_steps</name>
+        <dataType>String</dataType>
+        <expression>&apos;(&apos;+text(today()) + &apos;) : &apos; + {!$Record.NextStep}</expression>
+    </formulas>
+    <formulas>
+        <description>Strip html from next steps so we can use it in the new value</description>
+        <name>frml_next_steps_stripped</name>
+        <dataType>String</dataType>
+        <expression>SUBSTITUTE(SUBSTITUTE({!$Record.Next_Steps__c}, &apos;&lt;p&gt;&apos;, &apos;&apos;),&apos;&lt;/p&gt;&apos;,&apos;&apos;)</expression>
+    </formulas>
+    <formulas>
+        <description>current time</description>
+        <name>frml_now</name>
+        <dataType>DateTime</dataType>
+        <expression>now()</expression>
+    </formulas>
+    <formulas>
+        <description>today for closed date</description>
+        <name>frml_today</name>
+        <dataType>Date</dataType>
+        <expression>today()</expression>
+    </formulas>
+    <interviewLabel>Opportunity: Before Save {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Opportunity: Before Save</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Date stamp the Solution Document Updated field to current date/time</description>
+        <name>Date_Stamp_Solution_Document</name>
+        <label>Date Stamp Solution Document</label>
+        <locationX>50</locationX>
+        <locationY>611</locationY>
+        <connector>
+            <targetReference>Check_If_Current_MeWs_updated</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Solution_Documented_Updated__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Set Current Mew Datestamp</description>
+        <name>Set_Current_Mew_Datestamp</name>
+        <label>Set Current Mew Datestamp</label>
+        <locationX>50</locationX>
+        <locationY>911</locationY>
+        <connector>
+            <targetReference>Check_If_Stablecoin_On_Platform_Updated</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Current_MeW_updated_date__c</field>
+            <value>
+                <elementReference>frml_now</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>set Current Stablecoin On Platform Datestamp</description>
+        <name>set_Current_Stablecoin_On_Platform_Datestamp</name>
+        <label>Set Current Stablecoin On Platform Datestamp</label>
+        <locationX>50</locationX>
+        <locationY>1211</locationY>
+        <connector>
+            <targetReference>Update_Next_Steps_History_From_Next_Step_Insert</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Current_Stablecoins_on_Platform_Updated__c</field>
+            <value>
+                <elementReference>frml_now</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Set Date Discover Stage Entered</description>
+        <name>Set_Date_Discover_Stage_Entered</name>
+        <label>Set Date Discover Stage Entered</label>
+        <locationX>50</locationX>
+        <locationY>1811</locationY>
+        <connector>
+            <targetReference>Product_Updated</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Date_Discover_Stage_Entered__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Date_Discover_Stage_Entered__c</field>
+            <value>
+                <elementReference>frml_now</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Set Owner&apos;s Manager Lookup</description>
+        <name>Set_Owner_s_Manager</name>
+        <label>Set Owner&apos;s Manager</label>
+        <locationX>182</locationX>
+        <locationY>395</locationY>
+        <connector>
+            <targetReference>Solution_Document_URL_Updated</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Owner_s_Manager__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <elementReference>$Record.Owner.ManagerId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Owner_s_Manager__c</field>
+            <value>
+                <elementReference>$Record.Owner.ManagerId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Translate_Multi_Select_To_String</name>
+        <label>Translate Multi Select To String</label>
+        <locationX>50</locationX>
+        <locationY>2111</locationY>
+        <connector>
+            <targetReference>Success_Metrics_Updated</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Products_Selected__c</field>
+            <value>
+                <elementReference>$Record.Product_s__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Translate Multi Select To String Success Metrics Selected</description>
+        <name>Translate_Multi_Select_To_String_Success_Metrics_Selected</name>
+        <label>Translate Multi Select To String Success Metrics Selected</label>
+        <locationX>50</locationX>
+        <locationY>2411</locationY>
+        <inputAssignments>
+            <field>Success_Metrics_Selected__c</field>
+            <value>
+                <elementReference>$Record.Success_Metrics__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update Next Steps History Tracker</description>
+        <name>Update_Next_Steps_History_Tracker</name>
+        <label>Update Next Steps History Tracker</label>
+        <locationX>50</locationX>
+        <locationY>1511</locationY>
+        <connector>
+            <targetReference>Track_Stage_Updated_Dates</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Next_Steps__c</field>
+            <value>
+                <elementReference>frml_new_next_steps</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>254</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Route_Based_On_Record_Type</targetReference>
+        </connector>
+        <object>Opportunity</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>renewal opportunity</description>
+        <name>var_renewal_opp</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Master_Record_Type_Table__mdt</objectType>
+    </variables>
+</Flow>

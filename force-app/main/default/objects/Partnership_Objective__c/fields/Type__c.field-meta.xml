@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type__c</fullName>
+    <description>This field is used by CSMs to separate Partner Objectives</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Keep the default for specific Partnership Objectives. Switch to Partner Metrics Tracking to track starting and current metrics.</inlineHelpText>
+    <label>Type</label>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Objective Tracking</fullName>
+                <default>false</default>
+                <label>Objective Tracking</label>
+            </value>
+            <value>
+                <fullName>Partner Metrics Tracking</fullName>
+                <default>false</default>
+                <label>Partner Metrics Tracking</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

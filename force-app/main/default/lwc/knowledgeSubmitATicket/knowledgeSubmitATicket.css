@@ -1,0 +1,13 @@
+.padLeft {
+    padding-left: 0rem;
+}
+
+.hidden {
+    display:none;
+}
+
+.legalMessage {
+    font-size:x-small;
+    padding-left: 1rem;
+    font-family: 'Circular', sans-serif;
+}

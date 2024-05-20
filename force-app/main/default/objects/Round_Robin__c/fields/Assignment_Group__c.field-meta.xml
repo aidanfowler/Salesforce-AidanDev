@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Assignment_Group__c</fullName>
+    <externalId>false</externalId>
+    <label>Assignment Group</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Compliance Analyst</fullName>
+                <default>false</default>
+                <label>Compliance Analyst</label>
+            </value>
+            <value>
+                <fullName>CSM Circle Capital Markets</fullName>
+                <default>false</default>
+                <label>CSM Circle Capital Markets</label>
+            </value>
+            <value>
+                <fullName>CSM Circle Market Makers &amp; Crypto Exchanges</fullName>
+                <default>false</default>
+                <label>CSM Circle Market Makers &amp; Crypto Exchanges</label>
+            </value>
+            <value>
+                <fullName>CSM Enterprise</fullName>
+                <default>false</default>
+                <label>CSM Enterprise</label>
+            </value>
+            <value>
+                <fullName>CSM Jumpstart</fullName>
+                <default>false</default>
+                <label>CSM Jumpstart</label>
+            </value>
+            <value>
+                <fullName>CSM Market Makers &amp; Crypto Exchanges</fullName>
+                <default>false</default>
+                <label>CSM Market Makers &amp; Crypto Exchanges</label>
+            </value>
+            <value>
+                <fullName>CSM Payments</fullName>
+                <default>false</default>
+                <label>CSM Payments</label>
+            </value>
+            <value>
+                <fullName>CSM Web 3 &amp; Gaming</fullName>
+                <default>false</default>
+                <label>CSM Web 3 &amp; Gaming</label>
+            </value>
+            <value>
+                <fullName>Product Marketing Managers</fullName>
+                <default>false</default>
+                <label>Product Marketing Managers</label>
+            </value>
+            <value>
+                <fullName>SDR Inbound Email</fullName>
+                <default>false</default>
+                <label>SDR Inbound Email</label>
+            </value>
+            <value>
+                <fullName>SDR Inbound High Priority</fullName>
+                <default>false</default>
+                <label>SDR Inbound High Priority</label>
+            </value>
+            <value>
+                <fullName>SDR Inbound Low Priority</fullName>
+                <default>false</default>
+                <label>SDR Inbound Low Priority</label>
+            </value>
+            <value>
+                <fullName>SDR Inbound Medium Priority</fullName>
+                <default>false</default>
+                <label>SDR Inbound Medium Priority</label>
+            </value>
+            <value>
+                <fullName>SE APAC Liquidity</fullName>
+                <default>false</default>
+                <label>SE APAC Liquidity</label>
+            </value>
+            <value>
+                <fullName>SE APAC Ecosystem</fullName>
+                <default>false</default>
+                <label>SE APAC Ecosystem</label>
+            </value>
+            <value>
+                <fullName>SE APAC Platform Distribution</fullName>
+                <default>false</default>
+                <label>SE APAC Platform Distribution</label>
+            </value>
+            <value>
+                <fullName>SE Europe Liquidity</fullName>
+                <default>false</default>
+                <label>SE Europe Liquidity</label>
+            </value>
+            <value>
+                <fullName>SE Europe Ecosystem</fullName>
+                <default>false</default>
+                <label>SE Europe Ecosystem</label>
+            </value>
+            <value>
+                <fullName>SE Europe Platform Distribution</fullName>
+                <default>false</default>
+                <label>SE Europe Platform Distribution</label>
+            </value>
+            <value>
+                <fullName>SE MENA Liquidity</fullName>
+                <default>false</default>
+                <label>SE MENA Liquidity</label>
+            </value>
+            <value>
+                <fullName>SE MENA Ecosystem</fullName>
+                <default>false</default>
+                <label>SE MENA Ecosystem</label>
+            </value>
+            <value>
+                <fullName>SE MENA Platform Distribution</fullName>
+                <default>false</default>
+                <label>SE MENA Platform Distribution</label>
+            </value>
+            <value>
+                <fullName>SE Americas Liquidity</fullName>
+                <default>false</default>
+                <label>SE Americas Liquidity</label>
+            </value>
+            <value>
+                <fullName>SE Americas Ecosystem</fullName>
+                <default>false</default>
+                <label>SE Americas Ecosystem</label>
+            </value>
+            <value>
+                <fullName>SE LATAM Liquidity</fullName>
+                <default>false</default>
+                <label>SE LATAM Liquidity</label>
+            </value>
+            <value>
+                <fullName>SE LATAM Ecosystem</fullName>
+                <default>false</default>
+                <label>SE LATAM Ecosystem</label>
+            </value>
+            <value>
+                <fullName>SE Americas EAST Platform Distribution</fullName>
+                <default>false</default>
+                <label>SE Americas EAST Platform Distribution</label>
+            </value>
+            <value>
+                <fullName>SE Americas WEST Platform Distribution</fullName>
+                <default>false</default>
+                <label>SE Americas WEST Platform Distribution</label>
+            </value>
+            <value>
+                <fullName>SE LATAM EAST Platform Distribution</fullName>
+                <default>false</default>
+                <label>SE LATAM EAST Platform Distribution</label>
+            </value>
+            <value>
+                <fullName>SE LATAM WEST Platform Distribution</fullName>
+                <default>false</default>
+                <label>SE LATAM WEST Platform Distribution</label>
+            </value>
+            <value>
+                <fullName>Compliance Analysts - Performance_Activation Incentives</fullName>
+                <default>false</default>
+                <label>Compliance Analysts - Performance_Activation Incentives</label>
+            </value>
+            <value>
+                <fullName>CA Cybavo</fullName>
+                <default>false</default>
+                <label>CA Cybavo</label>
+            </value>
+            <value>
+                <fullName>CA Blockchain</fullName>
+                <default>false</default>
+                <label>CA Blockchain</label>
+            </value>
+            <value>
+                <fullName>CA Indirect Liquidity</fullName>
+                <default>false</default>
+                <label>CA Indirect Liquidity</label>
+            </value>
+            <value>
+                <fullName>CA Product Integrations</fullName>
+                <default>false</default>
+                <label>CA Product Integrations</label>
+            </value>
+            <value>
+                <fullName>CA Incentives &amp; Channel Sales &amp; Referrals</fullName>
+                <default>false</default>
+                <label>CA Incentives &amp; Channel Sales &amp; Referrals</label>
+            </value>
+            <value>
+                <fullName>CA General</fullName>
+                <default>false</default>
+                <label>CA General</label>
+            </value>
+            <value>
+                <fullName>CA North America</fullName>
+                <default>false</default>
+                <label>CA North America</label>
+            </value>
+            <value>
+                <fullName>CA APAC</fullName>
+                <default>false</default>
+                <label>CA APAC</label>
+            </value>
+            <value>
+                <fullName>CA EMEA &amp; Europe</fullName>
+                <default>false</default>
+                <label>CA EMEA &amp; Europe</label>
+            </value>
+            <value>
+                <fullName>CSM</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>CSM</label>
+            </value>
+            <value>
+                <fullName>Circle Ventures Sales Team</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Circle Ventures Sales Team</label>
+            </value>
+            <value>
+                <fullName>Cybavo Compliance Analysts</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Cybavo Compliance Analysts</label>
+            </value>
+            <value>
+                <fullName>Cybavo Customer Success Managers</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Cybavo Customer Success Managers</label>
+            </value>
+            <value>
+                <fullName>NFT &amp; Startup</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>NFT &amp; Startup</label>
+            </value>
+            <value>
+                <fullName>NFT &amp; Upside</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>NFT &amp; Upside</label>
+            </value>
+            <value>
+                <fullName>Non-NFT &amp; HiPo</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Non-NFT &amp; HiPo</label>
+            </value>
+            <value>
+                <fullName>Non-NFT &amp; Marquee</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Non-NFT &amp; Marquee</label>
+            </value>
+            <value>
+                <fullName>Non-NFT &amp; Startup</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Non-NFT &amp; Startup</label>
+            </value>
+            <value>
+                <fullName>Non-NFT &amp; Upside</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Non-NFT &amp; Upside</label>
+            </value>
+            <value>
+                <fullName>Post Sales SE</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Post Sales SE</label>
+            </value>
+            <value>
+                <fullName>Pre-Sales SE</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Pre-Sales SE</label>
+            </value>
+            <value>
+                <fullName>SE Americas Platform Distribution</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>SE Americas Platform Distribution</label>
+            </value>
+            <value>
+                <fullName>SE LATAM Platform Distribution</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>SE LATAM Platform Distribution</label>
+            </value>
+            <value>
+                <fullName>SE Post-Sales APAC</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>SE Post-Sales APAC</label>
+            </value>
+            <value>
+                <fullName>SE Post-Sales Capital Markets</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>SE Post-Sales Capital Markets</label>
+            </value>
+            <value>
+                <fullName>SE Post-Sales Enterprise</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>SE Post-Sales Enterprise</label>
+            </value>
+            <value>
+                <fullName>SE Post-Sales Europe</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>SE Post-Sales Europe</label>
+            </value>
+            <value>
+                <fullName>SE Post-Sales Jumpstart</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>SE Post-Sales Jumpstart</label>
+            </value>
+            <value>
+                <fullName>SE Post-Sales Market Makers &amp; Crypto Exchanges</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>SE Post-Sales Market Makers &amp; Crypto Exchanges</label>
+            </value>
+            <value>
+                <fullName>SE Post-Sales Middle East &amp; Africa</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>SE Post-Sales Middle East &amp; Africa</label>
+            </value>
+            <value>
+                <fullName>SE Post-Sales Payments</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>SE Post-Sales Payments</label>
+            </value>
+            <value>
+                <fullName>SE Post-Sales Web 3 &amp; Gaming</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>SE Post-Sales Web 3 &amp; Gaming</label>
+            </value>
+            <value>
+                <fullName>SE Pre-Sales APAC</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>SE Pre-Sales APAC</label>
+            </value>
+            <value>
+                <fullName>SE Pre-Sales Capital Markets</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>SE Pre-Sales Capital Markets</label>
+            </value>
+            <value>
+                <fullName>SE Pre-Sales Enterprise</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>SE Pre-Sales Enterprise</label>
+            </value>
+            <value>
+                <fullName>SE Pre-Sales Europe</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>SE Pre-Sales Europe</label>
+            </value>
+            <value>
+                <fullName>SE Pre-Sales Market Makers &amp; Crypto Exchanges</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>SE Pre-Sales Market Makers &amp; Crypto Exchanges</label>
+            </value>
+            <value>
+                <fullName>SE Pre-Sales Middle East &amp; Africa</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>SE Pre-Sales Middle East &amp; Africa</label>
+            </value>
+            <value>
+                <fullName>SE Pre-Sales Non-Target US</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>SE Pre-Sales Non-Target US</label>
+            </value>
+            <value>
+                <fullName>SE Pre-Sales Payments</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>SE Pre-Sales Payments</label>
+            </value>
+            <value>
+                <fullName>SE Pre-Sales Web 3 &amp; Gaming</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>SE Pre-Sales Web 3 &amp; Gaming</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

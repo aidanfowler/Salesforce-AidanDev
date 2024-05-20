@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>data-eng@circle.com</contactEmail>
+    <label>circle_data_ingestion</label>
+    <oauthConfig>
+        <callbackUrl>https://oauthdebugger.com/debug</callbackUrl>
+        <certificate>MIIDqDCCApACCQCHBfX9pStOejANBgkqhkiG9w0BAQsFADCBlTELMAkGA1UEBhMCVVMxETAPBgNVBAgMCE5ldyBZb3JrMREwDwYDVQQHDAhOZXcgWW9yazEiMCAGA1UECgwZQ2lyY2xlIEludGVybmV0IEZpbmFuY2lhbDEUMBIGA1UECwwLRW5naW5lZXJpbmcxJjAkBgkqhkiG9w0BCQEWF2FpZGFuLmZvd2xlckBjaXJjbGUuY29tMB4XDTI0MDQyNTE3MDM0MVoXDTI1MDQyNTE3MDM0MVowgZUxCzAJBgNVBAYTAlVTMREwDwYDVQQIDAhOZXcgWW9yazERMA8GA1UEBwwITmV3IFlvcmsxIjAgBgNVBAoMGUNpcmNsZSBJbnRlcm5ldCBGaW5hbmNpYWwxFDASBgNVBAsMC0VuZ2luZWVyaW5nMSYwJAYJKoZIhvcNAQkBFhdhaWRhbi5mb3dsZXJAY2lyY2xlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL23fig/4znK9FNUErGXDdWG7Nftpn2BUQPpxKMh0Fvv32dz8AL5ybbcNC6JQ7VNu2jmgrVegsfL8yf1fF/PWkTgWHjcGXUr8VFpiwoAVEKGs2PJsg3W0gG1hFYxF1Kz10V0e8MMCKo4nXhbAAo6qo5kvtF668gLWzmOyJXVpkjFCwKWl81+RgF21qI4hYBkLytzsMDXEsy9xThbk8JYWGN0KsYov279W74pmNsQUiQb0vtoFiKXXuEvDr5qE/VJivXS767bPEAVSMGazDtRsaRtCtqNgXbKIzTpWlA00J0nmfESU0WUWY2itF8BlrFINd/JPwc/3ZB/EBEhQIVDJlcCAwEAATANBgkqhkiG9w0BAQsFAAOCAQEAgSgDTvGAPDF5iAnO0u42sX6hPcBvMGpHOg4o5l77lB6uBu31yTjcB3wk9wBhwHcxy5HM0HU7JKdq3hA7VMyk/H8eufFffX6bON5BTTuQEDgvKf4vr0FIGCqQe/2dkG5SBQEBCch3NZW6SSCp+/jQnZ1Pxp8Xo0z7/FX3ydIwre125XiBEymZPuEPDVLVZ9wYUuOG9OaUTd67Z2+exYqlsxDXkxxgu9NTkZsvKY2MmYOr8b2a0X3/YCKkKg51ECXYV9YSCW/3OnxBiBONdJMuOjAHyRFq9qyuMRweT9AVP/V8O9piYPTjcU51XzkCZ5CleUtSSFTBenE+fsjaOkckdg==</certificate>
+        <consumerKey>3MVG9rf8ChpF03f3xdYw36O0GrzVFsmu02kQb3cmqUwggrquBvY6cjbTSNdvplPPfYzzJqkBG6YGio8DVmoAP</consumerKey>
+        <isAdminApproved>false</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
+        <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+        <scopes>Basic</scopes>
+        <scopes>Api</scopes>
+        <scopes>RefreshToken</scopes>
+        <scopes>Content</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+    </oauthPolicy>
+</ConnectedApp>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Records</fullName>
+    <columns>NAME</columns>
+    <columns>Objective_Start_Date__c</columns>
+    <columns>Objective_Status__c</columns>
+    <columns>Performance_Objective_Health__c</columns>
+    <columns>OWNER.ALIAS</columns>
+    <columns>Report_to_Post_Deal_Dashboard__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Contract_End_Date__c</columns>
+    <columns>Success_Metrics__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All Records</label>
+</ListView>

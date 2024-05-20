@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <externalId>false</externalId>
+    <label>Status</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Onboarding Initiated</fullName>
+                <default>false</default>
+                <label>Onboarding Initiated</label>
+            </value>
+            <value>
+                <fullName>Kickoff Call Scheduled</fullName>
+                <default>false</default>
+                <label>Kickoff Call Scheduled</label>
+            </value>
+            <value>
+                <fullName>Implementation In Progress</fullName>
+                <default>false</default>
+                <label>Implementation In Progress</label>
+            </value>
+            <value>
+                <fullName>API Key Issued / Dashboard Complete</fullName>
+                <default>false</default>
+                <label>API Key Issued / Dashboard Complete</label>
+            </value>
+            <value>
+                <fullName>First Transaction</fullName>
+                <default>false</default>
+                <label>First Transaction</label>
+            </value>
+            <value>
+                <fullName>Onboarding Complete (Closed)</fullName>
+                <default>false</default>
+                <label>Onboarding Complete (Closed)</label>
+            </value>
+            <value>
+                <fullName>New</fullName>
+                <default>false</default>
+                <label>New</label>
+            </value>
+            <value>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+                <label>In Progress</label>
+            </value>
+            <value>
+                <fullName>Paused</fullName>
+                <default>false</default>
+                <label>Paused</label>
+            </value>
+            <value>
+                <fullName>Escalated Internally</fullName>
+                <default>false</default>
+                <label>Escalated Internally</label>
+            </value>
+            <value>
+                <fullName>Waiting on Customer</fullName>
+                <default>false</default>
+                <label>Waiting on Customer</label>
+            </value>
+            <value>
+                <fullName>Hold/Standing Tickets</fullName>
+                <default>false</default>
+                <label>Hold/Standing Tickets</label>
+            </value>
+            <value>
+                <fullName>Soft Close</fullName>
+                <default>false</default>
+                <label>Soft Close</label>
+            </value>
+            <value>
+                <fullName>On Hold</fullName>
+                <default>false</default>
+                <label>On Hold</label>
+            </value>
+            <value>
+                <fullName>Closed - Spam</fullName>
+                <default>false</default>
+                <label>Closed - Spam</label>
+            </value>
+            <value>
+                <fullName>Escalated</fullName>
+                <default>false</default>
+                <label>Escalated</label>
+            </value>
+            <value>
+                <fullName>Acknowledgment</fullName>
+                <default>false</default>
+                <label>Acknowledgment</label>
+            </value>
+            <value>
+                <fullName>Approvals Completed</fullName>
+                <default>false</default>
+                <label>Approvals Completed</label>
+            </value>
+            <value>
+                <fullName>Approved</fullName>
+                <default>false</default>
+                <label>Approved</label>
+            </value>
+            <value>
+                <fullName>Cancelled (Closed)</fullName>
+                <default>false</default>
+                <label>Cancelled (Closed)</label>
+            </value>
+            <value>
+                <fullName>Closed - Discarded</fullName>
+                <default>false</default>
+                <label>Closed - Discarded</label>
+            </value>
+            <value>
+                <fullName>Closed - Launched</fullName>
+                <default>false</default>
+                <label>Closed - Launched</label>
+            </value>
+            <value>
+                <fullName>Customer Saved (Closed)</fullName>
+                <default>false</default>
+                <label>Customer Saved (Closed)</label>
+            </value>
+            <value>
+                <fullName>In Development</fullName>
+                <default>false</default>
+                <label>In Development</label>
+            </value>
+            <value>
+                <fullName>In Review</fullName>
+                <default>false</default>
+                <label>In Review</label>
+            </value>
+            <value>
+                <fullName>On Roadmap</fullName>
+                <default>false</default>
+                <label>On Roadmap</label>
+            </value>
+            <value>
+                <fullName>Onboarding</fullName>
+                <default>false</default>
+                <label>Onboarding</label>
+            </value>
+            <value>
+                <fullName>Ready for Production</fullName>
+                <default>false</default>
+                <label>Ready for Production</label>
+            </value>
+            <value>
+                <fullName>Ready for Testing</fullName>
+                <default>false</default>
+                <label>Ready for Testing</label>
+            </value>
+            <value>
+                <fullName>Rejected (Closed)</fullName>
+                <default>false</default>
+                <label>Rejected (Closed)</label>
+            </value>
+            <value>
+                <fullName>Save Strategy in Progress</fullName>
+                <default>false</default>
+                <label>Save Strategy in Progress</label>
+            </value>
+            <value>
+                <fullName>Under Evaluation</fullName>
+                <default>false</default>
+                <label>Under Evaluation</label>
+            </value>
+            <value>
+                <fullName>Commit</fullName>
+                <default>false</default>
+                <label>Commit</label>
+            </value>
+            <value>
+                <fullName>Closed</fullName>
+                <default>false</default>
+                <label>Closed</label>
+            </value>
+            <value>
+                <fullName>Waiting on Us</fullName>
+                <default>false</default>
+                <label>Waiting on Us</label>
+            </value>
+            <value>
+                <fullName>Waiting on Contact</fullName>
+                <default>false</default>
+                <label>Waiting on Contact</label>
+            </value>
+            <value>
+                <fullName>SPAM</fullName>
+                <default>false</default>
+                <label>SPAM</label>
+            </value>
+            <value>
+                <fullName>Pre-Call</fullName>
+                <default>false</default>
+                <label>Pre-Call</label>
+            </value>
+            <value>
+                <fullName>Email Opened</fullName>
+                <default>false</default>
+                <label>Email Opened</label>
+            </value>
+            <value>
+                <fullName>Customer Acknowledged in Writing</fullName>
+                <default>false</default>
+                <label>Customer Acknowledged in Writing</label>
+            </value>
+            <value>
+                <fullName>Pre-Notification</fullName>
+                <default>false</default>
+                <label>Pre-Notification</label>
+            </value>
+            <value>
+                <fullName>Scheduled</fullName>
+                <default>false</default>
+                <label>Scheduled</label>
+            </value>
+            <value>
+                <fullName>Intake Call Completed</fullName>
+                <default>false</default>
+                <label>Intake Call Completed</label>
+            </value>
+            <value>
+                <fullName>Customer Path Defined</fullName>
+                <default>false</default>
+                <label>Customer Path Defined</label>
+            </value>
+            <value>
+                <fullName>Email Sent</fullName>
+                <default>false</default>
+                <label>Email Sent</label>
+            </value>
+            <value>
+                <fullName>Call Scheduled</fullName>
+                <default>false</default>
+                <label>Call Scheduled</label>
+            </value>
+            <value>
+                <fullName>Call Completed</fullName>
+                <default>false</default>
+                <label>Call Completed</label>
+            </value>
+            <value>
+                <fullName>Legal Path Identified</fullName>
+                <default>false</default>
+                <label>Legal Path Identified</label>
+            </value>
+            <value>
+                <fullName>Contract Change(s) Completed</fullName>
+                <default>false</default>
+                <label>Contract Change(s) Completed</label>
+            </value>
+            <value>
+                <fullName>Deprecation Timeline Defined</fullName>
+                <default>false</default>
+                <label>Deprecation Timeline Defined</label>
+            </value>
+            <value>
+                <fullName>Cards API Role Revoked</fullName>
+                <default>false</default>
+                <label>Cards API Role Revoked</label>
+            </value>
+            <value>
+                <fullName>Merged</fullName>
+                <default>false</default>
+                <label>Merged</label>
+            </value>
+            <value>
+                <fullName>In Progress – Customer Support</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>In Progress – Customer Support</label>
+            </value>
+            <value>
+                <fullName>Pending AML</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Pending AML</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

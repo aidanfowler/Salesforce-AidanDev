@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Diameter_URL__c</fullName>
+    <description>Diameter URL
+
+Asana - https://app.asana.com/0/1203473392486179/1206361791793888</description>
+    <externalId>false</externalId>
+    <formula>HYPERLINK(&quot; https://diameter.circle.com/developers/&quot;+ Developer_Account_Entity_ID__c, &quot; https://diameter.circle.com/developers/&quot;+ Developer_Account_Entity_ID__c,&apos;_blank&apos;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Diameter URL</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

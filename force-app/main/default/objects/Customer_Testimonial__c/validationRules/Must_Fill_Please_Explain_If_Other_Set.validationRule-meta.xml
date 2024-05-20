@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Must_Fill_Please_Explain_If_Other_Set</fullName>
+    <active>true</active>
+    <description>user must fill other - please explain</description>
+    <errorConditionFormula>AND(INCLUDES( Company_Willing_To_Provide_Following__c , &quot;Other&quot;),ISBLANK( Other_Please_Explain__c ))</errorConditionFormula>
+    <errorDisplayField>Other_Please_Explain__c</errorDisplayField>
+    <errorMessage>You must fill in an explanation if you select other for company is willing to provide</errorMessage>
+</ValidationRule>

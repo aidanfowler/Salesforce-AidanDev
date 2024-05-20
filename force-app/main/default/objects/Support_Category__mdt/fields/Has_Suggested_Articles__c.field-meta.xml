@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Has_Suggested_Articles__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>True if the Category has Suggested Articles and is displayed in the Suggested Articles list, false if not.</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Has Suggested Articles</label>
+    <type>Checkbox</type>
+</CustomField>

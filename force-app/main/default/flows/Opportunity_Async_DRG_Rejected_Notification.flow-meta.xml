@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Send DRG Rejected Email</description>
+        <name>Send_DRG_Rejected_Email</name>
+        <label>Send DRG Rejected Email</label>
+        <locationX>143</locationX>
+        <locationY>924</locationY>
+        <actionName>Opportunity.DRG_Rejected_Notification</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Opportunity.DRG_Rejected_Notification</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <apiVersion>60.0</apiVersion>
+    <decisions>
+        <description>Check Approval Was Found</description>
+        <name>Check_Approval_Was_Found</name>
+        <label>Check Approval Was Found</label>
+        <locationX>473</locationX>
+        <locationY>384</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Approval_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Process_That_Triggered_Rejection.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Approval_Process_Instance_Step</targetReference>
+            </connector>
+            <label>Approval Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check If Approval Process Step Found</description>
+        <name>Check_If_Approval_Process_Step_Found</name>
+        <label>Check If Approval Process Step Found</label>
+        <locationX>275</locationX>
+        <locationY>600</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Process_Step_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Approval_Process_Instance_Step.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_User_By_Actor_Id</targetReference>
+            </connector>
+            <label>Process Step Found</label>
+        </rules>
+    </decisions>
+    <description>Opportunity: Async: DRG Rejected Notification</description>
+    <environments>Default</environments>
+    <interviewLabel>Opportunity: Async {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Opportunity: Async: DRG Rejected Notification</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Get Approval Process Instance Step</description>
+        <name>Get_Approval_Process_Instance_Step</name>
+        <label>Get Approval Process Instance Step</label>
+        <locationX>275</locationX>
+        <locationY>492</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_If_Approval_Process_Step_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>ProcessInstanceId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Process_That_Triggered_Rejection.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Comments</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>ProcessInstanceStep</object>
+        <sortField>SystemModstamp</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Get Process That Triggered Rejection</description>
+        <name>Get_Process_That_Triggered_Rejection</name>
+        <label>Get Process That Triggered Rejection</label>
+        <locationX>473</locationX>
+        <locationY>276</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_Approval_Was_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>TargetObjectId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Rejected</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>ProcessInstance</object>
+        <sortField>LastModifiedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Get User By Actor Id</description>
+        <name>Get_User_By_Actor_Id</name>
+        <label>Get User By Actor Id</label>
+        <locationX>143</locationX>
+        <locationY>708</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Update_DRG_Rejected_Fields_On_Opp</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Approval_Process_Instance_Step.ActorId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>User</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Update DRG Rejected Fields On Opp</description>
+        <name>Update_DRG_Rejected_Fields_On_Opp</name>
+        <label>Update DRG Rejected Fields On Opp</label>
+        <locationX>143</locationX>
+        <locationY>816</locationY>
+        <connector>
+            <targetReference>Send_DRG_Rejected_Email</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>DRG_Rejected_By__c</field>
+            <value>
+                <elementReference>Get_User_By_Actor_Id.Name</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>DRG_Rejected_Reason__c</field>
+            <value>
+                <elementReference>Get_Approval_Process_Instance_Step.Comments</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DRG_Approval_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Rejected</stringValue>
+            </value>
+        </filters>
+        <object>Opportunity</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <scheduledPaths>
+            <name>DRG_Rejected_Updates_And_Email</name>
+            <connector>
+                <targetReference>Get_Process_That_Triggered_Rejection</targetReference>
+            </connector>
+            <label>DRG Rejected Updates And Email</label>
+            <offsetNumber>1</offsetNumber>
+            <offsetUnit>Minutes</offsetUnit>
+            <timeSource>RecordTriggerEvent</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

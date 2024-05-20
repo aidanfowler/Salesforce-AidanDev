@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Current_Stablecoin_Liquidity_Updated__c</fullName>
+    <description>Timestamp for the last time Current Stablecoins on Platform was updated.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Timestamp for the last time Current Stablecoins on Platform was updated.</inlineHelpText>
+    <label>Current Stablecoins on Platform Updated</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>DateTime</type>
+</CustomField>

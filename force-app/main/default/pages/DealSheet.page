@@ -1,0 +1,171 @@
+<apex:page standardController="Opportunity" applyBodyTag="false" renderAs="PDF">  
+    <head>
+        <style>
+            body { font-family: 'Verdana'; }
+
+            table {
+                border-collapse: collapse;
+            }
+            .topTable > tr {
+                padding: 5px;
+            }
+            .topTable > tr > td{
+                border: .5px solid;
+                padding: 5px;
+            }
+            .bottomTable > tr {
+                padding: 10px;
+            }
+            .bottomTable > tr > td{
+                border-bottom: .5px solid;
+                padding: 10px;
+            }
+            .bottomTable > tr > td:first-child{
+                font-weight: bold;
+            }
+            .title {
+                font-size: 24px;
+                font-weight: bold;
+                text-align: center;
+                padding-bottom: 6px;
+
+            }
+            .name {
+                font-size: 18px;
+                font-weight: bold;
+                text-align: center;
+                padding-bottom: 6px;
+            }
+            .subtext {
+                font-size: 12px;
+                text-align: center;
+                text-decoration: underline;
+                padding-bottom: 6px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="title"> Deal Construct</div>
+        <div class="name">[{!Opportunity.Name}]</div>
+        <div class="subtext">DEAL CONSTRUCT DOCUMENT USED FOR INTERNAL REVIEWS: DEAL REVIEW GROUP (DRG) AND PRICING</div>
+        <h2>Background:</h2>
+        <table class="topTable">
+            <tr> 
+            <td>Deal Owner</td>
+            <td>{!Opportunity.Owner_Name__c}</td>
+            </tr>
+            <tr> 
+            <td >Deal Name</td>
+            <td >{!Opportunity.Name}</td>
+            </tr>
+            <tr> 
+            <td>Close Date</td>
+            <td>
+                <apex:outputText value="{0, date, MMMM d','  yyyy}">
+                    <apex:param value="{!Opportunity.CloseDate}" /> 
+                </apex:outputText>
+            </td>
+            </tr>
+            <tr> 
+            <td>Legal Jurisdiction</td>
+            <td>
+                <apex:outputText rendered="{!Opportunity.Jurisdiction__c = 'SG'}">Circle Singapore</apex:outputText>
+                <apex:outputText rendered="{!Opportunity.Jurisdiction__c != 'SG'}">Circle Internet Financial, LLC</apex:outputText>
+            </td>
+            </tr>
+        </table>
+        <h2>Deal Construct:</h2>
+        <table class="bottomTable">
+            <tr>
+                <td>
+                    Opportunity Description:
+                </td>
+                <td>
+                    {!Opportunity.Description}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    High Impact?:
+                </td>
+                <td>
+                    {!Opportunity.High_Impact__c}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Opportunity Potential Detail:
+                </td>
+                <td>
+                    {!Opportunity.Opportunity_Potential_Detail__c}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Decision Makers:
+                </td>
+                <td>
+                    {!Opportunity.Decision_Makers__c}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Solution Description:
+                </td>
+                <td>
+                    {!Opportunity.Solution_Description__c}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Challenges:
+                </td>
+                <td>
+                    {!Opportunity.Challenges__c}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Executive Sponsor:
+                </td>
+                <td>
+                    {!Opportunity.Executive_Sponsor_Name__c}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Solution Document: 
+                </td>
+                <td>
+                    <a href="{!Opportunity.Solution_Document__c}">{!Opportunity.Solution_Document__c}</a> 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Next Steps:
+                </td>
+                <td>
+                    {!Opportunity.NextStep}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Next Step Date:
+                </td>
+                <td>
+                    <apex:outputText value="{0, date, MMMM d','  yyyy}">
+                            <apex:param value="{!Opportunity.Next_Step_Date__c}" /> 
+                    </apex:outputText>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Next Steps History:
+                </td>
+                <td>
+                    <apex:outputtext escape="false" value="{!Opportunity.Next_Steps__c}"/>
+                </td>
+            </tr>
+        </table>
+    </body>
+ </apex:page>

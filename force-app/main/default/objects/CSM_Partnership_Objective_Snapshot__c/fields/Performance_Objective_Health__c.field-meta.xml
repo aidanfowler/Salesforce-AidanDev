@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Performance_Objective_Health__c</fullName>
+    <externalId>false</externalId>
+    <label>Performance Objective Health</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Not Started</fullName>
+                <color>#999999</color>
+                <default>false</default>
+                <label>Not Started</label>
+            </value>
+            <value>
+                <fullName>Off Track</fullName>
+                <color>#CC0000</color>
+                <default>false</default>
+                <label>Off Track</label>
+            </value>
+            <value>
+                <fullName>At Risk</fullName>
+                <color>#FF6600</color>
+                <default>false</default>
+                <label>At Risk</label>
+            </value>
+            <value>
+                <fullName>On Track</fullName>
+                <color>#33CC00</color>
+                <default>false</default>
+                <label>On Track</label>
+            </value>
+            <value>
+                <fullName>Objective Not Met</fullName>
+                <color>#660000</color>
+                <default>false</default>
+                <label>Objective Not Met</label>
+            </value>
+            <value>
+                <fullName>Successful</fullName>
+                <color>#009900</color>
+                <default>false</default>
+                <label>Successful</label>
+            </value>
+            <value>
+                <fullName>Exceeded Expectations</fullName>
+                <color>#006600</color>
+                <default>false</default>
+                <label>Exceeded Expectations</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

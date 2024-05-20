@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Report_to_Post_Deal_Dashboard__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Used by Customer Success Managers to include a specific Partnership Objective in the Post-Deal Dashboard for BLT and ELT</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Used by Customer Success Managers to include a specific Partnership Objective in the Post-Deal Dashboard for BLT and ELT</inlineHelpText>
+    <label>Report to Post-Deal Dashboard</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

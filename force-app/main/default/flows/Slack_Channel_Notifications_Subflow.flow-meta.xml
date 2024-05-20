@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>SendSlackMessage</name>
+        <label>SendSlackMessage</label>
+        <locationX>308</locationX>
+        <locationY>350</locationY>
+        <actionName>slackPostMessage</actionName>
+        <actionType>slackPostMessage</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>slackAppIdForToken</name>
+            <value>
+                <stringValue>A03269G3DNE</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>slackWorkspaceIdForToken</name>
+            <value>
+                <elementReference>frml_slack_workspace</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>slackConversationId</name>
+            <value>
+                <elementReference>frml_slack_conversation_id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>slackMessage</name>
+            <value>
+                <elementReference>SlackMessage</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recordId</name>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>slackPostMessage</nameSegment>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <apiVersion>57.0</apiVersion>
+    <decisions>
+        <description>Stop Slack For Test Classes</description>
+        <name>Stop_Slack_For_Test_Classes</name>
+        <label>Stop Slack For Test Classes</label>
+        <locationX>176</locationX>
+        <locationY>134</locationY>
+        <defaultConnector>
+            <targetReference>GetOrg</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Send Slack</defaultConnectorLabel>
+        <rules>
+            <name>Ignore_Slack</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Setup.Trigger_Switches__c.Pause_Slack_Notifications__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Ignore Slack</label>
+        </rules>
+    </decisions>
+    <description>Slack Custom Setting</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>frml_slack_conversation_id</name>
+        <dataType>String</dataType>
+        <expression>IF({!GetOrg.IsSandbox},{!$Setup.Slack_Channel__c.testslack__c},{!ConversationId})</expression>
+    </formulas>
+    <formulas>
+        <name>frml_slack_workspace</name>
+        <dataType>String</dataType>
+        <expression>IF(NOT({!GetOrg.IsSandbox}), &apos;T0252ABLY&apos;, &apos;TECALKNBE&apos;)</expression>
+    </formulas>
+    <interviewLabel>Slack: Subflow: Channel Notifications {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Slack: Subflow: Channel Notifications</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Get Organization</description>
+        <name>GetOrg</name>
+        <label>GetOrg</label>
+        <locationX>308</locationX>
+        <locationY>242</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>SendSlackMessage</targetReference>
+        </connector>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Organization</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Stop_Slack_For_Test_Classes</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>This holds the conversation Id</description>
+        <name>ConversationId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>This holds the record Id</description>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>This is the variable that holds the slack message</description>
+        <name>SlackMessage</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>This holds the value for the slack workspace and gets this value from the parent flow</description>
+        <name>SlackWorkspace</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

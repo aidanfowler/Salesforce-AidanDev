@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Customer_Segment__c</fullName>
+    <description>This field should indicate the appropriate customer segment so that we can evaluate the impact of our Partnership Objectives across the various strategic customer segments</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This field should indicate the appropriate customer segment so that we can evaluate the impact of our Partnership Objectives across the various strategic customer segments</inlineHelpText>
+    <label>Customer Segment</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Banks</fullName>
+                <default>false</default>
+                <label>Banks</label>
+            </value>
+            <value>
+                <fullName>Blockchains</fullName>
+                <default>false</default>
+                <label>Blockchains</label>
+            </value>
+            <value>
+                <fullName>Crypto Custodians</fullName>
+                <default>false</default>
+                <label>Crypto Custodians</label>
+            </value>
+            <value>
+                <fullName>Crypto Exchanges</fullName>
+                <default>false</default>
+                <label>Crypto Exchanges</label>
+            </value>
+            <value>
+                <fullName>DeFi Protocols</fullName>
+                <default>false</default>
+                <label>DeFi Protocols</label>
+            </value>
+            <value>
+                <fullName>Investment Platforms</fullName>
+                <default>false</default>
+                <label>Investment Platforms</label>
+            </value>
+            <value>
+                <fullName>NGOs</fullName>
+                <default>false</default>
+                <label>NGOs</label>
+            </value>
+            <value>
+                <fullName>OTC Desks &amp; Market Makers</fullName>
+                <default>false</default>
+                <label>OTC Desks &amp; Market Makers</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Regional Stablecoins</fullName>
+                <default>false</default>
+                <label>Regional Stablecoins</label>
+            </value>
+            <value>
+                <fullName>Remittance Platforms / Payment Technologies</fullName>
+                <default>false</default>
+                <label>Remittance Platforms / Payment Technologies</label>
+            </value>
+            <value>
+                <fullName>Strategic Enterprise Accounts</fullName>
+                <default>false</default>
+                <label>Strategic Enterprise Accounts</label>
+            </value>
+            <value>
+                <fullName>Super Apps / Consumer Digital Wallets</fullName>
+                <default>false</default>
+                <label>Super Apps / Consumer Digital Wallets</label>
+            </value>
+            <value>
+                <fullName>Web3 Platforms / Integrators</fullName>
+                <default>false</default>
+                <label>Web3 Platforms / Integrators</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

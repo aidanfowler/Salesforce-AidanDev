@@ -1,0 +1,127 @@
+div {
+    display: block;
+}
+
+body {
+    font-family: 'Circular', sans-serif;
+    font-size: 18px;
+    color: #3d3652;
+    
+    text-rendering: optimizeLegibility;
+}
+
+
+header {
+    background-color: rgba(40,31,35,0);
+    width: 100%;
+}
+.topbar__col {
+    position: relative;
+    display: table-cell;
+    
+    vertical-align: middle;
+}
+
+a {
+    color: #8656ef;
+    text-decoration: none;
+}
+
+a {
+    background-color: transparent;
+}
+
+.statusDisplay {
+    display: flex;
+    align-items: center;
+}
+
+.lt-status-widget__indicator--none {
+    background-color: #1a8917;
+}
+
+.lt-status-widget__indicator--operational {
+    background-color: #1a8917;
+}
+  
+.lt-status-widget__indicator--minor {
+    background-color: #f1c40f;
+}
+  
+.lt-status-widget__indicator--major {
+    background-color: #e67e22;
+}
+  
+.lt-status-widget__indicator--critical {
+    background-color: #c94a4a;
+}
+  
+.lt-status-widget__indicator--maintenance {
+    background-color: #3498db;
+}
+
+.statusOperational {
+    width: 0.75rem;
+    height: 0.75rem;
+    background-color: #1a8917;
+    border-radius: 50%;
+}
+.statusMinor {
+    width: 0.75rem;
+    height: 0.75rem;
+    background-color: #f1c40f;
+    border-radius: 50%;
+}
+.statusMajor {
+    width: 0.75rem;
+    height: 0.75rem;
+    background-color: #e67e22;
+    border-radius: 50%;
+}
+.statusCritical {
+    width: 0.75rem;
+    height: 0.75rem;
+    background-color: #c94a4a;
+    border-radius: 50%;
+}
+.statusMaintenance {
+    width: 0.75rem;
+    height: 0.75rem;
+    background-color: #3498db;
+    border-radius: 50%;
+}
+  
+
+.statusText {
+    font-size: 16px;
+    color: #3d3652;
+}
+
+.topHeader {
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    overflow: hidden;
+    z-index: 9999;
+}
+
+.topRight {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+}
+
+.topLeft {
+    position: fixed;
+    left: 20px;
+    top: 20px;
+}
+
+@media only screen and (max-width:645px) {
+    .topLeft {
+        position: fixed;
+    }
+    .topRight {
+        position: relative;
+    }
+}

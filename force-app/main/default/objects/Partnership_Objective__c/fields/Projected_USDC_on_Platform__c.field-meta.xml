@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Projected_USDC_on_Platform__c</fullName>
+    <description>Projected total amount of USDC held on platform from the Partnership Construct.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Projected total amount of USDC held on platform from the Partnership Construct.</inlineHelpText>
+    <label>Projected USDC On Platform_DNU</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Currency</type>
+</CustomField>

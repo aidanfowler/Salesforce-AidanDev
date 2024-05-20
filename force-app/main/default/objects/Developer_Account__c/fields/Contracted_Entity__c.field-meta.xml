@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contracted_Entity__c</fullName>
+    <defaultValue>&apos;Circle Technology Services, LLC&apos;</defaultValue>
+    <description>This field is used to document which Circle entity the customer is contracted with.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This field is used to document which Circle entity the customer is contracted with.</inlineHelpText>
+    <label>Contracted Entity</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Circle Internet Financial, LLC</fullName>
+                <default>false</default>
+                <label>Circle Internet Financial, LLC</label>
+            </value>
+            <value>
+                <fullName>Circle Singapore</fullName>
+                <default>false</default>
+                <label>Circle Singapore</label>
+            </value>
+            <value>
+                <fullName>Circle Technology Services, LLC</fullName>
+                <default>false</default>
+                <label>Circle Technology Services, LLC</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Projected_Other_Custom_Metric__c</fullName>
+    <description>Populated by the CSM as a result of an &quot;Other&quot; success metric from the opportunity.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Populated by the CSM as a result of an &quot;Other&quot; success metric from the opportunity.</inlineHelpText>
+    <label>Projected Custom Metric</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

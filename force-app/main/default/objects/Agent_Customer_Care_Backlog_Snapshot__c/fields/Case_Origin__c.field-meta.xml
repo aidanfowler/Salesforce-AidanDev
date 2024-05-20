@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Case_Origin__c</fullName>
+    <externalId>false</externalId>
+    <label>Case Origin</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>3rd Party</fullName>
+                <default>false</default>
+                <label>3rd Party</label>
+            </value>
+            <value>
+                <fullName>Circle Account</fullName>
+                <default>false</default>
+                <label>Circle Account</label>
+            </value>
+            <value>
+                <fullName>Circle Mint</fullName>
+                <default>false</default>
+                <label>Circle Mint</label>
+            </value>
+            <value>
+                <fullName>Community</fullName>
+                <default>false</default>
+                <label>Community</label>
+            </value>
+            <value>
+                <fullName>Customer Care</fullName>
+                <default>false</default>
+                <label>Customer Care</label>
+            </value>
+            <value>
+                <fullName>Cybavo Community</fullName>
+                <default>false</default>
+                <label>Cybavo Community</label>
+            </value>
+            <value>
+                <fullName>Cybavo Email</fullName>
+                <default>false</default>
+                <label>Cybavo Email</label>
+            </value>
+            <value>
+                <fullName>Data Subject Request</fullName>
+                <default>false</default>
+                <label>Data Subject Request</label>
+            </value>
+            <value>
+                <fullName>Dev Console</fullName>
+                <default>false</default>
+                <label>Dev Console</label>
+            </value>
+            <value>
+                <fullName>Email</fullName>
+                <default>false</default>
+                <label>Email</label>
+            </value>
+            <value>
+                <fullName>EOL Product</fullName>
+                <default>false</default>
+                <label>EOL Product</label>
+            </value>
+            <value>
+                <fullName>indirect-liquidity</fullName>
+                <default>false</default>
+                <label>indirect-liquidity</label>
+            </value>
+            <value>
+                <fullName>KYC</fullName>
+                <default>false</default>
+                <label>KYC</label>
+            </value>
+            <value>
+                <fullName>Phone</fullName>
+                <default>false</default>
+                <label>Phone</label>
+            </value>
+            <value>
+                <fullName>Project Buffalo</fullName>
+                <default>false</default>
+                <label>Project Buffalo</label>
+            </value>
+            <value>
+                <fullName>Sales</fullName>
+                <default>false</default>
+                <label>Sales</label>
+            </value>
+            <value>
+                <fullName>Web</fullName>
+                <default>false</default>
+                <label>Web</label>
+            </value>
+            <value>
+                <fullName>ZenDesk</fullName>
+                <default>false</default>
+                <label>ZenDesk</label>
+            </value>
+            <value>
+                <fullName>Alliance Program</fullName>
+                <default>false</default>
+                <label>Alliance Program</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Liquidity__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This field should be selected when the Partnership Object supports the Commercial team’s objective of making USDC the most liquid, and accessible digital dollar</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This field should be selected when the Partnership Object supports the Commercial team’s objective of making USDC the most liquid, and accessible digital dollar</inlineHelpText>
+    <label>Liquidity_DNU</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

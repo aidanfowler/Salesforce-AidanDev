@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Blockers_Challenges__c</fullName>
+    <description>(Optional) Document any blockers and/or challenges to successfully achieving the objective. These should be one-line executive bullet points that directly address the challenges.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>(Optional) Document any blockers and/or challenges to successfully achieving the objective. These should be one-line executive bullet points that directly address the challenges.</inlineHelpText>
+    <label>Blockers &amp; Challenges</label>
+    <length>32768</length>
+    <trackHistory>false</trackHistory>
+    <type>Html</type>
+    <visibleLines>25</visibleLines>
+</CustomField>

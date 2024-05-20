@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Objective_Status__c</fullName>
+    <externalId>false</externalId>
+    <label>Objective Status</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Onboarding</fullName>
+                <color>#FFCC66</color>
+                <default>false</default>
+                <label>Onboarding</label>
+            </value>
+            <value>
+                <fullName>Pre-Launch</fullName>
+                <color>#E27001</color>
+                <default>false</default>
+                <label>Pre-Launch</label>
+            </value>
+            <value>
+                <fullName>Launched</fullName>
+                <color>#009900</color>
+                <default>false</default>
+                <label>Launched</label>
+            </value>
+            <value>
+                <fullName>Not Active</fullName>
+                <color>#BBBBBB</color>
+                <default>false</default>
+                <label>Not Active</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

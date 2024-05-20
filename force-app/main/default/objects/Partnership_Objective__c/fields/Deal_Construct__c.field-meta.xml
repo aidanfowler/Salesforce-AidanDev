@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Deal_Construct__c</fullName>
+    <description>This field is optional, but it should indicate what type of deal construct the Partnership Objective stems from when associated with a deal</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This field is optional, but it should indicate what type of deal construct the Partnership Objective stems from when associated with a deal</inlineHelpText>
+    <label>Deal Construct</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Activation Incentive</fullName>
+                <default>false</default>
+                <label>Activation Incentive</label>
+            </value>
+            <value>
+                <fullName>Blockchain</fullName>
+                <default>false</default>
+                <label>Blockchain</label>
+            </value>
+            <value>
+                <fullName>Channel Sales</fullName>
+                <default>false</default>
+                <label>Channel Sales</label>
+            </value>
+            <value>
+                <fullName>Performance Incentive</fullName>
+                <default>false</default>
+                <label>Performance Incentive</label>
+            </value>
+            <value>
+                <fullName>Product</fullName>
+                <default>false</default>
+                <label>Product</label>
+            </value>
+            <value>
+                <fullName>Product Integration</fullName>
+                <default>false</default>
+                <label>Product Integration</label>
+            </value>
+            <value>
+                <fullName>Referrals</fullName>
+                <default>false</default>
+                <label>Referrals</label>
+            </value>
+            <value>
+                <fullName>ITP</fullName>
+                <default>false</default>
+                <label>ITP</label>
+            </value>
+            <value>
+                <fullName>Indirect Liquidity</fullName>
+                <default>false</default>
+                <label>Indirect Liquidity</label>
+            </value>
+            <value>
+                <fullName>Channel</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Channel</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

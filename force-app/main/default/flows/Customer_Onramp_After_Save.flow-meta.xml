@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <decisions>
+        <description>Circle Mint Added For The First Time</description>
+        <name>Circle_Mint_Added_For_The_First_Time</name>
+        <label>Circle Mint Added For The First Time</label>
+        <locationX>182</locationX>
+        <locationY>431</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Send_Slack</name>
+            <conditionLogic>1 AND (2 OR 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Circle_Mint__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Circle_Mint__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Circle_Mint__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_onramp_alert</targetReference>
+            </connector>
+            <label>Send Slack</label>
+        </rules>
+    </decisions>
+    <description>Customer Onramp: After Save</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>frml_account_url</name>
+        <dataType>String</dataType>
+        <expression>LEFT($Api.Partner_Server_URL_260, FIND( &apos;/services&apos;, $Api.Partner_Server_URL_260))&amp;{!$Record.Account__c}</expression>
+    </formulas>
+    <formulas>
+        <name>frml_circle_mint_url</name>
+        <dataType>String</dataType>
+        <expression>LEFT($Api.Partner_Server_URL_260, FIND( &apos;/services&apos;, $Api.Partner_Server_URL_260))&amp;{!$Record.Circle_Mint__c}</expression>
+    </formulas>
+    <formulas>
+        <description>onramp slack channel</description>
+        <name>frml_onramp_channel_id</name>
+        <dataType>String</dataType>
+        <expression>IF(NOT({!GetOrg.IsSandbox}),&apos;C050P1KQ4A3&apos;,&apos;C05053QPX9P&apos;)</expression>
+    </formulas>
+    <formulas>
+        <name>frml_opportunity_url</name>
+        <dataType>String</dataType>
+        <expression>LEFT($Api.Partner_Server_URL_260, FIND( &apos;/services&apos;, $Api.Partner_Server_URL_260))&amp;{!$Record.Opportunity__c}</expression>
+    </formulas>
+    <formulas>
+        <description>record url</description>
+        <name>frml_record_url</name>
+        <dataType>String</dataType>
+        <expression>LEFT($Api.Partner_Server_URL_260, FIND( &apos;/services&apos;, $Api.Partner_Server_URL_260))&amp;{!$Record.Id}</expression>
+    </formulas>
+    <formulas>
+        <description>slack workspace id</description>
+        <name>frml_slack_workspace</name>
+        <dataType>String</dataType>
+        <expression>IF(NOT({!GetOrg.IsSandbox}), &apos;T0252ABLY&apos;, &apos;TECALKNBE&apos;)</expression>
+    </formulas>
+    <interviewLabel>Customer Onramp: After Save {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Customer Onramp: After Save</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>get org</description>
+        <name>GetOrg</name>
+        <label>GetOrg</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Circle_Mint_Added_For_The_First_Time</targetReference>
+        </connector>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Organization</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>GetOrg</targetReference>
+        </connector>
+        <object>Customer_Onramp__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <description>Send onramp alert</description>
+        <name>Send_onramp_alert</name>
+        <label>Send onramp alert</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <flowName>Slack_Channel_Notifications_Subflow</flowName>
+        <inputAssignments>
+            <name>ConversationId</name>
+            <value>
+                <elementReference>frml_onramp_channel_id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>SlackMessage</name>
+            <value>
+                <elementReference>tt_onramp_message</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>SlackWorkspace</name>
+            <value>
+                <elementReference>frml_slack_workspace</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <textTemplates>
+        <description>onramp slack message</description>
+        <name>tt_onramp_message</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Circle Mint Added To Customer Onramp
+Onramp Name: {!$Record.Name}
+Requestor: {!$Record.Requestor__c}
+Owner: {!$Record.Owner:User.FirstName}  {!$Record.Owner:User.LastName} 
+Account: &lt;{!frml_account_url}|{!$Record.Account__r.Name}&gt;
+Opportunity: &lt;{!frml_opportunity_url}|{!$Record.Opportunity__r.Name}&gt;
+Circle Mint: &lt;{!frml_circle_mint_url}|{!$Record.Circle_Mint__r.Name}&gt;
+&lt;{!frml_record_url}|View Salesforce Record&gt;</text>
+    </textTemplates>
+</Flow>

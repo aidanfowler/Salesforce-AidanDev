@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <assignments>
+        <description>Assign Account</description>
+        <name>Assign_Account</name>
+        <label>Assign Account</label>
+        <locationX>248</locationX>
+        <locationY>395</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Account__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Opportunity__r.AccountId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Set_Account_From_Circle_Mint</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Assign Account From Circle Mint</description>
+        <name>Assign_Account_From_Circle_Mint</name>
+        <label>Assign Account From Circle Mint</label>
+        <locationX>248</locationX>
+        <locationY>695</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Account__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Circle_Mint__r.Account_Lookup__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Check_If_Opp_Has_Compliance_Analyst</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Assing CSM As Owner</description>
+        <name>Assing_CSM_As_Owner</name>
+        <label>Assing CSM As Owner</label>
+        <locationX>50</locationX>
+        <locationY>1511</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.OwnerId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_CSM_Opp_Team_Member.UserId</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <description>Set Compliance Analyst From Opp</description>
+        <name>Set_Compliance_Analyst_From_Opp</name>
+        <label>Set Compliance Analyst From Opp</label>
+        <locationX>248</locationX>
+        <locationY>995</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Compliance_Analyst__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Opportunity__r.Compliance_Analyst__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Set_Owner_From_Opportunity_CSM</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <description>Check If Opp Has Compliance Analyst</description>
+        <name>Check_If_Opp_Has_Compliance_Analyst</name>
+        <label>Check If Opp Has Compliance Analyst</label>
+        <locationX>380</locationX>
+        <locationY>887</locationY>
+        <defaultConnector>
+            <targetReference>Set_Owner_From_Opportunity_CSM</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_set_on_onramp</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Opportunity__r.Compliance_Analyst__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Compliance_Analyst__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Compliance_Analyst_From_Opp</targetReference>
+            </connector>
+            <label>Yes, set on onramp</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_If_Opp_Team_CSM_Found</name>
+        <label>Check If Opp Team CSM Found</label>
+        <locationX>182</locationX>
+        <locationY>1403</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Set_On_Customer_Onramp</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_CSM_Opp_Team_Member.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assing_CSM_As_Owner</targetReference>
+            </connector>
+            <label>Yes, Set On Customer Onramp</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Set_Account_From_Circle_Mint</name>
+        <label>Set Account From Circle Mint</label>
+        <locationX>380</locationX>
+        <locationY>587</locationY>
+        <defaultConnector>
+            <targetReference>Check_If_Opp_Has_Compliance_Analyst</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Circle_Mint_Is_Set</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Account__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Circle_Mint__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Circle_Mint__r.Account_Lookup__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Account_From_Circle_Mint</targetReference>
+            </connector>
+            <label>Circle Mint Is Set</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Set Account From Opportunity</description>
+        <name>Set_Account_From_Opportunity</name>
+        <label>Set Account From Opportunity</label>
+        <locationX>380</locationX>
+        <locationY>287</locationY>
+        <defaultConnector>
+            <targetReference>Set_Account_From_Circle_Mint</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Set_Account</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Account__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Opportunity__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Opportunity__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Circle_Mint__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Account</targetReference>
+            </connector>
+            <label>Set Account</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Set Owner From Opportunity CSM</description>
+        <name>Set_Owner_From_Opportunity_CSM</name>
+        <label>Set Owner From Opportunity CSM</label>
+        <locationX>380</locationX>
+        <locationY>1187</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Set_Owner</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Opportunity__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Opportunity__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_CSM_Opp_Team_Member</targetReference>
+            </connector>
+            <label>Set Owner</label>
+        </rules>
+    </decisions>
+    <description>Customer Onramp: Before Save, add compliance analyst auto set</description>
+    <environments>Default</environments>
+    <interviewLabel>Customer Onramp: Before {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Customer Onramp: Before Save</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Get CSM Opp Team Member</description>
+        <name>Get_CSM_Opp_Team_Member</name>
+        <label>Get CSM Opp Team Member</label>
+        <locationX>182</locationX>
+        <locationY>1295</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_If_Opp_Team_CSM_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>OpportunityId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Opportunity__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>TeamMemberRole</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Customer Success Manager</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>OpportunityTeamMember</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>254</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Set_Account_From_Opportunity</targetReference>
+        </connector>
+        <object>Customer_Onramp__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

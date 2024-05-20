@@ -1,0 +1,99 @@
+<template>
+    <div class="pagePadding">
+    <div class="headerTop">
+        <a href="#" onclick={handleHome}><img src={circleImage} class="supportImage"/></a>
+        <div>
+            <div class="topRight">
+            <a href="https://status.circle.com/">
+              <div class="statusDisplay slds-p-bottom_x-small">
+                <div class="statusOperational" id="statusCircle" data-recid="statusCircle"></div>
+                <div class="statusText">{systemStatus}</div>
+              </div>
+            </a>
+            </div>
+            <ul class="slds-button-group-row">
+                <li class="slds-button-group-item">
+                    <lightning-button label="Developers" onclick={handleDevelopersClick}></lightning-button>
+                </li>
+                <template if:false={userId}>
+                    <li class="slds-button-group-item">
+                        <lightning-button label="Login" onclick={handleLogin}></lightning-button>
+                    </li>
+                </template>
+                <template if:true={userId}>
+                    <li class="slds-button-group-item">
+                        <lightning-button label="Logout" onclick={handleLogout}></lightning-button>
+                    </li>
+                </template>
+            </ul>
+        </div>
+    </div>
+    <template if:true={showTitle}>
+        <lightning-layout horizontal-align="spread" multiple-rows="true">
+            <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6"
+            padding="horizontal-large">
+            <div class="pageTitle">
+                <h3>{pageTitle}</h3>
+            </div>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6"
+            padding="horizontal-large">
+            </lightning-layout-item>
+        </lightning-layout>
+    </template>
+    <template if:true={showSearch}>
+    <lightning-layout horizontal-align="spread" multiple-rows="true">
+        <lightning-layout-item size="12" small-device-size="12" medium-device-size="3" large-device-size="3"
+        padding="horizontal-large">
+            
+        </lightning-layout-item>
+        <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="horizontal-large"
+            >
+            <div class="slds-text-align_center slds-p-top_xx-large slds-p-bottom_x-large">
+                <h1>We&#8217;re here to help</h1>
+            </div>
+            <div class="slds-form-element slds-lookup" data-select="single">
+                <div class="slds-form-element__control forceCommunitySearchBox" onfocusin={handleSearchGotFocus}
+                    onfocusout={handleSearchLostFocus}>
+                    <div id="searchInputWrapper2" class="slds-input-has-icon slds-input-has-icon--right search-field-wrapper"
+                        onkeyup={handleKeypress}>
+                        <div class="lightning-input slds-form-element" data-aura-rendered-by="232:0" lightning-input_input-host="">
+                            <span data-aria="true" class="slds-assistive-text"></span>
+                            <label for="searchInputField"
+                                class="slds-form-element__label slds-no-flex slds-assistive-text">Search</label>
+                            <div class="slds-form-element__control slds-grow">
+                                <lightning-input type="search" variant="label-hidden" name="search" value={updatedTerm}
+                                    placeholder="Search" title="" onkeypress={handleEnter}></lightning-input>
+                            </div>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+            <div class="slds-p-top_medium slds-p-bottom_x-large">
+                <div class="slds-grid slds-wrap" data-aura-rendered-by="428:0">
+                    <template if:true={searchTerms}>
+                        <div class={commonSearchTermsClass}>
+                            Common Searches:
+                        </div>
+                        <template for:each={searchTerms} for:item="searchTerm">
+                            <div class={commonSearchTermsClass} key={searchTerm}>
+                                <a href="#" onclick={handleSearch} name={searchTerm} class="common_search_term">{searchTerm}</a>
+                            </div>
+                        </template>
+                    </template>
+                </div>
+            </div>
+        </lightning-layout-item>
+        <lightning-layout-item size="12" small-device-size="12" medium-device-size="3" large-device-size="3"
+        padding="horizontal-large">
+        
+        </lightning-layout-item>
+    </lightning-layout>
+    </template>
+    </div>
+
+    
+        
+            
+</template>

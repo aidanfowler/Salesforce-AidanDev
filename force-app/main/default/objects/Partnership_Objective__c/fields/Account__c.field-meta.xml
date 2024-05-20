@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account__c</fullName>
+    <deleteConstraint>Restrict</deleteConstraint>
+    <description>This field should auto-populate, but should be checked to ensure that the correct Salesforce Account is associated with the Partnership Objective</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This field should auto-populate, but should be checked to ensure that the correct Salesforce Account is associated with the Partnership Objective</inlineHelpText>
+    <label>Account</label>
+    <referenceTo>Account</referenceTo>
+    <relationshipLabel>Partnership Objectives</relationshipLabel>
+    <relationshipName>Partnership_Objectives</relationshipName>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

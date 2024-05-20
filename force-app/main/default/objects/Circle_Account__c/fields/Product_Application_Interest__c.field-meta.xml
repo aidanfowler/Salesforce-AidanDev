@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product_Application_Interest__c</fullName>
+    <externalId>false</externalId>
+    <label>Product Application Interest</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>account</fullName>
+                <default>false</default>
+                <label>Circle Account</label>
+            </value>
+            <value>
+                <fullName>yield</fullName>
+                <default>false</default>
+                <label>Circle Yield</label>
+            </value>
+            <value>
+                <fullName>api</fullName>
+                <default>false</default>
+                <label>Circle APIs</label>
+            </value>
+            <value>
+                <fullName>Circle APIs</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Circle APIs</label>
+            </value>
+            <value>
+                <fullName>Circle Account</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Circle Account</label>
+            </value>
+            <value>
+                <fullName>Circle Yield</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Circle Yield</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>3</visibleLines>
+</CustomField>

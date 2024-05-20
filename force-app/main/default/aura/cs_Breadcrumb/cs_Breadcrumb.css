@@ -1,0 +1,40 @@
+.THIS.main {
+    margin: 0 auto;
+    width: 1170px;
+    padding: 10px 0px;
+}
+
+.THIS.main nav ol li::after {
+    content: '';
+    position: absolute;
+    top: 44%;
+    right: 0;
+    border: solid #00406b;
+    border-width: 0 2px 2px 0;
+    padding: 3px;
+    transform: rotate(-45deg);
+    float: right;
+    border-radius: 1px 1px 1px 1px;
+}
+.THIS.main nav ol li a {
+    color: #00406b;
+    text-transform: uppercase;
+    font-size: 17px;
+    white-space: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    height: 48px;
+}
+.THIS ol.slds-breadcrumb.slds-list_horizontal.slds-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 48px;
+}
+@media only screen and (max-width: 1200px) {
+    .THIS.main {
+        width: 90vw !important;
+    }
+}

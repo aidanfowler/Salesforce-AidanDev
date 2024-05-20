@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <decisions>
+        <description>Check If Launch Date Changed</description>
+        <name>Check_If_Launch_Date_Changed</name>
+        <label>Check If Launch Date Changed</label>
+        <locationX>182</locationX>
+        <locationY>623</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Launch_Date_Changed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Launch_Date__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Launch_Date_Changed_Notification_To_Customer_Health_Notifications</targetReference>
+            </connector>
+            <label>Launch Date Changed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check If Partnership Objective Is Newly Created</description>
+        <name>Check_If_Partnership_Objective_Is_Newly_Created</name>
+        <label>Check If Partnership Objective Is Newly Created</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <defaultConnector>
+            <targetReference>Check_If_Launch_Date_Changed</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Send_CSM_Notification</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_CSM_PO_Notification</targetReference>
+            </connector>
+            <label>Yes, Send CSM Notification</label>
+        </rules>
+    </decisions>
+    <description>Add launch date notification</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>frml_launch_date_notificaiton</name>
+        <dataType>String</dataType>
+        <expression>IF(!ISBLANK({!$Record__Prior.Launch_Date__c}), {!tt_launch_date_changed_notification}, {!tt_launch_date_notification})</expression>
+    </formulas>
+    <formulas>
+        <name>frml_new_growth_value</name>
+        <dataType>String</dataType>
+        <expression>IF(!ISBLANK({!$Record.MeWs_Growth__c}), &apos;MeWs Growth: &apos; &amp; Text({!$Record.MeWs_Growth__c}) &amp; BR(),&apos;&apos;) &amp; IF(!ISBLANK({!$Record.Stablecoin_On_Platform_Growth__c}), &apos;Stablecoin On Platform Growth: $&apos; &amp; Text({!$Record.Stablecoin_On_Platform_Growth__c}) &amp; BR(),&apos;&apos;) &amp; 
+IF(!ISBLANK({!$Record.Stablecoin_Volume_Growth__c}), &apos;Stablecoin Volume Growth: $&apos; &amp; Text({!$Record.Stablecoin_Volume_Growth__c}),&apos;&apos;)</expression>
+    </formulas>
+    <formulas>
+        <name>frml_record_url</name>
+        <dataType>String</dataType>
+        <expression>LEFT($Api.Partner_Server_URL_260, FIND( &apos;/services&apos;, $Api.Partner_Server_URL_260))&amp;{!$Record.id}</expression>
+    </formulas>
+    <interviewLabel>Partnership Objective: After Save {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Partnership Objective: After Save</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_If_Partnership_Objective_Is_Newly_Created</targetReference>
+        </connector>
+        <object>Partnership_Objective__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <description>Send CSM PO Notification</description>
+        <name>Send_CSM_PO_Notification</name>
+        <label>Send CSM PO Notification</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <connector>
+            <targetReference>Check_If_Launch_Date_Changed</targetReference>
+        </connector>
+        <flowName>Send_Slack_Notification_To_User</flowName>
+        <inputAssignments>
+            <name>RecordID</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>SlackMessage</name>
+            <value>
+                <elementReference>tt_csm_new_po_notification</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>UserID</name>
+            <value>
+                <elementReference>$Record.OwnerId</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <subflows>
+        <description>Send Launch Date Changed Notification To Customer Health Notifications</description>
+        <name>Send_Launch_Date_Changed_Notification_To_Customer_Health_Notifications</name>
+        <label>Send Launch Date Changed Notification To Customer Health Notifications</label>
+        <locationX>50</locationX>
+        <locationY>731</locationY>
+        <flowName>Slack_Channel_Notifications_Subflow</flowName>
+        <inputAssignments>
+            <name>ConversationId</name>
+            <value>
+                <elementReference>$Setup.Slack_Channel__c.customer_health_notifications__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>SlackMessage</name>
+            <value>
+                <elementReference>frml_launch_date_notificaiton</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <textTemplates>
+        <name>tt_csm_new_po_notification</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>You’ve been assigned a new Partnership Objective. Please confirm the details are correct and update the Performance Objective Health to reflect the current status.
+&lt;{!frml_record_url}|View Partnership Objective&gt;
+Account: {!$Record.Account__r.Name}
+Opportunity: {!$Record.Opportunity__r.Name}
+Success Metrics: {!$Record.Success_Metrics__c}
+Time Horizon: {!$Record.Time_Horizon__c}
+Objective Status: {!$Record.Objective_Status__c}
+Performance Objective Health: {!$Record.Performance_Objective_Health__c}</text>
+    </textTemplates>
+    <textTemplates>
+        <name>tt_launch_date_changed_notification</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>The Launch Date For {!$Record.Name} was changed from {!$Record__Prior.Launch_Date__c} to {!$Record.Launch_Date__c}
+&lt;{!frml_record_url}|View Partnership Objective&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>tt_launch_date_notification</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>The Launch Date For {!$Record.Name} was set to {!$Record.Launch_Date__c}
+&lt;{!frml_record_url}|View Partnership Objective&gt;</text>
+    </textTemplates>
+</Flow>

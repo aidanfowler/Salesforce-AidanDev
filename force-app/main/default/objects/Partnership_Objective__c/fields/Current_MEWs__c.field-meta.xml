@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Current_MEWs__c</fullName>
+    <description>This field should include the current number of meaningful wallets</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This field should include the current number of meaningful wallets</inlineHelpText>
+    <label>Current MEWs</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

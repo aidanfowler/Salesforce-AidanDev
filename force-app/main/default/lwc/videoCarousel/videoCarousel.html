@@ -1,0 +1,8 @@
+<template>
+    <div class="slds-text-align_center slds-p-bottom_medium"><h3>Video Tutorials</h3></div>
+    <div class="carousel-container">
+        <template if:true={videos}>
+            <c-carousel-component items={videos} options={options}></c-carousel-component>
+        </template>
+    </div>
+</template>

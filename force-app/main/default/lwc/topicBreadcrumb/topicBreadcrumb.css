@@ -1,0 +1,73 @@
+.main {
+    margin-left: 392px;
+    position: relative;
+}
+.main nav ol li::after{
+    border: solid #2b8fff;
+    border-width: 0 2px 2px 0;
+    padding: 2px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    content: "";
+    float: right;
+    position: absolute;
+    top: 33%;
+    right: 0;
+}
+.main nav ol li a{
+    color: #2B8FF8;
+    text-transform: uppercase;
+    font-size: 12px;
+    white-space: inherit;
+    font-weight: 600;
+}
+@media only screen and (max-width:1824px) {
+    .main{
+        margin-left: 375px !important;
+    }
+}
+@media only screen and (max-width:1600px) {
+    .main{
+        margin-left: 332px !important;
+    }
+}
+@media only screen and (max-width:1536px) {
+    .main{
+        margin-left: 204px !important;
+    }
+}
+@media only screen and (max-width:1400px) {
+    .main{
+        margin-left:142px !important;
+    }
+}
+@media only screen and (max-width:1336px) {
+    .main{
+        margin-left: 112px !important;
+    }
+}
+@media only screen and (max-width:1280px) {
+    .main{
+        margin-left: 79px !important;
+    }
+}
+@media only screen and (max-width:1124px) {
+    .main{
+        margin-left: 37px !important;
+    }
+}
+@media only screen and (max-width:1024px) {
+    .main{
+        margin-left: 28px !important;
+    }
+}
+@media only screen and (max-width:768px) {
+    .main{
+        margin-left: 7vw !important;
+    }
+}
+@media only screen and (max-width:600px) {
+    .main{
+        margin-left: 6vw !important;
+    }
+}

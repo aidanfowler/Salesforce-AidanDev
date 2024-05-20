@@ -1,0 +1,37 @@
+.slds-carousel__panel.panel-hide{
+    display: none;
+}
+
+h4 {
+	font-family: CIRCULARXXTT-BLACK;
+    font-size: 21.6px;
+    line-height: 24px;
+    letter-spacing: -0.2px;
+    color: rgb(41, 35, 59);
+}
+
+.video-gallery__video[VideoGallery_VideoGallery] {
+    display: flex;
+    flex-direction: column;
+}
+
+.video-gallery__video-item[VideoGallery_VideoGallery] {
+    flex: 1;
+}
+
+.video-gallery__video-container[VideoGallery_VideoGallery] {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background-color: #E8E8E8;
+}
+
+.video-gallery[VideoGallery_VideoGallery] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

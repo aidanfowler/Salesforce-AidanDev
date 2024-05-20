@@ -1,0 +1,21 @@
+<template>
+    <div class="slds-p-bottom_large">
+        <h4 class="search-results-count">{numResults} result(s) for &#8220;{term}&#8221;</h4>
+        </div>
+        <ul class="search-results-list"> 
+            <template for:each={updatedSearchResults} for:item="searchResult">
+                <li class="search-result result-article slds-p-bottom_medium slds-p-top_medium" key={searchResult.title}>
+                    <h3 class="h4 search-result__title slds-p-bottom_medium">
+                        <a href="#" class="search-result-link" id={searchResult.articleId} data-target-id={searchResult.articleId} onclick={handleClick}><lightning-formatted-rich-text value={searchResult.title}></lightning-formatted-rich-text></a>
+                        
+                    </h3>
+                    <p class="search-result__description slds-p-bottom_medium description"><lightning-formatted-rich-text value={searchResult.description}></lightning-formatted-rich-text></p>
+    
+                    <div class="meta search-result__meta slds-p-bottom_small">
+                        <span class="meta__item"><lightning-formatted-date-time value={searchResult.publishedDate} year="numeric" month="short" day="2-digit" hour="numeric"
+                            weekday="long"></lightning-formatted-date-time></span>
+                    </div>
+                </li>
+            </template>        
+    </ul>
+</template>

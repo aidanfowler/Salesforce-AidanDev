@@ -1,0 +1,27 @@
+<template>
+    <!-- <lightning-combobox
+               name="progress"
+               label="Status"
+               value={value}
+               placeholder="Select Progress"
+               options={options}
+               onchange={handleChange} >
+    </lightning-combobox>
+    <p>Selected value is: {value}</p> -->
+
+    <div class="slds-p-around_medium" style="padding-left:40px;">
+        
+        <b style="font-size: 16px; color: black; padding-right: 10px; font-weight: bold;">PRODUCTS</b>
+        
+        <lightning-button-menu alternative-text="Show menu" title="Products" value="Products">
+            
+            <lightning-menu-item value="MenuItemOne" label="Circle Account" >
+                <a href="/support/s/topic/0TO8b000000xDUtGAM/circle-account">Circle Account</a>
+            </lightning-menu-item>
+            <lightning-menu-item value="MenuItemTwo" label="Circle APIs"></lightning-menu-item>
+            <lightning-menu-item value="MenuItemThree" label="Circle Yield"></lightning-menu-item>
+            <lightning-menu-item value="MenuItemFour" label="USDC"></lightning-menu-item>
+            <lightning-menu-item value="MenuItemFive" label="Euro Coin"></lightning-menu-item>
+        </lightning-button-menu>
+    </div>
+</template>

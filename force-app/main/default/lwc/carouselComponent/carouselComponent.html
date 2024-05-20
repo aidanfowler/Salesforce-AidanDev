@@ -1,0 +1,83 @@
+<!--
+MIT License
+
+Copyright (c) 2020 Playground, https://www.playg.app
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+-->
+
+<template>
+    <div class="slds-carousel">
+        <div class="slds-carousel__stage">
+
+            <!-- AUTO SCROLL BUTTON -->
+            <template if:true={autoScroll}>
+                <span class="slds-carousel__autoplay">
+                    <template if:false={showPlayIcon}>
+                        <button
+                            class="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small"
+                            title="Stop auto-play" onclick={togglePlay}>
+                            <lightning-icon icon-name="utility:pause" alternative-text="Stop auto-play"
+                                title="Stop auto-play" size="xx-small">
+                            </lightning-icon>
+                        </button>
+                    </template>
+                    <template if:true={showPlayIcon}>
+                        <button
+                            class="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small"
+                            title="resume auto-play" onclick={togglePlay}>
+                            <lightning-icon icon-name="utility:play" alternative-text="resume auto-play"
+                                title="resume auto-play" size="xx-small">
+                            </lightning-icon>
+                        </button>
+                    </template>
+                </span>
+            </template>
+
+            <!-- MAIN CONTENT -->
+            <div ss_vg-x7svideogallery_x7svideogallery="" class="slds-grid slds-wrap slds-grid_vertical-stretch slds-grid_pull-padded-small" >
+                <template if:true={showComponents}>
+                    <template for:each={showComponents} for:item="component">
+                            <div videogallery_videogallery="" class="video-gallery__video slds-p-horizontal_small slds-p-vertical_medium slds-size_1-of-1 slds-medium-size_1-of-3" key={component.contentId}>
+                                <article videogallery_videogallery="" class="video-gallery__video-item">
+                                    <div videogallery_videogallery="" class="video-gallery__video-container">
+                                        <iframe videogallery_videogallery="" class="video-gallery vidyard_iframe" src={component.video} 
+                                                    width="100%" height="100%" 
+                                                    scrolling="no" frameborder="0" allowtransparency="true"
+                                                    allow="accelerometer;  encrypted-media; gyroscope; picture-in-picture"
+                                                    allowfullscreen></iframe>
+                                    </div>
+                                </article>
+                                <div class="slds-carousel__content">
+                                    <h2 class="slds-carousel__content-title"><a href={component.url}>{component.header}</a></h2>
+                                    <p>{component.description}</p>
+                                </div>
+                            </div>
+                    </template>
+                </template>
+            </div>
+
+            <!--INDICATORS -->
+            <ul class="slds-carousel__indicators" role="tablist">
+                <lightning-button-icon icon-name="utility:chevronleft" size="large" alternative-text="Previous" title="Previous" variant="bare" onclick={previous} ></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:chevronright" size="large" alternative-text="Next" class="slds-m-left_xx-small" title="Next" variant="bare" onclick={next} ></lightning-button-icon>
+            </ul>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Objective_Description__c</fullName>
+    <description>This field should include include no more than a sentence and form an exacting definition of the objective</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This field should include include no more than a sentence and form an exacting definition of the objective</inlineHelpText>
+    <label>Objective Description</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>TextArea</type>
+</CustomField>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>My_Metric_Objectives_CSM_Home_Pg</fullName>
+    <columns>Account__c</columns>
+    <columns>Objective_Description__c</columns>
+    <columns>Performance_Objective_Health__c</columns>
+    <columns>Objective_Start_Date__c</columns>
+    <columns>Contract_End_Date__c</columns>
+    <columns>Objective_Status__c</columns>
+    <columns>Starting_MEWs__c</columns>
+    <columns>Current_MEWs__c</columns>
+    <columns>Starting_Stablecoin_Liquidity__c</columns>
+    <columns>Current_Stablecoin_Liquidity__c</columns>
+    <columns>Current_Referrals__c</columns>
+    <columns>of_Referrals_Onboarded__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>Type__c</field>
+        <operation>equals</operation>
+        <value>Partner Metrics Tracking</value>
+    </filters>
+    <filters>
+        <field>Contract_End_Date__c</field>
+        <operation>greaterOrEqual</operation>
+        <value>TODAY</value>
+    </filters>
+    <label>My Metric Objectives (Partner Mgr)</label>
+</ListView>

@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <assignments>
+        <description>Set Application Status Changed Date</description>
+        <name>Set_Application_Status_Changed_Date</name>
+        <label>Set Application Status Changed Date</label>
+        <locationX>50</locationX>
+        <locationY>1103</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Application_Status_Changed_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <description>Set Circle Mint Contact And Account</description>
+        <name>Set_Circle_Mint_Contact_And_Account</name>
+        <label>Set Circle Mint Contact And Account</label>
+        <locationX>50</locationX>
+        <locationY>803</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Contact__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Contact_By_Entity_Id.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Account_Lookup__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Contact_By_Entity_Id.AccountId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Check_If_Application_Status_Changed</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Set Contracted Entity</description>
+        <name>Set_Contracted_Entity</name>
+        <label>Set Contracted Entity</label>
+        <locationX>50</locationX>
+        <locationY>395</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Contracted_Entity__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Circle Singapore</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Check_If_Entity_Id_Set_But_No_Contact_or_Account_Link</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <description>Check If Application Status Changed</description>
+        <name>Check_If_Application_Status_Changed</name>
+        <label>Check If Application Status Changed</label>
+        <locationX>182</locationX>
+        <locationY>995</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_update_changed_date</name>
+            <conditionLogic>1 AND (2 OR 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Circle_Account_Application_Status__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Circle_Account_Application_Status__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Circle_Account_Application_Status__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Application_Status_Changed_Date</targetReference>
+            </connector>
+            <label>Yes, update changed date</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check If Country Of Incorporation Is Singapore</description>
+        <name>Check_If_Country_Of_Incorporation_Is_Singapore</name>
+        <label>Check If Country Of Incorporation Is Singapore</label>
+        <locationX>182</locationX>
+        <locationY>287</locationY>
+        <defaultConnector>
+            <targetReference>Check_If_Entity_Id_Set_But_No_Contact_or_Account_Link</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Update_Contracted_Entity</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Country_of_Incorporation__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>SG</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Contracted_Entity</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Yes, Update Contracted Entity</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check If Entity Id Set But No Contact or Account Link</description>
+        <name>Check_If_Entity_Id_Set_But_No_Contact_or_Account_Link</name>
+        <label>Check If Entity Id Set But No Contact or Account Link</label>
+        <locationX>182</locationX>
+        <locationY>587</locationY>
+        <defaultConnector>
+            <targetReference>Check_If_Application_Status_Changed</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Entity_Id_But_No_Contact_Link</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Circle_Entity_Id__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Contact__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account_Lookup__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Contact_By_Entity_Id</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Entity Id But No Contact Link</label>
+        </rules>
+    </decisions>
+    <description>Link Circle Mint Contact And Account By Entity Id Search Only Auth User</description>
+    <environments>Default</environments>
+    <interviewLabel>Circle Account: Before Save {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Circle Account: Before Save</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Get Contact By Entity Id</description>
+        <name>Get_Contact_By_Entity_Id</name>
+        <label>Get Contact By Entity Id</label>
+        <locationX>50</locationX>
+        <locationY>695</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Set_Circle_Mint_Contact_And_Account</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Circle_Entity_ID__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Circle_Entity_Id__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Authorized_Representative__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Yes</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Contact</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_If_Country_Of_Incorporation_Is_Singapore</targetReference>
+        </connector>
+        <object>Circle_Account__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

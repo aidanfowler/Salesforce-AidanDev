@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <decisions>
+        <description>Is CSM PO Task Closed?</description>
+        <name>Is_CSM_PO_Task_Closed</name>
+        <label>Is CSM PO Task Closed?</label>
+        <locationX>182</locationX>
+        <locationY>923</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>CSM_PO_Task_Is_Closed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Completed</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Subject</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Update Partnership Objective Insights Reminder</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_PO_Fields_For_Slack_Notification</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>CSM PO Task Is Closed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Is Descope Task Closed?</description>
+        <name>Is_Descope_Task_Closed</name>
+        <label>Is Descope Task Closed?</label>
+        <locationX>182</locationX>
+        <locationY>623</locationY>
+        <defaultConnector>
+            <targetReference>Is_CSM_PO_Task_Closed</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Notify_CPS_Onboarding</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Completed</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Subject</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Contract Termination Required</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_CPS_Onboarding_Notification</targetReference>
+            </connector>
+            <label>Yes, Notify CPS Onboarding</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Was_New_Task_created_by_HubSpot_Integration</name>
+        <label>Was New Task created by HubSpot Integration?</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <defaultConnector>
+            <targetReference>Is_Descope_Task_Closed</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Created_By_HubSpot_Integration</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>frml_ISNEW</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CreatedById</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>var_HubSpot_Integration</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Type_SDR_Follow_Up</targetReference>
+            </connector>
+            <label>Created By HubSpot Integration</label>
+        </rules>
+    </decisions>
+    <description>Descope Task CPS Onboarding</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>frml_ISNEW</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW()</expression>
+    </formulas>
+    <formulas>
+        <name>frml_po_record_url</name>
+        <dataType>String</dataType>
+        <expression>LEFT($Api.Partner_Server_URL_260, FIND( &apos;/services&apos;, $Api.Partner_Server_URL_260))&amp;{!$Record.WhatId}</expression>
+    </formulas>
+    <interviewLabel>Task: After Save {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Task: After Save</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Get PO Fields For Slack Notification</description>
+        <name>Get_PO_Fields_For_Slack_Notification</name>
+        <label>Get PO Fields For Slack Notification</label>
+        <locationX>50</locationX>
+        <locationY>1031</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Send_CSM_Customer_Health_Notification</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WhatId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Partnership_Objective__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Type_SDR_Follow_Up</name>
+        <label>Update Type = SDR Follow Up</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <connector>
+            <targetReference>Is_Descope_Task_Closed</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Type</field>
+            <value>
+                <stringValue>SDR Follow Up</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Was_New_Task_created_by_HubSpot_Integration</targetReference>
+        </connector>
+        <object>Task</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <description>Send CPS Onboarding Notification</description>
+        <name>Send_CPS_Onboarding_Notification</name>
+        <label>Send CPS Onboarding Notification</label>
+        <locationX>50</locationX>
+        <locationY>731</locationY>
+        <connector>
+            <targetReference>Is_CSM_PO_Task_Closed</targetReference>
+        </connector>
+        <flowName>Slack_Channel_Notifications_Subflow</flowName>
+        <inputAssignments>
+            <name>ConversationId</name>
+            <value>
+                <elementReference>$Setup.Slack_Channel__c.legal_transactions_team__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.WhatId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>SlackMessage</name>
+            <value>
+                <elementReference>tt_cps_onboarding_descope</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <subflows>
+        <description>Send CSM Customer Health Notification</description>
+        <name>Send_CSM_Customer_Health_Notification</name>
+        <label>Send CSM Customer Health Notification</label>
+        <locationX>50</locationX>
+        <locationY>1139</locationY>
+        <flowName>Slack_Channel_Notifications_Subflow</flowName>
+        <inputAssignments>
+            <name>ConversationId</name>
+            <value>
+                <elementReference>$Setup.Slack_Channel__c.customer_health_notifications__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.WhatId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>SlackMessage</name>
+            <value>
+                <elementReference>tt_po_task_closed_notification</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <textTemplates>
+        <name>tt_cps_onboarding_descope</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>A Partner Escalation For Descoping + Contract Termination has been completed. 
+&lt;{!frml_po_record_url}|View Salesforce Record&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>tt_po_task_closed_notification</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>The Partnership Objective for {!Get_PO_Fields_For_Slack_Notification.Name} was updated. (30/60/90 update) 
+Owner: {!Get_PO_Fields_For_Slack_Notification.Owner:User.FirstName} {!Get_PO_Fields_For_Slack_Notification.Owner:User.LastName} 
+Account: {!Get_PO_Fields_For_Slack_Notification.Account__r.Name}
+Opportunity: {!Get_PO_Fields_For_Slack_Notification.Opportunity__r.Name}
+Objective Start Date: {!Get_PO_Fields_For_Slack_Notification.Objective_Start_Date__c}
+Contract End Date: {!Get_PO_Fields_For_Slack_Notification.Contract_End_Date__c}
+Successes: {!Get_PO_Fields_For_Slack_Notification.Successes__c}
+Challenges: {!Get_PO_Fields_For_Slack_Notification.Challenges__c}
+Opportunities: {!Get_PO_Fields_For_Slack_Notification.Opportunities__c}
+Learnings: {!Get_PO_Fields_For_Slack_Notification.Learnings__c}
+Priorities: {!Get_PO_Fields_For_Slack_Notification.Priorities__c}
+&lt;{!frml_po_record_url}|View Salesforce Record&gt;</text>
+    </textTemplates>
+    <variables>
+        <name>var_HubSpot_Integration</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>0058b00000GIoMRAA1</stringValue>
+        </value>
+    </variables>
+</Flow>

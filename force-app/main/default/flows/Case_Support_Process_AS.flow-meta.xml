@@ -1,0 +1,2311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Run_Assignment_Rules</name>
+        <label>Run Assignment Rules</label>
+        <locationX>3746</locationX>
+        <locationY>647</locationY>
+        <actionName>AssignCasesUsingAssignmentRules</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>CaseIds</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>AssignCasesUsingAssignmentRules</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>Send Aidan Error Email</description>
+        <name>Send_Aidan_Error_Email</name>
+        <label>Send Aidan Error Email</label>
+        <locationX>1898</locationX>
+        <locationY>2879</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <stringValue>aidan.fowler@circle.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Send Survey Failed!</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>relatedRecordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>Send Customer Care Survey To Contact</description>
+        <name>Send_Customer_Care_Survey_To_Contact</name>
+        <label>Send Customer Care Survey To Contact</label>
+        <locationX>1634</locationX>
+        <locationY>2771</locationY>
+        <actionName>customer_care_a</actionName>
+        <actionType>dynamicSendSurveyInvitation</actionType>
+        <connector>
+            <targetReference>Update_Contact_Survey_Sent_Date</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Send_Aidan_Error_Email</targetReference>
+        </faultConnector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>recipientType</name>
+            <value>
+                <stringValue>Contact</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipient</name>
+            <value>
+                <stringValue>{!$Record.ContactId}</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>surveySubjectEntity</name>
+            <value>
+                <stringValue>{!$Record.Id}</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>personalInvitation</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>isUnauthenticatedResponse</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <nameSegment>customer_care_a</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>Send Customer Care Survey To Lead</description>
+        <name>Send_Customer_Care_Survey_To_Lead</name>
+        <label>Send Customer Care Survey To Lead</label>
+        <locationX>2162</locationX>
+        <locationY>2771</locationY>
+        <actionName>customer_care_a</actionName>
+        <actionType>dynamicSendSurveyInvitation</actionType>
+        <connector>
+            <targetReference>Update_Lead_Survey_Sent_Date</targetReference>
+        </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Send_Aidan_Error_Email</targetReference>
+        </faultConnector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>recipientType</name>
+            <value>
+                <stringValue>Lead</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipient</name>
+            <value>
+                <stringValue>{!$Record.Lead__c}</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>surveySubjectEntity</name>
+            <value>
+                <stringValue>{!$Record.Id}</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>personalInvitation</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>isUnauthenticatedResponse</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <nameSegment>customer_care_a</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <apiVersion>56.0</apiVersion>
+    <assignments>
+        <description>Append Relevant Opportunity IDs</description>
+        <name>Append_Relevant_Opportunity_IDs</name>
+        <label>Append Relevant Opportunity IDs</label>
+        <locationX>138</locationX>
+        <locationY>2987</locationY>
+        <assignmentItems>
+            <assignToReference>RelevantOpportunityIds</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_through_opportunity_contact_roles.OpportunityId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_through_opportunity_contact_roles</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Set Jira Assignee Variable</description>
+        <name>Set_Assignee</name>
+        <label>Set Assignee</label>
+        <locationX>2266</locationX>
+        <locationY>971</locationY>
+        <assignmentItems>
+            <assignToReference>var_jira_assignee</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Loop_Through_Users</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Through_Users</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Set Assignee And Reporter</description>
+        <name>Set_Assignee_And_Reporter</name>
+        <label>Set Assignee And Reporter</label>
+        <locationX>2002</locationX>
+        <locationY>971</locationY>
+        <assignmentItems>
+            <assignToReference>var_jira_assignee</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Loop_Through_Users</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>var_jira_reporter</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Loop_Through_Users</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Through_Users</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Set Current Opp ID</description>
+        <name>Set_Current_Opp_ID</name>
+        <label>Set Current Opp ID</label>
+        <locationX>138</locationX>
+        <locationY>3395</locationY>
+        <assignmentItems>
+            <assignToReference>var_current_opp_id</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Loop_Through_Opportunities_and_CSMs_Send_Slack.OpportunityId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Send_Slack_To_Related_Opportunity_Cybavo_CSM</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Set Jira issue reporter variable</description>
+        <name>Set_Reporter</name>
+        <label>Set Reporter</label>
+        <locationX>2530</locationX>
+        <locationY>971</locationY>
+        <assignmentItems>
+            <assignToReference>var_jira_reporter</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Loop_Through_Users</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Through_Users</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <description>Assign SDR From Lead If Match</description>
+        <name>Assign_SDR_From_Lead_If_Match</name>
+        <label>Assign SDR From Lead If Match</label>
+        <locationX>6518</locationX>
+        <locationY>755</locationY>
+        <defaultConnector>
+            <targetReference>Case_RR_Assignment_SDR</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Lead_Match</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Check_If_There_Is_A_Lead_Match_With_An_SDR.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_SDR_From_Lead_To_Case</targetReference>
+            </connector>
+            <label>Lead Match</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check If Account Is On Watchlist, Send Slack</description>
+        <name>Check_If_Account_Is_On_Watchlist_Send_Slack</name>
+        <label>Check If Account Is On Watchlist, Send Slack</label>
+        <locationX>2134</locationX>
+        <locationY>1763</locationY>
+        <defaultConnector>
+            <targetReference>Check_Accounts_For_Watchlist_Inclusion</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Account_On_Watchlist_Send_Slack</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Check_Accounts_For_Watchlist_Inclusion.Account.Watchlist__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Watchlist_Slack_Alert</targetReference>
+            </connector>
+            <label>Account On Watchlist, Send Slack</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check If Contact Exists</description>
+        <name>Check_If_Contact_Exists</name>
+        <label>Check If Contact Exists</label>
+        <locationX>1238</locationX>
+        <locationY>2447</locationY>
+        <defaultConnector>
+            <targetReference>Check_If_Lead_Exists</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Delete_Contact_Data</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ContactId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Mark_Contact_As_Data_Deleted</targetReference>
+            </connector>
+            <label>Yes, Delete Contact Data</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check If Contact Just Added For Watchlist</description>
+        <name>Check_If_Contact_Just_Added_For_Watchlist</name>
+        <label>Check If Contact Just Added For Watchlist</label>
+        <locationX>2046</locationX>
+        <locationY>1439</locationY>
+        <defaultConnector>
+            <targetReference>Status</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Contact_Added_Check_Watchlist</name>
+            <conditionLogic>1 AND (2 OR 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ContactId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.ContactId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.ContactId</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Account_Contact_Relationships</targetReference>
+            </connector>
+            <label>Contact Added, Check Watchlist</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check If Lead Exists</description>
+        <name>Check_If_Lead_Exists</name>
+        <label>Check If Lead Exists</label>
+        <locationX>1238</locationX>
+        <locationY>2747</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Delete_Lead_Data</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Lead__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Mark_Lead_As_Data_Deleted</targetReference>
+            </connector>
+            <label>Yes, Delete Lead Data</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if there are related opportunities</description>
+        <name>Check_if_there_are_related_opportunities</name>
+        <label>Check if there are related opportunities</label>
+        <locationX>182</locationX>
+        <locationY>2771</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Loop_through_the_opportunity_contact_roles</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Opportunity_Contact_Roles</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Loop_through_opportunity_contact_roles</targetReference>
+            </connector>
+            <label>Loop through the opportunity contact roles</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if user matches assignee or reporter</description>
+        <name>Check_if_user_matches_assignee_or_reporter</name>
+        <label>Check if user matches assignee or reporter</label>
+        <locationX>2398</locationX>
+        <locationY>863</locationY>
+        <defaultConnector>
+            <targetReference>Loop_Through_Users</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Assign_Both_Reporter_And_Assignee</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Loop_Through_Users.JIRA_User_ID__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.JIRA_Issue_Assignee__c</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Loop_Through_Users.JIRA_User_ID__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.JIRA_Issue_Reporter__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Assignee_And_Reporter</targetReference>
+            </connector>
+            <label>Assign Both Reporter And Assignee</label>
+        </rules>
+        <rules>
+            <name>Assign_Assignee</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Loop_Through_Users.JIRA_User_ID__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.JIRA_Issue_Assignee__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Assignee</targetReference>
+            </connector>
+            <label>Assign Assignee</label>
+        </rules>
+        <rules>
+            <name>Assign_Reporter</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Loop_Through_Users.JIRA_User_ID__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.JIRA_Issue_Reporter__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Reporter</targetReference>
+            </connector>
+            <label>Assign Reporter</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Contact Linked, Check For Opportunity CSM To Notify About Cybavo Case / Opportunity</description>
+        <name>Contact_Linked_Check_For_Opportunity_CSM_To_Notify_For_Cybavo</name>
+        <label>Contact Linked, Check For Opportunity CSM To Notify For Cybavo</label>
+        <locationX>380</locationX>
+        <locationY>2555</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Contact_Linked_Cybavo_Case</name>
+            <conditionLogic>1</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ContactId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Opportunity_Contact_Roles</targetReference>
+            </connector>
+            <label>Contact Linked</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Mark contact for data deletion and update email to have an invalid prefix to stop future sends</description>
+        <name>Data_Deletion_Check</name>
+        <label>Data Deletion Check</label>
+        <locationX>2228</locationX>
+        <locationY>2339</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Delete_Data</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Category__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Data Subject Request</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Sub_Category__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Deletion</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_If_Contact_Exists</targetReference>
+            </connector>
+            <label>Delete Data</label>
+        </rules>
+        <rules>
+            <name>Send_Survey</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ContactId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Lead__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Exclude_Case_Categories_And_Email_From_Survey_Sends</targetReference>
+            </connector>
+            <label>Send Survey</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check If Survey Should Be Sent (another check for lead and contact emails)</description>
+        <name>Exclude_Case_Categories_And_Email_From_Survey_Sends</name>
+        <label>Exclude Case Categories And Email From Survey Sends</label>
+        <locationX>2558</locationX>
+        <locationY>2447</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Send_Survey</name>
+            <conditionLogic>1 AND 3 AND 4 AND 5 AND 6 AND 7 AND ((2 AND 8 AND 9) OR 10) AND 11 AND 12 AND 13 AND 14 AND 15</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Category__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>EOL Product</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account.Email_Domain__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>crypto.com</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Sub_Category__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Spam</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Opt_Out_of_Survey__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Sub_Category__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Deletion</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Origin</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Cybavo Email</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Origin</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Cybavo Community</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account.Email_Domain__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>circle.com</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>frml_account_email_contains_dapper</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.AccountId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.MasterRecordId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Origin</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>EOL Product</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Sub_Category__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Rejected Application</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Sub_Category__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Circle Outreach</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Sub_Category__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Offboarded</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Route_Survey_To_Lead_Or_Contact</targetReference>
+            </connector>
+            <label>Yes, Send Survey</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Link jira assignee and reporter if the related ID fields are updated</description>
+        <name>Is_JIRA_Linking_Updated</name>
+        <label>Is JIRA Linking Updated</label>
+        <locationX>2046</locationX>
+        <locationY>539</locationY>
+        <defaultConnector>
+            <targetReference>Check_If_Contact_Just_Added_For_Watchlist</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>JIRA_Assignee_OR_Reporter_Updated</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.JIRA_Issue_Assignee__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.JIRA_Issue_Reporter__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_User_By_JIRA_ID</targetReference>
+            </connector>
+            <label>JIRA Assignee OR Reporter Updated</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>offboarding_Status</name>
+        <label>Status?</label>
+        <locationX>5594</locationX>
+        <locationY>539</locationY>
+        <defaultConnectorLabel>Nope</defaultConnectorLabel>
+        <rules>
+            <name>offboarding_Acknowledgment</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Acknowledgment</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Offboarding_Acknowledgement_Slack_Notification</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Acknowledgment</label>
+        </rules>
+        <rules>
+            <name>offboarding_Approvals_Completed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Approvals Completed</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Offboarding_Approval_Slack_Notification</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Approvals Completed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>This determines if there is a known SDR or if these need to round robing assignement</description>
+        <name>Ownership_Assignment</name>
+        <label>Ownership Assignment</label>
+        <locationX>6518</locationX>
+        <locationY>539</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Cases_Owned_by_Sales_Queue_with_known_SDR</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Account.SDR_Owner__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Owner:Group.Id</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Setup.QueueIds__c.SalesQueue__c</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account.SDR_Owner__r.FirstName</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Unassigned</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account.SDR_Owner__r.IsActive</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_SDR_the_Case</targetReference>
+            </connector>
+            <label>Cases Owned by Sales Queue with known SDR</label>
+        </rules>
+        <rules>
+            <name>Cases_Owned_by_Sales_Queue</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Owner:Group.Id</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Setup.QueueIds__c.SalesQueue__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_If_There_Is_A_Lead_Match_With_An_SDR</targetReference>
+            </connector>
+            <label>Cases Owned by Sales Queue</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Product_Selected</name>
+        <label>Product Selected?</label>
+        <locationX>4010</locationX>
+        <locationY>539</locationY>
+        <defaultConnectorLabel>Is Null</defaultConnectorLabel>
+        <rules>
+            <name>Product_is_Selected</name>
+            <conditionLogic>1 AND (2 OR 3) AND 4</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Product__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Product__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Product__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Product__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Other</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Run_Assignment_Rules</targetReference>
+            </connector>
+            <label>Product is Selected</label>
+        </rules>
+        <rules>
+            <name>Other_is_Selected</name>
+            <conditionLogic>1 AND (2 OR 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Product__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Other</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Product__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Product__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Case_RR_Assignment_Marketing2</targetReference>
+            </connector>
+            <label>&apos;Other&apos; is Selected</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Record_Type</name>
+        <label>Record Type</label>
+        <locationX>4612</locationX>
+        <locationY>431</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>CustomerCare</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Customer Care</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Is_JIRA_Linking_Updated</targetReference>
+            </connector>
+            <label>CustomerCare</label>
+        </rules>
+        <rules>
+            <name>ProductFeedback</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Product Feedback</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Product_Selected</targetReference>
+            </connector>
+            <label>ProductFeedback</label>
+        </rules>
+        <rules>
+            <name>onRamp</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Onramp Request</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Route_Case_Updates</targetReference>
+            </connector>
+            <label>onRamp</label>
+        </rules>
+        <rules>
+            <name>offBoarding</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Off boarding</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>offboarding_Status</targetReference>
+            </connector>
+            <label>offBoarding</label>
+        </rules>
+        <rules>
+            <name>Sales</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Sales</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Ownership_Assignment</targetReference>
+            </connector>
+            <label>Sales</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Case submitted picked up or closed should trigger slack alerts</description>
+        <name>Route_Case_Updates</name>
+        <label>Route Case Updates</label>
+        <locationX>4802</locationX>
+        <locationY>539</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Case_Submitted</name>
+            <conditionLogic>(1 OR 3) AND 2</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>New</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.OwnerId</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Setup.QueueIds__c.OnRampQueue__c</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>In Progress</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>On_Ramp_Ticket_Alert_Slack_Notification</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Case Submitted</label>
+        </rules>
+        <rules>
+            <name>Case_Picked_Up</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.OwnerId</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Setup.QueueIds__c.OnRampQueue__c</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.OwnerId</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Setup.QueueIds__c.OnRampQueue__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>On_Ramp_Ticket_Alert_Slack_Notification</targetReference>
+            </connector>
+            <label>Case Picked Up</label>
+        </rules>
+        <rules>
+            <name>Case_Closed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>On_Ramp_Ticket_Alert_Slack_Notification</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Case Closed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Route Notification Based On Origin</description>
+        <name>Route_Notification_Based_On_Origin</name>
+        <label>Route Notification Based On Origin</label>
+        <locationX>611</locationX>
+        <locationY>2339</locationY>
+        <defaultConnector>
+            <targetReference>CS_Ticket_Alert_Slack_Notification</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Origin_Is_Cybavo</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Origin</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Cybavo Community</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Origin</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Cybavo Email</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Cybavo_Ticket_Alert_Slack_Notification</targetReference>
+            </connector>
+            <label>Origin Is Cybavo</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Route Survey To Lead Or Contact</description>
+        <name>Route_Survey_To_Lead_Or_Contact</name>
+        <label>Route Survey To Lead Or Contact</label>
+        <locationX>2162</locationX>
+        <locationY>2555</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Route_To_Contact</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ContactId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>frml_days_since_last_contact_survey_sent</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>7.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Contact.Email_Domain__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>crypto.com</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Contact.Email_Domain__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>circle.com</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Survey_Attempt_Field_Update_Contact</targetReference>
+            </connector>
+            <label>Route To Contact</label>
+        </rules>
+        <rules>
+            <name>Route_To_Lead</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ContactId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Lead__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>frml_days_since_last_lead_survey_sent</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>7.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Lead__r.Email_Domain__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>circle.com</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Lead__r.Email_Domain__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>crypto.com</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Survey_Attempt_Field_Update_Lead</targetReference>
+            </connector>
+            <label>Route To Lead</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>This checks the status of the case</description>
+        <name>Status</name>
+        <label>Status?</label>
+        <locationX>2046</locationX>
+        <locationY>2231</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>New</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>New</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Route_Notification_Based_On_Origin</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>New</label>
+        </rules>
+        <rules>
+            <name>Closed_Case</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Data_Deletion_Check</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Closed Case</label>
+        </rules>
+    </decisions>
+    <description>Slack Link Refactoring For Help Site Origin</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>frml_account_email_contains_dapper</name>
+        <dataType>Boolean</dataType>
+        <expression>CONTAINS({!$Record.Account.Email_Domain__c},&apos;dapper&apos;)</expression>
+    </formulas>
+    <formulas>
+        <name>frml_current_opp_url</name>
+        <dataType>String</dataType>
+        <expression>LEFT({!$Api.Partner_Server_URL_260}, FIND( &apos;/services&apos;, {!$Api.Partner_Server_URL_260}))&amp;{!var_current_opp_id}</expression>
+    </formulas>
+    <formulas>
+        <description>Email with data delete prefix</description>
+        <name>frml_data_deleted_contact_email</name>
+        <dataType>String</dataType>
+        <expression>&apos;data_deleted_&apos; + {!$Record.Contact.Email}</expression>
+    </formulas>
+    <formulas>
+        <name>frml_days_since_last_contact_survey_sent</name>
+        <dataType>Number</dataType>
+        <expression>IF(!ISNull({!$Record.Contact.Most_Recent_Survey_Sent_Date__c}), TODAY() - DATEVALUE({!$Record.Contact.Most_Recent_Survey_Sent_Date__c}), 10)</expression>
+        <scale>2</scale>
+    </formulas>
+    <formulas>
+        <name>frml_days_since_last_lead_survey_sent</name>
+        <dataType>Number</dataType>
+        <expression>IF(!ISNULL({!$Record.Lead__r.Most_Recent_Survey_Sent_Date__c}),Today() - DateValue({!$Record.Lead__r.Most_Recent_Survey_Sent_Date__c}),10)</expression>
+        <scale>2</scale>
+    </formulas>
+    <formulas>
+        <description>This holds the merchants Reserve Collateral Id</description>
+        <name>frml_MerchantReserveCollateralChannelId</name>
+        <dataType>String</dataType>
+        <expression>IF(NOT({!GetOrg.IsSandbox}), &apos;C03PZTCKGUC&apos;, &apos;C05053QPX9P&apos;)</expression>
+    </formulas>
+    <formulas>
+        <description>text for on ramp notifications</description>
+        <name>frml_onRamp_body</name>
+        <dataType>String</dataType>
+        <expression>IF(TEXt({!$Record.Status})=&apos;New&apos;, 
+IF({!$Record.OwnerId} = {!$Setup.QueueIDs__c.OnRampQueue__c}, &apos;An On Ramp Case Was Created&apos;,&apos;An On Ramp Case Was Picked Up&apos;),
+IF(TEXt({!$Record.Status})=&apos;Closed&apos;,&apos;An On Ramp Case Was Closed&apos;,null))</expression>
+    </formulas>
+    <formulas>
+        <name>frml_owner_name</name>
+        <dataType>String</dataType>
+        <expression>IF(!ISBLANK({!$Record.Owner:Group.Id}), {!$Record.Owner:Group.Name}, {!$Record.Owner:User.FirstName}+&apos; &apos;+{!$Record.Owner:User.LastName})</expression>
+    </formulas>
+    <formulas>
+        <description>This creates the URL Link to the record dynamically and will work in Prod or Sandbox</description>
+        <name>frml_recordURL</name>
+        <dataType>String</dataType>
+        <expression>IF(
+   LEFT($Api.Partner_Server_URL_260, FIND( &apos;/services&apos;, $Api.Partner_Server_URL_260)) = 
+   &apos;https://help.circle.com/&apos;,&apos;https://circleinternetfinancial.my.salesforce.com/&apos;, 
+   IF( LEFT($Api.Partner_Server_URL_260, FIND( &apos;/services&apos;, $Api.Partner_Server_URL_260))= &apos;https://circleinternetfinancial--staging.sandbox.my.site.com/help/&apos;,&apos;https://circleinternetfinancial--staging.sandbox.my.salesforce.com/&apos;,LEFT($Api.Partner_Server_URL_260, FIND( &apos;/services&apos;, $Api.Partner_Server_URL_260))
+))&amp;{!$Record.Id}</expression>
+    </formulas>
+    <formulas>
+        <description>This will get the value for the workspace depending on if you are in production or sandbox.  Production will use the Circle Workspace Id and Sandbox will use the Circle Contractor Workspace Id so we can test slack notifications.</description>
+        <name>frml_SlackWorkspace</name>
+        <dataType>String</dataType>
+        <expression>IF(NOT({!GetOrg.IsSandbox}), &apos;T0252ABLY&apos;, &apos;TECALKNBE&apos;)</expression>
+    </formulas>
+    <formulas>
+        <description>This is the value to pass the correct RR Group for Product Marketing Managers</description>
+        <name>var_ProductMarketingManagers</name>
+        <dataType>String</dataType>
+        <expression>&quot;Product Marketing Managers&quot;</expression>
+    </formulas>
+    <formulas>
+        <description>This is the value to pass the correct RR Group for SDR Inbound Email</description>
+        <name>var_SDRInboundEmail</name>
+        <dataType>String</dataType>
+        <expression>&quot;SDR Inbound Email&quot;</expression>
+    </formulas>
+    <interviewLabel>Case: Support Process - AS {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Case: After Save</label>
+    <loops>
+        <description>Check Accounts For Watchlist Inclusion</description>
+        <name>Check_Accounts_For_Watchlist_Inclusion</name>
+        <label>Check Accounts For Watchlist Inclusion</label>
+        <locationX>1914</locationX>
+        <locationY>1655</locationY>
+        <collectionReference>Get_Account_Contact_Relationships</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Check_If_Account_Is_On_Watchlist_Send_Slack</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Status</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <description>Loop Through Opportunities and CSMs Send Slack</description>
+        <name>Loop_Through_Opportunities_and_CSMs_Send_Slack</name>
+        <label>Loop Through Opportunities and CSMs Send Slack</label>
+        <locationX>50</locationX>
+        <locationY>3287</locationY>
+        <collectionReference>Get_Opportunity_Team_Members_For_Relevant_Opps</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Set_Current_Opp_ID</targetReference>
+        </nextValueConnector>
+    </loops>
+    <loops>
+        <description>Loop through opportunity contact roles and set opportunity ids variable</description>
+        <name>Loop_through_opportunity_contact_roles</name>
+        <label>Loop through opportunity contact roles</label>
+        <locationX>50</locationX>
+        <locationY>2879</locationY>
+        <collectionReference>Get_Opportunity_Contact_Roles</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Append_Relevant_Opportunity_IDs</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Get_Opportunity_Team_Members_For_Relevant_Opps</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <description>Loop through users just queried</description>
+        <name>Loop_Through_Users</name>
+        <label>Loop Through Users</label>
+        <locationX>1914</locationX>
+        <locationY>755</locationY>
+        <collectionReference>Get_User_By_JIRA_ID</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Check_if_user_matches_assignee_or_reporter</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Update_JIra_Issue_Assignee_Reporter</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Check If There Is A Lead Match With An SDR</description>
+        <name>Check_If_There_Is_A_Lead_Match_With_An_SDR</name>
+        <label>Check If There Is A Lead Match With An SDR</label>
+        <locationX>6518</locationX>
+        <locationY>647</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assign_SDR_From_Lead_If_Match</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>IsConverted</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Email</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.SuppliedEmail</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>SDR_Owner__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>SDR_Owner_Is_Active__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Lead</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Get Account Contact Relationships</description>
+        <name>Get_Account_Contact_Relationships</name>
+        <label>Get Account Contact Relationships</label>
+        <locationX>1914</locationX>
+        <locationY>1547</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_Accounts_For_Watchlist_Inclusion</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>ContactId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.ContactId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>AccountContactRelation</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Get Opportunity Contact Roles To Get Relevant Opportunity IDs</description>
+        <name>Get_Opportunity_Contact_Roles</name>
+        <label>Get Opportunity Contact Roles</label>
+        <locationX>182</locationX>
+        <locationY>2663</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_if_there_are_related_opportunities</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>ContactId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.ContactId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>OpportunityContactRole</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>OpportunityId</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Get Opportunity Team Members For Relevant Opps</description>
+        <name>Get_Opportunity_Team_Members_For_Relevant_Opps</name>
+        <label>Get Opportunity Team Members For Relevant Opps</label>
+        <locationX>50</locationX>
+        <locationY>3179</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Loop_Through_Opportunities_and_CSMs_Send_Slack</targetReference>
+        </connector>
+        <filterLogic>1 AND 2 AND (3 OR 4)</filterLogic>
+        <filters>
+            <field>OpportunityId</field>
+            <operator>In</operator>
+            <value>
+                <elementReference>RelevantOpportunityIds</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>TeamMemberRole</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Customer Success Manager</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>UserId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Setup.Static_User_Settings__c.Cybavo_CSM_1__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>UserId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Setup.Static_User_Settings__c.Cybavo_CSM_2__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>OpportunityTeamMember</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>OpportunityId</queriedFields>
+        <queriedFields>UserId</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Search users based on jira Id of assignee</description>
+        <name>Get_User_By_JIRA_ID</name>
+        <label>Get User By JIRA ID</label>
+        <locationX>1914</locationX>
+        <locationY>647</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Loop_Through_Users</targetReference>
+        </connector>
+        <filterLogic>(1 OR 2) AND 3</filterLogic>
+        <filters>
+            <field>JIRA_User_ID__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.JIRA_Issue_Assignee__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>JIRA_User_ID__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.JIRA_Issue_Reporter__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>JIRA_User_ID__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>User</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>This gets the Org Information so that we can determine if this is Prod or Sandbox</description>
+        <name>GetOrg</name>
+        <label>GetOrg</label>
+        <locationX>4612</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Record_Type</targetReference>
+        </connector>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Organization</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Assign SDR From Lead To Case</description>
+        <name>Assign_SDR_From_Lead_To_Case</name>
+        <label>Assign SDR From Lead To Case</label>
+        <locationX>6386</locationX>
+        <locationY>863</locationY>
+        <inputAssignments>
+            <field>Lead__c</field>
+            <value>
+                <elementReference>Check_If_There_Is_A_Lead_Match_With_An_SDR.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>Check_If_There_Is_A_Lead_Match_With_An_SDR.SDR_Owner__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Assign_SDR_the_Case</name>
+        <label>Assign SDR the Case</label>
+        <locationX>6122</locationX>
+        <locationY>647</locationY>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>$Record.Account.SDR_Owner__r.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Mark Contact As Data Deleted</description>
+        <name>Mark_Contact_As_Data_Deleted</name>
+        <label>Mark Contact As Data Deleted</label>
+        <locationX>1106</locationX>
+        <locationY>2555</locationY>
+        <connector>
+            <targetReference>Check_If_Lead_Exists</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.ContactId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Data_Deleted_Customer_Request__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Email</field>
+            <value>
+                <elementReference>frml_data_deleted_contact_email</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Mark Lead As Data Deleted</description>
+        <name>Mark_Lead_As_Data_Deleted</name>
+        <label>Mark Lead As Data Deleted</label>
+        <locationX>1106</locationX>
+        <locationY>2855</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Lead__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Data_Deleted_Customer_Request__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>Lead</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>This will update the check box &quot;Send Survey&quot; and the attempt date stamp</description>
+        <name>Send_Survey_Attempt_Field_Update_Contact</name>
+        <label>Send Survey Attempt Field Update Contact</label>
+        <locationX>1634</locationX>
+        <locationY>2663</locationY>
+        <connector>
+            <targetReference>Send_Customer_Care_Survey_To_Contact</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Survey_Send_Attempt_Date_Time__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>This will update the check box &quot;Send Survey&quot; and the attempt date stamp</description>
+        <name>Send_Survey_Attempt_Field_Update_Lead</name>
+        <label>Send Survey Attempt Field Update Lead</label>
+        <locationX>2162</locationX>
+        <locationY>2663</locationY>
+        <connector>
+            <targetReference>Send_Customer_Care_Survey_To_Lead</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Survey_Send_Attempt_Date_Time__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Set Survey Sent Date</description>
+        <name>Set_Survey_Sent_Date</name>
+        <label>Set Survey Sent Date</label>
+        <locationX>2162</locationX>
+        <locationY>3203</locationY>
+        <inputAssignments>
+            <field>Survey_Send_Completion_Date_Time__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update Contact Survey Sent Date</description>
+        <name>Update_Contact_Survey_Sent_Date</name>
+        <label>Update Contact Survey Sent Date</label>
+        <locationX>1634</locationX>
+        <locationY>2879</locationY>
+        <connector>
+            <targetReference>Set_Survey_Sent_Date</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.ContactId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Most_Recent_Survey_Sent_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update JIra Issue Assignee &amp; Reporter</description>
+        <name>Update_JIra_Issue_Assignee_Reporter</name>
+        <label>Update JIra Issue Assignee &amp; Reporter</label>
+        <locationX>1914</locationX>
+        <locationY>1247</locationY>
+        <connector>
+            <targetReference>Check_If_Contact_Just_Added_For_Watchlist</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>JIRA_Issue_Assignee_V2__c</field>
+            <value>
+                <elementReference>var_jira_assignee.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>JIRA_Issue_Reporter_V2__c</field>
+            <value>
+                <elementReference>var_jira_reporter.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update Lead Survey Sent Date</description>
+        <name>Update_Lead_Survey_Sent_Date</name>
+        <label>Update Lead Survey Sent Date</label>
+        <locationX>2162</locationX>
+        <locationY>2879</locationY>
+        <connector>
+            <targetReference>Set_Survey_Sent_Date</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Lead__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Most_Recent_Survey_Sent_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Lead</object>
+    </recordUpdates>
+    <start>
+        <locationX>4486</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>GetOrg</targetReference>
+        </connector>
+        <object>Case</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <description>Case RR Assignment Marketing</description>
+        <name>Case_RR_Assignment_Marketing2</name>
+        <label>Case RR Assignment Marketing</label>
+        <locationX>4010</locationX>
+        <locationY>647</locationY>
+        <flowName>Case_Subflow_RR_Assignmnet</flowName>
+        <inputAssignments>
+            <name>Case_Record_Id</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Record_Owner_Id</name>
+            <value>
+                <elementReference>$Record.OwnerId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>varAssignmentGroup</name>
+            <value>
+                <elementReference>var_ProductMarketingManagers</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <subflows>
+        <name>Case_RR_Assignment_SDR</name>
+        <label>Case RR Assignment SDR</label>
+        <locationX>6650</locationX>
+        <locationY>863</locationY>
+        <flowName>Case_Subflow_RR_Assignmnet</flowName>
+        <inputAssignments>
+            <name>Case_Record_Id</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Record_Owner_Id</name>
+            <value>
+                <elementReference>$Record.OwnerId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>varAssignmentGroup</name>
+            <value>
+                <elementReference>var_SDRInboundEmail</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <subflows>
+        <description>This send a slack notification to the CS Tickets Alert Channel</description>
+        <name>CS_Ticket_Alert_Slack_Notification</name>
+        <label>CS Ticket Alert Slack Notification</label>
+        <locationX>842</locationX>
+        <locationY>2447</locationY>
+        <flowName>Slack_Channel_Notifications_Subflow</flowName>
+        <inputAssignments>
+            <name>ConversationId</name>
+            <value>
+                <elementReference>$Setup.Slack_Channel__c.cs_ticket_alerts__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>SlackMessage</name>
+            <value>
+                <elementReference>tt_cs_ticket_alerts_message</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>SlackWorkspace</name>
+            <value>
+                <elementReference>frml_SlackWorkspace</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <subflows>
+        <description>This send a slack notification to the Cybavo Tickets Alert Channel</description>
+        <name>Cybavo_Ticket_Alert_Slack_Notification</name>
+        <label>Cybavo Ticket Alert Slack Notification</label>
+        <locationX>380</locationX>
+        <locationY>2447</locationY>
+        <connector>
+            <targetReference>Contact_Linked_Check_For_Opportunity_CSM_To_Notify_For_Cybavo</targetReference>
+        </connector>
+        <flowName>Slack_Channel_Notifications_Subflow</flowName>
+        <inputAssignments>
+            <name>ConversationId</name>
+            <value>
+                <elementReference>$Setup.Slack_Channel__c.cybavo_support_triage__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>SlackMessage</name>
+            <value>
+                <elementReference>tt_cybavo_new_case</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>SlackWorkspace</name>
+            <value>
+                <elementReference>frml_SlackWorkspace</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <subflows>
+        <name>Offboarding_Acknowledgement_Slack_Notification</name>
+        <label>Offboarding Acknowledgement Slack Notification</label>
+        <locationX>5330</locationX>
+        <locationY>647</locationY>
+        <connector>
+            <targetReference>Send_Slack_To_Account_Owner</targetReference>
+        </connector>
+        <flowName>Slack_Channel_Notifications_Subflow</flowName>
+        <inputAssignments>
+            <name>ConversationId</name>
+            <value>
+                <elementReference>$Setup.Slack_Channel__c.business_offboarding_cases__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>SlackMessage</name>
+            <value>
+                <elementReference>tt_offboarding_acknowledgement</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>SlackWorkspace</name>
+            <value>
+                <elementReference>frml_SlackWorkspace</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <subflows>
+        <name>Offboarding_Approval_Slack_Notification</name>
+        <label>Offboarding Approval Slack Notification</label>
+        <locationX>5594</locationX>
+        <locationY>647</locationY>
+        <flowName>Slack_Channel_Notifications_Subflow</flowName>
+        <inputAssignments>
+            <name>ConversationId</name>
+            <value>
+                <elementReference>$Setup.Slack_Channel__c.business_offboarding_cases__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>SlackMessage</name>
+            <value>
+                <elementReference>tt_offboarding_approvals_completed</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>SlackWorkspace</name>
+            <value>
+                <elementReference>frml_SlackWorkspace</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <subflows>
+        <description>This send a slack notification to the On Ramp Tickets Alert Channel</description>
+        <name>On_Ramp_Ticket_Alert_Slack_Notification</name>
+        <label>On Ramp Ticket Alert Slack Notification</label>
+        <locationX>4802</locationX>
+        <locationY>839</locationY>
+        <connector>
+            <targetReference>Send_Slack_To_On_Ramp_Case_Creator</targetReference>
+        </connector>
+        <flowName>Slack_Channel_Notifications_Subflow</flowName>
+        <inputAssignments>
+            <name>ConversationId</name>
+            <value>
+                <elementReference>$Setup.Slack_Channel__c.onramp_newcase_alerts__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>SlackMessage</name>
+            <value>
+                <elementReference>tt_onRamp_ticket_alert_message</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>SlackWorkspace</name>
+            <value>
+                <elementReference>frml_SlackWorkspace</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <subflows>
+        <description>Send Slack To Account Owner</description>
+        <name>Send_Slack_To_Account_Owner</name>
+        <label>Send Slack To Account Owner</label>
+        <locationX>5330</locationX>
+        <locationY>755</locationY>
+        <connector>
+            <targetReference>Send_Slack_To_SE</targetReference>
+        </connector>
+        <flowName>Send_Slack_Notification_To_User</flowName>
+        <inputAssignments>
+            <name>RecordID</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>SlackMessage</name>
+            <value>
+                <elementReference>tt_offboarding_acknowledgement</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>UserID</name>
+            <value>
+                <elementReference>$Record.Account.OwnerId</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <subflows>
+        <description>Send Slack To On Ramp Case Creator</description>
+        <name>Send_Slack_To_On_Ramp_Case_Creator</name>
+        <label>Send Slack To On Ramp Case Creator</label>
+        <locationX>4802</locationX>
+        <locationY>947</locationY>
+        <flowName>Send_Slack_Notification_To_User</flowName>
+        <inputAssignments>
+            <name>RecordID</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>SlackMessage</name>
+            <value>
+                <elementReference>tt_onRamp_ticket_alert_message</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>UserID</name>
+            <value>
+                <elementReference>$Record.CreatedById</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <subflows>
+        <description>Send Slack To Related Opportunity Cybavo CSM</description>
+        <name>Send_Slack_To_Related_Opportunity_Cybavo_CSM</name>
+        <label>Send Slack To Related Opportunity Cybavo CSM</label>
+        <locationX>138</locationX>
+        <locationY>3503</locationY>
+        <connector>
+            <targetReference>Loop_Through_Opportunities_and_CSMs_Send_Slack</targetReference>
+        </connector>
+        <flowName>Send_Slack_Notification_To_User</flowName>
+        <inputAssignments>
+            <name>RecordID</name>
+            <value>
+                <elementReference>Loop_Through_Opportunities_and_CSMs_Send_Slack.OpportunityId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>SlackMessage</name>
+            <value>
+                <elementReference>tt_cybavo_csm_case_opp_notification</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>UserID</name>
+            <value>
+                <elementReference>Loop_Through_Opportunities_and_CSMs_Send_Slack.UserId</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <subflows>
+        <description>Send Slack To SE</description>
+        <name>Send_Slack_To_SE</name>
+        <label>Send Slack To SE</label>
+        <locationX>5330</locationX>
+        <locationY>863</locationY>
+        <flowName>Send_Slack_Notification_To_User</flowName>
+        <inputAssignments>
+            <name>RecordID</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>SlackMessage</name>
+            <value>
+                <elementReference>tt_offboarding_acknowledgement</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>UserID</name>
+            <value>
+                <elementReference>$Record.Account.Solutions_Engineer__c</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <subflows>
+        <description>This send a slack notification to the CS Tickets Alert Channel</description>
+        <name>Send_Watchlist_Slack_Alert</name>
+        <label>Send Watchlist Slack Alert</label>
+        <locationX>2002</locationX>
+        <locationY>1871</locationY>
+        <connector>
+            <targetReference>Check_Accounts_For_Watchlist_Inclusion</targetReference>
+        </connector>
+        <flowName>Slack_Channel_Notifications_Subflow</flowName>
+        <inputAssignments>
+            <name>ConversationId</name>
+            <value>
+                <elementReference>$Setup.Slack_Channel__c.customer_care_watchlist__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>SlackMessage</name>
+            <value>
+                <elementReference>tt_watchlist_slack</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>SlackWorkspace</name>
+            <value>
+                <elementReference>frml_SlackWorkspace</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <textTemplates>
+        <name>tt_cs_ticket_alerts_message</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>A customer has submitted a new support case.
+Case Subject: {!$Record.Subject}
+&lt;{!frml_recordURL}|View Salesforce Record&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <description>text to send to cybavo opp csm when case comes in for contact</description>
+        <name>tt_cybavo_csm_case_opp_notification</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>A customer has submitted a new Cybavo support case which has a related opportunity where you are the CSM
+Case Subject: {!$Record.Subject}
+&lt;{!frml_recordURL}|View Salesforce Case&gt;
+&lt;{!frml_current_opp_url}|View Salesforce Opportunity&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>tt_cybavo_new_case</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>A customer has submitted a new Cybavo support case.
+Case Subject: {!$Record.Subject}
+&lt;{!frml_recordURL}|View Case In Salesforce&gt;
+Requester: {!$Record.SuppliedName}
+Description: {!$Record.Description}</text>
+    </textTemplates>
+    <textTemplates>
+        <description>Used to notify the #merchant-reserve-collateral channel</description>
+        <name>tt_FinalTXNHash_message</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Slack notify the #merchant-reserve-collateral channel
+{!$Record.Account.Name} has sent a final deposit with the following details.  Payments Ops, please confirm receipt by updating the Onboarding case.  
+Priority: {!$Record.Priority}
+Diameter Customer ID: {!$Record.Account.Diameter_URL__c}
+Blockchain used to Reserve Requirement: {!$Record.Blockchain_used_for_Reserve_Requirement__c}
+Final TXN Amount for Reserve Requirement: {!$Record.Final_TXN_Amount__c}
+Final TXN Hash for Reserve Requirement: {!$Record.Final_TXN_Hash__c}
+&lt;{!frml_recordURL}|View Salesforce Record&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <description>slack notification for limit increase category set</description>
+        <name>tt_limit_increase_category_slack</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>A case has been marked as a Limit Increase Request
+Case Subject: {!$Record.Subject}
+&lt;{!frml_recordURL}|View Salesforce Record&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <description>Slack notification to case owner when approval decision is made</description>
+        <name>tt_limit_request_finished</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>An approval request has been decided for a limit request case
+Case Subject: {!$Record.Subject}
+Approval Decision: {!$Record.Compliance_Review_Status__c}
+Case Number: {!$Record.CaseNumber}
+Case Subject: {!$Record.Subject}
+Customer Name: {!$Record.Circle_Account_Name__c}
+Eligible For Async Compliance Review : {!$Record.Eligible_for_Async_Compliance_Review__c}
+Circle Account Approval Date : {!$Record.Circle_Account__r.Application_Approved_Date__c}
+Nature Of Business: {!$Record.Nature_Of_Business__c}
+Requested Deposit Limit: {!$Record.Requested_Deposit_Limit__c}
+Requested Withdrawal Limit: {!$Record.Requested_Withdrawal_Limit__c}
+Current Deposit Limit: {!$Record.Weekly_Deposit_Limit__c}
+Current Withdrawal Limit: {!$Record.Weekly_Withdrawal_Limit__c}
+&lt;{!frml_recordURL}|View Salesforce Record&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <description>Text for slack to compliance new deal channel notifying about approval needed</description>
+        <name>tt_new_limit_increase_approval</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>A new limit increase case needs compliance approval
+Case Number: {!$Record.CaseNumber}
+Case Subject: {!$Record.Subject}
+Customer Name: {!$Record.Circle_Account_Name__c}
+Eligible For Async Compliance Review : {!$Record.Eligible_for_Async_Compliance_Review__c}
+Circle Account Approval Date : {!$Record.Circle_Account__r.Application_Approved_Date__c}
+Nature Of Business: {!$Record.Nature_Of_Business__c}
+Requested Deposit Limit: {!$Record.Requested_Deposit_Limit__c}
+Requested Withdrawal Limit: {!$Record.Requested_Withdrawal_Limit__c}
+Current Deposit Limit: {!$Record.Weekly_Deposit_Limit__c}
+Current Withdrawal Limit: {!$Record.Weekly_Withdrawal_Limit__c}
+&lt;{!frml_recordURL}|View Salesforce Record&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <description>message for no account owner slack channel task</description>
+        <name>tt_no_account_owner_slack_id</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>RED ALERT: No Channel Id has been found on the Case Account Owner&apos;s User record, please connect your slack</text>
+    </textTemplates>
+    <textTemplates>
+        <name>tt_no_account_pre_sales_Se_Slack</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;RED ALERT: No Channel Id has been found on the Case Account Pre Sales SE User record, please connect your slack&lt;/p&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <description>Need to link slack for case creator message</description>
+        <name>tt_noCaseCreatorSlackId</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>RED ALERT: No Channel Id has been found on the Case Creator&apos;s User record to notify {!$Record.CreatedBy.FirstName}{!$Record.CreatedBy.LastName}
+Please update your user record in order to receive slack notifications.
+ {!frml_recordURL}</text>
+    </textTemplates>
+    <textTemplates>
+        <description>Notification if case creator does not have slack and need to get message</description>
+        <name>tt_noCaseOwnerSlackId</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;RED ALERT: No Channel Id has been found on the Case Owner&apos;s User record to notify {!$Record.Owner:User.FirstName}{!$Record.&lt;span style=&quot;color: rgb(68, 68, 68); background-color: rgb(255, 255, 255);&quot;&gt;Owner.User&lt;/span&gt;.LastName}&lt;/p&gt;&lt;p&gt;Please update your user record in order to receive slack notifications.&lt;/p&gt;&lt;p&gt;&amp;lt;{!frml_recordURL}|View Salesforce Record&amp;gt;&lt;/p&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <description>Slack message text template</description>
+        <name>tt_offboarding_acknowledgement</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>{!$Record.Account.Name} has entered the at risk queue. 
+Case Owner: {!$Record.Owner:User.FirstName} {!$Record.Owner:User.LastName}
+Cancellation Reason Details: {!$Record.Cancellation_Reason_Details__c}
+Cancellation Type: {!$Record.Cancellation_Type__c}
+Cancellation Tag: {!$Record.Cancellation_Tag__c}
+&lt;{!frml_recordURL}|View Salesforce Record&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>tt_offboarding_approvals_completed</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>{!$Record.Account.Name} is in the at-risk queue and approvals have been completed.
+Case Owner: {!$Record.Owner:User.FirstName} {!$Record.Owner:User.LastName}
+Cancellation Reason Details: {!$Record.Cancellation_Reason_Details__c}
+Cancellation Type: {!$Record.Cancellation_Type__c}
+Cancellation Tag: {!$Record.Cancellation_Tag__c}
+&lt;{!frml_recordURL}|View Salesforce Record&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <description>alert for on ramp case updates</description>
+        <name>tt_onRamp_ticket_alert_message</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>{!frml_onRamp_body}
+Case Subject: {!$Record.Subject}
+&lt;{!frml_recordURL}|View Salesforce Record&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <description>Used to Slack notify the #merchant-reserve-collateral channel the Text TXN Hash field has been populated</description>
+        <name>tt_TextTXNHash_message</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Slack notify the #merchant-reserve-collateral channel
+{!$Record.Account.Name} has sent a test transaction with the following details.  Payments Ops, please confirm receipt by updating the Onboarding case.  
+Priority: {!$Record.Priority}
+Diameter Customer ID: {!$Record.Account.Diameter_URL__c}
+Blockchain used to Reserve Requirement: {!$Record.Blockchain_used_for_Reserve_Requirement__c}
+Test TXN Amount for Reserve Requirement: {!$Record.Test_TXN_Amount__c}
+Test TXN Hash for Reserve Requirement: {!$Record.Test_TXN_Hash__c}
+&lt;{!frml_recordURL}|View Salesforce Record&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>tt_watchlist_slack</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>A customer on the watchlist has opened a case.
+Case Subject: {!$Record.Subject}
+Case Description: {!$Record.Description}
+Owner: {!frml_owner_name}
+Case Number: {!$Record.CaseNumber}
+&lt;{!frml_recordURL}|View Salesforce Record&gt;</text>
+    </textTemplates>
+    <variables>
+        <description>relevant opportunities for related contact</description>
+        <name>RelevantOpportunityIds</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>var_current_opp_id</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>current opportunity url</description>
+        <name>var_current_opp_url</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>jira assignee</description>
+        <name>var_jira_assignee</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>User</objectType>
+    </variables>
+    <variables>
+        <description>jira reporter user</description>
+        <name>var_jira_reporter</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>User</objectType>
+    </variables>
+</Flow>

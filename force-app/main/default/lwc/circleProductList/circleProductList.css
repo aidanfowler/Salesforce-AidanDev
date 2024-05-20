@@ -1,0 +1,152 @@
+.container {
+    padding-right: calc(var(--grid-gutter-width) * 2);
+    padding-left: calc(var(--grid-gutter-width) * 2);
+}
+
+.container-inner {
+    max-width: 1170px;
+    margin: 0 auto;
+}
+
+
+.lt-mb-5 {
+    margin-bottom: 2rem !important;
+}
+
+h5, .h5 {
+    font-size: 20.5px;
+    letter-spacing: -0.18px;
+}
+
+[dir="ltr"] .list-unstyled {
+    padding-left: 0;
+}
+
+.lt-d-flex {
+    display: flex !important;
+}
+
+.extra-level-list {
+    flex-wrap: wrap;
+}
+
+.row {
+    margin-right: calc(var(--grid-gutter-width) * -1);
+    margin-left: calc(var(--grid-gutter-width) * -1);
+}
+
+.list-unstyled {
+    list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, p, ul, ol {
+    margin: 0 0 calc(var(--line-height-computed));
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+body {
+    font-family: 'Circular', sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+    color: #3d3652;
+    background-color: #fff;
+    background-color: #fff;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+
+[dir="ltr"] .column {
+    float: left;
+}
+
+.extra-level-item {
+    margin-bottom: 32px;
+}
+
+.column--sm-6 {
+    width: 50%;
+}
+
+
+.column {
+    position: relative;
+    margin-right: 15px;
+    width: 21%;
+    min-height: 1px;
+    padding-right: var(--grid-gutter-width);
+    padding-left: var(--grid-gutter-width);
+}
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+.list-unstyled {
+    list-style: none;
+}
+
+.extra-level-item__link {
+    display: flex;
+    height: 100%;
+    padding: 30px;
+    text-align: center;
+    flex-direction: column;
+    border: #e5dbfd 1px solid;
+    border-radius: 8px;
+    transition: all 0.2s linear;
+    justify-content: center;
+    align-items: center;
+}
+
+.extra-level-item__link:hover {
+    border: blueviolet 1px solid;
+ }
+
+a {
+    color: #8656ef;
+    text-decoration: none;
+}
+
+a {
+    background-color: transparent;
+}
+
+
+
+.extra-level-item__title {
+    display: block;
+    margin-bottom: 0;
+    color: #3d3652;
+}
+
+h4, .h4 {
+    font-size: 20.5px;
+    letter-spacing: -0.18px;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: inherit;
+    font-weight: 700;
+    
+}
+
+.productHead {
+    font-family: inherit;
+    font-size: 16px !important;
+    letter-spacing: -0.18px;
+    margin-left: 40px;
+}

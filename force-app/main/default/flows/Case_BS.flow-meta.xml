@@ -1,0 +1,911 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <assignments>
+        <description>Add 1 for each circle account and set the id of the current circle account</description>
+        <name>Increment_Circle_Account_Counter</name>
+        <label>Increment Circle Account Counter</label>
+        <locationX>512</locationX>
+        <locationY>1511</locationY>
+        <assignmentItems>
+            <assignToReference>var_circle_account_counter</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>var_matching_circle_account_id</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Loop_Through_Circle_Accounts_To_Count_How_Many_Match.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Through_Circle_Accounts_To_Count_How_Many_Match</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <description>Set approver current user</description>
+        <name>Check_if_approval_process_finished</name>
+        <label>Check if approval process finished</label>
+        <locationX>314</locationX>
+        <locationY>3803</locationY>
+        <defaultConnector>
+            <targetReference>Status</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Check_if_approval_was_finished</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Compliance_Decision_Date__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Approver</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Check if approval was finished</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check If Circle Account Is Linked</description>
+        <name>Check_If_Circle_Account_Is_Linked</name>
+        <label>Check If Circle Account Is Linked</label>
+        <locationX>578</locationX>
+        <locationY>1187</locationY>
+        <defaultConnector>
+            <targetReference>Check_If_Developer_Account_Is_Linked</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Circle_Account_Is_Not_Linked</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Circle_Account__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.ContactId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Circle_Account__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Relevant_Circle_Accounts</targetReference>
+            </connector>
+            <label>Circle Account Is Not Linked</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check If Contact Changed, Update Account</description>
+        <name>Check_If_Contact_Changed_Update_Account</name>
+        <label>Check If Contact Changed, Update Account</label>
+        <locationX>578</locationX>
+        <locationY>3287</locationY>
+        <defaultConnector>
+            <targetReference>Record_Type</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Contact_Changed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ContactId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.ContactId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.ContactId</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Add_Account_From_Contact</targetReference>
+            </connector>
+            <label>Contact Changed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check If Contact Needs Attachment - Non Email Origin</description>
+        <name>Check_If_Contact_Needs_Attachment_Non_Email_Origin</name>
+        <label>Check If Contact Needs Attachment - Non Email Origin</label>
+        <locationX>578</locationX>
+        <locationY>2687</locationY>
+        <defaultConnector>
+            <targetReference>Check_If_Contact_Changed_Update_Account</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Attempt_Match</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Origin</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Email</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.ContactId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.SuppliedEmail</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.ContactId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Contact_Match</targetReference>
+            </connector>
+            <label>Attempt Match</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check If Dev Console Case Needs Contact Linked</description>
+        <name>Check_If_Dev_Console_Case_Needs_Contact_Linked</name>
+        <label>Check If Dev Console Case Needs Contact Linked</label>
+        <locationX>578</locationX>
+        <locationY>587</locationY>
+        <defaultConnector>
+            <targetReference>Check_If_Circle_Account_Is_Linked</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Link_Contact</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Origin</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Dev Console</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Developer_Account_Entity_ID__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.ContactId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Contact_By_Developer_Entity_ID</targetReference>
+            </connector>
+            <label>Yes, Link Contact</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check If Developer Account Is Linked and search for a link if it exists</description>
+        <name>Check_If_Developer_Account_Is_Linked</name>
+        <label>Check If Developer Account Is Linked</label>
+        <locationX>578</locationX>
+        <locationY>2087</locationY>
+        <defaultConnector>
+            <targetReference>Check_If_Contact_Needs_Attachment_Non_Email_Origin</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Try_To_Link_Developer_Account</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Developer_Account__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.ContactId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Contact.Developer_Account_Entity_ID__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Developer_Account</targetReference>
+            </connector>
+            <label>Try To Link Developer Account</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check If developer account was found</description>
+        <name>Check_If_developer_account_was_found</name>
+        <label>Check If developer account was found</label>
+        <locationX>424</locationX>
+        <locationY>2303</locationY>
+        <defaultConnector>
+            <targetReference>Check_If_Contact_Needs_Attachment_Non_Email_Origin</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Developer_Account_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Developer_Account.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Developer_Account_Link</targetReference>
+            </connector>
+            <label>Developer Account Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if owner&apos;s manager needs to be set</description>
+        <name>Check_if_owner_s_manager_needs_to_be_set</name>
+        <label>Check if owner&apos;s manager needs to be set</label>
+        <locationX>578</locationX>
+        <locationY>287</locationY>
+        <defaultConnector>
+            <targetReference>Check_If_Dev_Console_Case_Needs_Contact_Linked</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_set_owners_manager</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Owner:User.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Owners_Manager__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.Owner:User.ManagerId</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Owners_Manager</targetReference>
+            </connector>
+            <label>Yes, set owners manager</label>
+        </rules>
+        <rules>
+            <name>Owned_by_queue_clear_owners_manager</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Owner:Group.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Owners_Manager__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Clear_Owners_Manager</targetReference>
+            </connector>
+            <label>Owned by queue, clear owners manager</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Contact Found?</description>
+        <name>Contact_Found</name>
+        <label>Contact Found?</label>
+        <locationX>424</locationX>
+        <locationY>803</locationY>
+        <defaultConnector>
+            <targetReference>Check_If_Circle_Account_Is_Linked</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Contact_By_Developer_Entity_ID</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Contact_Link</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>check if contact was found</description>
+        <name>Found_Contact</name>
+        <label>Found Contact?</label>
+        <locationX>424</locationX>
+        <locationY>2903</locationY>
+        <defaultConnector>
+            <targetReference>Check_If_Contact_Changed_Update_Account</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Contact_Found_2</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Contact_Match.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Add_Contact_And_Account</targetReference>
+            </connector>
+            <label>Contact Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Record_Type</name>
+        <label>Record Type</label>
+        <locationX>578</locationX>
+        <locationY>3587</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>CustomerCare</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Customer Care</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Compliance_Status</targetReference>
+            </connector>
+            <label>CustomerCare</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Set Circle Account if there is one match</description>
+        <name>Set_Circle_Account_if_there_is_one_match</name>
+        <label>Set Circle Account if there is one match</label>
+        <locationX>424</locationX>
+        <locationY>1703</locationY>
+        <defaultConnector>
+            <targetReference>Check_If_Developer_Account_Is_Linked</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>One_Circle_Account_Match</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>var_circle_account_counter</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>1.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>var_matching_circle_account_id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Circle_Account_On_Case</targetReference>
+            </connector>
+            <label>One Circle Account Match</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Status</name>
+        <label>Status</label>
+        <locationX>314</locationX>
+        <locationY>4103</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>SoftClose</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Soft Close</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>updateSoftCloseDate</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>SoftClose</label>
+        </rules>
+        <rules>
+            <name>Move_back_to_user_owner_if_routed_back_to_customer_support_work_item_denied</name>
+            <conditionLogic>1 AND (2 OR 4) AND 3</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>In Progress</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Owner:Group.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Customer Support</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Owner:User.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Owner:Group.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Cybavo Customer Care</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Move_Owner_Back_To_Previous_User</targetReference>
+            </connector>
+            <label>Move back to user owner if routed back to customer support (work item denied)</label>
+        </rules>
+    </decisions>
+    <description>Email Contact Matching For All Origins Except Email + fix remove contact ability</description>
+    <environments>Default</environments>
+    <interviewLabel>Case: BS {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Case: Before Save</label>
+    <loops>
+        <description>Loop Through Circle Accounts To Count How Many Match</description>
+        <name>Loop_Through_Circle_Accounts_To_Count_How_Many_Match</name>
+        <label>Loop Through Circle Accounts To Count How Many Match</label>
+        <locationX>424</locationX>
+        <locationY>1403</locationY>
+        <collectionReference>Get_Relevant_Circle_Accounts</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Increment_Circle_Account_Counter</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Set_Circle_Account_if_there_is_one_match</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Get Contact By Developer Entity ID</description>
+        <name>Get_Contact_By_Developer_Entity_ID</name>
+        <label>Get Contact By Developer Entity ID</label>
+        <locationX>424</locationX>
+        <locationY>695</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Contact_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Developer_Account_Entity_ID__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Developer_Account_Entity_ID__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Contact</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Get Contact By Email</description>
+        <name>Get_Contact_Match</name>
+        <label>Get Contact Match</label>
+        <locationX>424</locationX>
+        <locationY>2795</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Found_Contact</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Email</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.SuppliedEmail</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Contact</object>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Get Developer Account by developer account entity id from contact</description>
+        <name>Get_Developer_Account</name>
+        <label>Get Developer Account</label>
+        <locationX>424</locationX>
+        <locationY>2195</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_If_developer_account_was_found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Developer_Account_Entity_ID__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Contact.Developer_Account_Entity_ID__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Developer_Account__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Get Relevant Circle Accounts for linking to case (link if there is only one match)</description>
+        <name>Get_Relevant_Circle_Accounts</name>
+        <label>Get Relevant Circle Accounts</label>
+        <locationX>424</locationX>
+        <locationY>1295</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Loop_Through_Circle_Accounts_To_Count_How_Many_Match</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Contact__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.ContactId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Circle_Account__c</object>
+        <queriedFields>Id</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Add Account From Contact</description>
+        <name>Add_Account_From_Contact</name>
+        <label>Add Account From Contact</label>
+        <locationX>446</locationX>
+        <locationY>3395</locationY>
+        <connector>
+            <targetReference>Record_Type</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>AccountId</field>
+            <value>
+                <elementReference>$Record.Contact.AccountId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Add Contact And Account</description>
+        <name>Add_Contact_And_Account</name>
+        <label>Add Contact And Account</label>
+        <locationX>292</locationX>
+        <locationY>3011</locationY>
+        <connector>
+            <targetReference>Check_If_Contact_Changed_Update_Account</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>AccountId</field>
+            <value>
+                <elementReference>Get_Contact_Match.AccountId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ContactId</field>
+            <value>
+                <elementReference>Get_Contact_Match.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Clear Owners Manager</description>
+        <name>Clear_Owners_Manager</name>
+        <label>Clear Owners Manager</label>
+        <locationX>578</locationX>
+        <locationY>395</locationY>
+        <connector>
+            <targetReference>Check_If_Dev_Console_Case_Needs_Contact_Linked</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Owners_Manager__c</field>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Work item might move owner to customer support if work item is denied when a customer replies to a case and it moves to in progress</description>
+        <name>Move_Owner_Back_To_Previous_User</name>
+        <label>Move Owner Back To Previous User</label>
+        <locationX>314</locationX>
+        <locationY>4211</locationY>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>$Record__Prior.OwnerId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Sets approver after approval date is set</description>
+        <name>Set_Approver</name>
+        <label>Set Approver</label>
+        <locationX>182</locationX>
+        <locationY>3911</locationY>
+        <connector>
+            <targetReference>Status</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Compliance_Analyst__c</field>
+            <value>
+                <elementReference>$User.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Set Circle Account On Case</description>
+        <name>Set_Circle_Account_On_Case</name>
+        <label>Set Circle Account On Case</label>
+        <locationX>292</locationX>
+        <locationY>1811</locationY>
+        <connector>
+            <targetReference>Check_If_Developer_Account_Is_Linked</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Circle_Account__c</field>
+            <value>
+                <elementReference>var_matching_circle_account_id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>If limit increase case, set compliance status</description>
+        <name>Set_Compliance_Status</name>
+        <label>Set Compliance Status</label>
+        <locationX>314</locationX>
+        <locationY>3695</locationY>
+        <connector>
+            <targetReference>Check_if_approval_process_finished</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Compliance_Review_Status__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Category__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Custom Limit Increase</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Compliance_Review_Status__c</field>
+            <value>
+                <stringValue>Not started</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Set Contact Link</description>
+        <name>Set_Contact_Link</name>
+        <label>Set Contact Link</label>
+        <locationX>292</locationX>
+        <locationY>911</locationY>
+        <connector>
+            <targetReference>Check_If_Circle_Account_Is_Linked</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>ContactId</field>
+            <value>
+                <elementReference>Get_Contact_By_Developer_Entity_ID.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Set Developer Account Link</description>
+        <name>Set_Developer_Account_Link</name>
+        <label>Set Developer Account Link</label>
+        <locationX>292</locationX>
+        <locationY>2411</locationY>
+        <connector>
+            <targetReference>Check_If_Contact_Needs_Attachment_Non_Email_Origin</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Developer_Account__c</field>
+            <value>
+                <elementReference>Get_Developer_Account.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Set Owners Manager</description>
+        <name>Set_Owners_Manager</name>
+        <label>Set Owners Manager</label>
+        <locationX>314</locationX>
+        <locationY>395</locationY>
+        <connector>
+            <targetReference>Check_If_Dev_Console_Case_Needs_Contact_Linked</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Owners_Manager__c</field>
+            <value>
+                <elementReference>$Record.Owner:User.ManagerId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>updates timestamp field for soft close.</description>
+        <name>updateSoftCloseDate</name>
+        <label>updateSoftCloseDate</label>
+        <locationX>50</locationX>
+        <locationY>4211</locationY>
+        <inputAssignments>
+            <field>Soft_Close_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>452</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_if_owner_s_manager_needs_to_be_set</targetReference>
+        </connector>
+        <object>Case</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>count the number of matching circle accounts</description>
+        <name>var_circle_account_counter</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+        <value>
+            <numberValue>0.0</numberValue>
+        </value>
+    </variables>
+    <variables>
+        <name>var_CustomerCare</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Master_Record_Type_Table__mdt</objectType>
+    </variables>
+    <variables>
+        <description>Id of the current circle account in the list (only used if there is one match</description>
+        <name>var_matching_circle_account_id</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>varoffBoarding</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Master_Record_Type_Table__mdt</objectType>
+    </variables>
+    <variables>
+        <name>varOnboarding</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Master_Record_Type_Table__mdt</objectType>
+    </variables>
+    <variables>
+        <name>varProductFeedback</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Master_Record_Type_Table__mdt</objectType>
+    </variables>
+    <variables>
+        <name>varRevOps</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Master_Record_Type_Table__mdt</objectType>
+    </variables>
+</Flow>

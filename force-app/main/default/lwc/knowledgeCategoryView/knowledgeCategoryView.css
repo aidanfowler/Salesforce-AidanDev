@@ -1,0 +1,57 @@
+.viewBox {
+    height: 142px;
+}
+
+.extra-level-item__link{
+    display: flex;
+    height: 100%;
+    padding: 30px;
+    text-align: center;
+    flex-direction: column;
+    border: #e5dbfd 3px solid;
+    border-top-width: 3px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-top-color: rgb(229, 219, 253);
+    border-right-color: rgb(229, 219, 253);
+    border-bottom-color: rgb(229, 219, 253);
+    border-left-color: rgb(229, 219, 253);
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    border-radius: 8px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    transition: all 0.2s linear;
+    justify-content: center;
+    align-items: center;
+}
+
+.extra-level-item__image {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 15px;
+}
+
+.extra-level-item__title {
+    display: block;
+    margin-bottom: 0;
+    color: #3d3652;
+}
+
+.extra-level-item__link:hover {
+    border-color: #9f7af8;
+}
+
+a:hover{
+    text-decoration: none;
+}

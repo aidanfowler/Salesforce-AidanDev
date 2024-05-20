@@ -1,0 +1,44 @@
+<template>
+    <template if:true={isLoading}>
+        <lightning-spinner alternative-text="Loading"></lightning-spinner>
+    </template>
+    <h3>Submit a Ticket</h3>
+    <div class="submitTicket">
+    <lightning-record-edit-form
+        object-api-name="Case"
+        onsubmit={handleSubmitCase}
+        onsuccess={handleSuccess}
+        onerror={handleError}
+    >
+        
+        <div class="slds-m-around_medium">
+            <label lightning-input_input="" class="slds-form-element__label slds-no-flex" for="name-1" part="label"><abbr lightning-input_input="" class="slds-required" title="required">*</abbr>Name</label>
+            <lightning-input-field id="name-1"
+                field-name="SuppliedName"
+                variant="label-hidden" required="true"></lightning-input-field>
+            <label lightning-input_input="" class="slds-form-element__label slds-no-flex" for="emailAddress-1" part="label"><abbr lightning-input_input="" class="slds-required" title="required">*</abbr>Email Address</label>
+            <lightning-input-field id="emailAddress-1"
+                field-name="SuppliedEmail" value={currentUserEmail}
+                variant="label-hidden" required="true"></lightning-input-field>
+                <label lightning-input_input="" class="slds-form-element__label slds-no-flex" for="summary-1" part="label"><abbr lightning-input_input="" class="slds-required" title="required">*</abbr>Please provide a summary of your inquiry:</label>
+            <lightning-input-field id="summary-1"
+                field-name="Description"
+                variant="label-hidden" required="true"></lightning-input-field>
+        </div>
+    </lightning-record-edit-form>
+    <div class="slds-m-around_medium">
+    <template if:true={isGuestUser}>
+    <div class="recaptchaInvisible"></div>
+    </template>
+    <br />
+    <!--<template if:true={isGuestUser}>
+        <lightning-button onclick={doSubmit} label="Submit"></lightning-button>
+    </template>-->
+        <lightning-button onclick={handleSubmit} label="Submit"></lightning-button>
+    </div>
+    <div class="legalMessage">
+        Digital assets are subject to a number of risks, including price volatility. Transacting in digital assets could result in significant losses and may not be suitable for some consumers. Digital asset markets and exchanges are not regulated with the same controls or customer protections available with other forms of financial products and are subject to an evolving regulatory environment. Digital assets do not typically have legal tender status and are not covered by deposit protection insurance. The past performance of a digital asset is not a guide to future performance, nor is it a reliable indicator of future results or performance. Additional disclosures can be found on the <a href="https://www.circle.com/en/legal">Legal and Privacy page</a>.<br/><br/>
+        Circle Internet Financial, LLC (NMLS ID# 1201441). Circle Internet Financial, LLC is licensed as a Money Transmitter by the New York State Department of Financial Institutions and to engage in Virtual Currency Business Activity by the New York State Department of Financial Services. Texas customers click <a href="https://www.circle.com/en/legal/licenses"> here </a> for information about filing complaints. Maryland customers click <a href="https://www.circle.com/en/legal/licenses"> here </a> for information about filing complaints.
+    </div>
+    </div>
+</template>

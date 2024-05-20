@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pillar__c</fullName>
+    <externalId>false</externalId>
+    <label>Pillar</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>CRT</fullName>
+                <default>false</default>
+                <label>CRT</label>
+            </value>
+            <value>
+                <fullName>Developer</fullName>
+                <default>false</default>
+                <label>Developer</label>
+            </value>
+            <value>
+                <fullName>Liquidity</fullName>
+                <default>false</default>
+                <label>Liquidity</label>
+            </value>
+            <value>
+                <fullName>Unrelated to a pillar</fullName>
+                <default>false</default>
+                <label>Unrelated to a pillar</label>
+            </value>
+            <value>
+                <fullName>Ecosystem</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Ecosystem</label>
+            </value>
+            <value>
+                <fullName>Platform Distribution</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Platform Distribution</label>
+            </value>
+            <value>
+                <fullName>Stablecoins</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Stablecoins</label>
+            </value>
+            <value>
+                <fullName>Web3 Services</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Web3 Services</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

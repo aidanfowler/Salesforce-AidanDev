@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Projected_Stablecoin_On_Platform_Growth__c</fullName>
+    <description>Projected incremental stablecoin on platform growth during the timeframe of the objective</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Projected incremental stablecoin on platform growth during the timeframe of the objective</inlineHelpText>
+    <label>Projected Stablecoin On Platform Growth</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Currency</type>
+</CustomField>

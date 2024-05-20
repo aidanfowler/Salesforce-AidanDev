@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Related_Metrics_Objective__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Will pull in data from the related Metrics objective tied to this relationship.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Will pull in data from the related Metrics objective tied to this relationship.</inlineHelpText>
+    <label>Related Metrics Objective_DNU</label>
+    <referenceTo>Partnership_Objective__c</referenceTo>
+    <relationshipLabel>Partnership Objectives</relationshipLabel>
+    <relationshipName>Partnership_Objectives</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

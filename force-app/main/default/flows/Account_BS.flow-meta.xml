@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <decisions>
+        <description>Check If Account Owner Changed To Commercial Team</description>
+        <name>Check_If_Account_Owner_Changed_To_Commercial_Team</name>
+        <label>Check If Account Owner Changed To Commercial Team</label>
+        <locationX>182</locationX>
+        <locationY>287</locationY>
+        <defaultConnector>
+            <targetReference>Clear_BD_Owner_If_Account_Owner_Is_Unassigned_User</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Owner_Is_Commercial_Team_BD_Owner_Not_Set</name>
+            <conditionLogic>(1 OR 2) AND (3 OR 4)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.OwnerId</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.OwnerId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Owner.Profile.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Sales</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Owner.Profile.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Sales Exec</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_BD_Owner_From_Account_Owner</targetReference>
+            </connector>
+            <label>Owner Is Commercial Team BD Owner Not Set</label>
+        </rules>
+    </decisions>
+    <description>Clear BD Owner if unassigned user owns account, update BD owner if account owner changes to different sales rep</description>
+    <environments>Default</environments>
+    <interviewLabel>Account BS {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Account: Before Save</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Clear BD Owner If Account Owner Is Unassigned User</description>
+        <name>Clear_BD_Owner_If_Account_Owner_Is_Unassigned_User</name>
+        <label>Clear BD Owner If Account Owner Is Unassigned User</label>
+        <locationX>182</locationX>
+        <locationY>587</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>OwnerId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Setup.Static_User_Settings__c.Unassigned_User_ID__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Business_Development_Owner__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Business_Development_Owner__c</field>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Set BD Owner From Account Owner</description>
+        <name>Set_BD_Owner_From_Account_Owner</name>
+        <label>Set BD Owner From Account Owner</label>
+        <locationX>50</locationX>
+        <locationY>395</locationY>
+        <connector>
+            <targetReference>Clear_BD_Owner_If_Account_Owner_Is_Unassigned_User</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Business_Development_Owner__c</field>
+            <value>
+                <elementReference>$Record.OwnerId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_If_Account_Owner_Changed_To_Commercial_Team</targetReference>
+        </connector>
+        <object>Account</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

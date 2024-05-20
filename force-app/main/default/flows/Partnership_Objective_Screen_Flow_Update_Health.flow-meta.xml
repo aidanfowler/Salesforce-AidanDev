@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <apiVersion>60.0</apiVersion>
+    <assignments>
+        <name>Set_Partnership_Objective_New_Values</name>
+        <label>Set Partnership Objective New Values</label>
+        <locationX>308</locationX>
+        <locationY>566</locationY>
+        <assignmentItems>
+            <assignToReference>Get_Partnership_Objective.Objective_Health_Reason__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Objective_Health_Reason</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_Partnership_Objective.Objective_Health_Reason_Details__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Objective_Health_Reason_Detail</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_Partnership_Objective.Performance_Objective_Health_Updated__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Partnership_Objective_Object</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_Prior_Health_Value_Before_It_Changes</name>
+        <label>Set Prior Health Value Before It Changes</label>
+        <locationX>176</locationX>
+        <locationY>242</locationY>
+        <assignmentItems>
+            <assignToReference>var_prior_health_status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Partnership_Objective.Performance_Objective_Health__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Partnership_Objective</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <description>Check if Health Is Null</description>
+        <name>Check_if_Health_Is_Null</name>
+        <label>Check if Health Is Null</label>
+        <locationX>176</locationX>
+        <locationY>458</locationY>
+        <defaultConnector>
+            <targetReference>Set_Partnership_Objective_New_Values</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Health_Is_Null_Send_Back</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Partnership_Objective.Performance_Objective_Health__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <isGoTo>true</isGoTo>
+                <targetReference>Update_Partnership_Objective</targetReference>
+            </connector>
+            <label>Health Is Null, Send Back</label>
+        </rules>
+    </decisions>
+    <description>Add time horizon to slack notification</description>
+    <dynamicChoiceSets>
+        <name>HealthReason</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>Objective_Health_Reason__c</picklistField>
+        <picklistObject>Partnership_Objective__c</picklistObject>
+    </dynamicChoiceSets>
+    <environments>Default</environments>
+    <formulas>
+        <name>frml_record_url</name>
+        <dataType>String</dataType>
+        <expression>LEFT({!$Api.Partner_Server_URL_260}, FIND( &apos;/services&apos;, {!$Api.Partner_Server_URL_260}))&amp;{!Get_Partnership_Objective.Id}</expression>
+    </formulas>
+    <interviewLabel>Partnership Objective: Screen Flow: Update Health {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Partnership Objective: Screen Flow: Update Health</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordLookups>
+        <description>Get Partnership Objective</description>
+        <name>Get_Partnership_Objective</name>
+        <label>Get Partnership Objective</label>
+        <locationX>176</locationX>
+        <locationY>134</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Set_Prior_Health_Value_Before_It_Changes</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Partnership_Objective__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Partnership_Objective_Object</name>
+        <label>Update Partnership Objective</label>
+        <locationX>308</locationX>
+        <locationY>674</locationY>
+        <connector>
+            <targetReference>Send_Slack_To_customer_health_notifications</targetReference>
+        </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Update_Partnership_Objective</targetReference>
+        </faultConnector>
+        <inputReference>Get_Partnership_Objective</inputReference>
+    </recordUpdates>
+    <screens>
+        <name>Update_Partnership_Objective</name>
+        <label>Update Partnership Objective</label>
+        <locationX>176</locationX>
+        <locationY>350</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Check_if_Health_Is_Null</targetReference>
+        </connector>
+        <fields>
+            <name>errorFault</name>
+            <fieldText>&lt;p&gt;{!$Flow.FaultMessage}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>$Flow.FaultMessage</leftValueReference>
+                    <operator>IsNull</operator>
+                    <rightValue>
+                        <booleanValue>false</booleanValue>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
+        </fields>
+        <fields>
+            <fieldType>ObjectProvided</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+            <objectFieldReference>Get_Partnership_Objective.Performance_Objective_Health__c</objectFieldReference>
+        </fields>
+        <fields>
+            <name>NeedHealth</name>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;color: rgb(205, 23, 23);&quot;&gt;Partnership Objective Health Can Not Be &quot;--none--&quot;&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>Get_Partnership_Objective.Performance_Objective_Health__c</leftValueReference>
+                    <operator>IsNull</operator>
+                    <rightValue>
+                        <booleanValue>true</booleanValue>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
+        </fields>
+        <fields>
+            <name>Objective_Health_Reason</name>
+            <choiceReferences>HealthReason</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Objective Health Reason</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Objective_Health_Reason_Detail</name>
+            <dataType>String</dataType>
+            <fieldText>Objective Health Reason Detail</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Partnership_Objective</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <name>Send_Slack_To_customer_health_notifications</name>
+        <label>Send Slack To customer-health-notifications</label>
+        <locationX>308</locationX>
+        <locationY>782</locationY>
+        <flowName>Slack_Channel_Notifications_Subflow</flowName>
+        <inputAssignments>
+            <name>ConversationId</name>
+            <value>
+                <elementReference>$Setup.Slack_Channel__c.customer_health_notifications__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>recordId</name>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>SlackMessage</name>
+            <value>
+                <elementReference>tt_customer_health_notification</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <textTemplates>
+        <name>tt_customer_health_notification</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>&lt;{!frml_record_url}|{!Get_Partnership_Objective.Name}&gt;&apos;s Performance Objective Health has changed to {!Get_Partnership_Objective.Performance_Objective_Health__c}.
+Owner: {!Get_Partnership_Objective.Owner:User.FirstName} {!Get_Partnership_Objective.Owner:User.LastName}
+Account: {!Get_Partnership_Objective.Account__r.Name}
+Opportunity: {!Get_Partnership_Objective.Opportunity__r.Name}
+Pillar: {!Get_Partnership_Objective.Pillar__c}
+Previous Objective Health: {!var_prior_health_status}
+Objective Health Reason: {!Objective_Health_Reason}
+Objective Health Reason Details: {!Objective_Health_Reason_Detail}
+Time Horizon: {!Get_Partnership_Objective.Time_Horizon__c}</text>
+    </textTemplates>
+    <variables>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>var_prior_health_status</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

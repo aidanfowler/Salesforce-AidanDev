@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Request_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Request Type</label>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Ownership Update</fullName>
+                <default>false</default>
+                <label>Ownership Update</label>
+            </value>
+            <value>
+                <fullName>Target Account Update</fullName>
+                <default>false</default>
+                <label>Target Account Update</label>
+            </value>
+            <value>
+                <fullName>Data Enrichment</fullName>
+                <default>false</default>
+                <label>Data Enrichment</label>
+            </value>
+            <value>
+                <fullName>Source New Contacts</fullName>
+                <default>false</default>
+                <label>Source New Contacts</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

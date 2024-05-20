@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cybavo__c</fullName>
+    <description>Used to identify the type of Cybavo product the customer has.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Select which Cybavo product the customer has purchased.</inlineHelpText>
+    <label>Cybavo</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Cybavo VAULT</fullName>
+                <default>false</default>
+                <label>Cybavo VAULT</label>
+            </value>
+            <value>
+                <fullName>Cybavo Cashflow Manager</fullName>
+                <default>false</default>
+                <label>Cybavo Cashflow Manager</label>
+            </value>
+            <value>
+                <fullName>Cybavo Wallet SDK</fullName>
+                <default>false</default>
+                <label>Cybavo Wallet SDK</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

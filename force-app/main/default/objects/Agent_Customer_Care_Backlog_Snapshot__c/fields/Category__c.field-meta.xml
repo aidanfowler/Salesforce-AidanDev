@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Category__c</fullName>
+    <externalId>false</externalId>
+    <label>Category</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Billing</fullName>
+                <default>false</default>
+                <label>Billing</label>
+            </value>
+            <value>
+                <fullName>Blockchain</fullName>
+                <default>false</default>
+                <label>Blockchain</label>
+            </value>
+            <value>
+                <fullName>CA Application</fullName>
+                <default>false</default>
+                <label>CA Application</label>
+            </value>
+            <value>
+                <fullName>Circle Mint</fullName>
+                <default>false</default>
+                <label>Circle Mint</label>
+            </value>
+            <value>
+                <fullName>Custom Limit Increase</fullName>
+                <default>false</default>
+                <label>Custom Limit Increase</label>
+            </value>
+            <value>
+                <fullName>Cybavo</fullName>
+                <default>false</default>
+                <label>Cybavo</label>
+            </value>
+            <value>
+                <fullName>Data Subject Request</fullName>
+                <default>false</default>
+                <label>Data Subject Request</label>
+            </value>
+            <value>
+                <fullName>Developer Account</fullName>
+                <default>false</default>
+                <label>Developer Account</label>
+            </value>
+            <value>
+                <fullName>EUROC</fullName>
+                <default>false</default>
+                <label>EUROC</label>
+            </value>
+            <value>
+                <fullName>Faster Settlement (CBIT/ Xpay/ RTP)</fullName>
+                <default>false</default>
+                <label>Faster Settlement (CBIT/ Xpay/ RTP)</label>
+            </value>
+            <value>
+                <fullName>General Inquiry/ Others</fullName>
+                <default>false</default>
+                <label>General Inquiry/ Others</label>
+            </value>
+            <value>
+                <fullName>Payments</fullName>
+                <default>false</default>
+                <label>Payments</label>
+            </value>
+            <value>
+                <fullName>Production API Inquiries</fullName>
+                <default>false</default>
+                <label>Production API Inquiries</label>
+            </value>
+            <value>
+                <fullName>Sandbox</fullName>
+                <default>false</default>
+                <label>Sandbox</label>
+            </value>
+            <value>
+                <fullName>USDC</fullName>
+                <default>false</default>
+                <label>USDC</label>
+            </value>
+            <value>
+                <fullName>Express</fullName>
+                <default>false</default>
+                <label>Express</label>
+            </value>
+            <value>
+                <fullName>Circle Account</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Circle Account</label>
+            </value>
+            <value>
+                <fullName>Circle Outreach</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Circle Outreach</label>
+            </value>
+            <value>
+                <fullName>Euro Related</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Euro Related</label>
+            </value>
+            <value>
+                <fullName>Fiat/Payouts</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Fiat/Payouts</label>
+            </value>
+            <value>
+                <fullName>General Inquiry</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>General Inquiry</label>
+            </value>
+            <value>
+                <fullName>Others</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Others</label>
+            </value>
+            <value>
+                <fullName>Prod API Inquiries</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Prod API Inquiries</label>
+            </value>
+            <value>
+                <fullName>Rejected Applications</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Rejected Applications</label>
+            </value>
+            <value>
+                <fullName>Reporting &amp; Other Comms</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Reporting &amp; Other Comms</label>
+            </value>
+            <value>
+                <fullName>SEN/Signet</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>SEN/Signet</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,59 @@
+<apex:page >
+<head>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8"/>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script>
+ //necessary boilerplate for captcha to work
+ function timestamp() { var response = document.getElementById("g-recaptcha-response"); if (response == null || response.value.trim() == "") {var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);elems["ts"] = JSON.stringify(new Date().getTime());document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); } } setInterval(timestamp, 500);
+ //replce this logic with whatever needs to be done to grab the name, email, and circle entity id and insert into hidden fields.
+ function fillFields() {
+     document.getElementById('name').value = 'Aidan Fowler';
+     document.getElementById('email').value = 'fowler.aidan@gmail.com';
+     document.getElementById('Circle_Account_Entity_Id__c').value = '111111-0fc0-4cb0-bc52-ea10666c8abb';
+     document.getElementById('Circle_Account_User_Id__c').value = '111111-0fc0-4cb0-bc52-ea10666c8abb';
+     //put return url here - perhaps use a url parameter to conditionally display a success message?
+     document.getElementById('retURL').value = window.location.href;
+ }
+</script>
+<style>
+  input, label {
+    display:block;
+  }
+  .required:after {
+    content:"* ";
+    color: red;
+  }
+</style>
+</head>
+<body onload="fillFields();">
+<form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST">
+
+    <!--  these lines if you wish to test in debug mode.-->
+    <input type="hidden" name="debug" value="1"/>                       
+    <!--  <input type="hidden" name="debugEmail" value="fowler.aidan@circle.com"/>-->   
+    
+    <input type='hidden' name='captcha_settings' value='{"keyname":"CircleSupport1","fallback":"true","orgId":"00Dcc0000002Gzx","ts":""}' />
+    <input type='hidden' name="orgid" value="00Dcc0000002Gzx" />
+    <input type="hidden" name="recordType" id="recordType" value="0128b000000u8O3" />
+    <input type="hidden" name="origin" id="origin" value="Circle Account"/>
+    <input type='hidden' id="retURL" name="retURL"/>
+    <input type='hidden' id="email" name="email"/>
+    <input type='hidden' id="name" name="name"/><br/>
+    <input type='hidden' id="Circle_Account_Entity_Id__c" name="Circle_Account_Entity_Id__c"/><br/>
+    <input type='hidden' id="Circle_Account_User_Id__c" name="Circle_Account_User_Id__c"/><br/>
+               
+    <!-- Added subject and descriptiion, you can use just descripttion if you would like, you should be able to use your own components as long as you add the name tag = desctiption or name = subject -->                       
+    <div style="float:left;margin-left:50px;margin-top:50px;">
+        <div style="font-size: 40px;"> Submit a request </div><br/>
+        <label for="subject" class="required">Subject </label>
+        <input id="subject" maxlength="80" name="subject" size="20" type="text" required="true"/><br/>
+        <label for="description" class="required">What is your question, comment or issue? </label>
+        <input  id="description" maxlength="2000" name="description" size="100" type="text" required="true" />
+        <br/>
+        <div class="g-recaptcha" style="margin-top:10px" data-sitekey="6Ld-tFkjAAAAADe-xK6dixrhrZuHsofG-tMGwTAd"></div><br/>
+        <input type="submit" name="submit" />
+    </div>
+    
+</form>
+</body>
+</apex:page>

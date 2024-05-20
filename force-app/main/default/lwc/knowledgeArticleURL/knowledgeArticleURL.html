@@ -1,0 +1,11 @@
+<template>
+    <div style="background-color: white; border-radius:.25rem;">
+        <template if:true={knowledgeArticle}>
+            <lightning-card title="Portal URL">
+                <p class="slds-p-horizontal_medium">
+                    <lightning-formatted-url value={url} tooltip="Knowledge Article Link" target="_blank"></lightning-formatted-url>
+                </p>
+            </lightning-card>
+        </template>
+    </div>
+</template>

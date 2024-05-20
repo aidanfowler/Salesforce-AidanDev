@@ -1,0 +1,20 @@
+<template>
+    <div class="pagePadding slds-p-top_xx-large">
+        <lightning-layout horizontal-align="spread" multiple-rows="true">
+            <lightning-layout-item size="12" small-device-size="12" medium-device-size="3" large-device-size="3" padding="horizontal-large">
+                <c-knowledge-category-menu oncategoryupdated={handleCategoryUpdated}></c-knowledge-category-menu>
+                <div class="divider"></div>
+                <c-knowledge-recently-viewed-articles article-id={currArticleId}></c-knowledge-recently-viewed-articles>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="horizontal-large">
+                <div class="rightSide">
+                    <c-knowledge-submit-a-ticket article-id={articleId}></c-knowledge-submit-a-ticket>
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" small-device-size="12" medium-device-size="3" large-device-size="3" padding="horizontal-large">
+                
+            </lightning-layout-item>
+        </lightning-layout>
+        
+    </div>
+</template>

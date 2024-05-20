@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Needs_Objective</fullName>
+    <active>false</active>
+    <description>Either Liquidity Or Wallet Growth Must Be Selected</description>
+    <errorConditionFormula>AND(
+Circle_Mint_T_C__c = false,
+of_Referrals_Onboarded__c = false,
+Stablecoins_Issued__c = false,
+MEW_Growth__c = false,
+Liquidity__c = false,
+$Profile.Name != &apos;System Administrator&apos;
+)</errorConditionFormula>
+    <errorMessage>You must select an objective</errorMessage>
+</ValidationRule>

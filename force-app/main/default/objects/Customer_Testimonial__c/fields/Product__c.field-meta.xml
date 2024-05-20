@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product__c</fullName>
+    <externalId>false</externalId>
+    <label>Product</label>
+    <required>true</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Blockchain Partners</fullName>
+                <default>false</default>
+                <label>Blockchain Partners</label>
+            </value>
+            <value>
+                <fullName>Circle Account (Capital Markets)</fullName>
+                <default>false</default>
+                <label>Circle Account (Capital Markets)</label>
+            </value>
+            <value>
+                <fullName>Circle Account (Custody)</fullName>
+                <default>false</default>
+                <label>Circle Account (Custody)</label>
+            </value>
+            <value>
+                <fullName>Circle Account (General)</fullName>
+                <default>false</default>
+                <label>Circle Account (General)</label>
+            </value>
+            <value>
+                <fullName>Corporate Payments</fullName>
+                <default>false</default>
+                <label>Corporate Payments</label>
+            </value>
+            <value>
+                <fullName>Merchant Payments</fullName>
+                <default>false</default>
+                <label>Merchant Payments</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Stablecoin Infra</fullName>
+                <default>false</default>
+                <label>Stablecoin Infra</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
