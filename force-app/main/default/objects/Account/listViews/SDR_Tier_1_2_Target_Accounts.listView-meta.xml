@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SDR_Tier_1_2_Target_Accounts</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>SDR_Owner__c</columns>
+    <columns>ACCOUNT.PHONE1</columns>
+    <columns>ACCOUNT.TYPE</columns>
+    <columns>CORE.USERS.ALIAS</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>SDR_Owner__c</field>
+        <operation>equals</operation>
+        <value>Ryan Kim</value>
+    </filters>
+    <filters>
+        <field>Target_Account__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>target_account_tier__c</field>
+        <operation>equals</operation>
+        <value>Tier 1,Tier 2</value>
+    </filters>
+    <label>SDR Tier 1/2 Target Accounts</label>
+    <sharedTo>
+        <roleAndSubordinates>System_Administrator</roleAndSubordinates>
+    </sharedTo>
+</ListView>

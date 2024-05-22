@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Use_Case__c</fullName>
+    <externalId>false</externalId>
+    <label>Use Case</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Trading</fullName>
+                <default>false</default>
+                <label>Trading</label>
+            </value>
+            <value>
+                <fullName>Dollarization</fullName>
+                <default>false</default>
+                <label>Dollarization</label>
+            </value>
+            <value>
+                <fullName>Wallets</fullName>
+                <default>false</default>
+                <label>Wallets</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>B2B Payments</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>B2B Payments</label>
+            </value>
+            <value>
+                <fullName>Corporate Treasury</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Corporate Treasury</label>
+            </value>
+            <value>
+                <fullName>Cross-Border Remittance</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Cross-Border Remittance</label>
+            </value>
+            <value>
+                <fullName>Global Payouts</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Global Payouts</label>
+            </value>
+            <value>
+                <fullName>NFT</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>NFT</label>
+            </value>
+            <value>
+                <fullName>On-ramp</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>On-ramp</label>
+            </value>
+            <value>
+                <fullName>P2P Payments</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>P2P Payments</label>
+            </value>
+            <value>
+                <fullName>Payment Service Providers</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Payment Service Providers</label>
+            </value>
+            <value>
+                <fullName>Sale of Goods</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Sale of Goods</label>
+            </value>
+            <value>
+                <fullName>Stablecoin Co-Marketing Initiatives</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Stablecoin Co-Marketing Initiatives</label>
+            </value>
+            <value>
+                <fullName>Stablecoin Initiatives</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Stablecoin Initiatives</label>
+            </value>
+            <value>
+                <fullName>USDC Liquidity</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>USDC Liquidity</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PDR_Follow_Up_Type__c</fullName>
+    <description>Used by PDRs to document what they are following up with the prospect about</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Please select the best option to describe what the follow up will be about.</inlineHelpText>
+    <label>PDR Follow Up Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Mint Qualification</fullName>
+                <default>false</default>
+                <label>Mint Qualification</label>
+            </value>
+            <value>
+                <fullName>Target Account Qualification</fullName>
+                <default>false</default>
+                <label>Target Account Qualification</label>
+            </value>
+            <value>
+                <fullName>Legal/RFI Outstanding</fullName>
+                <default>false</default>
+                <label>Legal/RFI Outstanding</label>
+            </value>
+            <value>
+                <fullName>W3S Interest</fullName>
+                <default>false</default>
+                <label>W3S Interest</label>
+            </value>
+            <value>
+                <fullName>Alliance Interest</fullName>
+                <default>false</default>
+                <label>Alliance Interest</label>
+            </value>
+            <value>
+                <fullName>Co-marketing Interest</fullName>
+                <default>false</default>
+                <label>Co-marketing Interest</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Partnership_Construct_Required__c</fullName>
+    <externalId>false</externalId>
+    <formula>OR(
+CONTAINS(Products_Selected__c,&apos;CCTP&apos;),
+CONTAINS(Products_Selected__c,&apos;Bridged USDC Standard&apos;),
+CONTAINS(Products_Selected__c,&apos;Alt Mempool&apos;),
+CONTAINS(Products_Selected__c,&apos;Programmable Wallets&apos;),
+CONTAINS(Products_Selected__c,&apos;Accounts API&apos;),
+CONTAINS(Products_Selected__c,&apos;Crypto Deposits&apos;),
+CONTAINS(Products_Selected__c,&apos;Crypto Payouts&apos;),
+CONTAINS(Products_Selected__c,&apos;Cybavo Vault&apos;),
+CONTAINS(Products_Selected__c,&apos;Cybavo Cash Flow Manager&apos;),
+CONTAINS(Products_Selected__c,&apos;PSP Crypto Settlement&apos;),
+CONTAINS(Products_Selected__c,&apos;Smart Contract Platform&apos;),
+CONTAINS(Products_Selected__c,&apos;Gas Station&apos;),
+CONTAINS(Products_Selected__c,&apos;Verite&apos;),
+CONTAINS(Products_Selected__c,&apos;Activation Incentives&apos;),
+CONTAINS(Products_Selected__c,&apos;Institutional Trading Partnership&apos;),
+CONTAINS(Products_Selected__c,&apos;Loans&apos;),
+CONTAINS(Products_Selected__c,&apos;Performance Incentives&apos;),
+CONTAINS(Products_Selected__c,&apos;Channel Sales&apos;),
+CONTAINS(Products_Selected__c,&apos;Referrals&apos;),
+CONTAINS(Products_Selected__c,&apos;Blockchain Partnerships&apos;),
+CONTAINS(Products_Selected__c,&apos;Indirect Liquidity Partners&apos;),
+CONTAINS(Products_Selected__c,&apos;Product Integrations&apos;)
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Partnership Construct Required</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

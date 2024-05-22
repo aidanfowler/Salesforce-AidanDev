@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Nature_of_Business__c</fullName>
+    <externalId>false</externalId>
+    <label>Nature of Business</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>accommodation</fullName>
+                <default>false</default>
+                <label>Accommodation and Food Services (excluding Casinos)</label>
+            </value>
+            <value>
+                <fullName>accounting</fullName>
+                <default>false</default>
+                <label>Accounting and Legal Firms</label>
+            </value>
+            <value>
+                <fullName>agriculture</fullName>
+                <default>false</default>
+                <label>Agriculture, Forestry, Fishing and Hunting</label>
+            </value>
+            <value>
+                <fullName>art</fullName>
+                <default>false</default>
+                <label>Art Dealers and Auction Houses</label>
+            </value>
+            <value>
+                <fullName>casino</fullName>
+                <default>false</default>
+                <label>Casinos and Gambling</label>
+            </value>
+            <value>
+                <fullName>construction</fullName>
+                <default>false</default>
+                <label>Construction</label>
+            </value>
+            <value>
+                <fullName>cryptoNetwork</fullName>
+                <default>false</default>
+                <label>Crypto Network</label>
+            </value>
+            <value>
+                <fullName>dapp</fullName>
+                <default>false</default>
+                <label>DApp Providers and Developers</label>
+            </value>
+            <value>
+                <fullName>preciousMetals</fullName>
+                <default>false</default>
+                <label>Dealers and Retailers of Physical Precious Metals and/or Precious Stones</label>
+            </value>
+            <value>
+                <fullName>defiExchange</fullName>
+                <default>false</default>
+                <label>DeFI: Decentralized Exchanges</label>
+            </value>
+            <value>
+                <fullName>defiOther</fullName>
+                <default>false</default>
+                <label>DeFi: Other</label>
+            </value>
+            <value>
+                <fullName>defiWallet</fullName>
+                <default>false</default>
+                <label>DeFI: Self-Hosted Wallets</label>
+            </value>
+            <value>
+                <fullName>education</fullName>
+                <default>false</default>
+                <label>Education</label>
+            </value>
+            <value>
+                <fullName>familyOffices</fullName>
+                <default>false</default>
+                <label>Family Offices and Personal Investment Companies</label>
+            </value>
+            <value>
+                <fullName>film</fullName>
+                <default>false</default>
+                <label>Film, Television, Internet, and Print media</label>
+            </value>
+            <value>
+                <fullName>fiAssetMgr</fullName>
+                <default>false</default>
+                <label>Financial Institutions: Asset Managers, Hedge Funds, and Funds</label>
+            </value>
+            <value>
+                <fullName>fiBank</fullName>
+                <default>false</default>
+                <label>Financial Institutions: Banks and Credit Unions</label>
+            </value>
+            <value>
+                <fullName>fiBrokerDealer</fullName>
+                <default>false</default>
+                <label>Financial Institutions: Broker Dealers</label>
+            </value>
+            <value>
+                <fullName>fiCryptoATM</fullName>
+                <default>false</default>
+                <label>Financial Institutions: Crypto ATM Operator</label>
+            </value>
+            <value>
+                <fullName>fiCryptoExchanges</fullName>
+                <default>false</default>
+                <label>Financial Institutions: Crypto Exchanges</label>
+            </value>
+            <value>
+                <fullName>fiCryptoInvesting</fullName>
+                <default>false</default>
+                <label>Financial Institutions: Crypto Investing and Lending</label>
+            </value>
+            <value>
+                <fullName>fiCryptoOnRamp</fullName>
+                <default>false</default>
+                <label>Financial Institutions: Crypto On-Ramps / Retail OTC Trading</label>
+            </value>
+            <value>
+                <fullName>fiCryptoWallets</fullName>
+                <default>false</default>
+                <label>Financial Institutions: Crypto Wallets and Custodians</label>
+            </value>
+            <value>
+                <fullName>fiOTC</fullName>
+                <default>false</default>
+                <label>Financial Institutions: OTC Trading</label>
+            </value>
+            <value>
+                <fullName>fiP2P</fullName>
+                <default>false</default>
+                <label>Financial Institutions: Peer to Peer Payments / Money Transmitters</label>
+            </value>
+            <value>
+                <fullName>healthCare</fullName>
+                <default>false</default>
+                <label>Health Care</label>
+            </value>
+            <value>
+                <fullName>manufacturingAutomobiles</fullName>
+                <default>false</default>
+                <label>Manufacturing, Wholesale and Retail: Automobiles and Other Vehicles</label>
+            </value>
+            <value>
+                <fullName>manufacturingElectronics</fullName>
+                <default>false</default>
+                <label>Manufacturing, Wholesale and Retail: Electronics (including Computers)</label>
+            </value>
+            <value>
+                <fullName>manufacturingJewelry</fullName>
+                <default>false</default>
+                <label>Manufacturing, Wholesale and Retail: High Value Goods (Jewelry, Watches, Antiques)</label>
+            </value>
+            <value>
+                <fullName>manufacturingOther</fullName>
+                <default>false</default>
+                <label>Manufacturing, Wholesale and Retail: Other Goods</label>
+            </value>
+            <value>
+                <fullName>manufacturingWeapons</fullName>
+                <default>false</default>
+                <label>Manufacturing, Wholesale and Retail: Weapons and Armaments</label>
+            </value>
+            <value>
+                <fullName>marijuana</fullName>
+                <default>false</default>
+                <label>Marijuana Related Business</label>
+            </value>
+            <value>
+                <fullName>marketing</fullName>
+                <default>false</default>
+                <label>Marketing and Advertising</label>
+            </value>
+            <value>
+                <fullName>miningPools</fullName>
+                <default>false</default>
+                <label>Mining Pools</label>
+            </value>
+            <value>
+                <fullName>mining</fullName>
+                <default>false</default>
+                <label>Mining, Quarrying, and Oil and Gas Extraction</label>
+            </value>
+            <value>
+                <fullName>nonProfit</fullName>
+                <default>false</default>
+                <label>Non-Profit Organizations and Charities</label>
+            </value>
+            <value>
+                <fullName>otherCryptoServices</fullName>
+                <default>false</default>
+                <label>Other Crypto Services</label>
+            </value>
+            <value>
+                <fullName>eCommerce</fullName>
+                <default>false</default>
+                <label>Other Marketplaces / E-Commerce</label>
+            </value>
+            <value>
+                <fullName>otherNonCrypto</fullName>
+                <default>false</default>
+                <label>Other Non-Crypto Services</label>
+            </value>
+            <value>
+                <fullName>realEstate</fullName>
+                <default>false</default>
+                <label>Real Estate</label>
+            </value>
+            <value>
+                <fullName>Software</fullName>
+                <default>false</default>
+                <label>Software</label>
+            </value>
+            <value>
+                <fullName>thirdPartyPayment</fullName>
+                <default>false</default>
+                <label>Third Party Payment Processors</label>
+            </value>
+            <value>
+                <fullName>transportation</fullName>
+                <default>false</default>
+                <label>Transportation and Warehousing</label>
+            </value>
+            <value>
+                <fullName>utilities</fullName>
+                <default>false</default>
+                <label>Utilities</label>
+            </value>
+            <value>
+                <fullName>fiFund</fullName>
+                <default>false</default>
+                <label>Financial Institutions: Funds</label>
+            </value>
+            <value>
+                <fullName>fiAssetMgrAdvisorController</fullName>
+                <default>false</default>
+                <label>Financial Institutions: Asset Managers Investment Advisors Fund Controllers</label>
+            </value>
+            <value>
+                <fullName>gov</fullName>
+                <default>false</default>
+                <label>Government</label>
+            </value>
+            <value>
+                <fullName>cryptoOtherTrading</fullName>
+                <default>false</default>
+                <label>Other Crypto Trading (Market Makers Liquidity Providers)</label>
+            </value>
+            <value>
+                <fullName>N/A</fullName>
+                <default>false</default>
+                <label>N/A</label>
+            </value>
+            <value>
+                <fullName>miningPool</fullName>
+                <default>false</default>
+                <label>Mining Pool</label>
+            </value>
+            <value>
+                <fullName>cryptoExchange</fullName>
+                <default>false</default>
+                <label>Cryptocurrency Exchanges (Centralized)</label>
+            </value>
+            <value>
+                <fullName>trust</fullName>
+                <default>false</default>
+                <label>Trusts</label>
+            </value>
+            <value>
+                <fullName>marketMaker</fullName>
+                <default>false</default>
+                <label>Market Maker</label>
+            </value>
+            <value>
+                <fullName>otherOperatingCompanies</fullName>
+                <default>false</default>
+                <label>Other Operating Companies</label>
+            </value>
+            <value>
+                <fullName>hedgeFund</fullName>
+                <default>false</default>
+                <label>Hedge Funds</label>
+            </value>
+            <value>
+                <fullName>adultServices</fullName>
+                <default>false</default>
+                <label>Adult services</label>
+            </value>
+            <value>
+                <fullName>assetManager</fullName>
+                <default>false</default>
+                <label>Asset Managers</label>
+            </value>
+            <value>
+                <fullName>atmOperations</fullName>
+                <default>false</default>
+                <label>ATM Operators (with the exception of crypto ATMs and kiosks)</label>
+            </value>
+            <value>
+                <fullName>auctionServices</fullName>
+                <default>false</default>
+                <label>Auction services</label>
+            </value>
+            <value>
+                <fullName>bankruptcyServices</fullName>
+                <default>false</default>
+                <label>Bankruptcy services</label>
+            </value>
+            <value>
+                <fullName>banking</fullName>
+                <default>false</default>
+                <label>Banks and Credit Unions</label>
+            </value>
+            <value>
+                <fullName>brokerageOTC</fullName>
+                <default>false</default>
+                <label>Brokerage / Over-the-Counter (OTC) Trading Desks</label>
+            </value>
+            <value>
+                <fullName>controlledSubstances</fullName>
+                <default>false</default>
+                <label>Controlled substances and drug paraphernalia</label>
+            </value>
+            <value>
+                <fullName>courtOrderedPayments</fullName>
+                <default>false</default>
+                <label>Court ordered payments</label>
+            </value>
+            <value>
+                <fullName>creditRepairServices</fullName>
+                <default>false</default>
+                <label>Credit repair services</label>
+            </value>
+            <value>
+                <fullName>cryptoSoftwareProvider</fullName>
+                <default>false</default>
+                <label>Crypto Blockchain Software Providers (e.g., self-hosted wallet providers, aggregators, bots)</label>
+            </value>
+            <value>
+                <fullName>cryptoInvesting</fullName>
+                <default>false</default>
+                <label>Crypto Investing and Lending (Centralized)</label>
+            </value>
+            <value>
+                <fullName>cryptoATM</fullName>
+                <default>false</default>
+                <label>Cryptocurrency ATM Operator</label>
+            </value>
+            <value>
+                <fullName>cryptoCustodian</fullName>
+                <default>false</default>
+                <label>Cryptocurrency Custodians</label>
+            </value>
+            <value>
+                <fullName>cyberLockingServices</fullName>
+                <default>false</default>
+                <label>Cyber-locking services</label>
+            </value>
+            <value>
+                <fullName>debtCollection</fullName>
+                <default>false</default>
+                <label>Debt collection</label>
+            </value>
+            <value>
+                <fullName>daOrg</fullName>
+                <default>false</default>
+                <label>Decentralized Autonomous Organizations</label>
+            </value>
+            <value>
+                <fullName>dexAdmin</fullName>
+                <default>false</default>
+                <label>Decentralized Exchange (DEX) Administrators</label>
+            </value>
+            <value>
+                <fullName>eCommercePlatform</fullName>
+                <default>false</default>
+                <label>E-Commerce Platforms</label>
+            </value>
+            <value>
+                <fullName>familyOffice</fullName>
+                <default>false</default>
+                <label>Family Offices</label>
+            </value>
+            <value>
+                <fullName>gambling</fullName>
+                <default>false</default>
+                <label>Gambling, Gaming, and Sweepstakes</label>
+            </value>
+            <value>
+                <fullName>insurance</fullName>
+                <default>false</default>
+                <label>Insurance Companies</label>
+            </value>
+            <value>
+                <fullName>Market Makers / Liquidity Providers</fullName>
+                <default>false</default>
+                <label>Market Makers / Liquidity Providers</label>
+            </value>
+            <value>
+                <fullName>mugshotPublication</fullName>
+                <default>false</default>
+                <label>Mugshot publication or pay-to-remove sites</label>
+            </value>
+            <value>
+                <fullName>multiLevelMarketing</fullName>
+                <default>false</default>
+                <label>Multi-level marketing</label>
+            </value>
+            <value>
+                <fullName>nftMarketplace</fullName>
+                <default>false</default>
+                <label>Non-Fungible Token Marketplaces</label>
+            </value>
+            <value>
+                <fullName>otherPooledInvestmentVehicles</fullName>
+                <default>false</default>
+                <label>Other pooled investment vehicles</label>
+            </value>
+            <value>
+                <fullName>payDayLending</fullName>
+                <default>false</default>
+                <label>Pay-day lenders</label>
+            </value>
+            <value>
+                <fullName>paymentProcessorPlatform</fullName>
+                <default>false</default>
+                <label>Payment Processors and Platforms / Crypto Payment Gateways</label>
+            </value>
+            <value>
+                <fullName>p2p</fullName>
+                <default>false</default>
+                <label>Peer-to-Peer Payment Firms / Money Transmitters</label>
+            </value>
+            <value>
+                <fullName>personalInvestment</fullName>
+                <default>false</default>
+                <label>Personal Investment Companies</label>
+            </value>
+            <value>
+                <fullName>privateEquityFund</fullName>
+                <default>false</default>
+                <label>Private Equity Funds</label>
+            </value>
+            <value>
+                <fullName>privateFoundation</fullName>
+                <default>false</default>
+                <label>Private Foundations</label>
+            </value>
+            <value>
+                <fullName>pseudoPharmaceuticals</fullName>
+                <default>false</default>
+                <label>Pseudo Pharmaceuticals</label>
+            </value>
+            <value>
+                <fullName>publicCharity</fullName>
+                <default>false</default>
+                <label>Public Charities</label>
+            </value>
+            <value>
+                <fullName>trading</fullName>
+                <default>false</default>
+                <label>Quantitative / Algorithmic / High Frequency Traders</label>
+            </value>
+            <value>
+                <fullName>shellBanks</fullName>
+                <default>false</default>
+                <label>Shell banks</label>
+            </value>
+            <value>
+                <fullName>stakingServices</fullName>
+                <default>false</default>
+                <label>Staking-as-a-Service</label>
+            </value>
+            <value>
+                <fullName>tokenProject</fullName>
+                <default>false</default>
+                <label>Token Project / Foundation</label>
+            </value>
+            <value>
+                <fullName>ventureCapitalFund</fullName>
+                <default>false</default>
+                <label>Venture Capital Funds</label>
+            </value>
+            <value>
+                <fullName>web3GamingSocial</fullName>
+                <default>false</default>
+                <label>Web 3.0 Gaming Platforms / GameFi / Social</label>
+            </value>
+            <value>
+                <fullName>manufacturingHighValueGoods</fullName>
+                <default>false</default>
+                <label>Manufacturing High Value Goods</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

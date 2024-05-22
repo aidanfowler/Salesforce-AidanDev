@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lead_Status__c</fullName>
+    <externalId>false</externalId>
+    <label>Lead Status</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Cold</fullName>
+                <default>true</default>
+                <label>Cold</label>
+            </value>
+            <value>
+                <fullName>New</fullName>
+                <default>false</default>
+                <label>New</label>
+            </value>
+            <value>
+                <fullName>Researching</fullName>
+                <default>false</default>
+                <label>Researching</label>
+            </value>
+            <value>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+                <label>In Progress</label>
+            </value>
+            <value>
+                <fullName>Engaged</fullName>
+                <default>false</default>
+                <label>Engaged</label>
+            </value>
+            <value>
+                <fullName>Advanced</fullName>
+                <default>false</default>
+                <label>Advanced</label>
+            </value>
+            <value>
+                <fullName>Qualified</fullName>
+                <default>false</default>
+                <label>Qualified</label>
+            </value>
+            <value>
+                <fullName>Recycled - Not Ready</fullName>
+                <default>false</default>
+                <label>Recycled - Not Ready</label>
+            </value>
+            <value>
+                <fullName>Disqualified - Bad Fit</fullName>
+                <default>false</default>
+                <label>Disqualified - Bad Fit</label>
+            </value>
+            <value>
+                <fullName>Meeting scheduled</fullName>
+                <default>false</default>
+                <label>Meeting scheduled</label>
+            </value>
+            <value>
+                <fullName>Released</fullName>
+                <default>false</default>
+                <label>Released</label>
+            </value>
+            <value>
+                <fullName>Assigned</fullName>
+                <default>false</default>
+                <label>Assigned</label>
+            </value>
+            <value>
+                <fullName>Nurture</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Nurture</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

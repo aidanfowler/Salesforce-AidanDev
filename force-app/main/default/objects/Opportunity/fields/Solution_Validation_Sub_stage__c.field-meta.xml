@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Solution_Validation_Sub_stage__c</fullName>
+    <description>Updated Field Label and Picklist - https://app.asana.com/0/1203473392486179/1206099041222283/f</description>
+    <externalId>false</externalId>
+    <label>Solution Sub-stage</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Additional technical discovery needed</fullName>
+                <default>false</default>
+                <label>Additional technical discovery needed</label>
+            </value>
+            <value>
+                <fullName>Pending Circle Mint approval</fullName>
+                <default>false</default>
+                <label>Pending Circle Mint approval</label>
+            </value>
+            <value>
+                <fullName>Pending other</fullName>
+                <default>false</default>
+                <label>Pending other</label>
+            </value>
+            <value>
+                <fullName>Pending product feature</fullName>
+                <default>false</default>
+                <label>Pending product feature</label>
+            </value>
+            <value>
+                <fullName>Solution approved by customer</fullName>
+                <default>false</default>
+                <label>Solution approved by customer</label>
+            </value>
+            <value>
+                <fullName>Solution in active revisions</fullName>
+                <default>false</default>
+                <label>Solution in active revisions</label>
+            </value>
+            <value>
+                <fullName>Solution pending customer approval</fullName>
+                <default>false</default>
+                <label>Solution pending customer approval</label>
+            </value>
+            <value>
+                <fullName>Solution pending SE creation</fullName>
+                <default>false</default>
+                <label>Solution pending SE creation</label>
+            </value>
+            <value>
+                <fullName>Solution pending SE Lead approval</fullName>
+                <default>false</default>
+                <label>Solution pending SE Lead approval</label>
+            </value>
+            <value>
+                <fullName>Technical call not yet scheduled</fullName>
+                <default>false</default>
+                <label>Technical call not yet scheduled</label>
+            </value>
+            <value>
+                <fullName>Technical call scheduled</fullName>
+                <default>false</default>
+                <label>Technical call scheduled</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

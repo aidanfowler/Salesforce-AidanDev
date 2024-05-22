@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Confirm_Retail_Universe__c</fullName>
+    <description>Used by the Inside Sales team during their discovery calls</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Populate if applicable</inlineHelpText>
+    <label>Confirm Retail Universe</label>
+    <length>32768</length>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Html</type>
+    <visibleLines>25</visibleLines>
+</CustomField>

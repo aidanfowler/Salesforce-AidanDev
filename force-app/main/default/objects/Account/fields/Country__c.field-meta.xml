@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Country__c</fullName>
+    <description>Master Country field that is populated via data enrichment tools.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Corporate Headquarters, populated via data enrichment tools.If null, this field can be populated manually to map account to region.</inlineHelpText>
+    <label>HQ Country</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Country_of_Incorporation</valueSetName>
+    </valueSet>
+</CustomField>

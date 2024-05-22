@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Closed_Won_Entry_Criteria_Product_Renew</fullName>
+    <active>false</active>
+    <description>Billing Start Date, Agreement Term and Renewal Date must have values to advance to Closed Won stage for product and renewal opps</description>
+    <errorConditionFormula>AND(
+  !Contains($Profile.Name ,&apos;Admin&apos;),
+  OR(
+     RecordType.Name = &apos;Renewal&apos;,
+     Product_Opportunity__c = true
+  ),
+  ISPICKVAL(StageName, &quot;Closed Won&quot;),
+  OR(
+    ISBLANK(Agreement_Term__c),
+    ISBLANK(Billing_Start_Date__c)
+  )
+)</errorConditionFormula>
+    <errorMessage>Billing Start Date, Agreement Term (in Months), and Renewal Date must be filled in to advance to Closed Won stage.</errorMessage>
+</ValidationRule>

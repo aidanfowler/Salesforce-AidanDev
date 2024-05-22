@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Approval_Request_Product_Validation</fullName>
+    <active>false</active>
+    <description>If limited or exclusive products selected for product opportunity, require approval before moving to solution stage</description>
+    <errorConditionFormula>AND( 
+bypass_stage_validation__c = false,
+OR(
+   AND(
+      Needs_Product_Approval__c = true, 
+      !ISPICKVAL(Product_Approval_Status__c,&apos;Approved&apos;)
+   ),
+   AND(
+      Needs_Kash_Approval__c = true,
+      !ISPICKVAL(Kash_Product_Approval_Status__c,&apos;Approved&apos;)
+   )
+),
+!ISPICKVAL(StageName,&apos;Discover&apos;),
+!ISPICKVAL(StageName,&apos;Closed Lost&apos;),
+!ISPICKVAL(StageName,&apos;Closed Won&apos;),
+!Contains($Profile.Name ,&apos;Admin&apos;)
+)</errorConditionFormula>
+    <errorMessage>Manager / Kash&apos;s approval required based on product selection, please submit for approval 
+(if request is not already outstanding)</errorMessage>
+</ValidationRule>

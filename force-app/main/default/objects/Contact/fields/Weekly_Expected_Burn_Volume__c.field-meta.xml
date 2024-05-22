@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Weekly_Expected_Burn_Volume__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>How much does this customer expect to burn on a weekly basis?</inlineHelpText>
+    <label>Weekly Expected Burn Volume</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Currency</type>
+</CustomField>

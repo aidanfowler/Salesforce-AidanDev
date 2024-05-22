@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Generate_Deal_Sheet__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Used by BD reps to generate the Deal Sheet from the Deal Construct fields on the opportunity.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Used by BD reps to generate the Deal Sheet from the Deal Construct fields on the opportunity.</inlineHelpText>
+    <label>Generate Deal Sheet</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

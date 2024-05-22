@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Onboarding_Handoff_Notes__c</fullName>
+    <description>Used by the AE to document any handoff notes for the CSM</description>
+    <externalId>false</externalId>
+    <inlineHelpText>1. What&apos;s the customer&apos;s business?
+2. What problems are they trying to solve?
+3. How are they planning to use the Cybavo products to meet their business needs?
+4. Key contacts and roles
+5. Were any feature requests promised as part of closing the deal?
+6. Does anyone on their team have prior experience working with Cybavo?
+7. Is this a VIP or marquee customer?
+8. Did we promise a testnet account? For vault only
+9. Any special agreements / exceptions?
+10. Any red flag</inlineHelpText>
+    <label>Onboarding Handoff Notes_DNU</label>
+    <length>32768</length>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>LongTextArea</type>
+    <visibleLines>10</visibleLines>
+</CustomField>

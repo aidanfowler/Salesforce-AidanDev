@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Next_Steps__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Use this field to keep a running log of all next steps throughout the deal cycle.</inlineHelpText>
+    <label>Next Steps History</label>
+    <length>32768</length>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Html</type>
+    <visibleLines>50</visibleLines>
+</CustomField>

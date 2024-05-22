@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Success_Metrics__c</fullName>
+    <description>Populated by the BD to note how we will track success for this Partnership</description>
+    <externalId>false</externalId>
+    <inlineHelpText>How we will track success for this partnership?</inlineHelpText>
+    <label>Success Metrics</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>MEWs</fullName>
+                <default>false</default>
+                <label>MEWs</label>
+            </value>
+            <value>
+                <fullName>USDC on Platform</fullName>
+                <default>false</default>
+                <label>USDC on Platform</label>
+            </value>
+            <value>
+                <fullName>Transaction Volume</fullName>
+                <default>false</default>
+                <label>Transaction Volume</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Closed_Lost_Sub_Reason__c</fullName>
+    <description>legacy field</description>
+    <externalId>false</externalId>
+    <label>Closed Lost Sub-Reason</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Closed_Lost_Reason__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Collateral level too low</fullName>
+                <default>false</default>
+                <label>Collateral level too low</label>
+            </value>
+            <value>
+                <fullName>Not comfortable with borrowers and what they do to generate yield</fullName>
+                <default>false</default>
+                <label>Not comfortable with borrowers and what they do to generate yield</label>
+            </value>
+            <value>
+                <fullName>Not comfortable with BitGo as a custodian</fullName>
+                <default>false</default>
+                <label>Not comfortable with BitGo as a custodian</label>
+            </value>
+            <value>
+                <fullName>Not comfortable with Circle’s financials to mitigate losses</fullName>
+                <default>false</default>
+                <label>Not comfortable with Circle’s financials to mitigate losses</label>
+            </value>
+            <value>
+                <fullName>Required more customized contract</fullName>
+                <default>false</default>
+                <label>Required more customized contract</label>
+            </value>
+            <value>
+                <fullName>Did not understand regulatory framework</fullName>
+                <default>false</default>
+                <label>Did not understand regulatory framework</label>
+            </value>
+            <value>
+                <fullName>Lack of prospectus</fullName>
+                <default>false</default>
+                <label>Lack of prospectus</label>
+            </value>
+            <value>
+                <fullName>Rates too low</fullName>
+                <default>false</default>
+                <label>Rates too low</label>
+            </value>
+            <value>
+                <fullName>Lock ups too long</fullName>
+                <default>false</default>
+                <label>Lock ups too long</label>
+            </value>
+            <value>
+                <fullName>Minimum too high</fullName>
+                <default>false</default>
+                <label>Minimum too high</label>
+            </value>
+            <value>
+                <fullName>KYC and unknown requirements to pass</fullName>
+                <default>false</default>
+                <label>KYC and unknown requirements to pass</label>
+            </value>
+            <value>
+                <fullName>Wire/bank account issues</fullName>
+                <default>false</default>
+                <label>Wire/bank account issues</label>
+            </value>
+            <value>
+                <fullName>Time to get a response took too long</fullName>
+                <default>false</default>
+                <label>Time to get a response took too long</label>
+            </value>
+            <value>
+                <fullName>Final stakeholder not bought in because: [blank] (e.g. IPO, other requirements for capital, etc.)</fullName>
+                <default>false</default>
+                <label>Final stakeholder not bought in because: [blank] (e.g. IPO, other requirements for capital, etc.)</label>
+            </value>
+            <value>
+                <fullName>Change in market or capital needs</fullName>
+                <default>false</default>
+                <label>Change in market or capital needs</label>
+            </value>
+            <value>
+                <fullName>Client did not understand stablecoins</fullName>
+                <default>false</default>
+                <label>Client did not understand stablecoins</label>
+            </value>
+            <value>
+                <fullName>Client was looking for a B2B2C or B2B2B offering (i.e. pool investor capital, Feeder Fund, RIA)</fullName>
+                <default>false</default>
+                <label>Client was looking for a B2B2C or B2B2B offering (i.e. pool investor capital, Feeder Fund, RIA)</label>
+            </value>
+            <value>
+                <fullName>Client did not meet minimum investment requirements</fullName>
+                <default>false</default>
+                <label>Client did not meet minimum investment requirements</label>
+            </value>
+            <value>
+                <fullName>Business was clearly in an ineligible Jurisdiction</fullName>
+                <default>false</default>
+                <label>Business was clearly in an ineligible Jurisdiction</label>
+            </value>
+            <value>
+                <fullName>It was a consumer or not an eligible business</fullName>
+                <default>false</default>
+                <label>It was a consumer or not an eligible business</label>
+            </value>
+            <value>
+                <fullName>Covenants or other Regulatory reason does not allow them invest in USDC</fullName>
+                <default>false</default>
+                <label>Covenants or other Regulatory reason does not allow them invest in USDC</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Risk Issues</controllingFieldValue>
+            <valueName>Collateral level too low</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Risk Issues</controllingFieldValue>
+            <valueName>Not comfortable with borrowers and what they do to generate yield</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Risk Issues</controllingFieldValue>
+            <valueName>Not comfortable with BitGo as a custodian</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Risk Issues</controllingFieldValue>
+            <valueName>Not comfortable with Circle’s financials to mitigate losses</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Regulatory or Legal issues</controllingFieldValue>
+            <valueName>Required more customized contract</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Regulatory or Legal issues</controllingFieldValue>
+            <valueName>Did not understand regulatory framework</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Regulatory or Legal issues</controllingFieldValue>
+            <valueName>Lack of prospectus</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Offering construct (rates and terms)</controllingFieldValue>
+            <valueName>Rates too low</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Offering construct (rates and terms)</controllingFieldValue>
+            <valueName>Lock ups too long</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Offering construct (rates and terms)</controllingFieldValue>
+            <valueName>Minimum too high</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Onboarding onto the Product was too challenging</controllingFieldValue>
+            <valueName>KYC and unknown requirements to pass</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Onboarding onto the Product was too challenging</controllingFieldValue>
+            <valueName>Wire/bank account issues</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Onboarding onto the Product was too challenging</controllingFieldValue>
+            <valueName>Time to get a response took too long</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Appetite for investment changed</controllingFieldValue>
+            <valueName>Final stakeholder not bought in because: [blank] (e.g. IPO, other requirements for capital, etc.)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Appetite for investment changed</controllingFieldValue>
+            <valueName>Change in market or capital needs</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Lead was not properly qualified</controllingFieldValue>
+            <valueName>Client did not understand stablecoins</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Lead was not properly qualified</controllingFieldValue>
+            <valueName>Client was looking for a B2B2C or B2B2B offering (i.e. pool investor capital, Feeder Fund, RIA)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Lead was not properly qualified</controllingFieldValue>
+            <valueName>Client did not meet minimum investment requirements</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Lead was not properly qualified</controllingFieldValue>
+            <valueName>Business was clearly in an ineligible Jurisdiction</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Lead was not properly qualified</controllingFieldValue>
+            <valueName>It was a consumer or not an eligible business</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Lead was not properly qualified</controllingFieldValue>
+            <valueName>Covenants or other Regulatory reason does not allow them invest in USDC</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

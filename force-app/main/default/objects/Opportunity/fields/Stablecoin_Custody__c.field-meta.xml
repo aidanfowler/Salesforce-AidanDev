@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Stablecoin_Custody__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Does your partnership construct track stablecoins being custodied on platform or off platform?</inlineHelpText>
+    <label>Stablecoin Custody</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>On Customer Platform</fullName>
+                <default>false</default>
+                <label>On Customer Platform</label>
+            </value>
+            <value>
+                <fullName>On Circle Platform</fullName>
+                <default>false</default>
+                <label>On Circle Platform</label>
+            </value>
+            <value>
+                <fullName>Both</fullName>
+                <default>false</default>
+                <label>Both</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

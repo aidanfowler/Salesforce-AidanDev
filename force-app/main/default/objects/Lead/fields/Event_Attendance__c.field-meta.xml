@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Event_Attendance__c</fullName>
+    <externalId>false</externalId>
+    <label>Event Attendance</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>2021-06 Coindesk Consensus</fullName>
+                <default>false</default>
+                <label>2021-06 Coindesk Consensus</label>
+            </value>
+            <value>
+                <fullName>Bitcoin Conference Meeting</fullName>
+                <default>false</default>
+                <label>Bitcoin Conference Meeting</label>
+            </value>
+            <value>
+                <fullName>2021-04 BWG Webinar - Search for Yield in Digital Assets</fullName>
+                <default>false</default>
+                <label>2021-04 BWG Webinar - Search for Yield in Digital Assets</label>
+            </value>
+            <value>
+                <fullName>2021-04 NFT Webinar</fullName>
+                <default>false</default>
+                <label>2021-04 NFT Webinar</label>
+            </value>
+            <value>
+                <fullName>2021-04 The Block Webinar - NFTs with Gary V. &amp; Sam Lessin</fullName>
+                <default>false</default>
+                <label>2021-04 The Block Webinar - NFTs with Gary V. &amp; Sam Lessin</label>
+            </value>
+            <value>
+                <fullName>2021-03 Coindesk Webinar - NFTs &amp; the Next Phase</fullName>
+                <default>false</default>
+                <label>2021-03 Coindesk Webinar - NFTs &amp; the Next Phase</label>
+            </value>
+            <value>
+                <fullName>2021-03 NFT Webinars - Coindesk + The Block</fullName>
+                <default>false</default>
+                <label>2021-03 NFT Webinars - Coindesk + The Block</label>
+            </value>
+            <value>
+                <fullName>2021-03 BWG Webinar #2 - Treasury Management in the Age of Digital Assets</fullName>
+                <default>false</default>
+                <label>2021-03 BWG Webinar #2 - Treasury Management in the Age of Digital Assets</label>
+            </value>
+            <value>
+                <fullName>2021-03 BWG Webinar - Treasury Management in the Age of Digital Assets</fullName>
+                <default>false</default>
+                <label>2021-03 BWG Webinar - Treasury Management in the Age of Digital Assets</label>
+            </value>
+            <value>
+                <fullName>2021-02 The Block Webinar #1 - DeFi, CeFi &amp; Stablecoins</fullName>
+                <default>false</default>
+                <label>2021-02 The Block Webinar #1 - DeFi, CeFi &amp; Stablecoins</label>
+            </value>
+            <value>
+                <fullName>2021-02 The Block Webinar #1 - DeFi, CeFi, Dexes</fullName>
+                <default>false</default>
+                <label>2021-02 The Block Webinar #1 - DeFi, CeFi, Dexes</label>
+            </value>
+            <value>
+                <fullName>2021-02 The Block Paid Webinar - DEX, DeFi &amp; Capital Markets</fullName>
+                <default>false</default>
+                <label>2021-02 The Block Paid Webinar - DEX, DeFi &amp; Capital Markets</label>
+            </value>
+            <value>
+                <fullName>2021-01 Paid Webinar - Coindesk - Every Bank Crypto Strategy</fullName>
+                <default>false</default>
+                <label>2021-01 Paid Webinar - Coindesk - Every Bank Crypto Strategy</label>
+            </value>
+            <value>
+                <fullName>2020-06 Paid Webinar - Coindesk - Webinar 1</fullName>
+                <default>false</default>
+                <label>2020-06 Paid Webinar - Coindesk - Webinar 1</label>
+            </value>
+            <value>
+                <fullName>2020-10 Paid Webinar - Coindesk - Webinar 2</fullName>
+                <default>false</default>
+                <label>2020-10 Paid Webinar - Coindesk - Webinar 2</label>
+            </value>
+            <value>
+                <fullName>2020-11 Paid Webinar - BWG - Webinar 1</fullName>
+                <default>false</default>
+                <label>2020-11 Paid Webinar - BWG - Webinar 1</label>
+            </value>
+            <value>
+                <fullName>Money Hacks</fullName>
+                <default>false</default>
+                <label>Money Hacks</label>
+            </value>
+            <value>
+                <fullName>2021-09 SALT</fullName>
+                <default>false</default>
+                <label>2021-09 SALT</label>
+            </value>
+            <value>
+                <fullName>2021-09 DAS</fullName>
+                <default>false</default>
+                <label>2021-09 DAS</label>
+            </value>
+            <value>
+                <fullName>2021-10 Money 20/20 Las Vegas</fullName>
+                <default>false</default>
+                <label>2021-10 Money 20/20 Las Vegas</label>
+            </value>
+            <value>
+                <fullName>2021-11 Solana Breakpoint</fullName>
+                <default>false</default>
+                <label>2021-11 Solana Breakpoint</label>
+            </value>
+            <value>
+                <fullName>2021-11 Coindesk Webinar</fullName>
+                <default>false</default>
+                <label>2021-11 Coindesk Webinar</label>
+            </value>
+            <value>
+                <fullName>2022-01 Coindesk Webinar - DeFi USDC</fullName>
+                <default>false</default>
+                <label>2022-01 Coindesk Webinar - DeFi USDC</label>
+            </value>
+            <value>
+                <fullName>Avalanche Webinar Blockchain | 2022-02</fullName>
+                <default>false</default>
+                <label>Avalanche Webinar Blockchain | 2022-02</label>
+            </value>
+            <value>
+                <fullName>2022-04 NFT LA Event</fullName>
+                <default>false</default>
+                <label>2022-04 NFT LA Event</label>
+            </value>
+            <value>
+                <fullName>Event | DeFi Webinar with Solana and Orca | 2022-04</fullName>
+                <default>false</default>
+                <label>Event | DeFi Webinar with Solana and Orca | 2022-04</label>
+            </value>
+            <value>
+                <fullName>Event | Circle Account Webinar | 2022-04</fullName>
+                <default>false</default>
+                <label>Event | Circle Account Webinar | 2022-04</label>
+            </value>
+            <value>
+                <fullName>Event | Avalanche Summit 2022 | 2022-04</fullName>
+                <default>false</default>
+                <label>Event | Avalanche Summit 2022 | 2022-04</label>
+            </value>
+            <value>
+                <fullName>Event | Permissionless 2022 - Booth Visit | 2022-04</fullName>
+                <default>false</default>
+                <label>Event | Permissionless 2022 - Booth Visit | 2022-04</label>
+            </value>
+            <value>
+                <fullName>2022-04 BTC Miami - Onsite Meeting</fullName>
+                <default>false</default>
+                <label>2022-04 BTC Miami - Onsite Meeting</label>
+            </value>
+            <value>
+                <fullName>Blockworks Webinar - Institutional Crypto USDC | 2022-04</fullName>
+                <default>false</default>
+                <label>Blockworks Webinar - Institutional Crypto USDC | 2022-04</label>
+            </value>
+            <value>
+                <fullName>Event | Consensus 2022 - Booth Visit</fullName>
+                <default>false</default>
+                <label>Event | Consensus 2022 - Booth Visit</label>
+            </value>
+            <value>
+                <fullName>Event Attendance | Consensus Dinner FTX 3 Forks | 2022-05</fullName>
+                <default>false</default>
+                <label>Event Attendance | Consensus Dinner FTX 3 Forks | 2022-05</label>
+            </value>
+            <value>
+                <fullName>Event | Yield Webinar 2022-06</fullName>
+                <default>false</default>
+                <label>Event | Yield Webinar 2022-06</label>
+            </value>
+            <value>
+                <fullName>Singapore Private Circle Dinner | 2022-07</fullName>
+                <default>false</default>
+                <label>Singapore Private Circle Dinner | 2022-07</label>
+            </value>
+            <value>
+                <fullName>Singapore Cocktail Reception - Lantern | 2022-07</fullName>
+                <default>false</default>
+                <label>Singapore Cocktail Reception - Lantern | 2022-07</label>
+            </value>
+            <value>
+                <fullName>Singapore Executive Breakfast | 2022-07</fullName>
+                <default>false</default>
+                <label>Singapore Executive Breakfast | 2022-07</label>
+            </value>
+            <value>
+                <fullName>TOKEN2049 - VIP Dinner | 2022-09</fullName>
+                <default>false</default>
+                <label>TOKEN2049 - VIP Dinner | 2022-09</label>
+            </value>
+            <value>
+                <fullName>CoinFest Bali | 2022-08</fullName>
+                <default>false</default>
+                <label>CoinFest Bali | 2022-08</label>
+            </value>
+            <value>
+                <fullName>Event | DAS 2022 | 2022-09</fullName>
+                <default>false</default>
+                <label>Event | DAS 2022 | 2022-09</label>
+            </value>
+            <value>
+                <fullName>TOKEN2049 - Booth Visit | 2022-09</fullName>
+                <default>false</default>
+                <label>TOKEN2049 - Booth Visit | 2022-09</label>
+            </value>
+            <value>
+                <fullName>Money 20/20 - VIP Dinner | 2022-10</fullName>
+                <default>false</default>
+                <label>Money 20/20 - VIP Dinner | 2022-10</label>
+            </value>
+            <value>
+                <fullName>Money 20/20 - Booth Visit | 2022-10</fullName>
+                <default>false</default>
+                <label>Money 20/20 - Booth Visit | 2022-10</label>
+            </value>
+            <value>
+                <fullName>Circle Converge22 | 2022-09</fullName>
+                <default>false</default>
+                <label>Circle Converge22 | 2022-09</label>
+            </value>
+            <value>
+                <fullName>F1 Suite Singapore | 2022-10</fullName>
+                <default>false</default>
+                <label>F1 Suite Singapore | 2022-10</label>
+            </value>
+            <value>
+                <fullName>Singapore Fintech Festival - Booth Visit | 2022-11</fullName>
+                <default>false</default>
+                <label>Singapore Fintech Festival - Booth Visit | 2022-11</label>
+            </value>
+            <value>
+                <fullName>Circle Converge22 - Capital Markets Happy Hour | 2022-09</fullName>
+                <default>false</default>
+                <label>Circle Converge22 - Capital Markets Happy Hour | 2022-09</label>
+            </value>
+            <value>
+                <fullName>D2 Summit - Booth Visit | 2022-10</fullName>
+                <default>false</default>
+                <label>D2 Summit - Booth Visit | 2022-10</label>
+            </value>
+            <value>
+                <fullName>Circle Converge22 - Enterprise Dinner | 2022-09</fullName>
+                <default>false</default>
+                <label>Circle Converge22 - Enterprise Dinner | 2022-09</label>
+            </value>
+            <value>
+                <fullName>Solana Breakpoint - Booth Visit | 2022-11</fullName>
+                <default>false</default>
+                <label>Solana Breakpoint - Booth Visit | 2022-11</label>
+            </value>
+            <value>
+                <fullName>Singapore Fintech Festival - Networking Drinks | 2022-11</fullName>
+                <default>false</default>
+                <label>Singapore Fintech Festival - Networking Drinks | 2022-11</label>
+            </value>
+            <value>
+                <fullName>Webinar | Businesses Benefiting From Blockchain | 12-2022</fullName>
+                <default>false</default>
+                <label>Webinar | Businesses Benefiting From Blockchain | 12-2022</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Capital_Markets_Sub_Vertical__c</fullName>
+    <externalId>false</externalId>
+    <label>Capital Markets Sub Vertical</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Capital_Markets_Sub_Vertical</valueSetName>
+    </valueSet>
+</CustomField>

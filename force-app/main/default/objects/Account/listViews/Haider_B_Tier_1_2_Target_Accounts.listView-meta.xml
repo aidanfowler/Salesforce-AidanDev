@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Haider_B_Tier_1_2_Target_Accounts</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>SDR_Owner__c</columns>
+    <columns>ACCOUNT.PHONE1</columns>
+    <columns>CORE.USERS.ALIAS</columns>
+    <columns>Company_Domain_Name__c</columns>
+    <columns>Email_Domain__c</columns>
+    <columns>Vertical__c</columns>
+    <columns>Capital_Markets_Sub_Vertical__c</columns>
+    <columns>Enterprise_Sub_Vertical__c</columns>
+    <columns>Platform_Owner__c</columns>
+    <columns>Treasury_Owner__c</columns>
+    <columns>Business_Development_Owner__c</columns>
+    <columns>target_account_tier__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>SDR_Owner__c</field>
+        <operation>equals</operation>
+        <value>Haider Bhatti</value>
+    </filters>
+    <filters>
+        <field>Target_Account__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>target_account_tier__c</field>
+        <operation>equals</operation>
+        <value>Tier 1,Tier 2</value>
+    </filters>
+    <label>Haider B - Tier 1/2 Target Accounts</label>
+</ListView>

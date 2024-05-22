@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BTC2023_Web3_Potential_Attendees</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>CONTACT.TITLE</columns>
+    <columns>FULL_NAME</columns>
+    <columns>Account.SDR_Owner__c</columns>
+    <columns>SDR_Owner__c</columns>
+    <columns>Account.Account_Owner__c</columns>
+    <columns>Account.Target_Account__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>Money 2020 - SDR OUTREACH</label>
+</ListView>

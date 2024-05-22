@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Monthly_USDC_trading_volume__c</fullName>
+    <externalId>false</externalId>
+    <label>Monthly USDC Trading Volume</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>&lt;$3MM</fullName>
+                <default>false</default>
+                <label>&lt;$3MM</label>
+            </value>
+            <value>
+                <fullName>$3MM</fullName>
+                <default>false</default>
+                <label>$3MM</label>
+            </value>
+            <value>
+                <fullName>$5MM</fullName>
+                <default>false</default>
+                <label>$5MM</label>
+            </value>
+            <value>
+                <fullName>$10MM</fullName>
+                <default>false</default>
+                <label>$10MM</label>
+            </value>
+            <value>
+                <fullName>&gt;$10MM</fullName>
+                <default>false</default>
+                <label>&gt;$10MM</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Current_Daily_USDC_Limit__c</fullName>
+    <description>The lendee&apos;s daily limit</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Enter the mutual client&apos;s daily USDC limit.</inlineHelpText>
+    <label>Current Daily USDC Limit</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Currency</type>
+</CustomField>

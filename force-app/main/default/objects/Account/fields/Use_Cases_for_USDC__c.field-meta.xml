@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Use_Cases_for_USDC__c</fullName>
+    <externalId>false</externalId>
+    <label>Use Cases for USDC</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Wallet</fullName>
+                <default>false</default>
+                <label>Wallet</label>
+            </value>
+            <value>
+                <fullName>Exchange</fullName>
+                <default>false</default>
+                <label>Exchange</label>
+            </value>
+            <value>
+                <fullName>Custodian</fullName>
+                <default>false</default>
+                <label>Custodian</label>
+            </value>
+            <value>
+                <fullName>DeFi Project</fullName>
+                <default>false</default>
+                <label>DeFi Project</label>
+            </value>
+            <value>
+                <fullName>Crypto</fullName>
+                <default>false</default>
+                <label>Crypto</label>
+            </value>
+            <value>
+                <fullName>Fintech</fullName>
+                <default>false</default>
+                <label>Fintech</label>
+            </value>
+            <value>
+                <fullName>Bank</fullName>
+                <default>false</default>
+                <label>Bank</label>
+            </value>
+            <value>
+                <fullName>SME</fullName>
+                <default>false</default>
+                <label>SME</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Task_Disposition__c</fullName>
+    <description>Used by the Sales Development team to indicate a reason for closing their tasks related to SDR Follow Ups.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Explanation for closing out this task</inlineHelpText>
+    <label>Task Disposition</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Qualified</fullName>
+                <default>false</default>
+                <label>Qualified</label>
+            </value>
+            <value>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+                <label>Rejected</label>
+            </value>
+            <value>
+                <fullName>Follow Up</fullName>
+                <default>false</default>
+                <label>Follow Up</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

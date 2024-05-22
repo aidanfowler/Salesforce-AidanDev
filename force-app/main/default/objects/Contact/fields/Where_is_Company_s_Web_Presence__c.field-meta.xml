@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Where_is_Company_s_Web_Presence__c</fullName>
+    <description>What is the Company&apos;s web presence? Where is it located?</description>
+    <externalId>false</externalId>
+    <inlineHelpText>What is the Company&apos;s web presence? Where is it located?</inlineHelpText>
+    <label>Where is Company&apos;s Web Presence?</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Native App</fullName>
+                <default>false</default>
+                <label>Native App</label>
+            </value>
+            <value>
+                <fullName>Website</fullName>
+                <default>false</default>
+                <label>Website</label>
+            </value>
+            <value>
+                <fullName>Both Native App and Website</fullName>
+                <default>false</default>
+                <label>Both Native App and Website</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cannot_Revert_to_a_Previous_Stage</fullName>
+    <active>false</active>
+    <description>Blocks a user that does not have Bypass VR = TRUE from going backwards on sales stages</description>
+    <errorConditionFormula>AND
+(
+bypass_stage_validation__c = false,
+CASE(StageName,
+&quot;Prospect&quot;, 1,
+&quot;Discover&quot;, 2,
+&quot;Solution&quot;, 3,
+&quot;Compliance&quot;, 4,
+&quot;Propose / Negotiate&quot;, 5,
+&quot;Commit&quot;, 6,
+&quot;Closed Won/Onboarding&quot;, 7,
+&quot;Closed Lost&quot;, 8, 0) &lt;
+CASE(TEXT(PRIORVALUE(StageName)),
+&quot;Prospect&quot;, 1,
+&quot;Discover&quot;, 2,
+&quot;Solution&quot;, 3,
+&quot;Compliance&quot;, 4,
+&quot;Propose / Negotiate&quot;, 5,
+&quot;Commit&quot;, 6,
+&quot;Closed Won/Onboarding&quot;, 7,
+&quot;Closed Lost&quot;, 8, 0),
+NOT($Permission.Change_Opp_Stage), !Contains($Profile.Name ,&apos;Admin&apos;))</errorConditionFormula>
+    <errorMessage>You cannot revert to the previous sales stage. Please ask your System Admin for assistance.</errorMessage>
+</ValidationRule>

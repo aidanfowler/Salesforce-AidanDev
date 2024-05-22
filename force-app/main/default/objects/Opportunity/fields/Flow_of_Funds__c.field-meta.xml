@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Flow_of_Funds__c</fullName>
+    <description>Link to Flow of Funds document in Google Drive</description>
+    <externalId>false</externalId>
+    <label>Flow of Funds_DNU</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Url</type>
+</CustomField>

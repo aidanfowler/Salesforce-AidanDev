@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Term_Sheet_Approved_by_Customer__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Used to verify the term sheet was verbally approved by the customer or approved in writing.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Check this box to confirm that the customer has approved the term sheet</inlineHelpText>
+    <label>Term Sheet Approved by Customer</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

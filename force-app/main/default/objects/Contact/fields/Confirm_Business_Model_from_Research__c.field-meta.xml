@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Confirm_Business_Model_from_Research__c</fullName>
+    <description>Used by the inside sales team during their discovery calls</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Additional info on the business description</inlineHelpText>
+    <label>Confirm Business Model from Research</label>
+    <length>32768</length>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Html</type>
+    <visibleLines>25</visibleLines>
+</CustomField>

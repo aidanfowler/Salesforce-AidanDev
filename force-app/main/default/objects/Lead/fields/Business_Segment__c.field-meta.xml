@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Business_Segment__c</fullName>
+    <externalId>false</externalId>
+    <label>Business Segment</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Crypto Finance Application</fullName>
+                <default>false</default>
+                <label>Crypto Finance Application</label>
+            </value>
+            <value>
+                <fullName>Blockchain Networks &amp; Protocols</fullName>
+                <default>false</default>
+                <label>Blockchain Networks &amp; Protocols</label>
+            </value>
+            <value>
+                <fullName>Institutional Trader</fullName>
+                <default>false</default>
+                <label>Institutional Trader</label>
+            </value>
+            <value>
+                <fullName>Trading Firm</fullName>
+                <default>false</default>
+                <label>Trading Firm</label>
+            </value>
+            <value>
+                <fullName>Bank</fullName>
+                <default>false</default>
+                <label>Bank</label>
+            </value>
+            <value>
+                <fullName>eCommerce</fullName>
+                <default>false</default>
+                <label>eCommerce</label>
+            </value>
+            <value>
+                <fullName>Something else</fullName>
+                <default>false</default>
+                <label>Something else</label>
+            </value>
+            <value>
+                <fullName>Crypto Commerce</fullName>
+                <default>false</default>
+                <label>Crypto Commerce</label>
+            </value>
+            <value>
+                <fullName>Crypto Finance</fullName>
+                <default>false</default>
+                <label>Crypto Finance</label>
+            </value>
+            <value>
+                <fullName>Retail, Gaming &amp; Entertainment (B2C)</fullName>
+                <default>false</default>
+                <label>Retail, Gaming &amp; Entertainment (B2C)</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Fintechs</fullName>
+                <default>false</default>
+                <label>Fintechs</label>
+            </value>
+            <value>
+                <fullName>Financial Services</fullName>
+                <default>false</default>
+                <label>Financial Services</label>
+            </value>
+            <value>
+                <fullName>Institutional Trading</fullName>
+                <default>false</default>
+                <label>Institutional Trading</label>
+            </value>
+            <value>
+                <fullName>Technology</fullName>
+                <default>false</default>
+                <label>Technology</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

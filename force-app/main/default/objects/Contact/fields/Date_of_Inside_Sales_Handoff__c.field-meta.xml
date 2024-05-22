@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Date_of_Inside_Sales_Handoff__c</fullName>
+    <description>To sync into Salesloft for Inside Sales team</description>
+    <externalId>false</externalId>
+    <label>Date of Inside Sales Handoff</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Date</type>
+</CustomField>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Solution_Exit_Criteria</fullName>
+    <active>false</active>
+    <description>Solution Description and Solution Validated (and custom pricing and waiving network fees) must be filled to advance past solution</description>
+    <errorConditionFormula>AND(
+  !Contains($Profile.Name ,&apos;Admin&apos;),
+  OR(
+    ISPICKVAL(StageName, &quot;Approvals&quot;),
+    ISPICKVAL(StageName, &quot;Negotiate&quot;),
+    ISPICKVAL(StageName, &quot;Contract&quot;)
+  ),
+  OR(
+     AND(
+        Needs_Solution_Validation__c = true,
+        Solution_Validated__c = false
+     ),
+     AND(
+        Product_Opportunity__c = true,
+        OR(
+           ISBLANK(TEXT(Custom_Pricing1__c)),
+           ISBLANK(TEXT(Are_We_Waiving_Network_Fees__c))
+        )
+     ),
+     AND(
+        ISBLANK(Amount),
+        OR(
+           CONTAINS(Products_Selected__c, &apos;Blockchain Partnerships&apos;),
+           CONTAINS(Products_Selected__c, &apos;Institutional Trading Partnership&apos;),
+           CONTAINS(Products_Selected__c, &apos;Activation Incentives&apos;)
+        )
+     ) 
+   )
+)</errorConditionFormula>
+    <errorMessage>Solution Validated, and both Custom Pricing? and Are We Waving Network Fees (Deal Type 1 products) must be filled to advance. Amount is required for ITP, Blockchain, &amp; Activation Incentive Deals.</errorMessage>
+</ValidationRule>

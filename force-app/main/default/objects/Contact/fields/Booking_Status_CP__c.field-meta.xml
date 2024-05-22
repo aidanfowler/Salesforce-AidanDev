@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Booking_Status_CP__c</fullName>
+    <description>This field will set a value of &quot;Booked&quot; or &quot;Not Booked&quot; based on whether a prospect books a meeting via an Inbound Router. The &quot;Not Booked&quot; value will write once the timeout expires within &quot;Queues for prospects who didn&apos;t take action&quot;. If that timeout expires and someone still books, the value will be overwritten when the booking happens.</description>
+    <externalId>false</externalId>
+    <label>Most Recent Booking Status CP</label>
+    <length>255</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

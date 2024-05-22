@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Time_In_Current_Compliance_State__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+   AND(
+      !ISPICKVAL(Compliance_State__c,&apos;Approved&apos;),
+      !ISPICKVAL(Compliance_State__c,&apos;Rejected&apos;),
+      !ISPICKVAL(Compliance_State__c,&apos;Not Required&apos;),
+      ISPICKVAL(StageName, &apos;Approvals&apos;),
+      !ISBLANK(Last_Compliance_State_Change_Date__c)
+   ),
+   TEXT(Round(((NOW() - Last_Compliance_State_Change_Date__c)),2)) + &apos; Days&apos;, 
+   null
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Time In Current Compliance State</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

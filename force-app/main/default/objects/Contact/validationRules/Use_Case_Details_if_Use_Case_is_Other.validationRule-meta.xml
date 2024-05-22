@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Use_Case_Details_if_Use_Case_is_Other</fullName>
+    <active>false</active>
+    <description>Require a user to enter Use Case Details if Use Case is Other</description>
+    <errorConditionFormula>AND(
+ INCLUDES( Use_Case__c , &quot;Other&quot;),
+ ISBLANK( Use_Case_Details__c )
+)</errorConditionFormula>
+    <errorMessage>If you select &quot;Other&quot; as your Use Case, Use Case Details is required. Please fill in the Use Case Details field then click save.</errorMessage>
+</ValidationRule>

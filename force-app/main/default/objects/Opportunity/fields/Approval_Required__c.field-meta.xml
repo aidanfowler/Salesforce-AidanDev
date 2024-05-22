@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Approval_Required__c</fullName>
+    <externalId>false</externalId>
+    <formula>OR(
+   AND(
+      ISPICKVAL(StageName,&apos;Discover&apos;),
+      OR(
+         AND(
+            Needs_Product_Approval__c = true,
+            !ISPICKVAL(Product_Approval_Status__c,&apos;Approved&apos;)
+         ),
+         AND(
+            Needs_Kash_Approval__c = true,
+            !ISPICKVAL(Kash_Product_Approval_Status__c,&apos;Approved&apos;)
+         )
+      )
+   ),
+   AND(
+      ISPICKVAL(StageName,&apos;Approvals&apos;),
+      OR(
+         AND(
+            Needs_Compliance__c = true,
+            !ISPICKVAL(Compliance_Approval_Status__c,&apos;Approved&apos;)
+         ),
+         AND(
+            Needs_Pricing_Approval__c = true,
+            !ISPICKVAL(Pricing_Approval_Status__c,&apos;Approved&apos;)
+         ),
+         AND(
+            Needs_DRG_Approval__c = true,
+            !ISPICKVAL(DRG_Approval_Status__c,&apos;Approved&apos;)
+         )
+      )
+   ),
+   AND(
+      ISPICKVAL(StageName,&apos;Negotiate&apos;),
+      Needs_Contract_Approval__c = true,
+      !ISPICKVAL(Contract_Request_Status__c,&apos;Approved&apos;)
+   )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Approval Required</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

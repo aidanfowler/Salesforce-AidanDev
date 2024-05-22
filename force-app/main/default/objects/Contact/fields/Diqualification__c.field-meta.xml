@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Diqualification__c</fullName>
+    <description>Used by the Inside Sales team during their discovery calls</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Populate the reason for disqualifying the customer for an L3 Circle Account.</inlineHelpText>
+    <label>Disqualification Criteria</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Cannot confirm the legitimacy of business</fullName>
+                <default>false</default>
+                <label>Cannot confirm the legitimacy of business</label>
+            </value>
+            <value>
+                <fullName>Not actively or intending to build with Circle products</fullName>
+                <default>false</default>
+                <label>Not actively or intending to build with Circle products</label>
+            </value>
+            <value>
+                <fullName>Not actively or intending to build on a blockchain we support</fullName>
+                <default>false</default>
+                <label>Not actively or intending to build on a blockchain we support</label>
+            </value>
+            <value>
+                <fullName>Not a fit for Circle Alliance Program</fullName>
+                <default>false</default>
+                <label>Not a fit for Circle Alliance Program</label>
+            </value>
+            <value>
+                <fullName>Flagged by sanctions/compliance</fullName>
+                <default>false</default>
+                <label>Flagged by sanctions/compliance</label>
+            </value>
+            <value>
+                <fullName>The proposed minting volume is under 100K threshold</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>The proposed minting volume is under 100K threshold</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Current_Stablecoin_Volume__c</fullName>
+    <description>Most recent month’s gross mint and burn volume, populated by cSMs</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Most recent month’s gross mint and burn volume.</inlineHelpText>
+    <label>Current Stablecoin Volume</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Currency</type>
+</CustomField>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Midpoint_Incentive_Payout__c</fullName>
+    <description>The full campaign payout if the partner hits the midpoint of the payout matrix every payout period.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The full campaign payout if the partner hits the midpoint of the payout matrix every payout period.</inlineHelpText>
+    <label>Annualized Mid-Point Incentive Payout</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Currency</type>
+</CustomField>

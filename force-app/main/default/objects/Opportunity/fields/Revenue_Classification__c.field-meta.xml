@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Revenue_Classification__c</fullName>
+    <description>legacy field</description>
+    <externalId>false</externalId>
+    <label>Revenue Classification</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Marquee</fullName>
+                <default>false</default>
+                <label>Marquee</label>
+            </value>
+            <value>
+                <fullName>HiPo</fullName>
+                <default>false</default>
+                <label>HiPo</label>
+            </value>
+            <value>
+                <fullName>Upside</fullName>
+                <default>false</default>
+                <label>Upside</label>
+            </value>
+            <value>
+                <fullName>Startup</fullName>
+                <default>false</default>
+                <label>Startup</label>
+            </value>
+            <value>
+                <fullName>Offboard</fullName>
+                <default>false</default>
+                <label>Offboard</label>
+            </value>
+            <value>
+                <fullName>Forced Offboard</fullName>
+                <default>false</default>
+                <label>Forced Offboard</label>
+            </value>
+            <value>
+                <fullName>Non-Marquee</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Non-Marquee</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

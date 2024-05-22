@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Don_t_Send_CC_Survey_Date__c</fullName>
+    <description>This holds the date/time when the checkbox Don’t Send CC Survey is checked.  It is then used to uncheck this 7 days later in a scheduled flow.  This does not live on the page layout.</description>
+    <externalId>false</externalId>
+    <label>Don’t Send CC Survey Date</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>DateTime</type>
+</CustomField>

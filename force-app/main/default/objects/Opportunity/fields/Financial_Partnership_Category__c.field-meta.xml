@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Financial_Partnership_Category__c</fullName>
+    <externalId>false</externalId>
+    <label>Financial Partnership Category</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Possible Partnership</fullName>
+                <default>false</default>
+                <label>Possible Partnership</label>
+            </value>
+            <value>
+                <fullName>Emerging Partnership</fullName>
+                <default>false</default>
+                <label>Emerging Partnership</label>
+            </value>
+            <value>
+                <fullName>Near-Term Partnerships</fullName>
+                <default>false</default>
+                <label>Near-Term Partnerships</label>
+            </value>
+            <value>
+                <fullName>Current Integration</fullName>
+                <default>false</default>
+                <label>Current Integration</label>
+            </value>
+            <value>
+                <fullName>Launched</fullName>
+                <default>false</default>
+                <label>Launched</label>
+            </value>
+            <value>
+                <fullName>Engineering</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Engineering</label>
+            </value>
+            <value>
+                <fullName>Financial Partnerships</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Financial Partnerships</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

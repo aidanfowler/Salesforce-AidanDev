@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OTC_Liquidity_Partner_Status__c</fullName>
+    <description>Used to track indirect liquidity partner mutual clients.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Select the option for the current status of the indirect liquidity partner mutual clients.</inlineHelpText>
+    <label>OTC Liquidity Partner Status</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Current</fullName>
+                <default>false</default>
+                <label>Current</label>
+            </value>
+            <value>
+                <fullName>Former</fullName>
+                <default>false</default>
+                <label>Former</label>
+            </value>
+            <value>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+                <label>Rejected</label>
+            </value>
+            <value>
+                <fullName>Pending DDQ</fullName>
+                <default>false</default>
+                <label>Pending DDQ</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

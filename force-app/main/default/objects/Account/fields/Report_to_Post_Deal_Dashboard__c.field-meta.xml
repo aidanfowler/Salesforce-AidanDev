@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Report_to_Post_Deal_Dashboard__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Used by CSM leads to include an account for reporting within the post-sales dashboard</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Used by CSM leads to include an account for reporting within the post-sales dashboard</inlineHelpText>
+    <label>Report to Post-Deal Dashboard</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

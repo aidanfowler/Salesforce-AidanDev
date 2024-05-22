@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contract_Request_Status__c</fullName>
+    <defaultValue>&quot;Not Started&quot;</defaultValue>
+    <externalId>false</externalId>
+    <label>Contract Draft Status</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Initial Draft Requested</fullName>
+                <default>false</default>
+                <label>Initial Draft Requested</label>
+            </value>
+            <value>
+                <fullName>Draft - with Circle Legal</fullName>
+                <default>false</default>
+                <label>Draft - with Circle Legal</label>
+            </value>
+            <value>
+                <fullName>Draft - with Circle stakeholders</fullName>
+                <default>false</default>
+                <label>Draft - with Circle stakeholders</label>
+            </value>
+            <value>
+                <fullName>Draft - With BD</fullName>
+                <default>false</default>
+                <label>Draft - With BD</label>
+            </value>
+            <value>
+                <fullName>Draft - with Customer</fullName>
+                <default>false</default>
+                <label>Draft - with Customer</label>
+            </value>
+            <value>
+                <fullName>Additional Revisions Requested</fullName>
+                <default>false</default>
+                <label>Additional Revisions Requested</label>
+            </value>
+            <value>
+                <fullName>Redlines - with Circle Legal</fullName>
+                <default>false</default>
+                <label>Redlines - with Circle Legal</label>
+            </value>
+            <value>
+                <fullName>Redlines - with Circle stakeholders</fullName>
+                <default>false</default>
+                <label>Redlines - with Circle stakeholders</label>
+            </value>
+            <value>
+                <fullName>Execution - final copy provided</fullName>
+                <default>false</default>
+                <label>Execution - final copy provided</label>
+            </value>
+            <value>
+                <fullName>Not Required</fullName>
+                <default>false</default>
+                <label>Not Required</label>
+            </value>
+            <value>
+                <fullName>Not Started</fullName>
+                <default>false</default>
+                <label>Not Started</label>
+            </value>
+            <value>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+                <label>Rejected</label>
+            </value>
+            <value>
+                <fullName>Approved</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Approved</label>
+            </value>
+            <value>
+                <fullName>Pending Approval</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Pending Approval</label>
+            </value>
+            <value>
+                <fullName>Redlines - with Customer</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Redlines - with Customer</label>
+            </value>
+            <value>
+                <fullName>Waiting On Approval</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Waiting On Approval</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

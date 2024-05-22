@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Solution_Documented_Updated__c</fullName>
+    <description>Used to date stamp each time a Solution Document is populated</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Used to date stamp each time a Solution Document is populated</inlineHelpText>
+    <label>Solution Documented Updated</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>DateTime</type>
+</CustomField>

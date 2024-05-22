@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SE_Accounts</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>Business_Segment__c</columns>
+    <columns>ACCOUNT.INDUSTRY</columns>
+    <columns>Business_Description__c</columns>
+    <columns>Success_Plan__c</columns>
+    <columns>Launch_Status__c</columns>
+    <columns>Next_Step_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Logged_in_SE__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>SE Accounts</label>
+</ListView>

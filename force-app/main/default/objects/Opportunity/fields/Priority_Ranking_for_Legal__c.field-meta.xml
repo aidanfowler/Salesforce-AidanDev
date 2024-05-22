@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Priority_Ranking_for_Legal__c</fullName>
+    <description>Used to rank opportunities submitted for Legal review - by priority. Sales Enablement team will attend weekly prioritization calls with sales leaders to rank all open opportunities.
+
+1- Episodic Opportunity or Commitment eg. 
+Event or PR moment or Circle has a contractual commitment to deliver by XX date.etc
+2- 1M addressable MeWs, First of kind and will help catalyze product scale
+3- Strong brand name, scale potential exists but will take time to get the flywheel running eg. Visa. Amazon
+4- Scale potential exists, company brand is lesser-known</description>
+    <externalId>false</externalId>
+    <inlineHelpText>1- Episodic Opportunity or Commitment eg. 
+Event or PR moment or Circle has a contractual commitment to deliver by XX date.etc
+2- 1M addressable MeWs, First of kind and will help catalyze product scale
+3- Strong brand name, scale potential exists but will take time to get the flywheel running eg. Visa. Amazon
+4- Scale potential exists, company brand is lesser-known</inlineHelpText>
+    <label>Priority Ranking for Legal</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>1- High Impact - Urgent</fullName>
+                <default>false</default>
+                <label>1- High Impact - Urgent</label>
+            </value>
+            <value>
+                <fullName>2- High Potential</fullName>
+                <default>false</default>
+                <label>2- High Potential</label>
+            </value>
+            <value>
+                <fullName>3- Strategic</fullName>
+                <default>false</default>
+                <label>3- Strategic</label>
+            </value>
+            <value>
+                <fullName>4- Medium Potential</fullName>
+                <default>false</default>
+                <label>4- Medium Potential</label>
+            </value>
+            <value>
+                <fullName>Kash Priority</fullName>
+                <default>false</default>
+                <label>Kash Priority</label>
+            </value>
+            <value>
+                <fullName>1</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>1</label>
+            </value>
+            <value>
+                <fullName>2</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>2</label>
+            </value>
+            <value>
+                <fullName>3</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>3</label>
+            </value>
+            <value>
+                <fullName>4</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>4</label>
+            </value>
+            <value>
+                <fullName>5</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>5</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

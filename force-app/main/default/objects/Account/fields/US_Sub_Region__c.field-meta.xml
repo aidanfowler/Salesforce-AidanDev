@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>US_Sub_Region__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+   AND(
+      ISPICKVAL(Country__c,&apos;US&apos;), 
+      !ISBLANK( Company_Office_State_Cognism__c )
+   ),
+   IF(
+      OR(
+         Company_Office_State_Cognism__c = &apos;Washington&apos;,
+         Company_Office_State_Cognism__c = &apos;Oregon&apos;,
+         Company_Office_State_Cognism__c = &apos;California&apos;,
+         Company_Office_State_Cognism__c = &apos;Idaho&apos;,
+         Company_Office_State_Cognism__c = &apos;Nevada&apos;,
+         Company_Office_State_Cognism__c = &apos;Arizona&apos;,
+         Company_Office_State_Cognism__c = &apos;Montana&apos;,
+         Company_Office_State_Cognism__c = &apos;Wyoming&apos;,
+         Company_Office_State_Cognism__c = &apos;Utah&apos;,
+         Company_Office_State_Cognism__c = &apos;Colorado&apos;,
+         Company_Office_State_Cognism__c = &apos;New Mexico&apos;,
+         Company_Office_State_Cognism__c = &apos;North Dakota&apos;,
+         Company_Office_State_Cognism__c = &apos;South Dakota&apos;,
+         Company_Office_State_Cognism__c = &apos;Nebraska&apos;,
+         Company_Office_State_Cognism__c = &apos;Kansas&apos;,
+         Company_Office_State_Cognism__c = &apos;Oklahoma&apos;,
+         Company_Office_State_Cognism__c = &apos;Texas&apos;,
+         Company_Office_State_Cognism__c = &apos;Minnesota&apos;,
+         Company_Office_State_Cognism__c = &apos;Iowa&apos;,
+         Company_Office_State_Cognism__c = &apos;Missouri&apos;,
+         Company_Office_State_Cognism__c = &apos;Arkansas&apos;,
+         Company_Office_State_Cognism__c = &apos;Louisiana&apos;
+      )
+   ,&apos;WEST&apos;,&apos;EAST&apos;),Null)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>US Sub-region</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

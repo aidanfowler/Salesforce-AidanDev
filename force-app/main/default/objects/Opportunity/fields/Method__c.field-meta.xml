@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Method__c</fullName>
+    <description>The very specific strategies &amp; measurable tactics that make up an actual deal with the partner that will drive us toward the objective. Example: By listing USDC as the preferred remittance option in the app and running a blended email and in-app marketing feature on USDC education, we and the partner believe we can drive a significant uplift in both USDC on platform and MEWs.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The very specific strategies &amp; measurable tactics that make up an actual deal with the partner that will drive us toward the objective. Example: By listing USDC as the preferred remittance option in the app and running a blended email and in-app marketing feature on USDC education, we and the partner believe we can drive a significant uplift in both USDC on platform and MEWs.</inlineHelpText>
+    <label>Method</label>
+    <length>32768</length>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Auto_Waive_Custom_Pricing__c</fullName>
+    <externalId>false</externalId>
+    <formula>AND(
+OR(
+CONTAINS(Products_Selected__c,&apos;CCTP&apos;),
+CONTAINS(Products_Selected__c,&apos;Bridged USDC Standard&apos;),
+CONTAINS(Products_Selected__c,&apos;Alt Mempool&apos;)
+),
+NOT(CONTAINS(Products_Selected__c,&apos;Circle Mint&apos;)),
+NOT(CONTAINS(Products_Selected__c,&apos;Core API&apos;)),
+NOT(CONTAINS(Products_Selected__c,&apos;Programmable Wallets&apos;)),
+NOT(CONTAINS(Products_Selected__c,&apos;Read Only API&apos;)),
+NOT(CONTAINS(Products_Selected__c,&apos;Accounts API&apos;)),
+NOT(CONTAINS(Products_Selected__c,&apos;Crypto Deposits&apos;)),
+NOT(CONTAINS(Products_Selected__c,&apos;Crypto Payouts&apos;)),
+NOT(CONTAINS(Products_Selected__c,&apos;Cybavo VAULT&apos;)),
+NOT(CONTAINS(Products_Selected__c,&apos;Cybavo Cashflow Manager&apos;)),
+NOT(CONTAINS(Products_Selected__c,&apos;PSP Crypto Settlement&apos;)),
+NOT(CONTAINS(Products_Selected__c,&apos;Smart Contract Platform&apos;)),
+NOT(CONTAINS(Products_Selected__c,&apos;Gas Station&apos;)),
+NOT(CONTAINS(Products_Selected__c,&apos;Verite&apos;)),
+NOT(CONTAINS(Products_Selected__c,&apos;Activation Incentives&apos;)),
+NOT(CONTAINS(Products_Selected__c,&apos;Channel Sales&apos;)),
+NOT(CONTAINS(Products_Selected__c,&apos;Institutional Trading Partnership&apos;)),
+NOT(CONTAINS(Products_Selected__c,&apos;Loans&apos;)),
+NOT(CONTAINS(Products_Selected__c,&apos;Performance Incentives&apos;)),
+NOT(CONTAINS(Products_Selected__c,&apos;Referrals&apos;)),
+NOT(CONTAINS(Products_Selected__c,&apos;Blockchain Partnerships&apos;)),
+NOT(CONTAINS(Products_Selected__c,&apos;Indirect Liquidity Partners&apos;)),
+NOT(CONTAINS(Products_Selected__c,&apos;Product Integrations&apos;))
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Auto Waive Custom Pricing</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

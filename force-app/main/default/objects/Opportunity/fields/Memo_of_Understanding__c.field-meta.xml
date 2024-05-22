@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Memo_of_Understanding__c</fullName>
+    <description>Used by the legal team to populate the MoU</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The Legal team will populate this field with he requested MoU.</inlineHelpText>
+    <label>Memo of Understanding (URL)</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Url</type>
+</CustomField>

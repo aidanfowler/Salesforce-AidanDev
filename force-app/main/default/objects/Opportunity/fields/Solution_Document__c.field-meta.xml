@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Solution_Document__c</fullName>
+    <description>Used by Solution Engineers to document the customer&apos;s use case</description>
+    <externalId>false</externalId>
+    <inlineHelpText>replaced by the legacy &quot;Flow of Funds&quot; field</inlineHelpText>
+    <label>Solution Document</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Url</type>
+</CustomField>

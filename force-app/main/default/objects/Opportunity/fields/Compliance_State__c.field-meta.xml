@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Compliance_State__c</fullName>
+    <externalId>false</externalId>
+    <label>Compliance State</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Customer Risk Acceptance</fullName>
+                <default>false</default>
+                <label>Customer Risk Acceptance</label>
+            </value>
+            <value>
+                <fullName>Form Not Submitted</fullName>
+                <default>false</default>
+                <label>Form Not Submitted</label>
+            </value>
+            <value>
+                <fullName>Pending Periodic Review</fullName>
+                <default>false</default>
+                <label>Pending Periodic Review</label>
+            </value>
+            <value>
+                <fullName>Pending AML Review</fullName>
+                <default>false</default>
+                <label>Pending with AML</label>
+            </value>
+            <value>
+                <fullName>Pending with BD Team</fullName>
+                <default>false</default>
+                <label>Pending with BD Team</label>
+            </value>
+            <value>
+                <fullName>Pending with Customer</fullName>
+                <default>false</default>
+                <label>Pending with Customer</label>
+            </value>
+            <value>
+                <fullName>Pending with Legal</fullName>
+                <default>false</default>
+                <label>Pending with Legal</label>
+            </value>
+            <value>
+                <fullName>Approved</fullName>
+                <default>false</default>
+                <label>Approved</label>
+            </value>
+            <value>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+                <label>Rejected</label>
+            </value>
+            <value>
+                <fullName>Not Required</fullName>
+                <default>false</default>
+                <label>Not Required</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

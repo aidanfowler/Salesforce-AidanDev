@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Last_Distro_Route_CP__c</fullName>
+    <description>Stamping of the date/time that the record was assigned via Distro. Date/time is set at the same time the &quot;Distro Assigned&quot; checkbox is populated.</description>
+    <externalId>false</externalId>
+    <label>Last Distro Route Date/Time_DNU</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>DateTime</type>
+</CustomField>

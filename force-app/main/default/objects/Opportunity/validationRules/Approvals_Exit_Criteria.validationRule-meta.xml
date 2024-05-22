@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Approvals_Exit_Criteria</fullName>
+    <active>false</active>
+    <description>Compliance State must be Approved or Not Required to advance past the Compliance stage.</description>
+    <errorConditionFormula>AND(
+    !Contains($Profile.Name ,&apos;Admin&apos;),
+    OR(
+       AND(
+          RecordType.Name = &apos;Renewal&apos;,
+          NOT(ISPICKVAL(Type, &quot;Extension&quot;))
+       ), 
+       RecordType.Name = &apos;Business Development&apos;
+    ),
+    OR(
+        ISPICKVAL(StageName, &quot;Negotiate&quot;),
+        ISPICKVAL(StageName, &quot;Contract&quot;)
+    ),
+    OR(
+       AND(
+          NOT(ISPICKVAL(Compliance_State__c, &apos;Approved&apos;)),
+          NOT(ISPICKVAL(Compliance_State__c, &apos;Not Required&apos;))
+       ),
+       AND(
+          Term_Sheet_Required__c = true,
+          OR(
+             ISBLANK(Term_Sheet__c),
+             Term_Sheet_Approved_by_Customer__c = false
+          )
+       ),
+       AND(
+          Needs_Pricing_Approval__c = true,
+          !ISPICKVAL(Pricing_Approval_Status__c,&apos;Approved&apos;)
+       ),
+       AND(
+          Needs_DRG_Approval__c = true,
+          !ISPICKVAL(DRG_Approval_Status__c,&apos;Approved&apos;)
+       ),
+       AND(
+          CONTAINS(Products_Selected__c,&apos;Incentives&apos;),
+          OR(
+             ISBLANK(Campaign_Start_Date__c),
+             ISBLANK(Campaign_End_Date__c)
+          )
+       ),
+       AND(
+          CONTAINS(Products_Selected__c,&apos;Performance Incentives&apos;),
+          ISBLANK(Midpoint_Incentive_Payout__c)
+       )
+    )  
+)</errorConditionFormula>
+    <errorMessage>Compliance State must be Approved or Not Required, term sheet must be filled and approved by customer, and Pricing / DRG Approval must be finished if necessary. For Incentive and ITP deals, campaign dates are required. PI deal requires Midpoint Payout.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Compliance_Opportunities</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>CORE.USERS.ALIAS</columns>
+    <columns>Compliance_Analyst__c</columns>
+    <columns>Compliance_State__c</columns>
+    <columns>Compliance_Outcome_Date__c</columns>
+    <columns>KYC_Reliance__c</columns>
+    <columns>Risk_Assessment__c</columns>
+    <columns>Notes_for_Compliance_Review__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Compliance</value>
+    </filters>
+    <label>Compliance Opportunities</label>
+    <sharedTo>
+        <group>Compliance</group>
+    </sharedTo>
+</ListView>

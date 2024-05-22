@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Compliance_Analyst_Set__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Used in the Opportunity: Sales Process flow</description>
+    <externalId>false</externalId>
+    <label>Compliance Analyst Set</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

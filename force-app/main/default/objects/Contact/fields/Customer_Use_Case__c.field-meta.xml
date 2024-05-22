@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Customer_Use_Case__c</fullName>
+    <description>Used by Inside Sales to document the customer&apos;s use case.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Populate the customer&apos;s use case for a possible relationship with Circle.</inlineHelpText>
+    <label>Customer Use Case</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Access To Crypto Capital Markets</fullName>
+                <default>false</default>
+                <label>Access To Crypto Capital Markets</label>
+            </value>
+            <value>
+                <fullName>Cross-Border Payments</fullName>
+                <default>false</default>
+                <label>Cross-Border Payments</label>
+            </value>
+            <value>
+                <fullName>Defi</fullName>
+                <default>false</default>
+                <label>Defi</label>
+            </value>
+            <value>
+                <fullName>Dollarization</fullName>
+                <default>false</default>
+                <label>Dollarization</label>
+            </value>
+            <value>
+                <fullName>On-ramp</fullName>
+                <default>false</default>
+                <label>On-ramp</label>
+            </value>
+            <value>
+                <fullName>Remittance</fullName>
+                <default>false</default>
+                <label>Remittance</label>
+            </value>
+            <value>
+                <fullName>Tokenization</fullName>
+                <default>false</default>
+                <label>Tokenization</label>
+            </value>
+            <value>
+                <fullName>Wallets</fullName>
+                <default>false</default>
+                <label>Wallets</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

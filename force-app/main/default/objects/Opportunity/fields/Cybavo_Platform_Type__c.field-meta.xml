@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cybavo_Platform_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Cybavo Platform Type_DNU</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Cybavo Startup</fullName>
+                <default>false</default>
+                <label>Cybavo Startup</label>
+            </value>
+            <value>
+                <fullName>Startup Growth</fullName>
+                <default>false</default>
+                <label>Startup Growth</label>
+            </value>
+            <value>
+                <fullName>Growth Business</fullName>
+                <default>false</default>
+                <label>Growth Business</label>
+            </value>
+            <value>
+                <fullName>Business Enterprise</fullName>
+                <default>false</default>
+                <label>Business Enterprise</label>
+            </value>
+            <value>
+                <fullName>Enterprise Institution</fullName>
+                <default>false</default>
+                <label>Enterprise Institution</label>
+            </value>
+            <value>
+                <fullName>Institution Premium</fullName>
+                <default>false</default>
+                <label>Institution Premium</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

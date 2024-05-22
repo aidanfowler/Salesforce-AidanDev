@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Business_Segment__c</fullName>
+    <externalId>false</externalId>
+    <label>Microsegment</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Asset Manager / Hedge Fund</fullName>
+                <default>false</default>
+                <label>Asset Manager / Hedge Fund</label>
+            </value>
+            <value>
+                <fullName>Blockchains / DAOs / Web 3 Dev &amp; Other</fullName>
+                <default>false</default>
+                <label>Blockchains / DAOs / Web 3 Dev &amp; Other</label>
+            </value>
+            <value>
+                <fullName>Capital Markets - Other</fullName>
+                <default>false</default>
+                <label>Capital Markets - Other</label>
+            </value>
+            <value>
+                <fullName>Crypto Exchanges</fullName>
+                <default>false</default>
+                <label>Crypto Exchanges</label>
+            </value>
+            <value>
+                <fullName>DeFi / Crypto Finance</fullName>
+                <default>false</default>
+                <label>DeFi / Crypto Finance</label>
+            </value>
+            <value>
+                <fullName>Digital Wallets / Custodians</fullName>
+                <default>false</default>
+                <label>Digital Wallets / Custodians</label>
+            </value>
+            <value>
+                <fullName>E-Commerce</fullName>
+                <default>false</default>
+                <label>E-Commerce</label>
+            </value>
+            <value>
+                <fullName>Education</fullName>
+                <default>false</default>
+                <label>Education</label>
+            </value>
+            <value>
+                <fullName>Energy / Resources</fullName>
+                <default>false</default>
+                <label>Energy / Resources</label>
+            </value>
+            <value>
+                <fullName>Entertainment / Media</fullName>
+                <default>false</default>
+                <label>Entertainment / Media</label>
+            </value>
+            <value>
+                <fullName>Financial Services</fullName>
+                <default>false</default>
+                <label>Financial Services</label>
+            </value>
+            <value>
+                <fullName>Fintech</fullName>
+                <default>false</default>
+                <label>Fintech</label>
+            </value>
+            <value>
+                <fullName>Gaming Platforms / Gaming Studios</fullName>
+                <default>false</default>
+                <label>Gaming Platforms / Gaming Studios</label>
+            </value>
+            <value>
+                <fullName>Government</fullName>
+                <default>false</default>
+                <label>Government</label>
+            </value>
+            <value>
+                <fullName>Health Care</fullName>
+                <default>false</default>
+                <label>Health Care</label>
+            </value>
+            <value>
+                <fullName>Insurance</fullName>
+                <default>false</default>
+                <label>Insurance</label>
+            </value>
+            <value>
+                <fullName>Manufacturing / Engineering / Hardware</fullName>
+                <default>false</default>
+                <label>Manufacturing / Engineering / Hardware</label>
+            </value>
+            <value>
+                <fullName>Marketing / Professional Services</fullName>
+                <default>false</default>
+                <label>Marketing / Professional Services</label>
+            </value>
+            <value>
+                <fullName>Market Maker</fullName>
+                <default>false</default>
+                <label>Market Maker</label>
+            </value>
+            <value>
+                <fullName>NFT</fullName>
+                <default>false</default>
+                <label>NFT</label>
+            </value>
+            <value>
+                <fullName>Non Profit</fullName>
+                <default>false</default>
+                <label>Non Profit</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Payouts / Remittances</fullName>
+                <default>false</default>
+                <label>Payouts / Remittances</label>
+            </value>
+            <value>
+                <fullName>PSP / Payment Networks / Payment Tech</fullName>
+                <default>false</default>
+                <label>PSP / Payment Networks / Payment Tech</label>
+            </value>
+            <value>
+                <fullName>Retail</fullName>
+                <default>false</default>
+                <label>Retail</label>
+            </value>
+            <value>
+                <fullName>Technology</fullName>
+                <default>false</default>
+                <label>Technology</label>
+            </value>
+            <value>
+                <fullName>Transportation / Logistics</fullName>
+                <default>false</default>
+                <label>Transportation / Logistics</label>
+            </value>
+            <value>
+                <fullName>Travel / Hospitality</fullName>
+                <default>false</default>
+                <label>Travel / Hospitality</label>
+            </value>
+            <value>
+                <fullName>VC/PE</fullName>
+                <default>false</default>
+                <label>VC/PE</label>
+            </value>
+            <value>
+                <fullName>Bank</fullName>
+                <default>false</default>
+                <label>Bank</label>
+            </value>
+            <value>
+                <fullName>Crypto Finance Application</fullName>
+                <default>false</default>
+                <label>Crypto Finance Application</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

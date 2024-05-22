@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Partner_Type__c</fullName>
+    <description>Used to identify the type of partnership</description>
+    <externalId>false</externalId>
+    <label>Partner Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Growth / Incentive Campaigns</fullName>
+                <default>false</default>
+                <label>Growth / Incentive Campaigns</label>
+            </value>
+            <value>
+                <fullName>Technical partnership non-dev</fullName>
+                <default>false</default>
+                <label>Technical partnership non-dev</label>
+            </value>
+            <value>
+                <fullName>Integration Services Deals</fullName>
+                <default>false</default>
+                <label>Integration Services Deals</label>
+            </value>
+            <value>
+                <fullName>Multi-party ecosystem program</fullName>
+                <default>false</default>
+                <label>Multi-party ecosystem program</label>
+            </value>
+            <value>
+                <fullName>Channel Partnerships / Reseller</fullName>
+                <default>false</default>
+                <label>Channel Partnerships / Reseller</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_this_Contact_a_Verite_Lead__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Check yes or no if Contact is a Verite lead.</description>
+    <externalId>false</externalId>
+    <label>Is this Contact a Verite Lead?</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

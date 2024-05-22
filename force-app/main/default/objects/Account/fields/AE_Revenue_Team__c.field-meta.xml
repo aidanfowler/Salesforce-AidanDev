@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AE_Revenue_Team__c</fullName>
+    <externalId>false</externalId>
+    <label>AE Revenue Team</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>ITP/Exchange</fullName>
+                <default>false</default>
+                <label>ITP/Exchange</label>
+            </value>
+            <value>
+                <fullName>Transaction Services</fullName>
+                <default>false</default>
+                <label>Transaction Services</label>
+            </value>
+            <value>
+                <fullName>Treasury Services</fullName>
+                <default>false</default>
+                <label>Treasury Services</label>
+            </value>
+            <value>
+                <fullName>Partner</fullName>
+                <default>false</default>
+                <label>Partner</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

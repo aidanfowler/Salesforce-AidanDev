@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Payouts_API__c</fullName>
+    <externalId>false</externalId>
+    <label>Payouts API</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Payouts_API</valueSetName>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

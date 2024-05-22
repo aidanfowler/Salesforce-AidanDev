@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Require_Task_Disposition_for_SDRs</fullName>
+    <active>true</active>
+    <description>Require Task Disposition for SDR Follow Up Tasks</description>
+    <errorConditionFormula>AND(
+    ISPICKVAL(Task_Disposition__c, &quot;&quot;),
+    ISPICKVAL(Type, &quot;SDR Follow Up&quot;),
+    ISPICKVAL(Status, &quot;Completed&quot;) 
+)</errorConditionFormula>
+    <errorDisplayField>Task_Disposition__c</errorDisplayField>
+    <errorMessage>You must select a task disposition before closing this task.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Company_Description__c</fullName>
+    <description>For the Circle Alliance qualification section. This field will roll up to the account into a formula field</description>
+    <externalId>false</externalId>
+    <inlineHelpText>For the Circle Alliance qualification section. This field will roll up to the account record.</inlineHelpText>
+    <label>Company Description</label>
+    <length>32768</length>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

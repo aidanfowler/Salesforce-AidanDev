@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Launch_Date__c</fullName>
+    <description>Date the customer is expected to go live, populated by CSMs.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Date the customer is expected to go live.</inlineHelpText>
+    <label>Launch Date</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Date</type>
+</CustomField>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Closed_Lost_Reason__c</fullName>
+    <externalId>false</externalId>
+    <label>Closed Lost Reason</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Timing</fullName>
+                <default>false</default>
+                <label>Timing</label>
+            </value>
+            <value>
+                <fullName>Need</fullName>
+                <default>false</default>
+                <label>Need</label>
+            </value>
+            <value>
+                <fullName>Price</fullName>
+                <default>false</default>
+                <label>Price</label>
+            </value>
+            <value>
+                <fullName>Competition</fullName>
+                <default>false</default>
+                <label>Competition</label>
+            </value>
+            <value>
+                <fullName>Poor Qualification</fullName>
+                <default>false</default>
+                <label>Poor Qualification</label>
+            </value>
+            <value>
+                <fullName>Lost Momentum</fullName>
+                <default>false</default>
+                <label>Lost Momentum</label>
+            </value>
+            <value>
+                <fullName>Feature</fullName>
+                <default>false</default>
+                <label>Feature</label>
+            </value>
+            <value>
+                <fullName>Forced Offboard</fullName>
+                <default>false</default>
+                <label>Forced Offboard</label>
+            </value>
+            <value>
+                <fullName>Risk Issues</fullName>
+                <default>false</default>
+                <label>Risk Issues</label>
+            </value>
+            <value>
+                <fullName>Regulatory or Legal issues</fullName>
+                <default>false</default>
+                <label>Regulatory or Legal issues</label>
+            </value>
+            <value>
+                <fullName>Offering construct (rates and terms)</fullName>
+                <default>false</default>
+                <label>Offering construct (rates and terms)</label>
+            </value>
+            <value>
+                <fullName>Onboarding onto the Product was too challenging</fullName>
+                <default>false</default>
+                <label>Onboarding onto the Product was too challenging</label>
+            </value>
+            <value>
+                <fullName>Appetite for investment changed</fullName>
+                <default>false</default>
+                <label>Appetite for investment changed</label>
+            </value>
+            <value>
+                <fullName>Lead was not properly qualified</fullName>
+                <default>false</default>
+                <label>Lead was not properly qualified</label>
+            </value>
+            <value>
+                <fullName>Compliance</fullName>
+                <default>false</default>
+                <label>Compliance</label>
+            </value>
+            <value>
+                <fullName>Duplicate</fullName>
+                <default>false</default>
+                <label>Duplicate</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Investor Quality</fullName>
+                <default>false</default>
+                <label>Investor Quality</label>
+            </value>
+            <value>
+                <fullName>Lack of Traction</fullName>
+                <default>false</default>
+                <label>Lack of Traction</label>
+            </value>
+            <value>
+                <fullName>Legal/Regulatory</fullName>
+                <default>false</default>
+                <label>Legal/Regulatory</label>
+            </value>
+            <value>
+                <fullName>Min Check Size</fullName>
+                <default>false</default>
+                <label>Min Check Size</label>
+            </value>
+            <value>
+                <fullName>Not Strategic</fullName>
+                <default>false</default>
+                <label>Not Strategic</label>
+            </value>
+            <value>
+                <fullName>Round Filled</fullName>
+                <default>false</default>
+                <label>Round Filled</label>
+            </value>
+            <value>
+                <fullName>Team</fullName>
+                <default>false</default>
+                <label>Team</label>
+            </value>
+            <value>
+                <fullName>Valuations/Terms</fullName>
+                <default>false</default>
+                <label>Valuations/Terms</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

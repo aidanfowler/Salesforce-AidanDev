@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Discover_Exit_Criteria_Renewal</fullName>
+    <active>false</active>
+    <description>Referral Partner, Type and Amount must be filled in to advance to Solution stage.</description>
+    <errorConditionFormula>AND(
+  RecordType.Name = &apos;Renewal&apos;,
+  !Contains($Profile.Name ,&apos;Admin&apos;),
+  OR(
+    ISPICKVAL(StageName, &quot;Solution&quot;),
+    ISPICKVAL(StageName, &quot;Approvals&quot;),
+    ISPICKVAL(StageName, &quot;Negotiate&quot;),
+    ISPICKVAL(StageName, &quot;Contract&quot;),
+    ISPICKVAL(StageName, &quot;Closed Won&quot;)
+  ),
+  OR(
+    ISBLANK(TEXT(Type)),
+    ISBLANK(TEXT(Referral_Partner__c))
+  )
+)</errorConditionFormula>
+    <errorMessage>Referral Partner, Type and Amount must be filled in to advance.</errorMessage>
+</ValidationRule>

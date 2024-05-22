@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Verite_Discovery_lead_category__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Are they are either an issuer of credentials, crypto wallet or defi protocol or dapp?</inlineHelpText>
+    <label>Verite Discovery - lead category</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Issuer</fullName>
+                <default>false</default>
+                <label>Issuer</label>
+            </value>
+            <value>
+                <fullName>Wallet</fullName>
+                <default>false</default>
+                <label>Wallet</label>
+            </value>
+            <value>
+                <fullName>Protocol/Dapp</fullName>
+                <default>false</default>
+                <label>Protocol/Dapp</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>3</visibleLines>
+</CustomField>

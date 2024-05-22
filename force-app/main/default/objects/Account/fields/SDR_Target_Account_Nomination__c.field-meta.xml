@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SDR_Target_Account_Nomination__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Used by SDRs to nominate a Target Account - new process 2023-01 - will trigger a workflow to set Target Account = true
+
+Target Account nomination criteria here 
+https://circle.seismic.com/app?ContentId=ad327714-dd63-4ed2-a2b8-955abee71766</description>
+    <externalId>false</externalId>
+    <label>SDR Target Account Nomination</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

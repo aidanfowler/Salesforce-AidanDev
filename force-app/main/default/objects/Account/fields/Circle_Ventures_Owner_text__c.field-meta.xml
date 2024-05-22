@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Circle_Ventures_Owner_text__c</fullName>
+    <description>This is used to get the text value to display in Salesloft</description>
+    <externalId>false</externalId>
+    <formula>Circle_Ventures_Owner__r.FirstName +&quot; &quot;+ Circle_Ventures_Owner__r.LastName</formula>
+    <label>Circle Ventures Owner (text)</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

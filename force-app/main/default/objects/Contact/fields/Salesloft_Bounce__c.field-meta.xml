@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Salesloft_Bounce__c</fullName>
+    <description>Whether this contact&apos;s current email address has bounced in Salesloft</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Whether this contact&apos;s current email address has bounced in Salesloft</inlineHelpText>
+    <label>Salesloft Bounce</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>TextArea</type>
+</CustomField>

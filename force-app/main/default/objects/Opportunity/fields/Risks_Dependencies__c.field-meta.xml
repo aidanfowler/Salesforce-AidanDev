@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Risks_Dependencies__c</fullName>
+    <description>Potential obstacles and interdependencies that can significantly impact the success of the deal. These factors pose challenges that, if not carefully managed, may lead to the deal’s failure.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Potential obstacles and interdependencies that can significantly impact the success of the deal. These factors pose challenges that, if not carefully managed, may lead to the deal’s failure.</inlineHelpText>
+    <label>Risks &amp; Dependencies</label>
+    <length>32768</length>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

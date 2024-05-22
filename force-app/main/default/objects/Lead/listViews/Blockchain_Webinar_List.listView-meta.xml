@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Blockchain_Webinar_List</fullName>
+    <columns>FULL_NAME</columns>
+    <columns>LEAD.COMPANY</columns>
+    <columns>SDR_Owner__c</columns>
+    <columns>CORE.USERS.FIRST_NAME</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>LEAD.COMPANY</field>
+        <operation>notEqual</operation>
+        <value>Circle</value>
+    </filters>
+    <filters>
+        <field>LEAD.COMPANY</field>
+        <operation>notContain</operation>
+        <value>@</value>
+    </filters>
+    <filters>
+        <field>LEAD.COMPANY</field>
+        <operation>notEqual</operation>
+        <value>MM3,Lindsay Axerio,Lodovico Marziale,-,RETIRED,INDEPENDENT,Circle,MDN,ADVISOR</value>
+    </filters>
+    <label>Blockchain Webinar List - Attended</label>
+    <sharedTo>
+        <roleAndSubordinates>Marketing</roleAndSubordinates>
+    </sharedTo>
+</ListView>

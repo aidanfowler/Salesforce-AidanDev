@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Anticipated_Yield_Investment_Date__c</fullName>
+    <description>When would they like to make their first investment?</description>
+    <externalId>false</externalId>
+    <inlineHelpText>When would they like to make their first investment?</inlineHelpText>
+    <label>Anticipated Yield Investment Date</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Date</type>
+</CustomField>

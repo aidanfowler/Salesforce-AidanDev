@@ -22,24 +22,9 @@
                 <label>Product Marketing Managers</label>
             </value>
             <value>
-                <fullName>SDR Inbound Email</fullName>
+                <fullName>PDR Inbound Email</fullName>
                 <default>false</default>
-                <label>SDR Inbound Email</label>
-            </value>
-            <value>
-                <fullName>SDR Inbound High Priority</fullName>
-                <default>false</default>
-                <label>SDR Inbound High Priority</label>
-            </value>
-            <value>
-                <fullName>SDR Inbound Low Priority</fullName>
-                <default>false</default>
-                <label>SDR Inbound Low Priority</label>
-            </value>
-            <value>
-                <fullName>SDR Inbound Medium Priority</fullName>
-                <default>false</default>
-                <label>SDR Inbound Medium Priority</label>
+                <label>PDR Inbound Email</label>
             </value>
             <value>
                 <fullName>SE APAC Liquidity</fullName>

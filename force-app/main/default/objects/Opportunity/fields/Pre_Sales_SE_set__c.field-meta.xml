@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pre_Sales_SE_set__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Used in the Opportunity: Sales Process flow and the Update Team Member flows</description>
+    <externalId>false</externalId>
+    <label>Pre-Sales SE set?_DNU</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

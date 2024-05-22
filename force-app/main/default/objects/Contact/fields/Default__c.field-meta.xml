@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Default__c</fullName>
+    <externalId>false</externalId>
+    <label>Product Interest Handoff</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Treasury Handoff</fullName>
+                <default>false</default>
+                <label>Treasury Handoff</label>
+            </value>
+            <value>
+                <fullName>Platform Handoff</fullName>
+                <default>false</default>
+                <label>Platform Handoff</label>
+            </value>
+            <value>
+                <fullName>Business Development Handoff</fullName>
+                <default>false</default>
+                <label>Business Development Handoff</label>
+            </value>
+            <value>
+                <fullName>Default</fullName>
+                <default>false</default>
+                <label>Default</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

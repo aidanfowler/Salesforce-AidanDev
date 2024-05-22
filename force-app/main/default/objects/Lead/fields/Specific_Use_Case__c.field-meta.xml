@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Specific_Use_Case__c</fullName>
+    <description>Used for Circle Wallet Signing Service</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Populated by Wallet Signing Service form submission</inlineHelpText>
+    <label>Specific Use Case</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Cross-border Payment</fullName>
+                <default>false</default>
+                <label>Cross-border Payment</label>
+            </value>
+            <value>
+                <fullName>Global Dollar Access</fullName>
+                <default>false</default>
+                <label>Global Dollar Access</label>
+            </value>
+            <value>
+                <fullName>Crypto Capital Market</fullName>
+                <default>false</default>
+                <label>Crypto Capital Market</label>
+            </value>
+            <value>
+                <fullName>Gaming</fullName>
+                <default>false</default>
+                <label>Gaming</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

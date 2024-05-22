@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Needs_DRG_Approval__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(Manually_Require_DRG__c, True, 
+   IF(Manually_Waive_DRG__c, False, 
+      OR(
+         Contains(Products_Selected__c,&apos;Activation Incentives&apos;),
+         Contains(Products_Selected__c,&apos;Product Integrations&apos;),
+         Contains(Products_Selected__c,&apos;Institutional Trading Partnership&apos;),
+         Contains(Products_Selected__c,&apos;Loans&apos;),
+         Contains(Products_Selected__c,&apos;PSP Crypto Settlement&apos;),
+         Contains(Products_Selected__c,&apos;Cybavo VAULT&apos;),
+         Contains(Products_Selected__c,&apos;Cybavo Cashflow Manager&apos;),
+         Contains(Products_Selected__c,&apos;Blockchain Partnerships&apos;),
+         Contains(Products_Selected__c,&apos;Referrals&apos;),
+         Contains(Products_Selected__c,&apos;Channel Sales&apos;),
+         Contains(Products_Selected__c,&apos;Verite&apos;),
+         ISPICKVAL(Custom_Incentive_Structure__c,&apos;yes&apos;),
+         ISPICKVAL(Contains_EURC_Incentive__c,&apos;yes&apos;),
+         ISPICKVAL(Outside_Of_Pre_Approved_Margins__c, &apos;yes&apos;),
+         X1M_Max_Point__c = true
+      )
+   )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Needs DRG Approval</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

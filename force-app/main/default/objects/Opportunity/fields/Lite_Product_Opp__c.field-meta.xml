@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lite_Product_Opp__c</fullName>
+    <externalId>false</externalId>
+    <formula>OR(
+   Products_Selected__c = &apos;Core API&apos;,
+   Products_Selected__c = &apos;Read Only API&apos;,
+   Products_Selected__c = &apos;Core API;Read Only API&apos;,
+   Products_Selected__c = &apos;Read Only API; Core API&apos;
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Lite Product Opp</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Burn_Fee_Communicated__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This field is to be checked off by the BD or CSM to confirm that this customer has been fully briefed on the implications of the Burn Fee.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This field is to be checked off by the BD or CSM to confirm that a live conversation has happened and that this customer has been fully briefed on the implications of the Burn Fee.</inlineHelpText>
+    <label>Burn Fee Communicated</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

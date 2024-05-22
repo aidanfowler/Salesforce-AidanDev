@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Exceptional_Contract_Terms_and_Pricing__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Link to Contract Terms and Pricing</inlineHelpText>
+    <label>Exceptional Contract Terms and Pricing</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Url</type>
+</CustomField>

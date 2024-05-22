@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Reserve_Requirement__c</fullName>
+    <description>Used to populate the amount of collateral to collect from our ACH and credit card customers.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Used to populate the amount of collateral to collect from our ACH and credit card customers.</inlineHelpText>
+    <label>Reserve Requirement</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Currency</type>
+</CustomField>

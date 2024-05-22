@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Confirm_mint_volume_from_CA_Application__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Used by Inside Sales during the discovery call.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Please check this box to confirm the customer&apos;s mint volume on their CA application.</inlineHelpText>
+    <label>Confirm Mint Volume from CA Application</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Success_Metrics_Tracking__c</fullName>
+    <description>What are the measurable indicators of success for this plan/deal? Every deal needs a clear articulation of shared metrics and success criteria. What will we be tracking to measure the success of this deal, how will we track the metrics, who is responsible for tracking the metrics, and how will it be communicated? Example: We will track USDC on platform toward the 30% lift goal and we will use partner-reported data to track toward the 20% lift target for MEWs. Both will be reported on a monthly basis over the 6 month term of the campaign.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>What will we be tracking to measure the success of this deal, how will we track the metrics, who is responsible for tracking the metrics, and how will it be communicated? Example: We will track USDC on platform toward the 30% lift goal and we will use partner-reported data to track toward the 20% lift target for MEWs. Both will be reported on a monthly basis over the 6 month term of the campaign.</inlineHelpText>
+    <label>Success Metrics Tracking</label>
+    <length>32768</length>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Designated_Assignee_CP__c</fullName>
+    <description>This field writes the value of the user within the queue who was &quot;Up Next&quot; within the Chili Piper Round Robin or the selected user who should have recieved a meeting via an Ownership based queue</description>
+    <externalId>false</externalId>
+    <label>Designated Assignee CP</label>
+    <length>255</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

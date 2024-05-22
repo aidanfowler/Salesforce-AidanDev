@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Deal_Sheet__c</fullName>
+    <description>Used to document the URL of the word document for Deal Sheet / Handover sheet</description>
+    <externalId>false</externalId>
+    <label>Partnership Construct (URL)</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Url</type>
+</CustomField>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SE_Opportunities</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>CORE.USERS.FULL_NAME</columns>
+    <columns>OPPORTUNITY.CLOSE_DATE</columns>
+    <columns>Solution_Validation_Sub_stage__c</columns>
+    <columns>Solution_Validated__c</columns>
+    <columns>SE_Lead_Approver__c</columns>
+    <columns>SE_Demo_Completed__c</columns>
+    <columns>SE_Notes__c</columns>
+    <columns>Solutions_Engineer__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>OPPORTUNITY.CLOSED</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <label>SE Opportunities</label>
+    <sharedTo>
+        <role>Solutions_Engineering_Exec</role>
+        <role>Solutions_Engineering_Team</role>
+    </sharedTo>
+</ListView>

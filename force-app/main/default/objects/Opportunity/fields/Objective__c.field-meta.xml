@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Objective__c</fullName>
+    <description>A simple framing of the strategic goals of working with that partner. Should include some strategic rationale and a clear articulation of the product-market fit for USDC and the use case. Example: Significantly grow USDC distribution in X region by partnering with the region’s top super-app with a reach of 50 million digital-native active users focusing on remittance.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>A simple framing of the strategic goals of working with that partner. Should include some strategic rationale and a clear articulation of the product-market fit for USDC and the use case. Example: Significantly grow USDC distribution in X region by partnering with the region’s top super-app with a reach of 50 million digital-native active users focusing on remittance.</inlineHelpText>
+    <label>Objective</label>
+    <length>32768</length>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

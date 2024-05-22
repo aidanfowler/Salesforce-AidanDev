@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Event_Registered__c</fullName>
+    <externalId>false</externalId>
+    <label>Event Registered</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>UK Cocktail MM Recording | 2021-09</fullName>
+                <default>false</default>
+                <label>UK Cocktail MM Recording | 2021-09</label>
+            </value>
+            <value>
+                <fullName>DC Cocktail MM Recording | 2021-11</fullName>
+                <default>false</default>
+                <label>DC Cocktail MM Recording | 2021-11</label>
+            </value>
+            <value>
+                <fullName>UK London Event Building Crypto | 2022-03-17</fullName>
+                <default>false</default>
+                <label>UK London Event Building Crypto | 2022-03-17</label>
+            </value>
+            <value>
+                <fullName>UK London Event ITP Dinner | 2022-03</fullName>
+                <default>false</default>
+                <label>UK London Event ITP Dinner | 2022-03</label>
+            </value>
+            <value>
+                <fullName>UK London Event Yield Breakfast | 2022-03</fullName>
+                <default>false</default>
+                <label>UK London Event Yield Breakfast | 2022-03</label>
+            </value>
+            <value>
+                <fullName>Avalanche Webinar Blockchain | 2022-02</fullName>
+                <default>false</default>
+                <label>Avalanche Webinar Blockchain | 2022-02</label>
+            </value>
+            <value>
+                <fullName>BTC Miami | 2022-04</fullName>
+                <default>false</default>
+                <label>BTC Miami | 2022-04</label>
+            </value>
+            <value>
+                <fullName>BTC Miami | Worldpay Launch Party | 2022-04</fullName>
+                <default>false</default>
+                <label>BTC Miami | Worldpay Launch Party | 2022-04</label>
+            </value>
+            <value>
+                <fullName>BTC Miami | Carbone BNYM Dinner | 2022-04</fullName>
+                <default>false</default>
+                <label>BTC Miami | Carbone BNYM Dinner | 2022-04</label>
+            </value>
+            <value>
+                <fullName>DeFi Webinar with Solana and Orca | 2022-04</fullName>
+                <default>false</default>
+                <label>DeFi Webinar with Solana and Orca | 2022-04</label>
+            </value>
+            <value>
+                <fullName>Circle Account Webinar | 2022-04</fullName>
+                <default>false</default>
+                <label>Circle Account Webinar | 2022-04</label>
+            </value>
+            <value>
+                <fullName>Circle Converge | 2022-09 | Waitlist</fullName>
+                <default>false</default>
+                <label>Circle Converge | 2022-09 | Waitlist</label>
+            </value>
+            <value>
+                <fullName>FTX SALT Bahamas VIP Dinner | 2022-04 Registration</fullName>
+                <default>false</default>
+                <label>FTX SALT Bahamas VIP Dinner | 2022-04 Registration</label>
+            </value>
+            <value>
+                <fullName>Davos FTX Cocktail Hour | 2022-05-25</fullName>
+                <default>false</default>
+                <label>Davos FTX Cocktail Hour | 2022-05-25</label>
+            </value>
+            <value>
+                <fullName>Davos Women in Blockchain Event | 2022-05</fullName>
+                <default>false</default>
+                <label>Davos Women in Blockchain Event | 2022-05</label>
+            </value>
+            <value>
+                <fullName>Blockworks Webinar - Institutional Crypto USDC | 2022-04</fullName>
+                <default>false</default>
+                <label>Blockworks Webinar - Institutional Crypto USDC | 2022-04</label>
+            </value>
+            <value>
+                <fullName>Permissionless Happy Hour | 2022-05 Registration</fullName>
+                <default>false</default>
+                <label>Permissionless Happy Hour | 2022-05 Registration</label>
+            </value>
+            <value>
+                <fullName>Event Register | Consensus Dinner FTX 3 Forks | 2022-05 Registration</fullName>
+                <default>false</default>
+                <label>Event Register | Consensus Dinner FTX 3 Forks | 2022-05 Registration</label>
+            </value>
+            <value>
+                <fullName>Circle Converge | 2022-09 | Registration</fullName>
+                <default>false</default>
+                <label>Circle Converge | 2022-09 | Registration</label>
+            </value>
+            <value>
+                <fullName>NYC NFT Happy Hour | 2022-06</fullName>
+                <default>false</default>
+                <label>NYC NFT Happy Hour | 2022-06</label>
+            </value>
+            <value>
+                <fullName>Event | Yield Webinar 2022-06</fullName>
+                <default>false</default>
+                <label>Event | Yield Webinar 2022-06</label>
+            </value>
+            <value>
+                <fullName>Singapore Cocktail Reception - Lantern | 2022-07</fullName>
+                <default>false</default>
+                <label>Singapore Cocktail Reception - Lantern | 2022-07</label>
+            </value>
+            <value>
+                <fullName>Event Register | Consensus - Wintermute HH | 2022-06</fullName>
+                <default>false</default>
+                <label>Event Register | Consensus - Wintermute HH | 2022-06</label>
+            </value>
+            <value>
+                <fullName>Singapore Executive Breakfast | 2022-07</fullName>
+                <default>false</default>
+                <label>Singapore Executive Breakfast | 2022-07</label>
+            </value>
+            <value>
+                <fullName>Singapore Private Circle Dinner | 2022-07</fullName>
+                <default>false</default>
+                <label>Singapore Private Circle Dinner | 2022-07</label>
+            </value>
+            <value>
+                <fullName>Paris Fireside Chat | 2022-07</fullName>
+                <default>false</default>
+                <label>Paris Fireside Chat | 2022-07</label>
+            </value>
+            <value>
+                <fullName>Token 2049 - VIP Dinner | 2022-09</fullName>
+                <default>false</default>
+                <label>Token 2049 - VIP Dinner | 2022-09</label>
+            </value>
+            <value>
+                <fullName>Money 20/20 - VIP Dinner | 2022-10</fullName>
+                <default>false</default>
+                <label>Money 20/20 - VIP Dinner | 2022-10</label>
+            </value>
+            <value>
+                <fullName>Singapore Fintech Festival - VIP Networking Drinks | 2022-11</fullName>
+                <default>false</default>
+                <label>Singapore Fintech Festival - VIP Networking Drinks | 2022-11</label>
+            </value>
+            <value>
+                <fullName>Singapore Fintech Festival - Networking Drinks | 2022-11</fullName>
+                <default>false</default>
+                <label>Singapore Fintech Festival - Networking Drinks | 2022-11</label>
+            </value>
+            <value>
+                <fullName>Webinar | Businesses Benefiting From Blockchain | 12-2022</fullName>
+                <default>false</default>
+                <label>Webinar | Businesses Benefiting From Blockchain | 12-2022</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

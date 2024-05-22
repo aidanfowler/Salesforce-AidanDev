@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Don_t_Send_CC_Survey__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This is used for a flow and when checked it means the customer is not eligible to receive a survey. This is not on the page layout.</description>
+    <externalId>false</externalId>
+    <label>Don’t Send CC Survey</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

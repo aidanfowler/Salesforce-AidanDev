@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Link_to_the_company_s_website__c</fullName>
+    <description>Used by inside sales to populate the company&apos;s website that was used for pre-disco call research</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Used by inside sales to populate the company&apos;s website that was used for pre-disco call research</inlineHelpText>
+    <label>Link to the company&apos;s website</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Url</type>
+</CustomField>

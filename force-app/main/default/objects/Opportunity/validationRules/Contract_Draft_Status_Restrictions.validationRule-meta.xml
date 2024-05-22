@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contract_Draft_Status_Restrictions</fullName>
+    <active>true</active>
+    <description>Restrict contract draft status values by profile</description>
+    <errorConditionFormula>AND(
+   ISCHANGED(Contract_Request_Status__c),
+   !CONTAINS($Profile.Name, &apos;Admin&apos;),
+   !ISPICKVAL(Contract_Request_Status__c,&apos;Not Started&apos;),
+   !ISPICKVAL(Contract_Request_Status__c,&apos;Not Required&apos;),
+   OR(
+      AND(
+         OR(
+            ISPICKVAL(Contract_Request_Status__c,&apos;Draft - with Circle Legal&apos;),
+            ISPICKVAL(Contract_Request_Status__c,&apos;Draft - with Circle stakeholders&apos;),
+            ISPICKVAL(Contract_Request_Status__c,&apos;Draft - With BD&apos;),
+            ISPICKVAL(Contract_Request_Status__c,&apos;Redlines - with Circle Legal&apos;),
+            ISPICKVAL(Contract_Request_Status__c,&apos;Redlines - with Circle stakeholders&apos;)
+         ),
+         $Profile.Name != &apos;Legal&apos;   
+      ),
+      AND(
+         OR(
+            ISPICKVAL(Contract_Request_Status__c,&apos;Draft - with Customer&apos;),
+            ISPICKVAL(Contract_Request_Status__c,&apos;Additional Revisions Requested&apos;)
+         ),
+         !CONTAINS($Profile.Name, &apos;Sales&apos;)
+      ),
+      ISPICKVAL(StageName,&apos;Discover&apos;),
+      ISPICKVAL(StageName,&apos;Solution&apos;),
+      ISPICKVAL(StageName,&apos;Approvals&apos;)
+   )
+)</errorConditionFormula>
+    <errorDisplayField>Contract_Request_Status__c</errorDisplayField>
+    <errorMessage>You do not have permission to change the contract draft status to the selected value. No status updates are allowed in Discover, Solution, or Approvals.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Salesloft_Emails_Bounced__c</fullName>
+    <description>the number of Salesloft emails that have bounced to this contact&apos;s email</description>
+    <externalId>false</externalId>
+    <inlineHelpText>the number of Salesloft emails that have bounced to this contact&apos;s email</inlineHelpText>
+    <label>Salesloft Emails Bounced</label>
+    <length>4</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Liquidity_Coverage_USDC_Source__c</fullName>
+    <externalId>false</externalId>
+    <label>Liquidity Coverage USDC Source</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Circle Mint</fullName>
+                <default>false</default>
+                <label>Circle Mint</label>
+            </value>
+            <value>
+                <fullName>Secondary Market</fullName>
+                <default>false</default>
+                <label>Secondary Market</label>
+            </value>
+            <value>
+                <fullName>Wholesale Facility</fullName>
+                <default>false</default>
+                <label>Wholesale Facility</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

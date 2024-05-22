@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Jurisdiction__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(!ISBLANK(TEXT(Account.Country__c)),
+IF(ISPICKVAL(Account.Country__c, &apos;US&apos;), TEXT(Account.Country__c) + &quot; - &quot; +Account.BillingState, TEXT(Account.Country__c)),&apos;N/A&apos;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Jurisdiction</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

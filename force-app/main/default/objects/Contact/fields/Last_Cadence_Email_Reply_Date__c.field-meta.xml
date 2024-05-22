@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Last_Cadence_Email_Reply_Date__c</fullName>
+    <description>the last day the contact replied to a Salesloft cadence email</description>
+    <externalId>false</externalId>
+    <inlineHelpText>the last day the contact replied to a Salesloft cadence email</inlineHelpText>
+    <label>Last Cadence Email Reply Date</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Date</type>
+</CustomField>

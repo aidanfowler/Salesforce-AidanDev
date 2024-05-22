@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Solution_Validation_Stage</fullName>
+    <columns>CORE.USERS.FULL_NAME</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>Solutions_Engineer__c</columns>
+    <columns>OPPORTUNITY.CLOSE_DATE</columns>
+    <columns>Product_s__c</columns>
+    <columns>Solution_Validation_Sub_stage__c</columns>
+    <columns>SE_Notes__c</columns>
+    <filterScope>SalesTeam</filterScope>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Product</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Solution</value>
+    </filters>
+    <label>My Open Opps in Solution Validation</label>
+    <sharedTo>
+        <role>Solutions_Engineering_Exec</role>
+        <role>Solutions_Engineering_Team</role>
+    </sharedTo>
+</ListView>

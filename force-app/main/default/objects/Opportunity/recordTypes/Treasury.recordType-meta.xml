@@ -1,0 +1,2980 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Treasury</fullName>
+    <active>true</active>
+    <businessProcess>Treasury %28Yield%29</businessProcess>
+    <label>Treasury</label>
+    <picklistValues>
+        <picklist>Accounting_Impact__c</picklist>
+        <values>
+            <fullName>Accounts Payable</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Accounts Receivable</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Both</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Applicable</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Accounts_API__c</picklist>
+        <values>
+            <fullName>BTC%2FETH Beta</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Exchange Beta</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>First-Party %28internal use%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>None</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Third-Party</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Amendment_Type__c</picklist>
+        <values>
+            <fullName>Pricing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Terms %26 Conditions</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Are_We_Waiving_Network_Fees__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Billing_Status__c</picklist>
+        <values>
+            <fullName>Outstanding</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Overdue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paid</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Circle_Custody_Tier__c</picklist>
+        <values>
+            <fullName>Basic</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enterprise</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Scale</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Closed_Lost_Reason__c</picklist>
+        <values>
+            <fullName>Appetite for investment changed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Duplicate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lead was not properly qualified</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Offering construct %28rates and terms%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Onboarding onto the Product was too challenging</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Regulatory or Legal issues</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Risk Issues</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Closed_Lost_Sub_Reason__c</picklist>
+        <values>
+            <fullName>Business was clearly in an ineligible Jurisdiction</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Change in market or capital needs</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Client did not meet minimum investment requirements</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Client did not understand stablecoins</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Client was looking for a B2B2C or B2B2B offering %28i%2Ee%2E pool investor capital%2C Feeder Fund%2C RIA%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Collateral level too low</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Covenants or other Regulatory reason does not allow them invest in USDC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Did not understand regulatory framework</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Final stakeholder not bought in because%3A %5Bblank%5D %28e%2Eg%2E IPO%2C other requirements for capital%2C etc%2E%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>It was a consumer or not an eligible business</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>KYC and unknown requirements to pass</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lack of prospectus</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lock ups too long</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Minimum too high</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not comfortable with BitGo as a custodian</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not comfortable with Circle%E2%80%99s financials to mitigate losses</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not comfortable with borrowers and what they do to generate yield</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rates too low</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Required more customized contract</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Time to get a response took too long</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wire%2Fbank account issues</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Compliance_Approval_Status__c</picklist>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Required</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Started</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending Approval</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rejected</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Compliance_State__c</picklist>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Form Not Submitted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Required</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending AML Review</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending with Customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rejected</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Contains_EURC_Incentive__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Contract_Renewal__c</picklist>
+        <values>
+            <fullName>Auto Renewal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Renewal</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Contract_Request_Status__c</picklist>
+        <values>
+            <fullName>Not Required</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Started</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rejected</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Contract_Request_Type__c</picklist>
+        <values>
+            <fullName>Amendment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Beta Agreement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MSA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Renewal</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Custom_Incentive_Structure__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Custom_Pricing1__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Cybavo_Deployment_Type__c</picklist>
+        <values>
+            <fullName>Dedicated SaaS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>On Prem - Full Service</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>On Prem - Guided Service</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>On Prem KMS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SaaS</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Cybavo_MPC__c</picklist>
+        <values>
+            <fullName>1 on CYBAVO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2 on CYBAVO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>All on Customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>N%2FA</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Cybavo_Platform_Type_Cybavo_Startup_St__c</picklist>
+        <values>
+            <fullName>Business</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enterprise</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Growth</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Institution</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Premium</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Startup</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Cybavo_Platform_Type__c</picklist>
+        <values>
+            <fullName>Business Enterprise</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cybavo Startup</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enterprise Institution</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Growth Business</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Institution Premium</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Startup Growth</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>DB_Competitor__c</picklist>
+        <values>
+            <fullName>Competitor A</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Competitor B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Competitor C</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>DRG_Approval_Status__c</picklist>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Required</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Started</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending Approval</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rejected</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Financial_Partnership_Category__c</picklist>
+        <values>
+            <fullName>Current Integration</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Emerging Partnership</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Launched</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Near-Term Partnerships</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Possible Partnership</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>ForecastCategoryName</picklist>
+        <values>
+            <fullName>Best Case</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Closed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Commit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Most Likely</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Omitted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pipeline</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>High_Impact__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Kash_Product_Approval_Status__c</picklist>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Required</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Started</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending Approval</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rejected</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LeadSource</picklist>
+        <values>
+            <fullName>Advertisement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cognism</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer Event</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Employee Referral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>External Referral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Google AdWords</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Purchased List</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trade Show</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Webinar</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Website</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Lead_Source_Web__c</picklist>
+        <values>
+            <fullName>Article</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Google</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other Search Engine</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Referral</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Liquidity_Coverage_Instant_Rails__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Liquidity_Coverage_Partner_Category__c</picklist>
+        <values>
+            <fullName>Crypto as a Service</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Exchange</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Market Maker</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>OTC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>On%2FOff Ramp</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Liquidity_Coverage_Partner_Status__c</picklist>
+        <values>
+            <fullName>Active Partner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Discovery</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Preferred Partner</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Liquidity_Coverage_Priority__c</picklist>
+        <values>
+            <fullName>P0</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>P1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>P2</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Liquidity_Coverage_Supported_Audience__c</picklist>
+        <values>
+            <fullName>B2B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>B2B2C</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>B2C</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Liquidity_Coverage_Supported_Markets__c</picklist>
+        <values>
+            <fullName>Argentina</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bangladesh</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bermuda %2F Cayman</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Brazil</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cambodia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>China</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Colombia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Europe %28Via France%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hong Kong</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>India</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Indonesia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Japan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kenya</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Korea</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Liechtenstein</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Malaysia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mexico</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nepal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nigeria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pakistan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Philippines</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Portugal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Singapore</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>South Africa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Thailand</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>United Arab Emirates</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>United Kingdom</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vietnam</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Liquidity_Coverage_Tied_To_Incentive__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Liquidity_Coverage_USDC_Source__c</picklist>
+        <values>
+            <fullName>Circle Mint</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Secondary Market</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wholesale Facility</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>MSA_Legal_Approval_Status__c</picklist>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Started</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rejected</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Waiting On Approval</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>MSA_Renewal__c</picklist>
+        <values>
+            <fullName>Auto Renewal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Renewal</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>MSA_Request_Type__c</picklist>
+        <values>
+            <fullName>Amendment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Beta Agreement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MSA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Renewal</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>MoU_Request_Status__c</picklist>
+        <values>
+            <fullName>Complete</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Progress</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Requested</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Opportunity_Currency__c</picklist>
+        <values>
+            <fullName>EUR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Outside_Of_Pre_Approved_Margins__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Partner_Type__c</picklist>
+        <values>
+            <fullName>Channel Partnerships %2F Reseller</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Growth %2F Incentive Campaigns</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Integration Services Deals</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Multi-party ecosystem program</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Technical partnership non-dev</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Payments_API__c</picklist>
+        <values>
+            <fullName>ACH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cards</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Crypto Payments</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>None</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SEPA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USDC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wires</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Payments_Rails__c</picklist>
+        <values>
+            <fullName>Crypto Payments</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SEPA</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Payouts_API__c</picklist>
+        <values>
+            <fullName>ACH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>None</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SEPA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USDC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wires</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Payouts_Rails__c</picklist>
+        <values>
+            <fullName>Crypto Payments</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SEPA</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Performance_Incentive_Type__c</picklist>
+        <values>
+            <fullName>USDC Supply</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USDC Volume</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Pricing_Approval_Status__c</picklist>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Required</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Started</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending Approval</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rejected</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Product_Approval_Status__c</picklist>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Required</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Started</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending Approval</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rejected</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Product_s__c</picklist>
+        <values>
+            <fullName>Accounts API</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bridged USDC Standard</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Institutional Trading Partnership</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Referral_Partner__c</picklist>
+        <values>
+            <fullName>AirTM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Algorand</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Avalanche</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bitwave</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ethereum</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fireblocks</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Flow</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hedera</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Integral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Internal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mastercard</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mojito</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Moneygram</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>None</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Plaid</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Qredo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ramp</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Request Finance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SAP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solana</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Stellar</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TRON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tres Finance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Utopia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Visa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yuno</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Renewal_Probability__c</picklist>
+        <values>
+            <fullName>High</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lost</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Low</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medium</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Renewed</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Revenue_Classification__c</picklist>
+        <values>
+            <fullName>Forced Offboard</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HiPo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Marquee</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Offboard</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Startup</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Upside</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Risk_Assessment__c</picklist>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Collateral Pending</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Denied</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Required</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Risk Pending</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Solution_Validation_Sub_stage__c</picklist>
+        <values>
+            <fullName>Additional technical discovery needed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending Circle Mint approval</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending product feature</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solution approved by customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solution in active revisions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solution pending SE Lead approval</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solution pending SE creation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solution pending customer approval</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Technical call not yet scheduled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Technical call scheduled</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Stablecoin_Custody__c</picklist>
+        <values>
+            <fullName>Both</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>On Circle Platform</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>On Customer Platform</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Stablecoin__c</picklist>
+        <values>
+            <fullName>EUROC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USDC</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Sub_Stage__c</picklist>
+        <values>
+            <fullName>Bank Onboarding Document submission and review</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Business Case Kick Off</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Business and Compliance Workshop</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Commercials</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Discovery</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Final Onboarding submission</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In-depth compliance alignment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Integration</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jurisdictional Analysis</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NYDFS notification</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PDD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Preliminary Review</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Product and Engineering Alignment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reserve Management Committee Approval</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Testing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Third Party Risk Management %28TPRM%29 process</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Success_Metrics__c</picklist>
+        <values>
+            <fullName>MEWs</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Transaction Volume</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USDC on Platform</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Supported_Currencies_for_Minting__c</picklist>
+        <values>
+            <fullName>Afghanistan Afghani AFN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Albania Lek ALL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Algeria Dinar DZD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Angola Kwanza AOA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Argentina Peso ARS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Armenia Dram AMD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aruba Florin AWG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Australia Dollar AUD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Austria Schilling ATS %28EURO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Azerbaijan New Manat AZN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bahamas Dollar BSD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bahrain Dinar BHD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bangladesh Taka BDT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Barbados Dollar BBD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Belarus Ruble BYR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Belgium Franc BEF %28EURO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Belize Dollar BZD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bermuda Dollar BMD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bhutan Ngultrum BTN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bolivia Boliviano BOB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bosnia Mark BAM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Botswana Pula BWP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Brazil Real BRL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Brunei Dollar BND</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bulgaria Lev BGN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Burundi Franc BIF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CFA Franc BCEAO XOF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CFA Franc BEAC XAF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CFP Franc XPF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cambodia Riel KHR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Canada Dollar CAD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cape Verde Escudo CVE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cayman Islands Dollar KYD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chili Peso CLP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>China Yuan%2FRenminbi CNY</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Colombia Peso COP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Comoros Franc KMF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Congo Franc CDF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Costa Rica Colon CRC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Croatia Kuna HRK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cuba Convertible Peso CUC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cuba Peso CUP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cyprus Pound CYP %28EURO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Czech Koruna CZK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Denmark Krone DKK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Djibouti Franc DJF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dominican Republich Peso DOP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>East Caribbean Dollar XCD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Egypt Pound EGP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>El Salvador Colon SVC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Estonia Kroon EEK %28EURO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ethiopia Birr ETB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Euro EUR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Falkland Islands Pound FKP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fiji Dollar FJD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Finland Markka FIM %28EURO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gambia Dalasi GMD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Georgia Lari GEL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Germany Mark DMK %28EURO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ghana New Cedi GHS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gibraltar Pound GIP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Great Britain Pound GBP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Greece Drachma GRD %28EURO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Guatemala Quetzal GTQ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Guinea Franc GNF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Guyana Dollar GYD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Haiti Gourde HTG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Honduras Lempira HNL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hong Kong Dollar HKD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hungary Forint HUF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Iceland Krona ISK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>India Rupee INR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Indonesia Rupiah IDR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Iran Rial IRR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Iraq Dinar IQD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ireland Pound IED %28EURO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Israel New Shekel ILS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Italy Lira ITL %28EURO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jamaica Dollar JMD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Japan Yen JPY</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jordan Dinar JOD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kazakhstan Tenge KZT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kenya Shilling KES</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kuwait Dinar KWD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kyrgyzstan Som KGS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Laos Kip LAK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Latvia Lats LVL %28EURO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lebanon Pound LBP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lesotho Loti LSL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Liberia Dollar LRD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Libya Dinar LYD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lithuania Litas LTL %28EURO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Luxembourg Franc LUF %28EURO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Macau Pataca MOP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Macedonia Denar MKD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Malagasy Ariary MGA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Malawi Kwacha MWK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Malaysia Ringgit MYR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Maldives Rufiyaa MVR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Malta Lira MTL %28EURO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mauritania Ouguiya MRO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mauritius Rupee MUR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mexico Peso MXN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Moldova Leu MDL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mongolia Tugrik MNT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Morocco Dirham MAD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mozambique New Metical MZN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Myanmar Kyat MMK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NL Antilles Guilder ANG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Namibia Dollar NAD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nepal Rupee NPR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Netherlands Guilder NLG %28EURO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Zealand Dollar NZD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nicaragua Cordoba Oro NIO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nigeria Naira NGN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>North Korea Won KPW</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Norway Kroner NOK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Oman Rial OMR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pakistan Rupee PKR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Panama Balboa PAB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Papua New Guinea Kina PGK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paraguay Guarani PYG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Peru Nuevo Sol PEN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Philippines Peso PHP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Poland Zloty PLN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Portugal Escudo PTE %28EURO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Qatar Rial QAR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Romania New Lei RON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Russia Rouble RUB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rwanda Franc RWF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Samoa Tala WST</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sao Tome%2FPrincipe Dobra STD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Saudi Arabia Riyal SAR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Serbia Dinar RSD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Seychelles Rupee SCR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sierra Leone Leone SLL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Singapore Dollar SGD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Slovakia Koruna SKK %28EURO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Slovenia Tolar SIT %28EURO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solomon Islands Dollar SBD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Somali Shilling SOS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>South Africa Rand ZAR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>South Korea Won KRW</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spain Peseta ESP %28EURO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sri Lanka Rupee LKR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>St Helena Pound SHP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sudan Pound SDG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Suriname Dollar SRD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Swaziland Lilangeni SZL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sweden Krona SEK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Switzerland Franc CHF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Syria Pound SYP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Taiwan Dollar TWD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tanzania Shilling TZS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Thailand Baht THB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tonga Pa%27anga TOP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trinidad%2FTobago Dollar TTD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tunisia Dinar TND</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Turkish New Lira TRY</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Turkmenistan Manat TMM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USA Dollar USD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Uganda Shilling UGX</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ukraine Hryvnia UAH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>United Arab Emirates Dirham AED</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Uruguay Peso UYU</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vanuatu Vatu VUV</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Venezuela Bolivar VEB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vietnam Dong VND</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yemen Rial YER</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Zambia Kwacha ZMK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Zimbabwe Dollar ZWD</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Supported_Currencies_for_Redeeming__c</picklist>
+        <values>
+            <fullName>Afghanistan Afghani AFN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Albania Lek ALL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Algeria Dinar DZD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Angola Kwanza AOA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Argentina Peso ARS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Armenia Dram AMD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aruba Florin AWG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Australia Dollar AUD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Austria Schilling ATS %28EURO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Azerbaijan New Manat AZN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bahamas Dollar BSD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bahrain Dinar BHD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bangladesh Taka BDT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Barbados Dollar BBD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Belarus Ruble BYR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Belgium Franc BEF %28EURO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Belize Dollar BZD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bermuda Dollar BMD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bhutan Ngultrum BTN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bolivia Boliviano BOB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bosnia Mark BAM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Botswana Pula BWP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Brazil Real BRL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Brunei Dollar BND</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bulgaria Lev BGN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Burundi Franc BIF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CFA Franc BCEAO XOF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CFA Franc BEAC XAF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CFP Franc XPF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cambodia Riel KHR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Canada Dollar CAD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cape Verde Escudo CVE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cayman Islands Dollar KYD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chili Peso CLP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>China Yuan%2FRenminbi CNY</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Colombia Peso COP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Comoros Franc KMF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Congo Franc CDF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Costa Rica Colon CRC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Croatia Kuna HRK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cuba Convertible Peso CUC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cuba Peso CUP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cyprus Pound CYP %28EURO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Czech Koruna CZK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Denmark Krone DKK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Djibouti Franc DJF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dominican Republich Peso DOP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>East Caribbean Dollar XCD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Egypt Pound EGP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>El Salvador Colon SVC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Estonia Kroon EEK %28EURO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ethiopia Birr ETB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Euro EUR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Falkland Islands Pound FKP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fiji Dollar FJD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Finland Markka FIM %28EURO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gambia Dalasi GMD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Georgia Lari GEL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Germany Mark DMK %28EURO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ghana New Cedi GHS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gibraltar Pound GIP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Great Britain Pound GBP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Greece Drachma GRD %28EURO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Guatemala Quetzal GTQ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Guinea Franc GNF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Guyana Dollar GYD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Haiti Gourde HTG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Honduras Lempira HNL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hong Kong Dollar HKD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hungary Forint HUF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Iceland Krona ISK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>India Rupee INR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Indonesia Rupiah IDR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Iran Rial IRR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Iraq Dinar IQD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ireland Pound IED %28EURO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Israel New Shekel ILS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Italy Lira ITL %28EURO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jamaica Dollar JMD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Japan Yen JPY</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jordan Dinar JOD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kazakhstan Tenge KZT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kenya Shilling KES</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kuwait Dinar KWD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kyrgyzstan Som KGS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Laos Kip LAK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Latvia Lats LVL %28EURO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lebanon Pound LBP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lesotho Loti LSL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Liberia Dollar LRD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Libya Dinar LYD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lithuania Litas LTL %28EURO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Luxembourg Franc LUF %28EURO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Macau Pataca MOP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Macedonia Denar MKD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Malagasy Ariary MGA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Malawi Kwacha MWK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Malaysia Ringgit MYR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Maldives Rufiyaa MVR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Malta Lira MTL %28EURO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mauritania Ouguiya MRO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mauritius Rupee MUR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mexico Peso MXN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Moldova Leu MDL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mongolia Tugrik MNT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Morocco Dirham MAD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mozambique New Metical MZN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Myanmar Kyat MMK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NL Antilles Guilder ANG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Namibia Dollar NAD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nepal Rupee NPR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Netherlands Guilder NLG %28EURO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Zealand Dollar NZD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nicaragua Cordoba Oro NIO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nigeria Naira NGN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>North Korea Won KPW</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Norway Kroner NOK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Oman Rial OMR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pakistan Rupee PKR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Panama Balboa PAB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Papua New Guinea Kina PGK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paraguay Guarani PYG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Peru Nuevo Sol PEN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Philippines Peso PHP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Poland Zloty PLN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Portugal Escudo PTE %28EURO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Qatar Rial QAR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Romania New Lei RON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Russia Rouble RUB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rwanda Franc RWF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Samoa Tala WST</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sao Tome%2FPrincipe Dobra STD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Saudi Arabia Riyal SAR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Serbia Dinar RSD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Seychelles Rupee SCR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sierra Leone Leone SLL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Singapore Dollar SGD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Slovakia Koruna SKK %28EURO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Slovenia Tolar SIT %28EURO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solomon Islands Dollar SBD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Somali Shilling SOS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>South Africa Rand ZAR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>South Korea Won KRW</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spain Peseta ESP %28EURO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sri Lanka Rupee LKR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>St Helena Pound SHP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sudan Pound SDG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Suriname Dollar SRD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Swaziland Lilangeni SZL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sweden Krona SEK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Switzerland Franc CHF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Syria Pound SYP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Taiwan Dollar TWD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tanzania Shilling TZS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Thailand Baht THB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tonga Pa%27anga TOP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trinidad%2FTobago Dollar TTD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tunisia Dinar TND</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Turkish New Lira TRY</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Turkmenistan Manat TMM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USA Dollar USD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Uganda Shilling UGX</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ukraine Hryvnia UAH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>United Arab Emirates Dirham AED</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Uruguay Peso UYU</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vanuatu Vatu VUV</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Venezuela Bolivar VEB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vietnam Dong VND</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yemen Rial YER</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Zambia Kwacha ZMK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Zimbabwe Dollar ZWD</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Tracking_Method__c</picklist>
+        <values>
+            <fullName>On Circle Platform</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wallet Addresses</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type</picklist>
+        <values>
+            <fullName>Existing Business</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Business</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>UK_Customers_End_Users__c</picklist>
+        <values>
+            <fullName>Maybe</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Use_Case__c</picklist>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Vault_Pricing_Plan__c</picklist>
+        <values>
+            <fullName>Business</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enterprise</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Growth</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Institution</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Premium</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Startup</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Volume_Goal_Type__c</picklist>
+        <values>
+            <fullName>Net Mint</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Settlement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Total Mint</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Wallet_SDK_Deployment_Type__c</picklist>
+        <values>
+            <fullName>On Prem - Full Service</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>On Prem - Guided Service</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SaaS</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Wallet_SDK_Duration__c</picklist>
+        <values>
+            <fullName>12</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>24</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>36</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Wallet_SDK_Pricing_Plan__c</picklist>
+        <values>
+            <fullName>Business</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enterprise</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Growth</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Institution</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Premium</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Startup</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

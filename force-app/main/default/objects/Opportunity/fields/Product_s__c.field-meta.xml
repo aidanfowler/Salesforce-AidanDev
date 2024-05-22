@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product_s__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Select all applicable products that are related to this opportunity.</inlineHelpText>
+    <label>Product(s)</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>247Book</fullName>
+                <default>false</default>
+                <label>24/7 Book</label>
+            </value>
+            <value>
+                <fullName>Accounts API</fullName>
+                <default>false</default>
+                <label>Accounts API</label>
+            </value>
+            <value>
+                <fullName>Activation Incentives</fullName>
+                <default>false</default>
+                <label>Activation Incentives</label>
+            </value>
+            <value>
+                <fullName>Blockchain Partnerships</fullName>
+                <default>false</default>
+                <label>Blockchain Partnerships</label>
+            </value>
+            <value>
+                <fullName>Bridged USDC Standard</fullName>
+                <default>false</default>
+                <label>Bridged USDC Standard</label>
+            </value>
+            <value>
+                <fullName>CCTP</fullName>
+                <default>false</default>
+                <label>CCTP</label>
+            </value>
+            <value>
+                <fullName>Channel Sales</fullName>
+                <default>false</default>
+                <label>Channel Sales</label>
+            </value>
+            <value>
+                <fullName>Core API</fullName>
+                <default>false</default>
+                <label>Core API</label>
+            </value>
+            <value>
+                <fullName>Crypto Deposits</fullName>
+                <default>false</default>
+                <label>Crypto Deposits</label>
+            </value>
+            <value>
+                <fullName>Crypto Payouts</fullName>
+                <default>false</default>
+                <label>Crypto Payouts</label>
+            </value>
+            <value>
+                <fullName>Deposits</fullName>
+                <default>false</default>
+                <label>Deposits</label>
+            </value>
+            <value>
+                <fullName>Domestic Wires</fullName>
+                <default>false</default>
+                <label>Domestic Wires</label>
+            </value>
+            <value>
+                <fullName>Gas Station</fullName>
+                <default>false</default>
+                <label>Gas Station</label>
+            </value>
+            <value>
+                <fullName>Indirect Liquidity Partners</fullName>
+                <default>false</default>
+                <label>Indirect Liquidity Partners</label>
+            </value>
+            <value>
+                <fullName>Instant Settlement</fullName>
+                <default>false</default>
+                <label>Instant Settlement</label>
+            </value>
+            <value>
+                <fullName>Institutional Trading Partnership</fullName>
+                <default>false</default>
+                <label>Institutional Trading Partnership</label>
+            </value>
+            <value>
+                <fullName>IntlWires</fullName>
+                <default>false</default>
+                <label>Int’l Wires</label>
+            </value>
+            <value>
+                <fullName>Loans</fullName>
+                <default>false</default>
+                <label>Loans</label>
+            </value>
+            <value>
+                <fullName>Payments API</fullName>
+                <default>false</default>
+                <label>Payments API</label>
+            </value>
+            <value>
+                <fullName>Payouts API</fullName>
+                <default>false</default>
+                <label>Payouts API</label>
+            </value>
+            <value>
+                <fullName>Performance Incentives</fullName>
+                <default>false</default>
+                <label>Performance Incentives</label>
+            </value>
+            <value>
+                <fullName>Product Integrations</fullName>
+                <default>false</default>
+                <label>Product Integrations</label>
+            </value>
+            <value>
+                <fullName>Programmable Wallets</fullName>
+                <default>false</default>
+                <label>Programmable Wallets</label>
+            </value>
+            <value>
+                <fullName>PSP Crypto Settlement</fullName>
+                <default>false</default>
+                <label>PSP Crypto Settlement</label>
+            </value>
+            <value>
+                <fullName>Read Only API</fullName>
+                <default>false</default>
+                <label>Read Only API</label>
+            </value>
+            <value>
+                <fullName>Referrals</fullName>
+                <default>false</default>
+                <label>Referrals</label>
+            </value>
+            <value>
+                <fullName>Smart Contract Platform</fullName>
+                <default>false</default>
+                <label>Smart Contract Platform</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

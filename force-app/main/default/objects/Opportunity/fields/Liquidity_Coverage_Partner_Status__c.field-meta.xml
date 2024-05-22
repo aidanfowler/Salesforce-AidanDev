@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Liquidity_Coverage_Partner_Status__c</fullName>
+    <externalId>false</externalId>
+    <label>Liquidity Coverage Partner Status</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Discovery</fullName>
+                <default>false</default>
+                <label>Discovery</label>
+            </value>
+            <value>
+                <fullName>Preferred Partner</fullName>
+                <default>false</default>
+                <label>Preferred Partner</label>
+            </value>
+            <value>
+                <fullName>Active Partner</fullName>
+                <default>false</default>
+                <label>Active Partner</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

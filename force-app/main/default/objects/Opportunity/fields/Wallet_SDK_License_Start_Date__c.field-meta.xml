@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Wallet_SDK_License_Start_Date__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Please choose the date when the prospect expects to start using the product.</inlineHelpText>
+    <label>Wallet SDK License Start Date_DNU</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Date</type>
+</CustomField>

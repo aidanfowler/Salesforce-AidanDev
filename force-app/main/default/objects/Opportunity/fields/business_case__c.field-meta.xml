@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>business_case__c</fullName>
+    <description>Business Case Template: https://docs.google.com/document/d/1bQexOzILM9pObaeRyERN2EqgLf3eUhmf4rSrMBSyBdY/edit#heading=h.tf8cukn8kym0</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Please paste the URL to your Business Case document.</inlineHelpText>
+    <label>Business Case</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Url</type>
+</CustomField>

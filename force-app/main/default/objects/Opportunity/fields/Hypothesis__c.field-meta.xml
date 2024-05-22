@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Hypothesis__c</fullName>
+    <description>Why do we think the objective is possible? Through discovery discussions with the partner, how do both Circle and the partner think the partner can get us to the objective? Example: By introducing USDC as an in-app remittance option alongside significant existing fiat remittance volume, the partner and Circle believe we can drive a significant share-shift and activate significant MEWs and USDC on platform.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Why do we think the objective is possible? Through discovery discussions with the partner, how do both Circle and the partner think the partner can get us to the objective? Example: By introducing USDC as an in-app remittance option alongside significant existing fiat remittance volume, the partner and Circle believe we can drive a significant share-shift and activate significant MEWs and USDC on platform.</inlineHelpText>
+    <label>Hypothesis</label>
+    <length>32768</length>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

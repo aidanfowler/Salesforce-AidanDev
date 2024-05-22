@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Projected_Transaction_Volume__c</fullName>
+    <description>Projected Transaction Volume is meant to capture expected ANNUAL transaction volume.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Please enter the annual amount for how much you expect the customer to have in transaction volume.</inlineHelpText>
+    <label>Projected Transaction Volume</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Currency</type>
+</CustomField>

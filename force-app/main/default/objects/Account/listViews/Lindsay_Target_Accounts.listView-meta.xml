@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lindsay_Target_Accounts</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>Vertical__c</columns>
+    <columns>Treasury_Owner__c</columns>
+    <columns>target_account_tier__c</columns>
+    <columns>ACCOUNT.ADDRESS1_STATE_CODE</columns>
+    <columns>ACCOUNT.PHONE1</columns>
+    <columns>CORE.USERS.ALIAS</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CORE.USERS.LAST_NAME</field>
+        <operation>equals</operation>
+        <value>Seward</value>
+    </filters>
+    <filters>
+        <field>Target_Account__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>Lindsay Target Accounts</label>
+</ListView>

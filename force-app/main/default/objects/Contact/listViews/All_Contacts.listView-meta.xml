@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Contacts</fullName>
+    <columns>FULL_NAME</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>CONTACT.EMAIL</columns>
+    <columns>CORE.USERS.FIRST_NAME</columns>
+    <columns>CORE.USERS.LAST_NAME</columns>
+    <columns>CONTACT.CREATED_DATE</columns>
+    <columns>Hubpsot_Contact_ID__c</columns>
+    <columns>CREATEDBY_USER.ALIAS</columns>
+    <columns>Account.Lifecycle_Stage__c</columns>
+    <columns>Meeting_Type_CP__c</columns>
+    <columns>Country__c</columns>
+    <columns>Region__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All Contacts</label>
+</ListView>

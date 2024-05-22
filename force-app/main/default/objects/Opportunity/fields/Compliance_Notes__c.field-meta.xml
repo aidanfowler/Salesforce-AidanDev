@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Compliance_Notes__c</fullName>
+    <description>Used by Compliance Analysts to document their notes.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Used by Compliance Analysts to document their notes.</inlineHelpText>
+    <label>Compliance Notes</label>
+    <length>32768</length>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>LongTextArea</type>
+    <visibleLines>4</visibleLines>
+</CustomField>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Current_User_Is_Account_BD_Or_Owner__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(OR($User.Id = Account.Business_Development_Owner__c,$User.Id = Account.OwnerId), TRUE, FALSE)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Current User Is Account BD Or Owner</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

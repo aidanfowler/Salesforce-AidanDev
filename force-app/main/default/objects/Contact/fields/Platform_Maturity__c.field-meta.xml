@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Platform_Maturity__c</fullName>
+    <description>Is there an existing platform with customers, or is this a new build?</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Is there an existing platform with customers, or is this a new build?</inlineHelpText>
+    <label>Platform Maturity</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Existing Platform</fullName>
+                <default>false</default>
+                <label>Existing Platform</label>
+            </value>
+            <value>
+                <fullName>New Build</fullName>
+                <default>false</default>
+                <label>New Build</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

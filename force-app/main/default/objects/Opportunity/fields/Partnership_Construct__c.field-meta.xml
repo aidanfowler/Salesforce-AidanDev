@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Partnership_Construct__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(!ISBLANK(Partnership_Construct_Document_ID__c),&apos;https://docs.google.com/document/d/&apos; +  Partnership_Construct_Document_ID__c,&apos;&apos;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Partnership Construct</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

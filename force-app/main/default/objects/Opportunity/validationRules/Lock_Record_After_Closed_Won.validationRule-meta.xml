@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lock_Record_After_Closed_Won</fullName>
+    <active>true</active>
+    <description>Opportunities can not be updated after they have been closed won.</description>
+    <errorConditionFormula>AND(
+   ISPICKVAL(StageName,&apos;Closed Won&apos;),
+   ISPICKVAL(PRIORVALUE(StageName), &apos;Closed Won&apos;),
+   !CONTAINS($Profile.Name, &apos;Admin&apos;),
+   !CONTAINS($Profile.Name, &apos;API&apos;),
+   !ISCHANGED(Number_Of_Attachments__c),
+   !ISCHANGED(Partnership_Construct_Last_Updated_Date__c),
+   !ISCHANGED(Contract_Request_Status__c),
+   !ISCHANGED(Last_Contract_Draft_Status_Change_Date__c)
+)</errorConditionFormula>
+    <errorMessage>Opportunities can not be updated after they have been closed won.</errorMessage>
+</ValidationRule>

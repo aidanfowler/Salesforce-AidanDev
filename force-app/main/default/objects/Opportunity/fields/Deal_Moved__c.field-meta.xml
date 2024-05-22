@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Deal_Moved__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+OR(!ISBLANK(Date_Closed_Lost_Stage_Entered__c),!ISBLANK(Date_Closed_Won_Stage_Entered__c),!ISBLANK(Date_Contract_Stage_Entered__c),!ISBLANK(Date_Approvals_Stage_Entered__c),!ISBLANK(Date_Discover_Stage_Entered__c),!ISBLANK(Date_Negotiate_Stage_Entered__c),!ISBLANK(Date_Prospect_Stage_Entered__c),!ISBLANK(Date_Solution_Stage_Entered__c)),true,false)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Deal Moved?</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

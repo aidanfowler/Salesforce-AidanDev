@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product_Opportunity__c</fullName>
+    <externalId>false</externalId>
+    <formula>AND(
+OR(
+RecordType.DeveloperName = &apos;Business_Development&apos;,
+RecordType.DeveloperName = &apos;Product_Integrations&apos;
+),
+OR(
+CONTAINS(Products_Selected__c, &apos;Core API&apos;),
+CONTAINS(Products_Selected__c, &apos;USDC Express&apos;),
+CONTAINS(Products_Selected__c, &apos;Accounts API&apos;),
+CONTAINS(Products_Selected__c, &apos;Crypto Deposits&apos;),
+CONTAINS(Products_Selected__c, &apos;Crypto Payouts&apos;),
+CONTAINS(Products_Selected__c, &apos;Read Only API&apos;),
+CONTAINS(Products_Selected__c, &apos;Verite&apos;),
+CONTAINS(Products_Selected__c, &apos;PSP Crypto Settlement&apos;),
+CONTAINS(Products_Selected__c, &apos;Programmable Wallets&apos;),
+CONTAINS(Products_Selected__c, &apos;Smart Contract Platform&apos;),
+CONTAINS(Products_Selected__c, &apos;Gas Station&apos;),
+CONTAINS(Products_Selected__c, &apos;Cybavo VAULT&apos;),
+CONTAINS(Products_Selected__c, &apos;Cybavo Cashflow Manager&apos;),
+CONTAINS(Products_Selected__c, &apos;CCTP&apos;),
+CONTAINS(Products_Selected__c, &apos;Bridged USDC Standard&apos;),
+CONTAINS(Products_Selected__c, &apos;Alt Mempool&apos;)
+)
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Product Opportunity</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

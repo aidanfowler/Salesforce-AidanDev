@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Alliance_Program_Company_Description</fullName>
+    <active>true</active>
+    <description>Require Company Description before Alliance Program Application Status can be approved.</description>
+    <errorConditionFormula>AND(
+!Contains(  $User.Username  ,&apos;hubspot@circle.com&apos;),
+AND(
+ISBLANK( Account.Company_Description__c ),
+OR(
+ISPICKVAL( Alliance_Prog_Contact_Application_Status__c , &quot;PDR Qualified&quot;),
+ISPICKVAL( Alliance_Prog_Contact_Application_Status__c , &quot;Approved&quot;)
+)
+)
+)</errorConditionFormula>
+    <errorMessage>Company Description is required. Include: What makes them a good fit for Alliance? What is novel about their project?</errorMessage>
+</ValidationRule>

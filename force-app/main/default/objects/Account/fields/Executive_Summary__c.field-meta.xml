@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Executive_Summary__c</fullName>
+    <description>Short summary of the strategic importance of this partner. Be sure to include a realistic description of what success looks like and how we plan to achieve success.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Short summary of the strategic importance of this partner. Be sure to include a realistic description of what success looks like and how we plan to achieve success.</inlineHelpText>
+    <label>Executive Summary</label>
+    <length>32768</length>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Html</type>
+    <visibleLines>25</visibleLines>
+</CustomField>
