@@ -30,5 +30,5 @@
         <operation>equals</operation>
         <value>$user</value>
     </filters>
-    <label>My Partnership Objectives (CSM Home Pg)</label>
+    <label>My Partnership Objectives (PM Home Pg)</label>
 </ListView>

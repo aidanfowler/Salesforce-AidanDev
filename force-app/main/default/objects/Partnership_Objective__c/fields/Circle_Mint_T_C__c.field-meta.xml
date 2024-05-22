@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Circle_Mint_T_C__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>Used by CSMs to categorize objectives</description>
+    <description>Used by PMs to categorize objectives</description>
     <externalId>false</externalId>
-    <inlineHelpText>Please see the Guru card - Primary Objectives Guidance for CSMs</inlineHelpText>
+    <inlineHelpText>Please see the Guru card - Primary Objectives Guidance for PMs</inlineHelpText>
     <label>Circle Mint T&amp;C_DNU</label>
     <trackHistory>false</trackHistory>
     <type>Checkbox</type>

@@ -18,7 +18,7 @@
         <value>Active</value>
     </filters>
     <filters>
-        <field>Logged_in_CSM__c</field>
+        <field>Logged_In_PM__c</field>
         <operation>equals</operation>
         <value>1</value>
     </filters>

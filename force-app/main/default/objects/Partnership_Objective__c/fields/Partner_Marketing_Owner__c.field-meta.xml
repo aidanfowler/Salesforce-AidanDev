@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Partner_Marketing_Owner__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
-    <description>Populated by CSMs until we have Partner Marketing auto-assignment rules</description>
+    <description>Populated by PMs until we have Partner Marketing auto-assignment rules</description>
     <externalId>false</externalId>
     <inlineHelpText>Team member from Partner Marketing associated with this partnership.</inlineHelpText>
     <label>Partner Marketing Owner</label>

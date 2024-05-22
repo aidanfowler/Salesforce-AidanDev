@@ -5,8 +5,8 @@
         <description>Assign Date/Time for Last Assignment</description>
         <name>Assign_Round_Robin</name>
         <label>Assign Round Robin</label>
-        <locationX>1128</locationX>
-        <locationY>1166</locationY>
+        <locationX>842</locationX>
+        <locationY>866</locationY>
         <assignmentItems>
             <assignToReference>Get_Group_Members.Last_Assignment_Date__c</assignToReference>
             <operator>Assign</operator>
@@ -22,27 +22,12 @@
         <description>Check Group Type For Assignment</description>
         <name>Check_Group_Type_For_Assignment</name>
         <label>Check Group Type For Assignment</label>
-        <locationX>1128</locationX>
+        <locationX>842</locationX>
         <locationY>458</locationY>
         <defaultConnector>
             <targetReference>Assign_Round_Robin</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>CSM</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>RoundRobinAssignmentGroup</leftValueReference>
-                <operator>Contains</operator>
-                <rightValue>
-                    <stringValue>CSM</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Update_Account_CSM_Field</targetReference>
-            </connector>
-            <label>CSM</label>
-        </rules>
         <rules>
             <name>SE</name>
             <conditionLogic>and</conditionLogic>
@@ -105,35 +90,9 @@
         </rules>
     </decisions>
     <decisions>
-        <description>Checks to see if this is for the Jumpstart RR Group</description>
-        <name>isJumpStart</name>
-        <label>isJumpStart</label>
-        <locationX>710</locationX>
-        <locationY>674</locationY>
-        <defaultConnector>
-            <targetReference>Assign_Round_Robin</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>yesJumpstart</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>RoundRobinAssignmentGroup</leftValueReference>
-                <operator>Contains</operator>
-                <rightValue>
-                    <stringValue>Jumpstart</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Get_Helen_McCarty</targetReference>
-            </connector>
-            <label>yesJumpstart</label>
-        </rules>
-    </decisions>
-    <decisions>
         <name>No_Round_Robin_User_Available</name>
         <label>No Round Robin User Available</label>
-        <locationX>655</locationX>
+        <locationX>512</locationX>
         <locationY>350</locationY>
         <defaultConnector>
             <targetReference>Check_Group_Type_For_Assignment</targetReference>
@@ -162,7 +121,7 @@
             <label>No Available User Found</label>
         </rules>
     </decisions>
-    <description>Slack Custom Setting</description>
+    <description>CSM-&gt;PM</description>
     <environments>Default</environments>
     <formulas>
         <description>This is the formula for the Opportunity URL</description>
@@ -195,7 +154,7 @@
         <description>Create Opp Team Member</description>
         <name>Create_Opp_Team_Member</name>
         <label>Create Opp Team Member</label>
-        <locationX>1282</locationX>
+        <locationX>842</locationX>
         <locationY>674</locationY>
         <connector>
             <targetReference>Assign_Round_Robin</targetReference>
@@ -230,7 +189,7 @@
     <recordLookups>
         <name>Get_Assignment_Group_Record</name>
         <label>Get Assignment Group Record</label>
-        <locationX>655</locationX>
+        <locationX>512</locationX>
         <locationY>134</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -251,7 +210,7 @@
     <recordLookups>
         <name>Get_Group_Members</name>
         <label>Get Group Members</label>
-        <locationX>655</locationX>
+        <locationX>512</locationX>
         <locationY>242</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -279,35 +238,6 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
-        <description>Get Helen McCarty</description>
-        <name>Get_Helen_McCarty</name>
-        <label>Get Helen McCarty</label>
-        <locationX>578</locationX>
-        <locationY>782</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Send_Helen_New_Scaled_Success_Customer_Notification</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>FirstName</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Helen</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>LastName</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>McCarty</stringValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>User</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
         <name>Get_Opportunity</name>
         <label>Get Opportunity</label>
         <locationX>50</locationX>
@@ -329,33 +259,9 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordUpdates>
-        <name>Update_Account_CSM_Field</name>
-        <label>Update Account CSM Field</label>
-        <locationX>710</locationX>
-        <locationY>566</locationY>
-        <connector>
-            <targetReference>isJumpStart</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>Account_Record_Id</elementReference>
-            </value>
-        </filters>
-        <inputAssignments>
-            <field>Customer_Success_Manager__c</field>
-            <value>
-                <elementReference>Get_Group_Members.User__r.Id</elementReference>
-            </value>
-        </inputAssignments>
-        <object>Account</object>
-    </recordUpdates>
-    <recordUpdates>
         <name>Update_Account_SE_Field</name>
         <label>Update Account SE Field</label>
-        <locationX>1018</locationX>
+        <locationX>578</locationX>
         <locationY>566</locationY>
         <connector>
             <targetReference>Assign_Round_Robin</targetReference>
@@ -380,7 +286,7 @@
         <description>Update Compliance Rep On Opportunity</description>
         <name>Update_Compliance_Rep_On_Opportunity</name>
         <label>Update Compliance Rep On Opportunity</label>
-        <locationX>1282</locationX>
+        <locationX>842</locationX>
         <locationY>566</locationY>
         <connector>
             <targetReference>Create_Opp_Team_Member</targetReference>
@@ -404,12 +310,12 @@
     <recordUpdates>
         <name>Update_Round_Robin_User_Last_Assignment_Date</name>
         <label>Update Round Robin User Last Assignment Date</label>
-        <locationX>1128</locationX>
-        <locationY>1274</locationY>
+        <locationX>842</locationX>
+        <locationY>974</locationY>
         <inputReference>Get_Group_Members</inputReference>
     </recordUpdates>
     <start>
-        <locationX>529</locationX>
+        <locationX>386</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Get_Assignment_Group_Record</targetReference>
@@ -471,42 +377,6 @@
             </value>
         </inputAssignments>
     </subflows>
-    <subflows>
-        <description>Send Helen New Scaled Success Customer Notification</description>
-        <name>Send_Helen_New_Scaled_Success_Customer_Notification</name>
-        <label>Send Helen New Scaled Success Customer Notification</label>
-        <locationX>578</locationX>
-        <locationY>890</locationY>
-        <connector>
-            <targetReference>Assign_Round_Robin</targetReference>
-        </connector>
-        <flowName>Send_Slack_Notification_To_User</flowName>
-        <inputAssignments>
-            <name>RecordID</name>
-            <value>
-                <elementReference>Account_Record_Id</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <name>SlackMessage</name>
-            <value>
-                <elementReference>tt_New_Scaled_Success_Customer</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <name>UserID</name>
-            <value>
-                <elementReference>Get_Helen_McCarty.Id</elementReference>
-            </value>
-        </inputAssignments>
-    </subflows>
-    <textTemplates>
-        <description>This is the slack message that will be sent to Helen McCarty when a CSM is assigned to an Opportunity that is NOT in the Jumpstart Round Robin Group</description>
-        <name>tt_New_Scaled_Success_Customer</name>
-        <isViewedAsPlainText>true</isViewedAsPlainText>
-        <text>New Scaled Success Customer
-&lt;{!frml_OpportunityRecordURL}|View Salesforce Record&gt;</text>
-    </textTemplates>
     <textTemplates>
         <name>tt_No_RR_Message</name>
         <isViewedAsPlainText>true</isViewedAsPlainText>

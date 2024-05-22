@@ -8,8 +8,8 @@ public class OpportunityDAO {
         return [SELECT ID, Number_Of_Attachments__c, Needs_Attachmnet_Recalculation__c FROM Opportunity WHERE ID in :ids];
     }
 
-    public static List<OpportunityTeamMember> getCSMOppTeamMembers(Set<Id> ids){
-        return [SELECT ID, OpportunityId FROM OpportunityTeamMember WHERE OpportunityId IN :ids and TeamMemberRole = 'Customer Success Manager'];
+    public static List<OpportunityTeamMember> getPMOppTeamMembers(Set<Id> ids){
+        return [SELECT ID, OpportunityId FROM OpportunityTeamMember WHERE OpportunityId IN :ids and TeamMemberRole = 'Partner Manager'];
 
     }
 }

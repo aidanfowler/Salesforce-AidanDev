@@ -856,20 +856,20 @@
         </rules>
     </decisions>
     <decisions>
-        <description>If no CSM, display error</description>
-        <name>Check_If_CSM_Attached_And_Contract_Draft_Is_Set</name>
-        <label>Check If CSM Attached And Contract Draft Is Set</label>
+        <description>If no PM, display error</description>
+        <name>Check_If_PM_Attached_And_Contract_Draft_Is_Set</name>
+        <label>Check If PM Attached And Contract Draft Is Set</label>
         <locationX>1766</locationX>
         <locationY>1322</locationY>
         <defaultConnector>
             <targetReference>Update_Fields_Screen</targetReference>
         </defaultConnector>
-        <defaultConnectorLabel>CSM Attached, Continue</defaultConnectorLabel>
+        <defaultConnectorLabel>PM Attached, Continue</defaultConnectorLabel>
         <rules>
             <name>Send_To_Closed_Won_Errors</name>
             <conditionLogic>1 OR (2 AND 3)</conditionLogic>
             <conditions>
-                <leftValueReference>Get_CSM_Opp_Team_Member.Id</leftValueReference>
+                <leftValueReference>Get_PM_Opp_Team_Member.Id</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -983,7 +983,7 @@
         </rules>
     </decisions>
     <decisions>
-        <description>Approvals Before Closed Won (CSM Added)</description>
+        <description>Approvals Before Closed Won (PM Added)</description>
         <name>Negotiate_Closed_Won_Approval_Check</name>
         <label>Negotiate -&gt; Closed Won Approval Check</label>
         <locationX>1920</locationX>
@@ -993,7 +993,7 @@
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>Check_For_CSM</name>
+            <name>Check_For_PM</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>Get_Opportunity_By_Record_ID.StageName</leftValueReference>
@@ -1010,9 +1010,9 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Get_CSM_Opp_Team_Member</targetReference>
+                <targetReference>Get_PM_Opp_Team_Member</targetReference>
             </connector>
-            <label>Check For CSM</label>
+            <label>Check For PM</label>
         </rules>
     </decisions>
     <decisions>
@@ -1184,7 +1184,7 @@
             <label>Send To Missing Pricing Screen</label>
         </rules>
     </decisions>
-    <description>Remove legal approval requirement, add requirement that status is in draft with customer before closing, remove liquidity coverage updates</description>
+    <description>CSM-&gt;PM</description>
     <dynamicChoiceSets>
         <name>LiquidityCoverageSupportedMarkets</name>
         <dataType>Multipicklist</dataType>
@@ -1596,34 +1596,6 @@ TEXT({!Get_Opportunity_By_Record_ID.Referral_Partner__c})))</expression>
     </processMetadataValues>
     <processType>Flow</processType>
     <recordLookups>
-        <name>Get_CSM_Opp_Team_Member</name>
-        <label>Get CSM Opp Team Member</label>
-        <locationX>1766</locationX>
-        <locationY>1214</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Check_If_CSM_Attached_And_Contract_Draft_Is_Set</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>OpportunityId</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>Get_Opportunity_By_Record_ID.Id</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>TeamMemberRole</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Customer Success Manager</stringValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>OpportunityTeamMember</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
         <description>Get Opportunity By Record ID</description>
         <name>Get_Opportunity_By_Record_ID</name>
         <label>Get Opportunity By Record ID</label>
@@ -1643,6 +1615,34 @@ TEXT({!Get_Opportunity_By_Record_ID.Referral_Partner__c})))</expression>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
         <object>Opportunity</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_PM_Opp_Team_Member</name>
+        <label>Get PM Opp Team Member</label>
+        <locationX>1766</locationX>
+        <locationY>1214</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_If_PM_Attached_And_Contract_Draft_Is_Set</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>OpportunityId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Opportunity_By_Record_ID.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>TeamMemberRole</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Partner Manager</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>OpportunityTeamMember</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordUpdates>
@@ -1685,13 +1685,13 @@ TEXT({!Get_Opportunity_By_Record_ID.Referral_Partner__c})))</expression>
         <allowPause>false</allowPause>
         <backButtonLabel>Back</backButtonLabel>
         <fields>
-            <name>No_CSM_Error</name>
-            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: rgb(176, 43, 43);&quot;&gt;You must add a CSM to the opportunity team before closing.&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;</fieldText>
+            <name>No_PM_Error</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: rgb(176, 43, 43);&quot;&gt;You must add a PM to the opportunity team before closing.&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
             <visibilityRule>
                 <conditionLogic>and</conditionLogic>
                 <conditions>
-                    <leftValueReference>Get_CSM_Opp_Team_Member.Id</leftValueReference>
+                    <leftValueReference>Get_PM_Opp_Team_Member.Id</leftValueReference>
                     <operator>IsNull</operator>
                     <rightValue>
                         <booleanValue>true</booleanValue>

@@ -258,7 +258,7 @@
             <assignToReference>var_renewal_owner</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Get_Opp_Team_CSM.UserId</elementReference>
+                <elementReference>Get_Opp_Team_PM.UserId</elementReference>
             </value>
         </assignmentItems>
         <connector>
@@ -428,33 +428,33 @@
         </connector>
     </assignments>
     <decisions>
-        <description>Assign CSM Opp Team If Owner Is CSM</description>
-        <name>Assign_CSM_Opp_Team_If_Owner_Is_CSM</name>
-        <label>Assign CSM Opp Team If Owner Is CSM</label>
+        <description>Assign PM Opp Team If Owner Is PM</description>
+        <name>Assign_PM_Opp_Team_If_Owner_Is_PM</name>
+        <label>Assign PM Opp Team If Owner Is PM</label>
         <locationX>248</locationX>
         <locationY>10895</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>Opp_Owner_Is_CSM</name>
+            <name>Opp_Owner_Is_PM</name>
             <conditionLogic>or</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.Owner.Profile.Name</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Customer Success</stringValue>
+                    <stringValue>Partner Manager</stringValue>
                 </rightValue>
             </conditions>
             <conditions>
                 <leftValueReference>$Record.Owner.Profile.Name</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Customer Success Exec</stringValue>
+                    <stringValue>Partner Manager Exec</stringValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Create_CSM_Opp_Team_Member</targetReference>
+                <targetReference>Create_PM_Opp_Team_Member</targetReference>
             </connector>
-            <label>Opp Owner Is CSM</label>
+            <label>Opp Owner Is PM</label>
         </rules>
     </decisions>
     <decisions>
@@ -487,7 +487,7 @@
         <locationX>446</locationX>
         <locationY>10553</locationY>
         <defaultConnector>
-            <targetReference>Assign_CSM_Opp_Team_If_Owner_Is_CSM</targetReference>
+            <targetReference>Assign_PM_Opp_Team_If_Owner_Is_PM</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -1254,7 +1254,7 @@
         <locationX>2794</locationX>
         <locationY>10745</locationY>
         <defaultConnector>
-            <targetReference>Make_CSM_Account_Owner</targetReference>
+            <targetReference>Make_PM_Account_Owner</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -1437,7 +1437,7 @@
         <locationX>3339</locationX>
         <locationY>10961</locationY>
         <defaultConnector>
-            <targetReference>Notify_CSM_They_Own_Account</targetReference>
+            <targetReference>Notify_PM_They_Own_Account</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -1784,7 +1784,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Send_CSM_Exec_Opp_Needs_CSM_Notification</targetReference>
+                <targetReference>Send_PM_Exec_Opp_Needs_PM_Notification</targetReference>
             </connector>
             <label>Not A Renewal</label>
         </rules>
@@ -1908,7 +1908,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Get_Opp_Team_CSM</targetReference>
+                <targetReference>Get_Opp_Team_PM</targetReference>
             </connector>
             <label>Closed Won Stage</label>
         </rules>
@@ -3006,28 +3006,8 @@
             <label>Approved or Denied</label>
         </rules>
     </decisions>
-    <description>DRG Rejected Approval Logic, Contract Draft Status Tracking + legal alerts, CSM Messaging Updates</description>
+    <description>CSM-&gt;PM</description>
     <environments>Default</environments>
-    <formulas>
-        <name>CSMExec</name>
-        <dataType>String</dataType>
-        <expression>IF(
-   OR(
-      {!$Record.Account_Owners_Pillar__c} = &apos;Liquidity&apos;,
-      {!$Record.Account_Owners_Pillar__c} = &apos;Capital Markets&apos;,
-      {!$Record.Account_Owners_Pillar__c} = &apos;Financial Partnerships&apos;
-   ), &apos;0058b00000GIiZmAAL&apos;,
-   IF(
-      {!$Record.Account_Owners_Pillar__c} = &apos;Ecosystem&apos;,&apos;0058b00000GIim9AAD&apos;,
-      IF(
-         {!$Record.Account_Owners_Pillar__c} = &apos;Platform Distribution&apos;, 
-            IF(
-                 ISPICKVAL({!$Record.Account.Owner.User_Region__c}, &apos;APAC&apos;),&apos;0058b00000HRj9aAAD&apos;,&apos;0058b00000GIiYmAAL&apos;
-            ), &apos;0058b00000GIiYmAAL&apos;
-      )
-   )
-)</expression>
-    </formulas>
     <formulas>
         <name>ffml_approvals_dashboard</name>
         <dataType>String</dataType>
@@ -3060,12 +3040,6 @@
 )</expression>
     </formulas>
     <formulas>
-        <description>CSM Name</description>
-        <name>frml_CSM_Name</name>
-        <dataType>String</dataType>
-        <expression>IF({!$Record.Account.Customer_Success_Manager__c} = null, &quot;No CSM Set&quot;, {!$Record.Account.Customer_Success_Manager__r.FirstName}+ &quot; &quot; +{!$Record.Account.Customer_Success_Manager__r.LastName} )</expression>
-    </formulas>
-    <formulas>
         <name>frml_increment_contract_draft_counter</name>
         <dataType>Number</dataType>
         <expression>IF(!ISBLANK({!$Record.Contract_Draft_Status_Counter__c}), {!$Record.Contract_Draft_Status_Counter__c}+1,1)</expression>
@@ -3086,6 +3060,12 @@
         <name>frml_partnership_objective_name</name>
         <dataType>String</dataType>
         <expression>{!$Record.Name} + &apos; Metrics Tracking&apos;</expression>
+    </formulas>
+    <formulas>
+        <description>PM Name</description>
+        <name>frml_PM_Name</name>
+        <dataType>String</dataType>
+        <expression>IF({!$Record.Account.Partner_Manager__c} = null, &quot;No PM Set&quot;, {!$Record.Account.Partner_Manager__r.FirstName}+ &quot; &quot; +{!$Record.Account.Partner_Manager__r.LastName} )</expression>
     </formulas>
     <formulas>
         <description>This gives the URL to the Product, Renewal Opportunity.</description>
@@ -3243,6 +3223,26 @@
         <scale>2</scale>
     </formulas>
     <formulas>
+        <name>PMExec</name>
+        <dataType>String</dataType>
+        <expression>IF(
+   OR(
+      {!$Record.Account_Owners_Pillar__c} = &apos;Liquidity&apos;,
+      {!$Record.Account_Owners_Pillar__c} = &apos;Capital Markets&apos;,
+      {!$Record.Account_Owners_Pillar__c} = &apos;Financial Partnerships&apos;
+   ), &apos;0058b00000GIiZmAAL&apos;,
+   IF(
+      {!$Record.Account_Owners_Pillar__c} = &apos;Ecosystem&apos;,&apos;0058b00000GIim9AAD&apos;,
+      IF(
+         {!$Record.Account_Owners_Pillar__c} = &apos;Platform Distribution&apos;, 
+            IF(
+                 ISPICKVAL({!$Record.Account.Owner.User_Region__c}, &apos;APAC&apos;),&apos;0058b00000HRj9aAAD&apos;,&apos;0058b00000GIiYmAAL&apos;
+            ), &apos;0058b00000GIiYmAAL&apos;
+      )
+   )
+)</expression>
+    </formulas>
+    <formulas>
         <name>RenewalOppName</name>
         <dataType>String</dataType>
         <expression>{!$Record.Name} +&quot;: Renewal&quot;</expression>
@@ -3269,9 +3269,9 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordCreates>
-        <description>Create CSM Opp Team Member</description>
-        <name>Create_CSM_Opp_Team_Member</name>
-        <label>Create CSM Opp Team Member</label>
+        <description>Create PM Opp Team Member</description>
+        <name>Create_PM_Opp_Team_Member</name>
+        <label>Create PM Opp Team Member</label>
         <locationX>116</locationX>
         <locationY>11003</locationY>
         <inputAssignments>
@@ -3289,7 +3289,7 @@
         <inputAssignments>
             <field>TeamMemberRole</field>
             <value>
-                <stringValue>Customer Success Manager</stringValue>
+                <stringValue>Partner Manager</stringValue>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -3308,7 +3308,7 @@
         <locationX>3207</locationX>
         <locationY>11177</locationY>
         <connector>
-            <targetReference>Notify_CSM_Of_Renewal_Opp</targetReference>
+            <targetReference>Notify_PM_Of_Renewal_Opp</targetReference>
         </connector>
         <inputAssignments>
             <field>AccountId</field>
@@ -3619,7 +3619,7 @@
         <inputAssignments>
             <field>OwnerId</field>
             <value>
-                <elementReference>Get_Opp_Team_CSM.UserId</elementReference>
+                <elementReference>Get_Opp_Team_PM.UserId</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -3811,9 +3811,9 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
-        <description>Get Opp Team CSM</description>
-        <name>Get_Opp_Team_CSM</name>
-        <label>Get Opp Team CSM</label>
+        <description>Get Opp Team PM</description>
+        <name>Get_Opp_Team_PM</name>
+        <label>Get Opp Team PM</label>
         <locationX>2794</locationX>
         <locationY>10337</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
@@ -3832,7 +3832,7 @@
             <field>TeamMemberRole</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Customer Success Manager</stringValue>
+                <stringValue>Partner Manager</stringValue>
             </value>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
@@ -3928,9 +3928,9 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordUpdates>
-        <description>Make CSM Account Owner</description>
-        <name>Make_CSM_Account_Owner</name>
-        <label>Make CSM Account Owner</label>
+        <description>Make PM Account Owner</description>
+        <name>Make_PM_Account_Owner</name>
+        <label>Make PM Account Owner</label>
         <locationX>3339</locationX>
         <locationY>10853</locationY>
         <connector>
@@ -3945,16 +3945,16 @@
             </value>
         </filters>
         <filters>
-            <field>Customer_Success_Manager__c</field>
+            <field>Partner_Manager__c</field>
             <operator>NotEqualTo</operator>
             <value>
-                <elementReference>Get_Opp_Team_CSM.UserId</elementReference>
+                <elementReference>Get_Opp_Team_PM.UserId</elementReference>
             </value>
         </filters>
         <inputAssignments>
             <field>OwnerId</field>
             <value>
-                <elementReference>Get_Opp_Team_CSM.UserId</elementReference>
+                <elementReference>Get_Opp_Team_PM.UserId</elementReference>
             </value>
         </inputAssignments>
         <object>Account</object>
@@ -4955,9 +4955,9 @@
         </inputAssignments>
     </subflows>
     <subflows>
-        <description>Notify CSM Of Renewal Opp</description>
-        <name>Notify_CSM_Of_Renewal_Opp</name>
-        <label>Notify CSM Of Renewal Opp</label>
+        <description>Notify PM Of Renewal Opp</description>
+        <name>Notify_PM_Of_Renewal_Opp</name>
+        <label>Notify PM Of Renewal Opp</label>
         <locationX>3207</locationX>
         <locationY>11285</locationY>
         <connector>
@@ -4979,14 +4979,14 @@
         <inputAssignments>
             <name>UserID</name>
             <value>
-                <elementReference>Get_Opp_Team_CSM.UserId</elementReference>
+                <elementReference>Get_Opp_Team_PM.UserId</elementReference>
             </value>
         </inputAssignments>
     </subflows>
     <subflows>
-        <description>Notify CSM They Own Account</description>
-        <name>Notify_CSM_They_Own_Account</name>
-        <label>Notify CSM They Own Account</label>
+        <description>Notify PM They Own Account</description>
+        <name>Notify_PM_They_Own_Account</name>
+        <label>Notify PM They Own Account</label>
         <locationX>3471</locationX>
         <locationY>11069</locationY>
         <connector>
@@ -5002,13 +5002,13 @@
         <inputAssignments>
             <name>SlackMessage</name>
             <value>
-                <elementReference>tt_CSM_RR_assigned_product_closed_won</elementReference>
+                <elementReference>tt_PM_RR_assigned_product_closed_won</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
             <name>UserID</name>
             <value>
-                <elementReference>Get_Opp_Team_CSM.UserId</elementReference>
+                <elementReference>Get_Opp_Team_PM.UserId</elementReference>
             </value>
         </inputAssignments>
     </subflows>
@@ -5239,35 +5239,6 @@
         </inputAssignments>
     </subflows>
     <subflows>
-        <description>Send CSM Exec Opp Needs CSM Notification</description>
-        <name>Send_CSM_Exec_Opp_Needs_CSM_Notification</name>
-        <label>Send CSM Exec Opp Needs CSM Notification</label>
-        <locationX>754</locationX>
-        <locationY>10445</locationY>
-        <connector>
-            <targetReference>Check_If_Performance_Or_Activation</targetReference>
-        </connector>
-        <flowName>Send_Slack_Notification_To_User</flowName>
-        <inputAssignments>
-            <name>RecordID</name>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <name>SlackMessage</name>
-            <value>
-                <elementReference>tt_csm_needs_assignmnet_slack_message</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <name>UserID</name>
-            <value>
-                <elementReference>CSMExec</elementReference>
-            </value>
-        </inputAssignments>
-    </subflows>
-    <subflows>
         <name>Send_Legal_Team_Slack_Notification</name>
         <label>Send Legal Team Slack Notification</label>
         <locationX>2657</locationX>
@@ -5372,6 +5343,35 @@
             <name>SlackMessage</name>
             <value>
                 <elementReference>tt_partner_marketing_notification</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <subflows>
+        <description>Send PM Exec Opp Needs PM Notification</description>
+        <name>Send_PM_Exec_Opp_Needs_PM_Notification</name>
+        <label>Send PM Exec Opp Needs PM Notification</label>
+        <locationX>754</locationX>
+        <locationY>10445</locationY>
+        <connector>
+            <targetReference>Check_If_Performance_Or_Activation</targetReference>
+        </connector>
+        <flowName>Send_Slack_Notification_To_User</flowName>
+        <inputAssignments>
+            <name>RecordID</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>SlackMessage</name>
+            <value>
+                <elementReference>tt_pm_needs_assignmnet_slack_message</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>UserID</name>
+            <value>
+                <elementReference>PMExec</elementReference>
             </value>
         </inputAssignments>
     </subflows>
@@ -5608,7 +5608,7 @@
         <locationX>50</locationX>
         <locationY>10553</locationY>
         <connector>
-            <targetReference>Assign_CSM_Opp_Team_If_Owner_Is_CSM</targetReference>
+            <targetReference>Assign_PM_Opp_Team_If_Owner_Is_PM</targetReference>
         </connector>
         <flowName>Send_Slack_Notification_To_User</flowName>
         <inputAssignments>
@@ -5730,8 +5730,8 @@ Opportunity Name: {!$Record.Name}
 Contracted Entity: {!$Record.Circle_Account__r.Contracted_Entity__c}
 Product(s): {!$Record.Product_s__c}
 Type: {!$Record.Type}
-Opportunity Owner: {!$Record.Owner_Name__c}
-CSM: {!frml_CSM_Name}
+Opportunity Owner: {!$Record.Owner.FirstName} {!$Record.Owner.LastName}
+PM: {!frml_PM_Name}
 Solution Engineer: {!frml_SE_Name}
 &lt;{!frml_recordURL}|View Salesforce Record&gt;</text>
     </textTemplates>
@@ -5810,30 +5810,6 @@ Opportunity Owner: {!$Record.Owner.FirstName} {!$Record.Owner.LastName}
 Opportunity Type: {!$Record.Type}
 Closed Date: {!$Record.CloseDate}
 &lt;{!frml_recordURL}|View Salesforce Record&gt;</text>
-    </textTemplates>
-    <textTemplates>
-        <description>message to let csm exec know they need to assign a csm</description>
-        <name>tt_csm_needs_assignmnet_slack_message</name>
-        <isViewedAsPlainText>true</isViewedAsPlainText>
-        <text>An opportunity has reached the Solution stage and needs CSM Assignment.
-&lt;{!frml_recordURL}|View Salesforce Record&gt;
-Opp Name: {!$Record.Name}
-Sales Stage: {!$Record.StageName}
-Account Owner Pillar: {!$Record.Account_Owners_Pillar__c}
-Account Name: {!$Record.Account.Name}
-Monthly Active Users: {!$Record.Monthly_Active_Users__c}
-Projected Minting Volume: {!$Record.Projected_Minting_Volume__c}
-Projected Wallet Count: {!$Record.Projected_Wallet_Count__c}
-Opp Owner: {!$Record.Owner_Name__c}
-Close Date: {!$Record.CloseDate}
-Product(s): {!$Record.Product_s__c}</text>
-    </textTemplates>
-    <textTemplates>
-        <description>Used to notify the Customer Success Manager that a new Accopunt has been assigned to them.</description>
-        <name>tt_CSM_RR_assigned_product_closed_won</name>
-        <isViewedAsPlainText>true</isViewedAsPlainText>
-        <text>You have been assigned as the Customer Success Manager on: &lt;{!frml_AccountRecordUrl}|{!$Record.Account.Name}&gt;.
-&lt;{!frml_AccountRecordUrl}|View Salesforce Record&gt;</text>
     </textTemplates>
     <textTemplates>
         <description>slack notification for deal activity / ring the gong channel</description>
@@ -5919,9 +5895,33 @@ Sales Stage: {!$Record.StageName}
 Opportunity Owner: {!$Record.Owner_Name__c}</text>
     </textTemplates>
     <textTemplates>
+        <description>message to let pm exec know they need to assign a pm</description>
+        <name>tt_pm_needs_assignmnet_slack_message</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>An opportunity has reached the Solution stage and needs PM Assignment.
+&lt;{!frml_recordURL}|View Salesforce Record&gt;
+Opp Name: {!$Record.Name}
+Sales Stage: {!$Record.StageName}
+Account Owner Pillar: {!$Record.Account_Owners_Pillar__c}
+Account Name: {!$Record.Account.Name}
+Monthly Active Users: {!$Record.Monthly_Active_Users__c}
+Projected Minting Volume: {!$Record.Projected_Minting_Volume__c}
+Projected Wallet Count: {!$Record.Projected_Wallet_Count__c}
+Opp Owner: {!$Record.Owner.FirstName}  {!$Record.Owner.LastName}
+Close Date: {!$Record.CloseDate}
+Product(s): {!$Record.Product_s__c}</text>
+    </textTemplates>
+    <textTemplates>
+        <description>Used to notify the Partner Manager that a new Account has been assigned to them.</description>
+        <name>tt_PM_RR_assigned_product_closed_won</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>You have been assigned as the Partner Manager on: &lt;{!frml_AccountRecordUrl}|{!$Record.Account.Name}&gt;.
+&lt;{!frml_AccountRecordUrl}|View Salesforce Record&gt;</text>
+    </textTemplates>
+    <textTemplates>
         <name>tt_product_ClosedWon_Opp_Owner_Message</name>
         <isViewedAsPlainText>true</isViewedAsPlainText>
-        <text>A renewal deal has been created and you have been assigned the Opportunity Owner &amp; Customer Success Manager.  Please review this opportunity to validate you are the correct owner and that the opportunity&apos;s Close Date is accurate.
+        <text>A renewal deal has been created and you have been assigned the Opportunity Owner &amp; Partner Manager.  Please review this opportunity to validate you are the correct owner and that the opportunity&apos;s Close Date is accurate.
 Opportunity Name: {!$Record.Name}
 &lt;{!frml_ProductRenewalRecordURL}|View Salesforce Record&gt;</text>
     </textTemplates>

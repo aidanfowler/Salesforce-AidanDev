@@ -30,7 +30,7 @@ public class OpportunitiesTest {
         System.assertEquals('Solution',opp.StageName);
     }
 
-    @isTest static void testOppTeamCSMValidationFailed(){
+    @isTest static void testOppTeamPMValidationFailed(){
         Account act = CircleTestDataFactory.insertAccount();
         Opportunity opp = new Opportunity(Accountid = act.id, name = 'test', StageName = 'Discover', CloseDate = Date.today(), Type = 'New Business', Product_s__c = 'Circle Mint');
         opp.RecordTypeId = RecordTypeIds__c.getInstance().BusinessDevelopmentOpp__c;
@@ -45,15 +45,15 @@ public class OpportunitiesTest {
                 error = e.getMessage();
             }
         Test.stopTest();
-        System.assert(error.contains('You must add a CSM to the opportunity team beforce closing this opportunity'));
+        System.assert(error.contains('You must add a PM to the opportunity team beforce closing this opportunity'));
     }
 
-    @isTest static void testOppTeamCSMValidationSuccess(){
+    @isTest static void testOppTeamPMValidationSuccess(){
         Account act = CircleTestDataFactory.insertAccount();
         Opportunity opp = new Opportunity(Accountid = act.id, name = 'test', StageName = 'Discover', CloseDate = Date.today(), Type = 'New Business', Product_s__c = 'Circle Mint');
         opp.RecordTypeId = RecordTypeIds__c.getInstance().BusinessDevelopmentOpp__c;
         insert opp;
-        OpportunityTeamMember oppTeamMember = new OpportunityTeamMember(OpportunityId = opp.id, TeamMemberRole = 'Customer Success Manager', UserId = UserInfo.getUserId());
+        OpportunityTeamMember oppTeamMember = new OpportunityTeamMember(OpportunityId = opp.id, TeamMemberRole = 'Partner Manager', UserId = UserInfo.getUserId());
         insert oppTeamMember;
         String error = '';
         Test.startTest();
@@ -168,7 +168,7 @@ public class OpportunitiesTest {
     @isTest static void testDateXStageEntered(){
         Account act = CircleTestDataFactory.insertAccount();
         Opportunity opp = CircleTestDataFactory.insertOpportunity(act.Id, 'TEST', Date.today(), 'Circle Mint');
-        OpportunityTeamMember oppTeamMember = new OpportunityTeamMember(OpportunityId = opp.id, TeamMemberRole = 'Customer Success Manager', UserId = UserInfo.getUserId());
+        OpportunityTeamMember oppTeamMember = new OpportunityTeamMember(OpportunityId = opp.id, TeamMemberRole = 'Partner Manager', UserId = UserInfo.getUserId());
         insert oppTeamMember;
 
         Test.startTest();

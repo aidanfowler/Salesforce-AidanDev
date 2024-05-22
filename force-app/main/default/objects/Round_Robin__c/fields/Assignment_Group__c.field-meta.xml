@@ -17,41 +17,6 @@
                 <label>Compliance Analyst</label>
             </value>
             <value>
-                <fullName>CSM Circle Capital Markets</fullName>
-                <default>false</default>
-                <label>CSM Circle Capital Markets</label>
-            </value>
-            <value>
-                <fullName>CSM Circle Market Makers &amp; Crypto Exchanges</fullName>
-                <default>false</default>
-                <label>CSM Circle Market Makers &amp; Crypto Exchanges</label>
-            </value>
-            <value>
-                <fullName>CSM Enterprise</fullName>
-                <default>false</default>
-                <label>CSM Enterprise</label>
-            </value>
-            <value>
-                <fullName>CSM Jumpstart</fullName>
-                <default>false</default>
-                <label>CSM Jumpstart</label>
-            </value>
-            <value>
-                <fullName>CSM Market Makers &amp; Crypto Exchanges</fullName>
-                <default>false</default>
-                <label>CSM Market Makers &amp; Crypto Exchanges</label>
-            </value>
-            <value>
-                <fullName>CSM Payments</fullName>
-                <default>false</default>
-                <label>CSM Payments</label>
-            </value>
-            <value>
-                <fullName>CSM Web 3 &amp; Gaming</fullName>
-                <default>false</default>
-                <label>CSM Web 3 &amp; Gaming</label>
-            </value>
-            <value>
                 <fullName>Product Marketing Managers</fullName>
                 <default>false</default>
                 <label>Product Marketing Managers</label>
@@ -212,12 +177,6 @@
                 <label>CA EMEA &amp; Europe</label>
             </value>
             <value>
-                <fullName>CSM</fullName>
-                <default>false</default>
-                <isActive>false</isActive>
-                <label>CSM</label>
-            </value>
-            <value>
                 <fullName>Circle Ventures Sales Team</fullName>
                 <default>false</default>
                 <isActive>false</isActive>
@@ -228,12 +187,6 @@
                 <default>false</default>
                 <isActive>false</isActive>
                 <label>Cybavo Compliance Analysts</label>
-            </value>
-            <value>
-                <fullName>Cybavo Customer Success Managers</fullName>
-                <default>false</default>
-                <isActive>false</isActive>
-                <label>Cybavo Customer Success Managers</label>
             </value>
             <value>
                 <fullName>NFT &amp; Startup</fullName>

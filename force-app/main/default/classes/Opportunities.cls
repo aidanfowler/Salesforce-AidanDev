@@ -1,22 +1,22 @@
 public class Opportunities {
 
-    public static void validateCSMBeforeClosedWon(Map<Id, Opportunity> newOpps, Map<Id, Opportunity> oldOpps){
+    public static void validatePMBeforeClosedWon(Map<Id, Opportunity> newOpps, Map<Id, Opportunity> oldOpps){
         Set<Id> oppsToCheck = new Set<Id>();
         for(Id id: newOpps.keyset()){
             String products = String.valueOf(newOpps.get(id).product_s__c);
-            if(newOpps.get(id).StageName == 'Closed Won' && oldOpps.get(id).StageName != newOpps.get(id).StageName && (newOpps.get(id).RecordTypeId == RecordTypeIds__c.getInstance().BusinessDevelopmentOpp__c || (newOpps.get(id).RecordTypeId == RecordTypeIds__c.getInstance().ProductIntegrationsOpp__c && (products.contains('CCTP') || products.contains('Bridged USDC Standard'))))){
+            if(newOpps.get(id).StageName == 'Closed Won' && oldOpps.get(id).StageName != newOpps.get(id).StageName && (newOpps.get(id).RecordTypeId == RecordTypeIds__c.getInstance().BusinessDevelopmentOpp__c || (newOpps.get(id).RecordTypeId == RecordTypeIds__c.getInstance().ProductIntegrationsOpp__c && (products.contains('CCTP') || products.contains('Bridged USDC Standard') || products.contains('USDC Trading Pairs'))))){
                 oppsToCheck.add(id);
             }
         }
         if(oppsToCheck.size()>0){
-            List<OpportunityTeamMember> oppTeamMembers = OpportunityDAO.getCSMOppTeamMembers(oppsToCheck);
+            List<OpportunityTeamMember> oppTeamMembers = OpportunityDAO.getPMOppTeamMembers(oppsToCheck);
             Map<Id, Id> oppTeamMemberMap = new Map<Id, Id>();
             for(OpportunityTeamMember oppTeamMember : oppTeamMembers){
                 oppTeamMemberMap.put(oppTeamMember.opportunityid, oppTeamMember.id);
             }
             for(Id id : oppsToCheck){
                 if(oppTeamMemberMap.get(id) == null){
-                    newOpps.get(id).addError('You must add a CSM to the opportunity team beforce closing this opportunity');
+                    newOpps.get(id).addError('You must add a PM to the opportunity team beforce closing this opportunity');
                 }
             }
         }

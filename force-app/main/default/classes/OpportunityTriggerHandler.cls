@@ -1,7 +1,7 @@
 public with sharing class OpportunityTriggerHandler {
 
     public static void handleBeforeUpdate(Map<Id, Opportunity> newOpps, Map<Id, Opportunity> oldOpps){
-        Opportunities.validateCSMBeforeClosedWon(newOpps, oldOpps);
+        Opportunities.validatePMBeforeClosedWon(newOpps, oldOpps);
         Opportunities.validateProductSelection(newOpps, oldOpps);
         Opportunities.validateAccountingApplicabilityDuringPricingApproval(newOpps, oldOpps);
         Opportunities.revertStageToDiscoverIfProductsChanged(newOpps, oldOpps);

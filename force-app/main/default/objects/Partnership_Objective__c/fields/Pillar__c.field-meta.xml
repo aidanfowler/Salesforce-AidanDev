@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Pillar__c</fullName>
-    <description>This field should indicate the Commercial Pillar this Partnership Objective is tied to. Since some Accounts have multi-Pillar Opportunities, this can most commonly be thought of as the CSM’s assigned Pillar</description>
+    <description>This field should indicate the Commercial Pillar this Partnership Objective is tied to. Since some Accounts have multi-Pillar Opportunities, this can most commonly be thought of as the PM&apos;s assigned Pillar</description>
     <externalId>false</externalId>
-    <inlineHelpText>This field should indicate the Commercial Pillar this Partnership Objective is tied to. Since some Accounts have multi-Pillar Opportunities, this can most commonly be thought of as the CSM’s assigned Pillar</inlineHelpText>
+    <inlineHelpText>This field should indicate the Commercial Pillar this Partnership Objective is tied to. Since some Accounts have multi-Pillar Opportunities, this can most commonly be thought of as the PM&apos;s assigned Pillar</inlineHelpText>
     <label>Pillar</label>
     <required>false</required>
     <trackHistory>false</trackHistory>

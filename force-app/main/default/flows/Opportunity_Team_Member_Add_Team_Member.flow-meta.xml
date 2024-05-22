@@ -25,19 +25,19 @@
         </connector>
     </assignments>
     <choices>
-        <name>Customer_Success_Manager</name>
-        <choiceText>Customer Success Manager</choiceText>
-        <dataType>String</dataType>
-        <value>
-            <stringValue>Customer Success Manager</stringValue>
-        </value>
-    </choices>
-    <choices>
         <name>Edit</name>
         <choiceText>Edit</choiceText>
         <dataType>String</dataType>
         <value>
             <stringValue>Edit</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Partner_Manager</name>
+        <choiceText>Partner Manager</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Partner Manager</stringValue>
         </value>
     </choices>
     <choices>
@@ -74,9 +74,9 @@
         </value>
     </choices>
     <decisions>
-        <description>Check If Account Level CSM Is Blank</description>
-        <name>Check_If_Account_Level_CSM_Is_Blank</name>
-        <label>Check If Account Level CSM Is Blank</label>
+        <description>Check If Account Level PM Is Blank</description>
+        <name>Check_If_Account_Level_PM_Is_Blank</name>
+        <label>Check If Account Level PM Is Blank</label>
         <locationX>622</locationX>
         <locationY>1514</locationY>
         <defaultConnector>
@@ -84,7 +84,7 @@
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>Account_CSM_is_blank</name>
+            <name>Account_PM_is_blank</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>Get_Opportunity.Account.Customer_Success_Manager__c</leftValueReference>
@@ -94,9 +94,9 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Update_Account_Level_CSM</targetReference>
+                <targetReference>Update_Account_Level_PM</targetReference>
             </connector>
-            <label>Account CSM is blank</label>
+            <label>Account PM is blank</label>
         </rules>
     </decisions>
     <decisions>
@@ -152,7 +152,7 @@
         </rules>
     </decisions>
     <decisions>
-        <description>CSM or SEs get a different page than owners or system admins</description>
+        <description>PM or SEs get a different page than owners or system admins</description>
         <name>Display_page_based_on_profile</name>
         <label>Display page based on profile</label>
         <locationX>1161</locationX>
@@ -168,7 +168,7 @@
                 <leftValueReference>$User.Profile_Name__c</leftValueReference>
                 <operator>Contains</operator>
                 <rightValue>
-                    <stringValue>Customer Success Exec</stringValue>
+                    <stringValue>Partner Manager Exec</stringValue>
                 </rightValue>
             </conditions>
             <conditions>
@@ -239,9 +239,9 @@
         </rules>
     </decisions>
     <decisions>
-        <description>Set the CSM or SE on Account</description>
-        <name>Set_CSM_Or_SE_On_Account</name>
-        <label>Set CSM Or SE On Account</label>
+        <description>Set the PM or SE on Account</description>
+        <name>Set_PM_Or_SE_On_Account</name>
+        <label>Set PM Or SE On Account</label>
         <locationX>776</locationX>
         <locationY>1406</locationY>
         <defaultConnector>
@@ -264,19 +264,19 @@
             <label>SE</label>
         </rules>
         <rules>
-            <name>CSM</name>
+            <name>PM</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>selected_team_role</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <elementReference>Customer_Success_Manager</elementReference>
+                    <elementReference>Partner_Manager</elementReference>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Check_If_Account_Level_CSM_Is_Blank</targetReference>
+                <targetReference>Check_If_Account_Level_PM_Is_Blank</targetReference>
             </connector>
-            <label>CSM</label>
+            <label>PM</label>
         </rules>
         <rules>
             <name>PartnerMarketingRole</name>
@@ -320,7 +320,7 @@
             <label>I assigned myself</label>
         </rules>
     </decisions>
-    <description>Granting Profile Marketing (Custom) Access</description>
+    <description>CSM-&gt;PM</description>
     <dynamicChoiceSets>
         <name>TeamMemberRole</name>
         <dataType>Picklist</dataType>
@@ -373,7 +373,7 @@
         <locationX>776</locationX>
         <locationY>1298</locationY>
         <connector>
-            <targetReference>Set_CSM_Or_SE_On_Account</targetReference>
+            <targetReference>Set_PM_Or_SE_On_Account</targetReference>
         </connector>
         <inputAssignments>
             <field>OpportunityAccessLevel</field>
@@ -538,31 +538,6 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordUpdates>
-        <description>Update Account Level CSM</description>
-        <name>Update_Account_Level_CSM</name>
-        <label>Update Account Level CSM</label>
-        <locationX>490</locationX>
-        <locationY>1622</locationY>
-        <connector>
-            <targetReference>Who_was_assigned</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>Get_Opportunity.AccountId</elementReference>
-            </value>
-        </filters>
-        <inputAssignments>
-            <field>Customer_Success_Manager__c</field>
-            <value>
-                <elementReference>Get_New_User.Id</elementReference>
-            </value>
-        </inputAssignments>
-        <object>Account</object>
-    </recordUpdates>
-    <recordUpdates>
         <description>Update Account Level Partner Marketing User</description>
         <name>Update_Account_Level_Partner_Marketing_User</name>
         <label>Update Account Level Partner Marketing User</label>
@@ -581,6 +556,31 @@
         </filters>
         <inputAssignments>
             <field>Partner_Marketing_User__c</field>
+            <value>
+                <elementReference>Get_New_User.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update Account Level PM</description>
+        <name>Update_Account_Level_PM</name>
+        <label>Update Account Level PM</label>
+        <locationX>490</locationX>
+        <locationY>1622</locationY>
+        <connector>
+            <targetReference>Who_was_assigned</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Opportunity.AccountId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Partner_Manager__c</field>
             <value>
                 <elementReference>Get_New_User.Id</elementReference>
             </value>
@@ -627,7 +627,7 @@
         <fields>
             <name>Team_Role</name>
             <choiceReferences>Solution_Engineer</choiceReferences>
-            <choiceReferences>Customer_Success_Manager</choiceReferences>
+            <choiceReferences>Partner_Manager</choiceReferences>
             <choiceReferences>Partner_Marketing</choiceReferences>
             <dataType>String</dataType>
             <fieldText>Team Role</fieldText>

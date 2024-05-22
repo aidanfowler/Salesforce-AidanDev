@@ -163,8 +163,8 @@ public class AccountsTest {
         Account act = CircleTestDataFactory.insertAccount();
         Opportunity opp = CircleTestDataFactory.insertOpportunity(act.Id, 'Test', Date.today(), 'Institutional Trading Partnership');
         Circle_Account__c ca = CircleTestDataFactory.insertCircleAccount(act.id, null, 'Third-Party',true,true,true,false,true,'Cybavo Cashflow Manager', 'Cards;Wires', 'USDC;Wires',100,200);  
-        OpportunityTeamMember csm = new OpportunityTeamMember(OpportunityId = opp.id, userId = UserInfo.getUserId(),TeamMemberRole = 'Customer Success Manager'); 
-        insert csm;
+        OpportunityTeamMember pm = new OpportunityTeamMember(OpportunityId = opp.id, userId = UserInfo.getUserId(),TeamMemberRole = 'Partner Manager'); 
+        insert pm;
         
         opp.Liquidity_Coverage_Supported_Markets__c = 'Brazil';
         opp.Liquidity_Coverage_Partner_Status__c = 'Discovery';

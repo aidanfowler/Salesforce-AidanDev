@@ -2,44 +2,13 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>60.0</apiVersion>
     <decisions>
-        <description>Is CSM PO Task Closed?</description>
-        <name>Is_CSM_PO_Task_Closed</name>
-        <label>Is CSM PO Task Closed?</label>
-        <locationX>182</locationX>
-        <locationY>923</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>CSM_PO_Task_Is_Closed</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.Status</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Completed</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.Subject</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Update Partnership Objective Insights Reminder</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Get_PO_Fields_For_Slack_Notification</targetReference>
-            </connector>
-            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
-            <label>CSM PO Task Is Closed</label>
-        </rules>
-    </decisions>
-    <decisions>
         <description>Is Descope Task Closed?</description>
         <name>Is_Descope_Task_Closed</name>
         <label>Is Descope Task Closed?</label>
         <locationX>182</locationX>
         <locationY>623</locationY>
         <defaultConnector>
-            <targetReference>Is_CSM_PO_Task_Closed</targetReference>
+            <targetReference>Is_PM_PO_Task_Closed</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -63,6 +32,37 @@
                 <targetReference>Send_CPS_Onboarding_Notification</targetReference>
             </connector>
             <label>Yes, Notify CPS Onboarding</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Is PM PO Task Closed?</description>
+        <name>Is_PM_PO_Task_Closed</name>
+        <label>Is PM PO Task Closed?</label>
+        <locationX>182</locationX>
+        <locationY>923</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>PM_PO_Task_Is_Closed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Completed</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Subject</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Update Partnership Objective Insights Reminder</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_PO_Fields_For_Slack_Notification</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>PM PO Task Is Closed</label>
         </rules>
     </decisions>
     <decisions>
@@ -97,7 +97,7 @@
             <label>Created By HubSpot Integration</label>
         </rules>
     </decisions>
-    <description>Descope Task CPS Onboarding</description>
+    <description>CSM-&gt;PM</description>
     <environments>Default</environments>
     <formulas>
         <name>frml_ISNEW</name>
@@ -138,7 +138,7 @@
         <locationY>1031</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Send_CSM_Customer_Health_Notification</targetReference>
+            <targetReference>Send_PM_Customer_Health_Notification</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -186,7 +186,7 @@
         <locationX>50</locationX>
         <locationY>731</locationY>
         <connector>
-            <targetReference>Is_CSM_PO_Task_Closed</targetReference>
+            <targetReference>Is_PM_PO_Task_Closed</targetReference>
         </connector>
         <flowName>Slack_Channel_Notifications_Subflow</flowName>
         <inputAssignments>
@@ -209,9 +209,9 @@
         </inputAssignments>
     </subflows>
     <subflows>
-        <description>Send CSM Customer Health Notification</description>
-        <name>Send_CSM_Customer_Health_Notification</name>
-        <label>Send CSM Customer Health Notification</label>
+        <description>Send PM Customer Health Notification</description>
+        <name>Send_PM_Customer_Health_Notification</name>
+        <label>Send PM Customer Health Notification</label>
         <locationX>50</locationX>
         <locationY>1139</locationY>
         <flowName>Slack_Channel_Notifications_Subflow</flowName>

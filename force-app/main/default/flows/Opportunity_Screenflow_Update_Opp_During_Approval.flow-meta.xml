@@ -142,7 +142,7 @@
                 <leftValueReference>frml_profile</leftValueReference>
                 <operator>Contains</operator>
                 <rightValue>
-                    <stringValue>Customer Success</stringValue>
+                    <stringValue>Partner Manager</stringValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -635,7 +635,7 @@
                     <leftValueReference>frml_profile</leftValueReference>
                     <operator>Contains</operator>
                     <rightValue>
-                        <stringValue>Customer Success</stringValue>
+                        <stringValue>Partner Manager</stringValue>
                     </rightValue>
                 </conditions>
             </visibilityRule>

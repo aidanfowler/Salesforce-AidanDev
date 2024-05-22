@@ -1,11 +1,11 @@
 public class CircleUtils {
     
     public static Map<String, LifeCycleStage> lifeCycleStageModel = new Map<String, LifeCycleStage>();
-    public static Set<String> validProducts = new Set<String>{'Accounts API','Activation Incentives','Blockchain Partnerships','CCTP','Channel Sales','Circle Mint','Core API','Crypto Deposits','Crypto Payouts','Cybavo Cashflow Manager','Cybavo VAULT','Indirect Liquidity Partners','Institutional Trading Partnership','Performance Incentives','Product Integrations','Programmable Wallets','PSP Crypto Settlement','Read Only API','Referrals','Smart Contract Platform','Verite','Bridged USDC Standard','Alt Mempool','Gas Station', 'Loans'};
+    public static Set<String> validProducts = new Set<String>{'Accounts API','Activation Incentives','Blockchain Partnerships','CCTP','USDC Trading Pairs','Channel Sales','Circle Mint','Core API','Crypto Deposits','Crypto Payouts','Cybavo Cashflow Manager','Cybavo VAULT','Indirect Liquidity Partners','Institutional Trading Partnership','Performance Incentives','Product Integrations','Programmable Wallets','PSP Crypto Settlement','Read Only API','Referrals','Smart Contract Platform','Verite','Bridged USDC Standard','Alt Mempool','Gas Station', 'Loans'};
     public static Set<String> accountsPayableProducts = new Set<String>{'Activation Incentives','Performance Incentives'};
     public static Set<String> accountsReceivableProducts = new Set<String>{'Core API','Programmable Wallets','Accounts API','Crypto Deposits','Crypto Payouts','Cybavo VAULT','Cybavo Cashflow Manager','PSP Crypto Settlement','Smart Contract Platform', 'Gas Station'};
     public static Set<String> pricingTeamProducts = new Set<String>{'Institutional Trading Partnership','Channel Sales','Referrals','Blockchain Partnerships','Indirect Liquidity Partners','Product Integrations', 'Loans'};
-    public static Set<String> noImpactProducts = new Set<String>{'Circle Mint','CCTP','Read Only API','Verite','Bridged USDC Standard','Alt Mempool'};
+    public static Set<String> noImpactProducts = new Set<String>{'Circle Mint','CCTP','USDC Trading Pairs','Read Only API','Verite','Bridged USDC Standard','Alt Mempool'};
     public static Map<String,Integer> stageOrderMap = new Map<String, Integer>{'Discover'=>1,'Solution'=>2,'Approvals'=>3,'Negotiate'=>4,'Contract'=>5,'Closed Won'=>6, 'Closed Lost'=>7};
 
     static{
